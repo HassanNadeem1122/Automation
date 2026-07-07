@@ -17,8 +17,8 @@ import requests
 
 # ── Config ────────────────────────────────────────────────────────────────
 LOG_FILE = Path(__file__).parent / "sent_log.json"
-MAX_EMAILS = 10
-DELAY_BETWEEN_SENDS = 120  # seconds
+MAX_EMAILS = 25
+DELAY_BETWEEN_SENDS = 60  # seconds
 GITHUB_API = "https://api.github.com"
 BEDROCK_MODEL_ID = "us.anthropic.claude-sonnet-4-6"
 BEDROCK_REGION = "us-east-1"
@@ -216,11 +216,12 @@ Return ONLY valid JSON, no markdown fences, no preamble, no explanation, in exac
 # ── Step 4: send via Gmail SMTP ───────────────────────────────────────────
 
 def send_email(to_email: str, subject: str, body: str) -> bool:
-    gmail_address = os.environ.get("GMAIL_ADDRESS", "")
-    gmail_password = os.environ.get("GMAIL_APP_PASSWORD", "")
+    gmail_address = os.environ.get("GMAIL_ADDRESS", "")  # your verified Brevo sender address
+    brevo_smtp_key = os.environ.get("BREVO_SMTP_KEY", "")
+    brevo_login = os.environ.get("BREVO_LOGIN", "")  # your Brevo account login email
 
-    if not gmail_address or not gmail_password:
-        log("  ❌ Missing GMAIL_ADDRESS or GMAIL_APP_PASSWORD env vars")
+    if not gmail_address or not brevo_smtp_key or not brevo_login:
+        log("  ❌ Missing GMAIL_ADDRESS, BREVO_LOGIN, or BREVO_SMTP_KEY env vars")
         return False
 
     msg = MIMEMultipart("alternative")
@@ -230,9 +231,9 @@ def send_email(to_email: str, subject: str, body: str) -> bool:
     msg.attach(MIMEText(body, "plain"))
 
     try:
-        with smtplib.SMTP("smtp.gmail.com", 587, timeout=15) as server:
+        with smtplib.SMTP("smtp-relay.brevo.com", 587, timeout=15) as server:
             server.starttls()
-            server.login(gmail_address, gmail_password)
+            server.login(brevo_login, brevo_smtp_key)
             server.sendmail(gmail_address, to_email, msg.as_string())
         return True
     except Exception as e:
@@ -319,3 +320,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
