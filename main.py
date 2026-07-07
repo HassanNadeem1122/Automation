@@ -17,8 +17,8 @@ import requests
 
 # ── Config ────────────────────────────────────────────────────────────────
 LOG_FILE = Path(__file__).parent / "sent_log.json"
-MAX_EMAILS = 30
-DELAY_BETWEEN_SENDS = 60  # seconds
+MAX_EMAILS = 10
+DELAY_BETWEEN_SENDS = 120  # seconds
 GITHUB_API = "https://api.github.com"
 BEDROCK_MODEL_ID = "us.anthropic.claude-sonnet-4-6"
 BEDROCK_REGION = "us-east-1"
