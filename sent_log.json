@@ -6,5 +6,69 @@
     "initial_sent_at": "2026-07-08T12:03:17.788314+00:00",
     "follow_up_sent_at": null,
     "replied": false
+  },
+  {
+    "org": "getlago",
+    "email": "tech@getlago.com",
+    "subject": "fastapi migration / getlago",
+    "initial_sent_at": "2026-07-08T12:21:24.821601+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "org": "clacky-ai",
+    "email": "yafei@clacky.ai",
+    "subject": "fastapi migration / clacky-ai",
+    "initial_sent_at": "2026-07-08T12:21:24.821601+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "org": "yeti-switch",
+    "email": "team@yeti-switch.org",
+    "subject": "fastapi migration / yeti-switch",
+    "initial_sent_at": "2026-07-08T12:21:24.821601+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "org": "OpenVoxProject",
+    "email": "openvox@voxpupuli.org",
+    "subject": "fastapi migration / OpenVoxProject",
+    "initial_sent_at": "2026-07-08T12:21:24.821601+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "org": "Shopify",
+    "email": "engineering@shopify.engineering",
+    "subject": "fastapi migration / Shopify",
+    "initial_sent_at": "2026-07-08T12:21:24.821601+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "org": "ThePandemoniumInstitute",
+    "email": "butler@thepandemoniuminstitute.com",
+    "subject": "fastapi migration / ThePandemoniumInstitute",
+    "initial_sent_at": "2026-07-08T12:21:24.821601+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "org": "lineofflight",
+    "email": "hi@lineofflig.ht",
+    "subject": "fastapi migration / lineofflight",
+    "initial_sent_at": "2026-07-08T12:21:24.821601+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "org": "openSUSE",
+    "email": "project@lists.opensuse.org",
+    "subject": "fastapi migration / openSUSE",
+    "initial_sent_at": "2026-07-08T12:21:24.821601+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
   }
 ]
