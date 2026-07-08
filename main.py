@@ -18,8 +18,8 @@ FOLLOW_UP_DAYS = 3
 STALE_DAYS = 365
 GITHUB_API = "https://api.github.com"
 
-# Updated to target the correct Sonnet 4.6 cross-region inference identifier
-BEDROCK_MODEL_ID = "us.anthropic.claude-3-6-sonnet-20250304-v1:0"
+# The exact, valid Bedrock ID for Claude 4.6 Sonnet
+BEDROCK_MODEL_ID = "us.anthropic.claude-sonnet-4-6"
 BEDROCK_REGION = "us-east-1"
 
 SKIP_PREFIXES = (
