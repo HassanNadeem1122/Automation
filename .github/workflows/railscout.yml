@@ -28,4 +28,5 @@ jobs:
           touch sent_log.json
           git add sent_log.json
           git diff --staged --quiet || git commit -m "update sent_log"
+          git pull --rebase origin main
           git push
