@@ -20,8 +20,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
-          BREVO_SMTP_KEY: ${{ secrets.BREVO_SMTP_KEY }}
-          BREVO_LOGIN: ${{ secrets.BREVO_LOGIN }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
       - name: Commit updated log
         run: |
           git config user.name "github-actions"
