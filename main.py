@@ -174,7 +174,6 @@ Rules for a high-converting B2B pitch:
 - The Pitch: You specialize in migrating Rails backends to lightweight Python architectures (FastAPI) to cut server costs and modernize the stack.
 - The Ask: "Is migrating off Rails something on your radar right now?"
 - Sign off as "Hassan".
-- Include a plain text opt-out at the very bottom: "Reply 'no thanks' to opt out."
 - Format: Return ONLY raw JSON in this format: {{"subject": "...", "body": "..."}}. 
 - Subject line must be lowercase, 3-5 words, reading like an internal team ping.
 
