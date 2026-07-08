@@ -159,37 +159,22 @@ def get_org_email(org_login: str, github_token: str) -> str | None:
 # ── Generation & Sending ──────────────────────────────────────────────────
 
 def generate_initial_email(org_data: dict) -> dict | None:
-   prompt = f"""Write a highly personalized, ultra-casual B2B cold email to a software engineering team.
+prompt = f"""Write a direct, developer-focused email. 
 
 Context:
 Org: {org_data['login']}
-Repo: {org_data['repo_name']} ({org_data['stars']} stars)
-Status: {"legacy/stale" if org_data['is_stale'] else "actively maintained"}
+Repo: {org_data['repo_name']}
 
-Saleshandy Framework & Style Rules:
-1. Tone: Like a developer quickly typing an email on their phone. Use extremely minimal capitalization. Remove ALL unnecessary punctuation (no em-dashes, no exclamation marks, no semicolons). Keep sentences short.
-2. Subject: 2-4 words, fully lowercase, curiosity-driven (e.g., "question about [repo]" or "your rails setup").
-3. First line: Casual nod to finding their specific repo organically.
-4. Value Hook: Mention that Rails backends often get heavy, expensive to compute, and slow to maintain over time.
-5. The Proof: You MUST state that you just migrated a 3,600-star Rails CRM (6,000 lines of Ruby) to FastAPI. You MUST include this exact link so they can look at the code: https://github.com/HassanNadeem1122/fat-free-crm-fastapi
-6. CTA: One low-friction question asking if moving off Rails is on their radar right now. No sales calls, no calendar links.
-7. Sign off: just "hassan"
+Rules:
+1. Tone: Technical and fast. No corporate "hope you are well" junk.
+2. Opening: "Hi [name], found your {org_data['repo_name']} repo." (If no name: "Hi team,").
+3. The Value: Focus only on performance. Rails backends get bloated. FastAPI cuts server costs and increases speed.
+4. The Proof: Link your migration work: https://github.com/HassanNadeem1122/fat-free-crm-fastapi. You ported 6000 lines of Ruby to FastAPI. 
+5. CTA: "Is your team looking to speed up the backend or cut compute costs right now?"
+6. Subject: "rails vs fastapi performance" or "fastapi migration for {org_data['login']}"
 
-Format: Return ONLY raw JSON in this format: {{"subject": "...", "body": "..."}}. Do not include markdown blocks or any other text.
+Output ONLY raw JSON: {{"subject": "...", "body": "..."}}
 """
-
-Rules for a high-converting B2B pitch:
-- Tone: Peer-to-peer. Direct, relaxed, and concise. No marketing jargon. 
-- Opening: Mention coming across their specific repo organically.
-- The Hook: Acknowledge that running Rails at scale (or maintaining legacy Rails) can become a bottleneck for compute costs or dev speed.
-- The Pitch: You specialize in migrating Rails backends to lightweight Python architectures (FastAPI) to cut server costs and modernize the stack.
-- The Ask: "Is migrating off Rails something on your radar right now?"
-- Sign off as "Hassan".
-- Format: Return ONLY raw JSON in this format: {{"subject": "...", "body": "..."}}. 
-- Subject line must be lowercase, 3-5 words, reading like an internal team ping.
-
-Do not include markdown blocks or any other text. Just the JSON."""
-
     try:
         client = boto3.client(
             "bedrock-runtime",
