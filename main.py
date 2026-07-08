@@ -25,7 +25,8 @@ BEDROCK_REGION = "us-east-1"
 SKIP_PREFIXES = (
     "support@", "info@", "opensource+", "webmaster@", "contact@",
     "hello@", "help@", "admin@", "noreply@", "no-reply@", "dev@",
-    "developer@", "oss@", "crewonslack@", "sales@", "marketing@"
+    "developer@", "oss@", "crewonslack@", "sales@", "marketing@",
+    "project@", "subscribe@", "unsubscribe@", "list@", "lists@", "google-groups@"
 )
 
 def log(msg: str) -> None:
