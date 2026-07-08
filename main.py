@@ -80,7 +80,7 @@ def search_github_orgs(github_token: str) -> dict[str, dict]:
         
         # This dictionary handles the sorting and limits parameters dynamically
         params = {
-            "q": "language:Ruby stars:50..3000", 
+            "q": "language:Ruby stars:50..300", 
             "sort": "updated", 
             "order": "desc", 
             "per_page": 30
