@@ -2,11 +2,11 @@ name: railscout
 
 on:
   schedule:
-    - cron: '0 9 * * *'  # Runs every day at 09:00 UTC
-  workflow_dispatch:     # Allows you to trigger it manually anytime
+    - cron: '0 9 * * *'
+  workflow_dispatch:
 
 permissions:
-  contents: write        # Required to push the updated sent_log.json back to the repo
+  contents: write
 
 jobs:
   run:
@@ -15,7 +15,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Fetches full git history so merging/rebasing works cleanly
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -24,6 +24,12 @@ jobs:
 
       - name: Install Dependencies
         run: pip install boto3 requests
+
+      - name: Pull latest remote changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git pull origin main --rebase
 
       - name: Run Automation Script
         run: python main.py
@@ -39,5 +45,3 @@ jobs:
         with:
           commit_message: "update sent_log [skip ci]"
           file_pattern: 'sent_log.json'
-          commit_user_name: "github-actions[bot]"
-          commit_user_email: "41898282+github-actions[bot]@users.noreply.github.com"
