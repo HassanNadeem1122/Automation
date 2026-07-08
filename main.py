@@ -71,14 +71,21 @@ def check_if_replied(to_email: str, gmail_user: str, gmail_pass: str) -> bool:
         return False
 
 # ── GitHub Logic ──────────────────────────────────────────────────────────
-
 def search_github_orgs(github_token: str) -> dict[str, dict]:
     headers = {"Authorization": f"token {github_token}", "Accept": "application/vnd.github.v3+json"}
     orgs = {}
     try:
-        log("🔍 Searching GitHub for active Ruby repositories...")
-        resp = requests.get(f"{GITHUB_API}/search/repositories", headers=headers, 
-                            params={"q": "language:Ruby stars:100..5000", "per_page": 30}, timeout=15)
+        log("🔍 Searching GitHub for freshly updated Ruby repositories...")
+        
+        # This dictionary handles the sorting and limits parameters dynamically
+        params = {
+            "q": "language:Ruby stars:50..3000", 
+            "sort": "updated", 
+            "order": "desc", 
+            "per_page": 30
+        }
+        
+        resp = requests.get(f"{GITHUB_API}/search/repositories", headers=headers, params=params, timeout=15)
         for item in resp.json().get("items", []):
             owner = item.get("owner", {})
             if owner.get("type") == "Organization":
@@ -86,6 +93,7 @@ def search_github_orgs(github_token: str) -> dict[str, dict]:
     except Exception as e:
         log(f"❌ GitHub Search failed: {e}")
     return orgs
+
 
 def get_org_email(org_login: str, github_token: str) -> str | None:
     headers = {"Authorization": f"token {github_token}"}
