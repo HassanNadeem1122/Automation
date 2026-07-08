@@ -23,7 +23,7 @@ MAX_ACTIONS_PER_RUN = 10  # Max combination of new emails + follow-ups per day
 FOLLOW_UP_DAYS = 3
 STALE_DAYS = 365
 GITHUB_API = "https://api.github.com"
-BEDROCK_MODEL_ID = "us.anthropic.claude-3-5-sonnet-20240620-v1:0"
+BEDROCK_MODEL_ID = "us.anthropic.claude-sonnet-4-6"
 BEDROCK_REGION = "us-east-1"
 
 SKIP_PREFIXES = (
