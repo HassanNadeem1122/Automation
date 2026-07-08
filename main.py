@@ -17,8 +17,8 @@ import requests
 
 # ── Config ────────────────────────────────────────────────────────────────
 LOG_FILE = Path(__file__).parent / "sent_log.json"
-MAX_EMAILS = 25
-DELAY_BETWEEN_SENDS = 60  # seconds
+MAX_EMAILS = 15
+DELAY_BETWEEN_SENDS = 90  # seconds
 GITHUB_API = "https://api.github.com"
 BEDROCK_MODEL_ID = "us.anthropic.claude-sonnet-4-6"
 BEDROCK_REGION = "us-east-1"
@@ -26,6 +26,11 @@ BEDROCK_REGION = "us-east-1"
 # Legacy/stuck signal: last pushed more than this many days ago.
 # Popular + recently active repos are NOT the target — stale ones are.
 STALE_DAYS = 365
+
+# Generic/role addresses bounce more, get read less, and burn daily send
+# quota without real reply potential. Skip them.
+SKIP_PREFIXES = ("support@", "info@", "opensource+", "webmaster@", "contact@",
+                  "hello@", "help@", "admin@", "noreply@", "no-reply@")
 
 
 def log(msg: str) -> None:
@@ -143,6 +148,8 @@ def get_org_email(org_login: str, github_token: str) -> str | None:
         email = (resp.json().get("email") or "").strip()
         if not email or "@" not in email:
             return None
+        if email.lower().startswith(SKIP_PREFIXES):
+            return None
         return email
     except Exception as e:
         log(f"  {org_login}: error fetching org info — {e}")
@@ -167,8 +174,9 @@ Requirements:
 - Describe the case study briefly: migrated Fat Free CRM (a 3,600-star Rails CRM) to FastAPI — full CRUD, auth, tests, same business logic
 - End with a soft call-to-action (e.g. "worth a 15 min call?")
 - Sign as "Hassan"
+- After the sign-off, add a plain one-line opt-out: "Reply 'no thanks' and I won't follow up."
 - 4-6 short sentences total, no corporate jargon, no exclamation marks, no placeholders like [Company]
-- Subject line: short and specific, not clickbait
+- Subject line: write it like a real person typing quickly to a colleague — lowercase-first-word ok, no colons/dashes/pipe formatting, no "Migration" or "FastAPI" jargon in the subject itself, just a plain human question or observation (e.g. "quick question about your rails setup" not "Rails to FastAPI Migration for X")
 
 Return ONLY valid JSON, no markdown fences, no preamble, no explanation, in exactly this shape:
 {{"subject": "...", "body": "..."}}"""
@@ -216,12 +224,11 @@ Return ONLY valid JSON, no markdown fences, no preamble, no explanation, in exac
 # ── Step 4: send via Gmail SMTP ───────────────────────────────────────────
 
 def send_email(to_email: str, subject: str, body: str) -> bool:
-    gmail_address = os.environ.get("GMAIL_ADDRESS", "")  # your verified Brevo sender address
-    brevo_smtp_key = os.environ.get("BREVO_SMTP_KEY", "")
-    brevo_login = os.environ.get("BREVO_LOGIN", "")  # your Brevo account login email
+    gmail_address = os.environ.get("GMAIL_ADDRESS", "")
+    gmail_password = os.environ.get("GMAIL_APP_PASSWORD", "")
 
-    if not gmail_address or not brevo_smtp_key or not brevo_login:
-        log("  ❌ Missing GMAIL_ADDRESS, BREVO_LOGIN, or BREVO_SMTP_KEY env vars")
+    if not gmail_address or not gmail_password:
+        log("  ❌ Missing GMAIL_ADDRESS or GMAIL_APP_PASSWORD env vars")
         return False
 
     msg = MIMEMultipart("alternative")
@@ -231,9 +238,9 @@ def send_email(to_email: str, subject: str, body: str) -> bool:
     msg.attach(MIMEText(body, "plain"))
 
     try:
-        with smtplib.SMTP("smtp-relay.brevo.com", 587, timeout=15) as server:
+        with smtplib.SMTP("smtp.gmail.com", 587, timeout=15) as server:
             server.starttls()
-            server.login(brevo_login, brevo_smtp_key)
+            server.login(gmail_address, gmail_password)
             server.sendmail(gmail_address, to_email, msg.as_string())
         return True
     except Exception as e:
@@ -320,4 +327,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
