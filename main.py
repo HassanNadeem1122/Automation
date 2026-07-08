@@ -159,13 +159,24 @@ def get_org_email(org_login: str, github_token: str) -> str | None:
 # ── Generation & Sending ──────────────────────────────────────────────────
 
 def generate_initial_email(org_data: dict) -> dict | None:
-    prompt = f"""Write a highly personalized, casual cold email to a software engineering team.
+   prompt = f"""Write a highly personalized, ultra-casual B2B cold email to a software engineering team.
 
 Context:
 Org: {org_data['login']}
 Repo: {org_data['repo_name']} ({org_data['stars']} stars)
-Description: {org_data['description'] or 'N/A'}
-Status: {"Legacy/No recent updates" if org_data['is_stale'] else "Actively maintained"}
+Status: {"legacy/stale" if org_data['is_stale'] else "actively maintained"}
+
+Saleshandy Framework & Style Rules:
+1. Tone: Like a developer quickly typing an email on their phone. Use extremely minimal capitalization. Remove ALL unnecessary punctuation (no em-dashes, no exclamation marks, no semicolons). Keep sentences short.
+2. Subject: 2-4 words, fully lowercase, curiosity-driven (e.g., "question about [repo]" or "your rails setup").
+3. First line: Casual nod to finding their specific repo organically.
+4. Value Hook: Mention that Rails backends often get heavy, expensive to compute, and slow to maintain over time.
+5. The Proof: You MUST state that you just migrated a 3,600-star Rails CRM (6,000 lines of Ruby) to FastAPI. You MUST include this exact link so they can look at the code: https://github.com/HassanNadeem1122/fat-free-crm-fastapi
+6. CTA: One low-friction question asking if moving off Rails is on their radar right now. No sales calls, no calendar links.
+7. Sign off: just "hassan"
+
+Format: Return ONLY raw JSON in this format: {{"subject": "...", "body": "..."}}. Do not include markdown blocks or any other text.
+"""
 
 Rules for a high-converting B2B pitch:
 - Tone: Peer-to-peer. Direct, relaxed, and concise. No marketing jargon. 
