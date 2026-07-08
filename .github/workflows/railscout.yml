@@ -1,33 +1,40 @@
 name: railscout
+
 on:
   schedule:
-    - cron: '0 9 * * *'
-  workflow_dispatch:
+    - cron: '0 9 * * *'  # Runs every day at 09:00 UTC
+  workflow_dispatch:     # Allows you to trigger it manually anytime
+
 permissions:
-  contents: write
+  contents: write        # Required to push the updated sent_log.json back to the repo
+
 jobs:
   run:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Fetches all history so git pull works smoothly
+          fetch-depth: 0 # Fetches full git history so merging/rebasing works cleanly
 
-      - uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - run: pip install boto3 requests
+      - name: Install Dependencies
+        run: pip install boto3 requests
 
-      - run: python main.py
+      - name: Run Automation Script
+        run: python main.py
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
-          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }} # Fixed: Removed the "=" from this line
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
 
-      - name: Auto-commit and push log changes
+      - name: Auto-commit and Push Log Changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "update sent_log [skip ci]"
