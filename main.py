@@ -4,6 +4,7 @@ import smtplib
 import imaplib
 import time
 import random
+from collections import Counter
 from datetime import datetime, timezone
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -13,57 +14,105 @@ import requests
 
 # ── Config ────────────────────────────────────────────────────────────────
 LOG_FILE = Path(__file__).parent / "sent_log.json"
-MAX_ACTIONS_PER_RUN = 10 
+SUPPRESS_FILE = Path(__file__).parent / "unsubscribe_list.json"
+
+# Separate budgets so new outreach isn't starved by follow-ups.
+MAX_NEW_PER_RUN = 15
+MAX_FOLLOWUPS_PER_RUN = 10
+
 FOLLOW_UP_DAYS = 3
-STALE_DAYS = 365
 GITHUB_API = "https://api.github.com"
 
-# The exact, valid Bedrock ID for Claude 4.6 Sonnet
-BEDROCK_MODEL_ID = "us.anthropic.claude-sonnet-4-6"
-BEDROCK_REGION = "us-east-1"
+# How many repos to scan and how many commits to inspect per repo when
+# hunting for a real maintainer email.
+REPO_SCAN_LIMIT = 40
+COMMITS_PER_REPO = 30
 
+# Bedrock model. Override with the BEDROCK_MODEL_ID secret if this ID isn't
+# the one enabled in your account/region. `us.` = cross-region inference
+# profile; a bare `anthropic.claude-sonnet-4-6` may be what your account needs.
+BEDROCK_MODEL_ID = os.environ.get("BEDROCK_MODEL_ID", "us.anthropic.claude-sonnet-4-6")
+BEDROCK_REGION = os.environ.get("BEDROCK_REGION", "us-east-1")
+
+# CAN-SPAM: a real physical mailing address is legally required in every
+# commercial email. Set SENDER_ADDRESS / SENDER_NAME as GitHub secrets.
+SENDER_NAME = os.environ.get("SENDER_NAME", "hassan")
+SENDER_ADDRESS = os.environ.get("SENDER_ADDRESS", "").strip()
+
+# GitHub search query. Biased toward Rails so leads are actually relevant to
+# the FastAPI-migration pitch, not just "any Ruby repo".
+SEARCH_QUERY = os.environ.get("SEARCH_QUERY", "rails language:Ruby stars:50..300")
+
+# Emails we never contact (generic inboxes + bots).
 SKIP_PREFIXES = (
     "support@", "info@", "opensource+", "webmaster@", "contact@",
     "hello@", "help@", "admin@", "noreply@", "no-reply@", "dev@",
     "developer@", "oss@", "crewonslack@", "sales@", "marketing@",
-    "project@", "subscribe@", "unsubscribe@", "list@", "lists@", "google-groups@"
+    "project@", "subscribe@", "unsubscribe@", "list@", "lists@",
+    "google-groups@", "security@", "abuse@", "team@",
 )
 
+# Domains/substrings that mean "not a real human inbox".
+JUNK_EMAIL_MARKERS = (
+    "users.noreply.github.com", "noreply", "no-reply", "example.com",
+    "localhost", "[bot]", "bot@",
+)
+
+
 def log(msg: str) -> None:
-    print(f"[{datetime.now().strftime('%H:%M:%S')}] {msg}")
+    print(f"[{datetime.now().strftime('%H:%M:%S')}] {msg}", flush=True)
+
 
 # ── Pre-Flight Check ──────────────────────────────────────────────────────
 
 def pre_flight_check() -> bool:
-    required_env = ["GITHUB_TOKEN", "AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY", "GMAIL_ADDRESS", "GMAIL_APP_PASSWORD"]
+    required_env = [
+        "GITHUB_TOKEN", "AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY",
+        "GMAIL_ADDRESS", "GMAIL_APP_PASSWORD",
+    ]
     missing = [var for var in required_env if not os.environ.get(var)]
     if missing:
-        log(f"❌ CRITICAL ISSUE: Missing environment variables: {', '.join(missing)}")
+        log(f"❌ CRITICAL: Missing environment variables: {', '.join(missing)}")
         return False
+    if not SENDER_ADDRESS:
+        log("⚠️  SENDER_ADDRESS is not set. A physical mailing address is legally "
+            "required by CAN-SPAM in every commercial email. Set it as a secret.")
     log("✅ System scan passed. All credentials ready.")
     return True
 
+
 # ── State Management ──────────────────────────────────────────────────────
 
-def load_sent_log() -> list[dict]:
-    if LOG_FILE.exists():
-        try: return json.loads(LOG_FILE.read_text())
-        except Exception: return []
+def load_json_list(path: Path) -> list:
+    if path.exists():
+        try:
+            return json.loads(path.read_text())
+        except Exception:
+            return []
     return []
+
 
 def save_sent_log(entries: list[dict]) -> None:
     LOG_FILE.write_text(json.dumps(entries, indent=2, default=str))
 
-def already_emailed(org_login: str, sent_log: list[dict]) -> bool:
-    return any(e["org"] == org_login for e in sent_log)
+
+def load_suppression() -> set[str]:
+    # unsubscribe_list.json is a plain JSON array of email strings.
+    return {e.strip().lower() for e in load_json_list(SUPPRESS_FILE) if isinstance(e, str)}
+
+
+def already_contacted(email: str, sent_log: list[dict]) -> bool:
+    email = email.lower()
+    return any((e.get("email") or "").lower() == email for e in sent_log)
+
 
 # ── Inbox Sync ────────────────────────────────────────────────────────────
 
 def check_if_replied(to_email: str, gmail_user: str, gmail_pass: str) -> bool:
     try:
-        mail = imaplib.IMAP4_SSL('imap.gmail.com')
+        mail = imaplib.IMAP4_SSL("imap.gmail.com")
         mail.login(gmail_user, gmail_pass)
-        mail.select('inbox')
+        mail.select("inbox")
         status, messages = mail.search(None, f'FROM "{to_email}"')
         mail.logout()
         return bool(messages[0].split())
@@ -71,102 +120,161 @@ def check_if_replied(to_email: str, gmail_user: str, gmail_pass: str) -> bool:
         log(f"  ⚠️ IMAP sync failed for {to_email}: {e}")
         return False
 
+
 # ── GitHub Logic ──────────────────────────────────────────────────────────
-def search_github_orgs(github_token: str) -> dict[str, dict]:
-    headers = {"Authorization": f"token {github_token}", "Accept": "application/vnd.github.v3+json"}
-    orgs = {}
+
+def search_github_repos(github_token: str) -> list[dict]:
+    """Return a list of {full_name, org_login} for recently-updated repos."""
+    headers = {
+        "Authorization": f"token {github_token}",
+        "Accept": "application/vnd.github.v3+json",
+    }
+    repos: list[dict] = []
     try:
-        log("🔍 Searching GitHub for freshly updated Ruby repositories...")
-        
-        # This dictionary handles the sorting and limits parameters dynamically
+        log(f"🔍 Searching GitHub: {SEARCH_QUERY!r} (sorted by recently updated)...")
         params = {
-            "q": "language:Ruby stars:50..300", 
-            "sort": "updated", 
-            "order": "desc", 
-            "per_page": 30
+            "q": SEARCH_QUERY,
+            "sort": "updated",
+            "order": "desc",
+            "per_page": REPO_SCAN_LIMIT,
         }
-        
-        resp = requests.get(f"{GITHUB_API}/search/repositories", headers=headers, params=params, timeout=15)
+        resp = requests.get(
+            f"{GITHUB_API}/search/repositories",
+            headers=headers, params=params, timeout=20,
+        )
+        if resp.status_code != 200:
+            log(f"❌ GitHub search returned {resp.status_code}: {resp.text[:200]}")
+            return repos
         for item in resp.json().get("items", []):
-            owner = item.get("owner", {})
-            if owner.get("type") == "Organization":
-                orgs[owner.get("login")] = {"login": owner.get("login"), "repo_name": item.get("full_name")}
+            owner = item.get("owner", {}) or {}
+            repos.append({
+                "full_name": item.get("full_name"),
+                "org_login": owner.get("login"),
+            })
     except Exception as e:
-        log(f"❌ GitHub Search failed: {e}")
-    return orgs
+        log(f"❌ GitHub search failed: {e}")
+    return repos
 
 
-def get_org_email(org_login: str, github_token: str) -> str | None:
+def is_valid_lead_email(email: str) -> bool:
+    if not email or "@" not in email:
+        return False
+    low = email.lower()
+    if low.startswith(SKIP_PREFIXES):
+        return False
+    if any(marker in low for marker in JUNK_EMAIL_MARKERS):
+        return False
+    return True
+
+
+def get_maintainer_from_commits(full_name: str, github_token: str) -> dict | None:
+    """Pull recent commit authors and return the most frequent real person.
+
+    This is the key fix: instead of the org's public profile email (which is
+    almost always empty or a generic inbox), we read actual commit authors from
+    git history — real maintainers who'd care about a backend migration.
+    """
+    if not full_name:
+        return None
     headers = {"Authorization": f"token {github_token}"}
     try:
-        resp = requests.get(f"{GITHUB_API}/orgs/{org_login}", headers=headers, timeout=10)
-        email = resp.json().get("email", "")
-        if not email or "@" not in email or email.lower().startswith(SKIP_PREFIXES): 
+        resp = requests.get(
+            f"{GITHUB_API}/repos/{full_name}/commits",
+            headers=headers, params={"per_page": COMMITS_PER_REPO}, timeout=20,
+        )
+        if resp.status_code != 200:
             return None
-        return email
+        # Count valid (email -> name) pairs, weighting by real GitHub accounts.
+        tally: Counter = Counter()
+        names: dict[str, str] = {}
+        for c in resp.json():
+            commit = (c.get("commit") or {}).get("author") or {}
+            email = (commit.get("email") or "").strip()
+            name = (commit.get("name") or "").strip()
+            if not is_valid_lead_email(email):
+                continue
+            if "bot" in name.lower():
+                continue
+            weight = 2 if c.get("author") else 1  # linked GitHub account = real person
+            tally[email.lower()] += weight
+            names.setdefault(email.lower(), name)
+        if not tally:
+            return None
+        best_email = tally.most_common(1)[0][0]
+        return {"email": best_email, "name": names.get(best_email, "")}
     except Exception:
         return None
 
-# ── AI Generation (Bulletproofed) ─────────────────────────────────────────
 
-def generate_initial_email(org_data: dict) -> dict | None:
+# ── AI Generation ─────────────────────────────────────────────────────────
+
+def generate_initial_email(lead: dict) -> dict | None:
+    greeting_name = lead.get("name") or "team"
+    first_name = greeting_name.split()[0].lower() if greeting_name != "team" else "team"
+
     prompt = f"""Write an extremely short, developer-to-developer cold email.
 
 Context:
-Org: {org_data['login']}
-Repo: {org_data['repo_name']}
+Maintainer: {greeting_name}
+Repo: {lead['repo_name']}
 
 STRICT RULES:
-1. Tone: Informal, technical, and fast. Like a Slack message to another engineer. No sales pitch vocabulary.
+1. Tone: Informal, technical, fast. Like a Slack message to another engineer. No sales vocabulary.
 2. Length: Under 60 words. No "hope you are well" or boilerplate intros.
-3. Opening: "hey team," or "hey [name]," followed by "came across your {org_data['repo_name']} codebase."
-4. Core Value: If their rails backend is getting heavy or server costs are creeping up, moving critical endpoints to fastapi drops latency and slashes compute costs.
-5. Technical Proof: State exactly this: "i recently ported 6000 lines of ruby (fat free crm) to fastapi. you can check out the architecture here: https://github.com/HassanNadeem1122/fat-free-crm-fastapi"
-6. CTA: Ask a casual, low-pressure question: "is optimization or cutting server bills on your radar this quarter?"
-7. Formatting: Keep it entirely lowercase, use casual punctuation, and use simple line breaks.
-8. Subject: "fastapi migration / {org_data['login']}"
+3. Opening: "hey {first_name}," followed by "came across your {lead['repo_name']} codebase."
+4. Core value: If their rails backend is getting heavy or server costs are creeping up, moving critical endpoints to fastapi drops latency and slashes compute costs.
+5. Technical proof, state exactly: "i recently ported 6000 lines of ruby (fat free crm) to fastapi. you can check out the architecture here: https://github.com/HassanNadeem1122/fat-free-crm-fastapi"
+6. CTA: casual, low-pressure: "is optimization or cutting server bills on your radar this quarter?"
+7. Formatting: entirely lowercase, casual punctuation, simple line breaks.
+8. Subject: "fastapi migration / {lead['repo_name'].split('/')[-1]}"
 
-Output ONLY raw JSON format starting with {{ and ending with }}: {{"subject": "...", "body": "..."}}
+Output ONLY raw JSON starting with {{ and ending with }}: {{"subject": "...", "body": "..."}}
 """
-    try:
-        client = boto3.client("bedrock-runtime", region_name=BEDROCK_REGION,
-                              aws_access_key_id=os.environ.get("AWS_ACCESS_KEY_ID"),
-                              aws_secret_access_key=os.environ.get("AWS_SECRET_ACCESS_KEY"))
-        
-        response = client.invoke_model(modelId=BEDROCK_MODEL_ID, body=json.dumps({
-            "anthropic_version": "bedrock-2023-05-31", "max_tokens": 400,
-            "messages": [{"role": "user", "content": prompt}]}))
-        
-        text = json.loads(response["body"].read())["content"][0]["text"]
-        
-        # Isolation patch to extract clean JSON
-        start = text.find("{")
-        end = text.rfind("}") + 1
-        if start == -1 or end == 0:
-            log("  ❌ AI did not return a valid JSON format.")
-            return None
-            
-        clean_json = text[start:end]
-        return json.loads(clean_json)
-        
-    except Exception as e:
-        log(f"  ❌ Generation error: {e}")
+    client = boto3.client(
+        "bedrock-runtime", region_name=BEDROCK_REGION,
+        aws_access_key_id=os.environ.get("AWS_ACCESS_KEY_ID"),
+        aws_secret_access_key=os.environ.get("AWS_SECRET_ACCESS_KEY"),
+    )
+    response = client.invoke_model(modelId=BEDROCK_MODEL_ID, body=json.dumps({
+        "anthropic_version": "bedrock-2023-05-31",
+        "max_tokens": 400,
+        "messages": [{"role": "user", "content": prompt}],
+    }))
+    text = json.loads(response["body"].read())["content"][0]["text"]
+
+    start = text.find("{")
+    end = text.rfind("}") + 1
+    if start == -1 or end == 0:
+        log("  ❌ AI did not return valid JSON.")
         return None
+    return json.loads(text[start:end])
+
 
 # ── SMTP Sending ──────────────────────────────────────────────────────────
 
-def send_email(to_email: str, subject: str, body: str) -> bool:
+def build_footer() -> str:
+    lines = ["\n\n—", SENDER_NAME,
+             'not relevant? just reply "unsubscribe" and i won\'t reach out again.']
+    if SENDER_ADDRESS:
+        lines.append(SENDER_ADDRESS)
+    return "\n".join(lines)
+
+
+def send_email(to_email: str, subject: str, body: str, add_footer: bool = True) -> bool:
     gmail_address = os.environ.get("GMAIL_ADDRESS")
     gmail_password = os.environ.get("GMAIL_APP_PASSWORD")
-    
+
+    if add_footer:
+        body = body.rstrip() + build_footer()
+
     msg = MIMEMultipart("alternative")
     msg["Subject"] = subject
     msg["From"] = gmail_address
     msg["To"] = to_email
     msg.attach(MIMEText(body, "plain"))
-    
+
     try:
-        with smtplib.SMTP("smtp.gmail.com", 587, timeout=15) as server:
+        with smtplib.SMTP("smtp.gmail.com", 587, timeout=20) as server:
             server.starttls()
             server.login(gmail_address, gmail_password)
             server.sendmail(gmail_address, to_email, msg.as_string())
@@ -175,7 +283,108 @@ def send_email(to_email: str, subject: str, body: str) -> bool:
         log(f"  ❌ SMTP error: {e}")
         return False
 
+
 # ── Main Execution Loop ───────────────────────────────────────────────────
+
+def run_followups(sent_log, gmail_user, gmail_pass, current_time) -> None:
+    log("🔄 Phase 1: Follow-ups and reply checks...")
+    sent = 0
+    for entry in sent_log:
+        if sent >= MAX_FOLLOWUPS_PER_RUN:
+            break
+        if entry.get("replied") or entry.get("follow_up_sent_at"):
+            continue
+        try:
+            initial_date = datetime.fromisoformat(entry["initial_sent_at"])
+        except Exception:
+            continue
+        if (current_time - initial_date).days < FOLLOW_UP_DAYS:
+            continue
+
+        log(f"  🔍 Checking replies from {entry['email']}...")
+        if check_if_replied(entry["email"], gmail_user, gmail_pass):
+            log("  ✅ Prospect replied! Marking as replied.")
+            entry["replied"] = True
+            save_sent_log(sent_log)
+            continue
+
+        log(f"  📤 3-day follow-up to {entry.get('org') or entry['email']}...")
+        bump_subject = f"Re: {entry['subject']}"
+        bump_body = ("hey,\n\njust floating this to the top of your inbox. let me know "
+                     "if migrating the backend is a priority right now, otherwise i'll "
+                     "stop bugging you.\n\nbest,\nhassan")
+        if send_email(entry["email"], bump_subject, bump_body):
+            entry["follow_up_sent_at"] = current_time.isoformat()
+            save_sent_log(sent_log)
+            sent += 1
+            time.sleep(random.randint(60, 120))
+    log(f"  Follow-ups sent this run: {sent}")
+
+
+def run_new_outreach(sent_log, github_token, current_time) -> None:
+    log("🔍 Phase 2: New outreach...")
+    suppressed = load_suppression()
+    repos = search_github_repos(github_token)
+    if not repos:
+        log("  No repos returned from search.")
+        return
+
+    sent = 0
+    gen_failures = 0        # consecutive Bedrock failures -> likely misconfig
+    emailed_this_run: set[str] = set()
+
+    for repo in repos:
+        if sent >= MAX_NEW_PER_RUN:
+            break
+
+        lead = get_maintainer_from_commits(repo["full_name"], github_token)
+        if not lead:
+            continue
+        email = lead["email"].lower()
+
+        if (email in emailed_this_run or email in suppressed
+                or already_contacted(email, sent_log)):
+            continue
+
+        lead["repo_name"] = repo["full_name"]
+        log(f"  ✉️ Lead: {lead.get('name') or '(no name)'} <{email}> — {repo['full_name']}")
+
+        try:
+            content = generate_initial_email(lead)
+            gen_failures = 0
+        except Exception as e:
+            gen_failures += 1
+            log(f"  ❌ Bedrock generation error ({gen_failures}): {e}")
+            if gen_failures >= 3:
+                log("  🛑 3 generation failures in a row — almost certainly a bad "
+                    "BEDROCK_MODEL_ID or the model isn't enabled in this region. "
+                    "Aborting so we don't burn through leads. Fix the model config.")
+                return
+            continue
+
+        if not content:
+            continue
+
+        log(f'  📤 Sending: "{content["subject"]}"')
+        if send_email(email, content["subject"], content["body"]):
+            emailed_this_run.add(email)
+            sent += 1
+            sent_log.append({
+                "org": repo.get("org_login"),
+                "repo": repo["full_name"],
+                "email": email,
+                "name": lead.get("name"),
+                "subject": content["subject"],
+                "initial_sent_at": current_time.isoformat(),
+                "follow_up_sent_at": None,
+                "replied": False,
+            })
+            save_sent_log(sent_log)
+            log(f"  ✅ Sent ({sent}/{MAX_NEW_PER_RUN})")
+            time.sleep(random.randint(120, 300))
+
+    log(f"  New emails sent this run: {sent}")
+
 
 def main():
     if not pre_flight_check():
@@ -184,78 +393,16 @@ def main():
     github_token = os.environ.get("GITHUB_TOKEN")
     gmail_user = os.environ.get("GMAIL_ADDRESS")
     gmail_pass = os.environ.get("GMAIL_APP_PASSWORD")
-    
-    sent_log = load_sent_log()
+
+    sent_log = load_json_list(LOG_FILE)
     current_time = datetime.now(timezone.utc)
-    actions_taken = 0
 
-    # Phase 1: Follow-ups
-    log("🔄 Phase 1: Checking for Follow-ups and Replies...")
-    for entry in sent_log:
-        if actions_taken >= MAX_ACTIONS_PER_RUN:
-            break
-        if entry.get("replied") or entry.get("follow_up_sent_at"):
-            continue
-
-        initial_date = datetime.fromisoformat(entry["initial_sent_at"])
-        if (current_time - initial_date).days >= FOLLOW_UP_DAYS:
-            log(f"  🔍 Checking inbox for replies from {entry['email']}...")
-            if check_if_replied(entry['email'], gmail_user, gmail_pass):
-                log(f"  ✅ Prospect replied! Updating state.")
-                entry["replied"] = True
-                save_sent_log(sent_log)
-                continue
-            
-            log(f"  📤 Sending 3-day follow-up to {entry['org']}...")
-            bump_subject = f"Re: {entry['subject']}"
-            bump_body = "hey,\n\njust floating this to the top of your inbox. let me know if migrating the backend is a priority right now, otherwise i'll stop bugging you.\n\nbest,\nhassan"
-            
-            if send_email(entry["email"], bump_subject, bump_body):
-                entry["follow_up_sent_at"] = current_time.isoformat()
-                save_sent_log(sent_log)
-                actions_taken += 1
-                time.sleep(random.randint(60, 120))
-
-    if actions_taken >= MAX_ACTIONS_PER_RUN:
-        log("🏁 Action limit reached during follow-ups. Exiting.")
-        return
-
-    # Phase 2: New Emails
-    log("🔍 Phase 2: Searching GitHub for new targets...")
-    orgs = search_github_orgs(github_token)
-    
-    for org in orgs.values():
-        if actions_taken >= MAX_ACTIONS_PER_RUN:
-            break
-        if already_emailed(org["login"], sent_log):
-            continue
-            
-        email = get_org_email(org["login"], github_token)
-        if not email:
-            continue
-        
-        log(f"  ✉️ Contact found: {email} — generating email...")
-        content = generate_initial_email(org)
-        if not content:
-            continue
-            
-        log(f"  📤 Sending initial pitch: \"{content['subject']}\"")
-        if send_email(email, content["subject"], content["body"]):
-            actions_taken += 1
-            sent_log.append({
-                "org": org["login"], 
-                "email": email, 
-                "subject": content["subject"],
-                "initial_sent_at": current_time.isoformat(),
-                "follow_up_sent_at": None,
-                "replied": False
-            })
-            save_sent_log(sent_log)
-            log(f"  ✅ Sent ({actions_taken}/{MAX_ACTIONS_PER_RUN})")
-            time.sleep(random.randint(120, 300))
+    run_followups(sent_log, gmail_user, gmail_pass, current_time)
+    run_new_outreach(sent_log, github_token, current_time)
 
     log("─" * 50)
-    log(f"🏁 Cycle Complete. Total operations executed: {actions_taken}")
+    log("🏁 Cycle complete.")
+
 
 if __name__ == "__main__":
     main()
