@@ -39,6 +39,10 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          SENDER_NAME: ${{ secrets.SENDER_NAME }}
+          SENDER_ADDRESS: ${{ secrets.SENDER_ADDRESS }}
+          BEDROCK_MODEL_ID: ${{ secrets.BEDROCK_MODEL_ID }}
+          SEARCH_QUERY: ${{ secrets.SEARCH_QUERY }}
 
       - name: Auto-commit and Push Log Changes
         uses: stefanzweifel/git-auto-commit-action@v5.1.0  # Fixed: Bumped to support Node 24
