@@ -20,7 +20,8 @@ SUPPRESS_FILE = Path(__file__).parent / "unsubscribe_list.json"
 MAX_NEW_PER_RUN = 15
 MAX_FOLLOWUPS_PER_RUN = 10
 
-FOLLOW_UP_DAYS = 3
+FOLLOW_UP_DAYS = 3         # first follow-up: 3 days after the initial email
+SECOND_FOLLOW_UP_DAYS = 7  # second/final follow-up: 7 days after the initial email
 GITHUB_API = "https://api.github.com"
 
 # How many repos to scan and how many commits to inspect per repo when
@@ -286,20 +287,45 @@ def send_email(to_email: str, subject: str, body: str, add_footer: bool = True) 
 
 # ── Main Execution Loop ───────────────────────────────────────────────────
 
+FOLLOWUP_1_BODY = (
+    "hey,\n\njust floating this to the top of your inbox. let me know "
+    "if migrating the backend is a priority right now, otherwise i'll "
+    "stop bugging you.\n\nbest,\nhassan"
+)
+
+# Final "breakup" email — this consistently pulls the most replies of the whole
+# sequence, because it's easy to say "actually, wait" when someone's walking away.
+FOLLOWUP_2_BODY = (
+    "hey,\n\nlast time i'll reach out — i'll assume backend performance isn't a "
+    "priority right now and close this out. if that changes down the line, my "
+    "fastapi migration work is here: "
+    "https://github.com/HassanNadeem1122/fat-free-crm-fastapi\n\ncheers,\nhassan"
+)
+
+
 def run_followups(sent_log, gmail_user, gmail_pass, current_time) -> None:
     log("🔄 Phase 1: Follow-ups and reply checks...")
     sent = 0
     for entry in sent_log:
         if sent >= MAX_FOLLOWUPS_PER_RUN:
             break
-        if entry.get("replied") or entry.get("follow_up_sent_at"):
-            continue
+        if entry.get("replied") or entry.get("second_follow_up_sent_at"):
+            continue  # replied, or already got both follow-ups — nothing left to do
         try:
             initial_date = datetime.fromisoformat(entry["initial_sent_at"])
         except Exception:
             continue
-        if (current_time - initial_date).days < FOLLOW_UP_DAYS:
-            continue
+        days = (current_time - initial_date).days
+
+        # Decide which follow-up (if any) is due for this contact.
+        if not entry.get("follow_up_sent_at"):
+            if days < FOLLOW_UP_DAYS:
+                continue
+            stage, body, stamp = 1, FOLLOWUP_1_BODY, "follow_up_sent_at"
+        else:
+            if days < SECOND_FOLLOW_UP_DAYS:
+                continue
+            stage, body, stamp = 2, FOLLOWUP_2_BODY, "second_follow_up_sent_at"
 
         log(f"  🔍 Checking replies from {entry['email']}...")
         if check_if_replied(entry["email"], gmail_user, gmail_pass):
@@ -308,13 +334,10 @@ def run_followups(sent_log, gmail_user, gmail_pass, current_time) -> None:
             save_sent_log(sent_log)
             continue
 
-        log(f"  📤 3-day follow-up to {entry.get('org') or entry['email']}...")
+        log(f"  📤 Follow-up #{stage} (day {days}) to {entry.get('org') or entry['email']}...")
         bump_subject = f"Re: {entry['subject']}"
-        bump_body = ("hey,\n\njust floating this to the top of your inbox. let me know "
-                     "if migrating the backend is a priority right now, otherwise i'll "
-                     "stop bugging you.\n\nbest,\nhassan")
-        if send_email(entry["email"], bump_subject, bump_body):
-            entry["follow_up_sent_at"] = current_time.isoformat()
+        if send_email(entry["email"], bump_subject, body):
+            entry[stamp] = current_time.isoformat()
             save_sent_log(sent_log)
             sent += 1
             time.sleep(random.randint(60, 120))
