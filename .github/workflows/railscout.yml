@@ -2,7 +2,7 @@ name: railscout
 
 on:
   schedule:
-    - cron: '0 9 * * *'
+    - cron: '0 13 * * *'  # 13:00 UTC = 8am US Eastern / 6pm Pakistan
   workflow_dispatch:
 
 permissions:
