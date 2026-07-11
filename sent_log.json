@@ -4,7 +4,7 @@
     "email": "theodinprojectcontact@gmail.com",
     "subject": "fastapi migration / TheOdinProject",
     "initial_sent_at": "2026-07-08T12:03:17.788314+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-07-11T14:21:44.332441+00:00",
     "replied": false
   },
   {
@@ -12,7 +12,7 @@
     "email": "tech@getlago.com",
     "subject": "fastapi migration / getlago",
     "initial_sent_at": "2026-07-08T12:21:24.821601+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-07-11T14:21:44.332441+00:00",
     "replied": false
   },
   {
@@ -20,7 +20,7 @@
     "email": "yafei@clacky.ai",
     "subject": "fastapi migration / clacky-ai",
     "initial_sent_at": "2026-07-08T12:21:24.821601+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-07-11T14:21:44.332441+00:00",
     "replied": false
   },
   {
@@ -28,7 +28,7 @@
     "email": "team@yeti-switch.org",
     "subject": "fastapi migration / yeti-switch",
     "initial_sent_at": "2026-07-08T12:21:24.821601+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-07-11T14:21:44.332441+00:00",
     "replied": false
   },
   {
@@ -36,7 +36,7 @@
     "email": "openvox@voxpupuli.org",
     "subject": "fastapi migration / OpenVoxProject",
     "initial_sent_at": "2026-07-08T12:21:24.821601+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-07-11T14:21:44.332441+00:00",
     "replied": false
   },
   {
@@ -44,7 +44,7 @@
     "email": "engineering@shopify.engineering",
     "subject": "fastapi migration / Shopify",
     "initial_sent_at": "2026-07-08T12:21:24.821601+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-07-11T14:21:44.332441+00:00",
     "replied": false
   },
   {
@@ -52,7 +52,7 @@
     "email": "butler@thepandemoniuminstitute.com",
     "subject": "fastapi migration / ThePandemoniumInstitute",
     "initial_sent_at": "2026-07-08T12:21:24.821601+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-07-11T14:21:44.332441+00:00",
     "replied": false
   },
   {
@@ -60,7 +60,7 @@
     "email": "hi@lineofflig.ht",
     "subject": "fastapi migration / lineofflight",
     "initial_sent_at": "2026-07-08T12:21:24.821601+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-07-11T14:21:44.332441+00:00",
     "replied": false
   },
   {
@@ -68,7 +68,7 @@
     "email": "project@lists.opensuse.org",
     "subject": "fastapi migration / openSUSE",
     "initial_sent_at": "2026-07-08T12:21:24.821601+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-07-11T14:21:44.332441+00:00",
     "replied": false
   },
   {
@@ -76,7 +76,7 @@
     "email": "awesome@ibm.com",
     "subject": "fastapi migration / IBM",
     "initial_sent_at": "2026-07-08T13:27:35.657490+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-07-11T14:21:44.332441+00:00",
     "replied": false
   },
   {
@@ -124,6 +124,146 @@
     "email": "contact-dlss@lists.stanford.edu",
     "subject": "fastapi migration / sul-dlss",
     "initial_sent_at": "2026-07-09T12:11:06.634623+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "org": "lylo",
+    "repo": "lylo/pagecord",
+    "email": "olly@headey.org",
+    "name": "Olly Headey",
+    "subject": "fastapi migration / pagecord",
+    "initial_sent_at": "2026-07-11T14:21:44.332441+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "org": "rubycentral",
+    "repo": "rubycentral/cfp-app",
+    "email": "ronnie@dio.jp",
+    "name": "Akira Matsuda",
+    "subject": "fastapi migration / cfp-app",
+    "initial_sent_at": "2026-07-11T14:21:44.332441+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "org": "coderdojo-japan",
+    "repo": "coderdojo-japan/coderdojo.jp",
+    "email": "yohei@yasslab.jp",
+    "name": "Yohei Yasukawa",
+    "subject": "fastapi migration / coderdojo.jp",
+    "initial_sent_at": "2026-07-11T14:21:44.332441+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "org": "karafka",
+    "repo": "karafka/karafka-web",
+    "email": "maciej@mensfeld.pl",
+    "name": "Maciej Mensfeld",
+    "subject": "fastapi migration / karafka-web",
+    "initial_sent_at": "2026-07-11T14:21:44.332441+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "org": "shakacode",
+    "repo": "shakacode/control-plane-flow",
+    "email": "justin@shakacode.com",
+    "name": "Justin Gordon",
+    "subject": "fastapi migration / control-plane-flow",
+    "initial_sent_at": "2026-07-11T14:21:44.332441+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "org": "vicentereig",
+    "repo": "vicentereig/dspy.rb",
+    "email": "hey@vicente.services",
+    "name": "Vicente Reig Rinc\u00f3n de Arellano",
+    "subject": "fastapi migration / dspy.rb",
+    "initial_sent_at": "2026-07-11T14:21:44.332441+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "org": "csa-admin-org",
+    "repo": "csa-admin-org/csa-admin",
+    "email": "thibaud@thibaud.gg",
+    "name": "Thibaud Guillaume-Gentil",
+    "subject": "fastapi migration / csa-admin",
+    "initial_sent_at": "2026-07-11T14:21:44.332441+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "org": "ifad",
+    "repo": "ifad/chronomodel",
+    "email": "sergey@andronov.me",
+    "name": "Sergei Andronov",
+    "subject": "fastapi migration / chronomodel",
+    "initial_sent_at": "2026-07-11T14:21:44.332441+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "org": "crisnahine",
+    "repo": "crisnahine/rails-ai-context",
+    "email": "crisjosephnahine@gmail.com",
+    "name": "Cris Nahine",
+    "subject": "fastapi migration / rails-ai-context",
+    "initial_sent_at": "2026-07-11T14:21:44.332441+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "org": "rustygeldmacher",
+    "repo": "rustygeldmacher/jekyll-contentblocks",
+    "email": "russell.geldmacher@gmail.com",
+    "name": "Rusty Geldmacher",
+    "subject": "fastapi migration / jekyll-contentblocks",
+    "initial_sent_at": "2026-07-11T14:21:44.332441+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "org": "sinaptia",
+    "repo": "sinaptia/ruby_llm-monitoring",
+    "email": "patriciomacadden@gmail.com",
+    "name": "Patricio Mac Adden",
+    "subject": "fastapi migration / ruby_llm-monitoring",
+    "initial_sent_at": "2026-07-11T14:21:44.332441+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "org": "MushroomObserver",
+    "repo": "MushroomObserver/mushroom-observer",
+    "email": "andrnimm@fastmail.fm",
+    "name": "andrew nimmo",
+    "subject": "fastapi migration / mushroom-observer",
+    "initial_sent_at": "2026-07-11T14:21:44.332441+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "org": "fastruby",
+    "repo": "fastruby/rails_stats",
+    "email": "hmdros@gmail.com",
+    "name": "Henrique Medeiros",
+    "subject": "fastapi migration / rails_stats",
+    "initial_sent_at": "2026-07-11T14:21:44.332441+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "org": "keypup-io",
+    "repo": "keypup-io/cloudtasker",
+    "email": "arnaud.lachaume@keypup.io",
+    "name": "Arnaud",
+    "subject": "fastapi migration / cloudtasker",
+    "initial_sent_at": "2026-07-11T14:21:44.332441+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
