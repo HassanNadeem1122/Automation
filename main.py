@@ -29,20 +29,30 @@ GITHUB_API = "https://api.github.com"
 REPO_SCAN_LIMIT = 40
 COMMITS_PER_REPO = 30
 
+# GitHub Actions injects an *unset* secret as an empty string "" (not absent),
+# and os.environ.get() only falls back to the default when a key is missing.
+# So an empty secret would silently override our defaults (this is exactly what
+# broke the search: SEARCH_QUERY came through as "" -> 422). Treat empty as
+# missing so a secret you never set just uses the sensible default below.
+def env(name: str, default: str = "") -> str:
+    value = os.environ.get(name)
+    return value.strip() if value and value.strip() else default
+
+
 # Bedrock model. Override with the BEDROCK_MODEL_ID secret if this ID isn't
 # the one enabled in your account/region. `us.` = cross-region inference
 # profile; a bare `anthropic.claude-sonnet-4-6` may be what your account needs.
-BEDROCK_MODEL_ID = os.environ.get("BEDROCK_MODEL_ID", "us.anthropic.claude-sonnet-4-6")
-BEDROCK_REGION = os.environ.get("BEDROCK_REGION", "us-east-1")
+BEDROCK_MODEL_ID = env("BEDROCK_MODEL_ID", "us.anthropic.claude-sonnet-4-6")
+BEDROCK_REGION = env("BEDROCK_REGION", "us-east-1")
 
 # CAN-SPAM: a real physical mailing address is legally required in every
 # commercial email. Set SENDER_ADDRESS / SENDER_NAME as GitHub secrets.
-SENDER_NAME = os.environ.get("SENDER_NAME", "hassan")
-SENDER_ADDRESS = os.environ.get("SENDER_ADDRESS", "").strip()
+SENDER_NAME = env("SENDER_NAME", "hassan")
+SENDER_ADDRESS = env("SENDER_ADDRESS", "")
 
 # GitHub search query. Biased toward Rails so leads are actually relevant to
 # the FastAPI-migration pitch, not just "any Ruby repo".
-SEARCH_QUERY = os.environ.get("SEARCH_QUERY", "rails language:Ruby stars:50..300")
+SEARCH_QUERY = env("SEARCH_QUERY", "rails language:Ruby stars:50..300")
 
 # Emails we never contact (generic inboxes + bots).
 SKIP_PREFIXES = (
