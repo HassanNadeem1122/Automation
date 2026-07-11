@@ -17,8 +17,12 @@ LOG_FILE = Path(__file__).parent / "sent_log.json"
 SUPPRESS_FILE = Path(__file__).parent / "unsubscribe_list.json"
 
 # Separate budgets so new outreach isn't starved by follow-ups.
-MAX_NEW_PER_RUN = 15
-MAX_FOLLOWUPS_PER_RUN = 10
+# Kept low on purpose: a personal Gmail can't cold-send much before Google
+# throttles or locks it. ~10 new + 5 follow-ups a day (spaced out) stays under
+# the radar. The stop-on-limit safeguard below halts the run the moment Gmail
+# refuses, so a single bad day doesn't hammer the account into a longer lock.
+MAX_NEW_PER_RUN = 10
+MAX_FOLLOWUPS_PER_RUN = 5
 
 FOLLOW_UP_DAYS = 3         # first follow-up: 3 days after the initial email
 SECOND_FOLLOW_UP_DAYS = 7  # second/final follow-up: 7 days after the initial email
@@ -271,6 +275,10 @@ def build_footer() -> str:
     return "\n".join(lines)
 
 
+class DailyLimitReached(Exception):
+    """Raised when Gmail refuses further sends for the day (550 5.4.5)."""
+
+
 def send_email(to_email: str, subject: str, body: str, add_footer: bool = True) -> bool:
     gmail_address = os.environ.get("GMAIL_ADDRESS")
     gmail_password = os.environ.get("GMAIL_APP_PASSWORD")
@@ -291,6 +299,11 @@ def send_email(to_email: str, subject: str, body: str, add_footer: bool = True) 
             server.sendmail(gmail_address, to_email, msg.as_string())
         return True
     except Exception as e:
+        text = str(e).lower()
+        # Gmail's daily cap — stop the whole run so we don't keep hammering a
+        # throttled account (that only makes the lock last longer).
+        if "5.4.5" in text or "sending limit exceeded" in text or "5.7.1" in text:
+            raise DailyLimitReached(str(e))
         log(f"  ❌ SMTP error: {e}")
         return False
 
@@ -430,8 +443,13 @@ def main():
     sent_log = load_json_list(LOG_FILE)
     current_time = datetime.now(timezone.utc)
 
-    run_followups(sent_log, gmail_user, gmail_pass, current_time)
-    run_new_outreach(sent_log, github_token, current_time)
+    try:
+        run_followups(sent_log, gmail_user, gmail_pass, current_time)
+        run_new_outreach(sent_log, github_token, current_time)
+    except DailyLimitReached as e:
+        log("🛑 Gmail daily sending limit hit — stopping this run to protect the "
+            "account. It resets in ~24h; the next scheduled run will continue where "
+            f"we left off. (Gmail said: {e})")
 
     log("─" * 50)
     log("🏁 Cycle complete.")
