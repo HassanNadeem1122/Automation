@@ -84,7 +84,7 @@
     "email": "ca-devops+github@citizensadvice.org.uk",
     "subject": "fastapi migration / citizensadvice",
     "initial_sent_at": "2026-07-08T13:27:35.657490+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-07-13T15:41:22.979589+00:00",
     "replied": false
   },
   {
@@ -92,7 +92,7 @@
     "email": "samvera-tech@googlegroups.com",
     "subject": "fastapi migration / samvera",
     "initial_sent_at": "2026-07-09T04:52:37.343157+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-07-13T15:41:22.979589+00:00",
     "replied": false
   },
   {
@@ -100,7 +100,7 @@
     "email": "cf-dev@lists.cloudfoundry.org",
     "subject": "fastapi migration / cloudfoundry",
     "initial_sent_at": "2026-07-09T04:52:37.343157+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-07-13T15:41:22.979589+00:00",
     "replied": false
   },
   {
@@ -108,7 +108,7 @@
     "email": "skyksandr@gmail.com",
     "subject": "fastapi migration / skyderby",
     "initial_sent_at": "2026-07-09T04:52:37.343157+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-07-13T15:41:22.979589+00:00",
     "replied": false
   },
   {
@@ -116,7 +116,7 @@
     "email": "voxpupuli@groups.io",
     "subject": "fastapi migration / voxpupuli",
     "initial_sent_at": "2026-07-09T12:11:06.634623+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-07-13T15:41:22.979589+00:00",
     "replied": false
   },
   {
@@ -264,6 +264,106 @@
     "name": "Arnaud",
     "subject": "fastapi migration / cloudtasker",
     "initial_sent_at": "2026-07-11T14:21:44.332441+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "org": "sul-dlss",
+    "repo": "sul-dlss/SearchWorks",
+    "email": "sul-devops-team@lists.stanford.edu",
+    "name": "sul-devops-team",
+    "subject": "fastapi migration / SearchWorks",
+    "initial_sent_at": "2026-07-13T15:41:22.979589+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "org": "x-govuk",
+    "repo": "x-govuk/govuk-form-builder",
+    "email": "peter.yates@graphia.co.uk",
+    "name": "Peter Yates",
+    "subject": "fastapi migration / govuk-form-builder",
+    "initial_sent_at": "2026-07-13T15:41:22.979589+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "org": "procore-oss",
+    "repo": "procore-oss/sift",
+    "email": "hoda.s.salim@gmail.com",
+    "name": "Hoda Salim",
+    "subject": "fastapi migration / sift",
+    "initial_sent_at": "2026-07-13T15:41:22.979589+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "org": "miharekar",
+    "repo": "miharekar/visualizer",
+    "email": "jeffrey_heller@yahoo.com",
+    "name": "Jeff Heller",
+    "subject": "fastapi migration / visualizer",
+    "initial_sent_at": "2026-07-13T15:41:22.979589+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "org": "templatus",
+    "repo": "templatus/templatus-inertia",
+    "email": "georg@ledermann.dev",
+    "name": "Georg Ledermann",
+    "subject": "fastapi migration / templatus-inertia",
+    "initial_sent_at": "2026-07-13T15:41:22.979589+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "org": "avmnu-sng",
+    "repo": "avmnu-sng/rspec-tracer",
+    "email": "abhisinghabhimanyu@gmail.com",
+    "name": "Abhimanyu Singh",
+    "subject": "fastapi migration / rspec-tracer",
+    "initial_sent_at": "2026-07-13T15:41:22.979589+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "org": "vishaltps",
+    "repo": "vishaltps/solid_queue_monitor",
+    "email": "vishalsadriya.tps@gmail.com",
+    "name": "Vishal Sadriya",
+    "subject": "fastapi migration / solid_queue_monitor",
+    "initial_sent_at": "2026-07-13T15:41:22.979589+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "org": "jcraigk",
+    "repo": "jcraigk/phishin",
+    "email": "jcraigk@gmail.com",
+    "name": "Justin Craig-Kuhn",
+    "subject": "fastapi migration / phishin",
+    "initial_sent_at": "2026-07-13T15:41:22.979589+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "org": "MushroomObserver",
+    "repo": "MushroomObserver/mushroom-observer",
+    "email": "nathan@collectivesource.com",
+    "name": "Nathan Wilson",
+    "subject": "fastapi migration / mushroom-observer",
+    "initial_sent_at": "2026-07-13T15:41:22.979589+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "org": "fjordllc",
+    "repo": "fjordllc/bootcamp",
+    "email": "komagata@gmail.com",
+    "name": "Masaki Komagata",
+    "subject": "fastapi migration / bootcamp",
+    "initial_sent_at": "2026-07-13T15:41:22.979589+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
