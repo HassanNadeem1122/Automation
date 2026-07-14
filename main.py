@@ -1,10 +1,19 @@
+"""railscout — finds companies actively migrating off Rails and pitches them.
+
+Lead source: Hacker News "Ask HN: Who is hiring?" (free, public, no API key).
+A company hiring Python/FastAPI engineers while running Ruby/Rails is a company
+migrating *right now* — they have budget approved and the pain is live. That's a
+far higher-intent lead than a random Rails maintainer on GitHub.
+"""
+
+import html
 import json
 import os
+import re
 import smtplib
 import imaplib
 import time
 import random
-from collections import Counter
 from datetime import datetime, timezone
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -16,61 +25,61 @@ import requests
 LOG_FILE = Path(__file__).parent / "sent_log.json"
 SUPPRESS_FILE = Path(__file__).parent / "unsubscribe_list.json"
 
-# Separate budgets so new outreach isn't starved by follow-ups.
 # Kept low on purpose: a personal Gmail can't cold-send much before Google
-# throttles or locks it. ~10 new + 5 follow-ups a day (spaced out) stays under
-# the radar. The stop-on-limit safeguard below halts the run the moment Gmail
-# refuses, so a single bad day doesn't hammer the account into a longer lock.
+# throttles or locks it. The stop-on-limit safeguard halts the run the moment
+# Gmail refuses, so a bad day doesn't hammer the account into a longer lock.
 MAX_NEW_PER_RUN = 10
 MAX_FOLLOWUPS_PER_RUN = 5
 
 FOLLOW_UP_DAYS = 3         # first follow-up: 3 days after the initial email
 SECOND_FOLLOW_UP_DAYS = 7  # second/final follow-up: 7 days after the initial email
-GITHUB_API = "https://api.github.com"
 
-# How many repos to scan and how many commits to inspect per repo when
-# hunting for a real maintainer email.
-REPO_SCAN_LIMIT = 40
-COMMITS_PER_REPO = 30
+HN_API = "https://hn.algolia.com/api/v1"
+HN_MAX_PAGES = 5           # each page is up to 1000 comments
+
 
 # GitHub Actions injects an *unset* secret as an empty string "" (not absent),
 # and os.environ.get() only falls back to the default when a key is missing.
-# So an empty secret would silently override our defaults (this is exactly what
-# broke the search: SEARCH_QUERY came through as "" -> 422). Treat empty as
-# missing so a secret you never set just uses the sensible default below.
+# Treat empty as missing so a secret you never set uses the default below.
 def env(name: str, default: str = "") -> str:
     value = os.environ.get(name)
     return value.strip() if value and value.strip() else default
 
 
-# Bedrock model. Override with the BEDROCK_MODEL_ID secret if this ID isn't
-# the one enabled in your account/region. `us.` = cross-region inference
-# profile; a bare `anthropic.claude-sonnet-4-6` may be what your account needs.
 BEDROCK_MODEL_ID = env("BEDROCK_MODEL_ID", "us.anthropic.claude-sonnet-4-6")
 BEDROCK_REGION = env("BEDROCK_REGION", "us-east-1")
+
+# One month's thread yields only ~5 qualified leads, so scan a few months back.
+HN_MONTHS = int(env("HN_MONTHS", "3"))
 
 # CAN-SPAM: a real physical mailing address is legally required in every
 # commercial email. Set SENDER_ADDRESS / SENDER_NAME as GitHub secrets.
 SENDER_NAME = env("SENDER_NAME", "hassan")
 SENDER_ADDRESS = env("SENDER_ADDRESS", "")
 
-# GitHub search query. Biased toward Rails so leads are actually relevant to
-# the FastAPI-migration pitch, not just "any Ruby repo".
-SEARCH_QUERY = env("SEARCH_QUERY", "rails language:Ruby stars:50..300")
+# Your proof-of-work. This is the single most persuasive thing in the email.
+PROOF_URL = env("PROOF_URL", "https://github.com/HassanNadeem1122/fat-free-crm-fastapi")
 
-# Emails we never contact (generic inboxes + bots).
+# ── Lead qualification ────────────────────────────────────────────────────
+# A post must show BOTH a Python-side signal and a Ruby-side signal — that
+# combination is what says "polyglot shop mid-migration", not just "a job".
+PY_SIGNALS = ("fastapi", "python")
+RUBY_SIGNALS = ("rails", "ruby")
+# Presence of these upgrades a lead to "strong" (explicitly moving/rewriting).
+STRONG_SIGNALS = ("fastapi", "migrat", "rewrit", "porting", "moving off", "legacy")
+
+EMAIL_RE = re.compile(r"[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}")
+
+# Emails we never contact (generic/no-reply inboxes + bots).
 SKIP_PREFIXES = (
-    "support@", "info@", "opensource+", "webmaster@", "contact@",
-    "hello@", "help@", "admin@", "noreply@", "no-reply@", "dev@",
-    "developer@", "oss@", "crewonslack@", "sales@", "marketing@",
-    "project@", "subscribe@", "unsubscribe@", "list@", "lists@",
-    "google-groups@", "security@", "abuse@", "team@",
+    "noreply@", "no-reply@", "donotreply@", "postmaster@", "abuse@",
+    "webmaster@", "unsubscribe@", "subscribe@", "list@", "lists@",
+    "google-groups@", "mailer-daemon@",
 )
-
-# Domains/substrings that mean "not a real human inbox".
 JUNK_EMAIL_MARKERS = (
     "users.noreply.github.com", "noreply", "no-reply", "example.com",
-    "localhost", "[bot]", "bot@",
+    "example.org", "yourcompany.com", "domain.com", "localhost", "[bot]",
+    "sentry.io", ".png", ".jpg",
 )
 
 
@@ -81,8 +90,9 @@ def log(msg: str) -> None:
 # ── Pre-Flight Check ──────────────────────────────────────────────────────
 
 def pre_flight_check() -> bool:
+    # NOTE: no GITHUB_TOKEN needed anymore — the HN API is public/keyless.
     required_env = [
-        "GITHUB_TOKEN", "AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY",
+        "AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY",
         "GMAIL_ADDRESS", "GMAIL_APP_PASSWORD",
     ]
     missing = [var for var in required_env if not os.environ.get(var)]
@@ -107,16 +117,16 @@ def load_json_list(path: Path) -> list:
     return []
 
 
-def save_sent_log(entries: list[dict]) -> None:
+def save_sent_log(entries: list) -> None:
     LOG_FILE.write_text(json.dumps(entries, indent=2, default=str))
 
 
-def load_suppression() -> set[str]:
+def load_suppression() -> set:
     # unsubscribe_list.json is a plain JSON array of email strings.
     return {e.strip().lower() for e in load_json_list(SUPPRESS_FILE) if isinstance(e, str)}
 
 
-def already_contacted(email: str, sent_log: list[dict]) -> bool:
+def already_contacted(email: str, sent_log: list) -> bool:
     email = email.lower()
     return any((e.get("email") or "").lower() == email for e in sent_log)
 
@@ -136,39 +146,64 @@ def check_if_replied(to_email: str, gmail_user: str, gmail_pass: str) -> bool:
         return False
 
 
-# ── GitHub Logic ──────────────────────────────────────────────────────────
+# ── Lead Sourcing: HN "Who is hiring?" ────────────────────────────────────
 
-def search_github_repos(github_token: str) -> list[dict]:
-    """Return a list of {full_name, org_login} for recently-updated repos."""
-    headers = {
-        "Authorization": f"token {github_token}",
-        "Accept": "application/vnd.github.v3+json",
-    }
-    repos: list[dict] = []
+def fetch_recent_hiring_threads(months: int = HN_MONTHS) -> list:
+    """The most recent N 'Ask HN: Who is hiring?' stories (newest first).
+
+    One month's thread only yields a handful of qualified leads, so we scan a
+    few months back. A company that posted 2 months ago is usually still mid
+    migration — these leads stay warm longer than a typical job ad.
+    """
+    threads = []
     try:
-        log(f"🔍 Searching GitHub: {SEARCH_QUERY!r} (sorted by recently updated)...")
-        params = {
-            "q": SEARCH_QUERY,
-            "sort": "updated",
-            "order": "desc",
-            "per_page": REPO_SCAN_LIMIT,
-        }
         resp = requests.get(
-            f"{GITHUB_API}/search/repositories",
-            headers=headers, params=params, timeout=20,
+            f"{HN_API}/search_by_date",
+            params={"tags": "story,author_whoishiring", "hitsPerPage": 30},
+            timeout=20,
         )
-        if resp.status_code != 200:
-            log(f"❌ GitHub search returned {resp.status_code}: {resp.text[:200]}")
-            return repos
-        for item in resp.json().get("items", []):
-            owner = item.get("owner", {}) or {}
-            repos.append({
-                "full_name": item.get("full_name"),
-                "org_login": owner.get("login"),
-            })
+        for hit in resp.json().get("hits", []):
+            title = (hit.get("title") or "")
+            if "who is hiring" in title.lower():
+                threads.append({"id": hit["objectID"], "title": title})
+            if len(threads) >= months:
+                break
     except Exception as e:
-        log(f"❌ GitHub search failed: {e}")
-    return repos
+        log(f"❌ HN thread lookup failed: {e}")
+    return threads
+
+
+def strip_html(raw: str) -> str:
+    text = re.sub(r"<p>", "\n", raw)
+    text = re.sub(r"<[^>]+>", " ", text)
+    return html.unescape(text)
+
+
+def fetch_job_posts(story_id: str) -> list:
+    """Every top-level comment on the thread is one company's job post."""
+    posts = []
+    for page in range(HN_MAX_PAGES):
+        try:
+            resp = requests.get(
+                f"{HN_API}/search",
+                params={"tags": f"comment,story_{story_id}",
+                        "hitsPerPage": 1000, "page": page},
+                timeout=30,
+            )
+            data = resp.json()
+        except Exception as e:
+            log(f"  ⚠️ HN page {page} failed: {e}")
+            break
+        hits = data.get("hits", [])
+        if not hits:
+            break
+        for h in hits:
+            raw = h.get("comment_text")
+            if raw:
+                posts.append(strip_html(raw))
+        if page >= data.get("nbPages", 1) - 1:
+            break
+    return posts
 
 
 def is_valid_lead_email(email: str) -> bool:
@@ -182,66 +217,90 @@ def is_valid_lead_email(email: str) -> bool:
     return True
 
 
-def get_maintainer_from_commits(full_name: str, github_token: str) -> dict | None:
-    """Pull recent commit authors and return the most frequent real person.
+def extract_email(text: str) -> str | None:
+    for match in EMAIL_RE.findall(text):
+        if is_valid_lead_email(match):
+            return match.lower()
+    return None
 
-    This is the key fix: instead of the org's public profile email (which is
-    almost always empty or a generic inbox), we read actual commit authors from
-    git history — real maintainers who'd care about a backend migration.
-    """
-    if not full_name:
+
+def qualify(text: str) -> str | None:
+    """Return 'strong' / 'ok' if this post smells like a Rails->Python migration."""
+    low = text.lower()
+    has_py = any(s in low for s in PY_SIGNALS)
+    has_ruby = any(s in low for s in RUBY_SIGNALS)
+    if not (has_py and has_ruby):
         return None
-    headers = {"Authorization": f"token {github_token}"}
-    try:
-        resp = requests.get(
-            f"{GITHUB_API}/repos/{full_name}/commits",
-            headers=headers, params={"per_page": COMMITS_PER_REPO}, timeout=20,
-        )
-        if resp.status_code != 200:
-            return None
-        # Count valid (email -> name) pairs, weighting by real GitHub accounts.
-        tally: Counter = Counter()
-        names: dict[str, str] = {}
-        for c in resp.json():
-            commit = (c.get("commit") or {}).get("author") or {}
-            email = (commit.get("email") or "").strip()
-            name = (commit.get("name") or "").strip()
-            if not is_valid_lead_email(email):
+    if any(s in low for s in STRONG_SIGNALS):
+        return "strong"
+    return "ok"
+
+
+def parse_company(text: str) -> str:
+    """HN posts start like: 'Acme Corp | SF | Senior Engineer | ...'"""
+    first_line = next((l for l in text.strip().split("\n") if l.strip()), "")
+    company = first_line.split("|")[0].strip()
+    return company[:80] if company else "there"
+
+
+def find_leads() -> list:
+    threads = fetch_recent_hiring_threads()
+    if not threads:
+        log("  ❌ Couldn't find any 'Who is hiring?' threads.")
+        return []
+
+    leads, seen = [], set()
+    total_posts = 0
+    for thread in threads:
+        posts = fetch_job_posts(thread["id"])
+        total_posts += len(posts)
+        log(f"  📋 {thread['title']} — {len(posts)} job posts")
+        for post in posts:
+            tier = qualify(post)
+            if not tier:
                 continue
-            if "bot" in name.lower():
+            email = extract_email(post)
+            if not email or email in seen:
                 continue
-            weight = 2 if c.get("author") else 1  # linked GitHub account = real person
-            tally[email.lower()] += weight
-            names.setdefault(email.lower(), name)
-        if not tally:
-            return None
-        best_email = tally.most_common(1)[0][0]
-        return {"email": best_email, "name": names.get(best_email, "")}
-    except Exception:
-        return None
+            seen.add(email)
+            leads.append({
+                "email": email,
+                "company": parse_company(post),
+                "tier": tier,
+                "snippet": " ".join(post.split())[:700],
+            })
+    log(f"  📄 Scanned {total_posts} job posts across {len(threads)} months")
+    # Strongest signals first — explicit "migrating"/"fastapi" posts get emailed
+    # before generic polyglot shops.
+    leads.sort(key=lambda l: 0 if l["tier"] == "strong" else 1)
+    strong = sum(1 for l in leads if l["tier"] == "strong")
+    log(f"  🎯 {len(leads)} migration-intent leads with a contact email ({strong} strong)")
+    return leads
 
 
 # ── AI Generation ─────────────────────────────────────────────────────────
 
 def generate_initial_email(lead: dict) -> dict | None:
-    greeting_name = lead.get("name") or "team"
-    first_name = greeting_name.split()[0].lower() if greeting_name != "team" else "team"
+    prompt = f"""Write a short, developer-to-developer email to a company that just posted a job on Hacker News.
 
-    prompt = f"""Write an extremely short, developer-to-developer cold email.
+Their job post (excerpt):
+\"\"\"{lead['snippet']}\"\"\"
 
-Context:
-Maintainer: {greeting_name}
-Repo: {lead['repo_name']}
+Company: {lead['company']}
+
+About me (the sender):
+- I recently ported ~6,000 lines of Ruby on Rails (Fat Free CRM) to FastAPI, end to end.
+- Architecture and code: {PROOF_URL}
 
 STRICT RULES:
-1. Tone: Informal, technical, fast. Like a Slack message to another engineer. No sales vocabulary.
-2. Length: Under 60 words. No "hope you are well" or boilerplate intros.
-3. Opening: "hey {first_name}," followed by "came across your {lead['repo_name']} codebase."
-4. Core value: If their rails backend is getting heavy or server costs are creeping up, moving critical endpoints to fastapi drops latency and slashes compute costs.
-5. Technical proof, state exactly: "i recently ported 6000 lines of ruby (fat free crm) to fastapi. you can check out the architecture here: https://github.com/HassanNadeem1122/fat-free-crm-fastapi"
-6. CTA: casual, low-pressure: "is optimization or cutting server bills on your radar this quarter?"
+1. Tone: informal, technical, direct — like messaging another engineer. NO sales vocabulary, no "hope you're well", no "I came across your company and was impressed".
+2. Length: under 80 words.
+3. Open by referencing something SPECIFIC and real from their job post (the role, the stack, or what they're building). Do not invent facts that aren't in the post.
+4. Make the connection: they're bringing on Python/FastAPI while running Ruby/Rails — that's a migration, and I've already done exactly that one.
+5. Include this link exactly once: {PROOF_URL}
+6. CTA: low-pressure. Offer to help de-risk the migration or take a piece of it off their plate. Ask a simple question, don't demand a call.
 7. Formatting: entirely lowercase, casual punctuation, simple line breaks.
-8. Subject: "fastapi migration / {lead['repo_name'].split('/')[-1]}"
+8. Subject: short, lowercase, mention the migration and their company.
 
 Output ONLY raw JSON starting with {{ and ending with }}: {{"subject": "...", "body": "..."}}
 """
@@ -252,7 +311,7 @@ Output ONLY raw JSON starting with {{ and ending with }}: {{"subject": "...", "b
     )
     response = client.invoke_model(modelId=BEDROCK_MODEL_ID, body=json.dumps({
         "anthropic_version": "bedrock-2023-05-31",
-        "max_tokens": 400,
+        "max_tokens": 500,
         "messages": [{"role": "user", "content": prompt}],
     }))
     text = json.loads(response["body"].read())["content"][0]["text"]
@@ -267,16 +326,16 @@ Output ONLY raw JSON starting with {{ and ending with }}: {{"subject": "...", "b
 
 # ── SMTP Sending ──────────────────────────────────────────────────────────
 
+class DailyLimitReached(Exception):
+    """Raised when Gmail refuses further sends for the day (550 5.4.5)."""
+
+
 def build_footer() -> str:
     lines = ["\n\n—", SENDER_NAME,
              'not relevant? just reply "unsubscribe" and i won\'t reach out again.']
     if SENDER_ADDRESS:
         lines.append(SENDER_ADDRESS)
     return "\n".join(lines)
-
-
-class DailyLimitReached(Exception):
-    """Raised when Gmail refuses further sends for the day (550 5.4.5)."""
 
 
 def send_email(to_email: str, subject: str, body: str, add_footer: bool = True) -> bool:
@@ -308,21 +367,20 @@ def send_email(to_email: str, subject: str, body: str, add_footer: bool = True) 
         return False
 
 
-# ── Main Execution Loop ───────────────────────────────────────────────────
+# ── Follow-up sequence ────────────────────────────────────────────────────
 
 FOLLOWUP_1_BODY = (
-    "hey,\n\njust floating this to the top of your inbox. let me know "
-    "if migrating the backend is a priority right now, otherwise i'll "
-    "stop bugging you.\n\nbest,\nhassan"
+    "hey,\n\njust floating this to the top of your inbox. if the migration is on "
+    "the roadmap i'd be happy to take a piece of it — otherwise i'll stop bugging "
+    "you.\n\nbest,\nhassan"
 )
 
 # Final "breakup" email — this consistently pulls the most replies of the whole
 # sequence, because it's easy to say "actually, wait" when someone's walking away.
 FOLLOWUP_2_BODY = (
-    "hey,\n\nlast time i'll reach out — i'll assume backend performance isn't a "
-    "priority right now and close this out. if that changes down the line, my "
-    "fastapi migration work is here: "
-    "https://github.com/HassanNadeem1122/fat-free-crm-fastapi\n\ncheers,\nhassan"
+    "hey,\n\nlast time i'll reach out — i'll assume the migration isn't a priority "
+    "right now and close this out. if that changes, my rails -> fastapi work is "
+    f"here: {PROOF_URL}\n\ncheers,\nhassan"
 )
 
 
@@ -357,9 +415,9 @@ def run_followups(sent_log, gmail_user, gmail_pass, current_time) -> None:
             save_sent_log(sent_log)
             continue
 
-        log(f"  📤 Follow-up #{stage} (day {days}) to {entry.get('org') or entry['email']}...")
-        bump_subject = f"Re: {entry['subject']}"
-        if send_email(entry["email"], bump_subject, body):
+        target = entry.get("company") or entry.get("org") or entry["email"]
+        log(f"  📤 Follow-up #{stage} (day {days}) to {target}...")
+        if send_email(entry["email"], f"Re: {entry['subject']}", body):
             entry[stamp] = current_time.isoformat()
             save_sent_log(sent_log)
             sent += 1
@@ -367,33 +425,27 @@ def run_followups(sent_log, gmail_user, gmail_pass, current_time) -> None:
     log(f"  Follow-ups sent this run: {sent}")
 
 
-def run_new_outreach(sent_log, github_token, current_time) -> None:
-    log("🔍 Phase 2: New outreach...")
+# ── New outreach ──────────────────────────────────────────────────────────
+
+def run_new_outreach(sent_log, current_time) -> None:
+    log("🔍 Phase 2: New outreach — companies hiring FastAPI/Python while on Rails...")
     suppressed = load_suppression()
-    repos = search_github_repos(github_token)
-    if not repos:
-        log("  No repos returned from search.")
+    leads = find_leads()
+    if not leads:
+        log("  No qualifying leads found this run.")
         return
 
     sent = 0
-    gen_failures = 0        # consecutive Bedrock failures -> likely misconfig
-    emailed_this_run: set[str] = set()
+    gen_failures = 0  # consecutive Bedrock failures -> likely misconfig
 
-    for repo in repos:
+    for lead in leads:
         if sent >= MAX_NEW_PER_RUN:
             break
-
-        lead = get_maintainer_from_commits(repo["full_name"], github_token)
-        if not lead:
-            continue
-        email = lead["email"].lower()
-
-        if (email in emailed_this_run or email in suppressed
-                or already_contacted(email, sent_log)):
+        email = lead["email"]
+        if email in suppressed or already_contacted(email, sent_log):
             continue
 
-        lead["repo_name"] = repo["full_name"]
-        log(f"  ✉️ Lead: {lead.get('name') or '(no name)'} <{email}> — {repo['full_name']}")
+        log(f"  ✉️ [{lead['tier']}] {lead['company']} <{email}>")
 
         try:
             content = generate_initial_email(lead)
@@ -404,7 +456,7 @@ def run_new_outreach(sent_log, github_token, current_time) -> None:
             if gen_failures >= 3:
                 log("  🛑 3 generation failures in a row — almost certainly a bad "
                     "BEDROCK_MODEL_ID or the model isn't enabled in this region. "
-                    "Aborting so we don't burn through leads. Fix the model config.")
+                    "Aborting so we don't burn through leads.")
                 return
             continue
 
@@ -413,13 +465,12 @@ def run_new_outreach(sent_log, github_token, current_time) -> None:
 
         log(f'  📤 Sending: "{content["subject"]}"')
         if send_email(email, content["subject"], content["body"]):
-            emailed_this_run.add(email)
             sent += 1
             sent_log.append({
-                "org": repo.get("org_login"),
-                "repo": repo["full_name"],
+                "company": lead["company"],
                 "email": email,
-                "name": lead.get("name"),
+                "tier": lead["tier"],
+                "source": "hn_whoishiring",
                 "subject": content["subject"],
                 "initial_sent_at": current_time.isoformat(),
                 "follow_up_sent_at": None,
@@ -432,11 +483,12 @@ def run_new_outreach(sent_log, github_token, current_time) -> None:
     log(f"  New emails sent this run: {sent}")
 
 
+# ── Main ──────────────────────────────────────────────────────────────────
+
 def main():
     if not pre_flight_check():
         return
 
-    github_token = os.environ.get("GITHUB_TOKEN")
     gmail_user = os.environ.get("GMAIL_ADDRESS")
     gmail_pass = os.environ.get("GMAIL_APP_PASSWORD")
 
@@ -445,7 +497,7 @@ def main():
 
     try:
         run_followups(sent_log, gmail_user, gmail_pass, current_time)
-        run_new_outreach(sent_log, github_token, current_time)
+        run_new_outreach(sent_log, current_time)
     except DailyLimitReached as e:
         log("🛑 Gmail daily sending limit hit — stopping this run to protect the "
             "account. It resets in ~24h; the next scheduled run will continue where "
