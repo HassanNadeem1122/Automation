@@ -49,8 +49,11 @@ def env(name: str, default: str = "") -> str:
 BEDROCK_MODEL_ID = env("BEDROCK_MODEL_ID", "us.anthropic.claude-sonnet-4-6")
 BEDROCK_REGION = env("BEDROCK_REGION", "us-east-1")
 
-# One month's thread yields only ~5 qualified leads, so scan a few months back.
-HN_MONTHS = int(env("HN_MONTHS", "3"))
+# One month's thread yields only a handful of emailable leads, so scan further
+# back. A company that posted 6 months ago is usually still mid-migration —
+# these leads age far better than a normal job ad, and real companies beat the
+# GitHub hobbyist filler every time. Raise via the HN_MONTHS repo variable.
+HN_MONTHS = int(env("HN_MONTHS", "8"))
 
 # Daily send caps. Set the MAX_NEW_PER_RUN repo variable to ramp Gmail up as it
 # warms (e.g. 5 -> 10 -> 15 -> 20) without touching code. ~20/day is the
