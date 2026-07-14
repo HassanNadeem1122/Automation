@@ -267,11 +267,15 @@ def qualify(text: str) -> str | None:
     return "ok"
 
 
-# Words that mean a pipe-segment is a job title, not a company name.
+# A pipe-segment containing any of these is a job title / employment type /
+# location — not a company name. Posts don't reliably lead with the company,
+# so we skip these segments rather than address an email to "hey Full-Time,".
 JOB_TITLE_WORDS = (
     "engineer", "developer", "designer", "manager", "scientist", "architect",
     "full stack", "fullstack", "back end", "backend", "front end", "frontend",
     "devops", " sre", "intern", "recruiter", "analyst", "researcher",
+    "full-time", "full time", "part-time", "part time", "contract", "freelance",
+    "remote", "onsite", "on-site", "hybrid", "visa", "senior", "junior",
 )
 
 
