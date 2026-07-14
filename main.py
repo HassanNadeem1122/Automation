@@ -230,21 +230,34 @@ def extract_email(text: str) -> str | None:
 
 
 def qualify(text: str) -> str | None:
-    """Return 'strong' / 'ok' if this post smells like a Rails->Python migration."""
+    """Grade a job post as a Rails-migration prospect.
+
+    Requiring Python AND Rails AND an email in the same post turned out to match
+    ~1 post in 1,475 — far too strict to be useful. The workable signal is just
+    "they run Ruby/Rails and they're hiring": that means a funded company with an
+    engineering team and a budget, which is who buys a migration. Posts that also
+    mention Python/FastAPI or an explicit rewrite are graded 'strong' and get
+    emailed first.
+    """
     low = text.lower()
-    has_py = any(s in low for s in PY_SIGNALS)
-    has_ruby = any(s in low for s in RUBY_SIGNALS)
-    if not (has_py and has_ruby):
+    if not any(s in low for s in RUBY_SIGNALS):
         return None
-    if any(s in low for s in STRONG_SIGNALS):
+    has_py = any(s in low for s in PY_SIGNALS)
+    if has_py or any(s in low for s in STRONG_SIGNALS):
         return "strong"
     return "ok"
 
 
 def parse_company(text: str) -> str:
-    """HN posts start like: 'Acme Corp | SF | Senior Engineer | ...'"""
+    """HN posts start like: 'Acme Corp | SF | Senior Engineer | ...'
+
+    Posts often lead with decoration (*bold*, emoji, dashes) — strip it so the
+    email says "Acme" and not "*Acme".
+    """
     first_line = next((l for l in text.strip().split("\n") if l.strip()), "")
-    company = first_line.split("|")[0].strip()
+    company = first_line.split("|")[0]
+    company = re.sub(r"^[^A-Za-z0-9]+", "", company).strip()
+    company = re.sub(r"\s*\(.*?\)\s*$", "", company).strip()
     return company[:80] if company else "there"
 
 
