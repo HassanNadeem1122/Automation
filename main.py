@@ -264,17 +264,32 @@ def qualify(text: str) -> str | None:
     return "ok"
 
 
-def parse_company(text: str) -> str:
-    """HN posts start like: 'Acme Corp | SF | Senior Engineer | ...'
+# Words that mean a pipe-segment is a job title, not a company name.
+JOB_TITLE_WORDS = (
+    "engineer", "developer", "designer", "manager", "scientist", "architect",
+    "full stack", "fullstack", "back end", "backend", "front end", "frontend",
+    "devops", " sre", "intern", "recruiter", "analyst", "researcher",
+)
 
-    Posts often lead with decoration (*bold*, emoji, dashes) — strip it so the
-    email says "Acme" and not "*Acme".
+
+def clean_segment(segment: str) -> str:
+    """Strip leading decoration (*bold*, emoji, dashes) and trailing parens."""
+    seg = re.sub(r"^[^A-Za-z0-9]+", "", segment).strip()
+    return re.sub(r"\s*\(.*?\)\s*$", "", seg).strip()
+
+
+def parse_company(text: str) -> str:
+    """HN posts usually start 'Acme Corp | SF | Senior Engineer | ...' — but not
+    always. Some lead with the role ('Senior Engineer | Acme | Remote'), which
+    made us address emails to "Senior Full Stack Engineer". Walk the first few
+    segments and take the first one that doesn't read like a job title.
     """
     first_line = next((l for l in text.strip().split("\n") if l.strip()), "")
-    company = first_line.split("|")[0]
-    company = re.sub(r"^[^A-Za-z0-9]+", "", company).strip()
-    company = re.sub(r"\s*\(.*?\)\s*$", "", company).strip()
-    return company[:80] if company else "there"
+    segments = [s for s in (clean_segment(p) for p in first_line.split("|")) if s]
+    for seg in segments[:3]:
+        if not any(w in seg.lower() for w in JOB_TITLE_WORDS):
+            return seg[:80]
+    return segments[0][:80] if segments else "there"
 
 
 URL_RE = re.compile(r"https?://[^\s|)>\"]+")
@@ -397,7 +412,13 @@ def find_leads(github_token: str) -> list:
         save_manual_leads(manual)
         log(f"  📝 Wrote {len(manual)} manual LinkedIn leads -> manual_leads.json")
     if USE_GITHUB_FILLER and len(leads) < MAX_NEW_PER_RUN:
-        leads += find_github_leads(github_token, MAX_NEW_PER_RUN - len(leads))
+        # Dedup across sources — the same person can surface in an HN post and
+        # as a repo maintainer, and emailing them twice looks like spam.
+        have = {l["email"] for l in leads}
+        for gl in find_github_leads(github_token, MAX_NEW_PER_RUN - len(leads)):
+            if gl["email"] not in have:
+                have.add(gl["email"])
+                leads.append(gl)
     return leads
 
 
