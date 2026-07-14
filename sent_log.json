@@ -124,7 +124,7 @@
     "email": "contact-dlss@lists.stanford.edu",
     "subject": "fastapi migration / sul-dlss",
     "initial_sent_at": "2026-07-09T12:11:06.634623+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-07-14T14:50:18.841511+00:00",
     "replied": false
   },
   {
@@ -134,7 +134,7 @@
     "name": "Olly Headey",
     "subject": "fastapi migration / pagecord",
     "initial_sent_at": "2026-07-11T14:21:44.332441+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-07-14T14:50:18.841511+00:00",
     "replied": false
   },
   {
@@ -144,7 +144,7 @@
     "name": "Akira Matsuda",
     "subject": "fastapi migration / cfp-app",
     "initial_sent_at": "2026-07-11T14:21:44.332441+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-07-14T14:50:18.841511+00:00",
     "replied": false
   },
   {
@@ -154,7 +154,7 @@
     "name": "Yohei Yasukawa",
     "subject": "fastapi migration / coderdojo.jp",
     "initial_sent_at": "2026-07-11T14:21:44.332441+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-07-14T14:50:18.841511+00:00",
     "replied": false
   },
   {
@@ -164,7 +164,7 @@
     "name": "Maciej Mensfeld",
     "subject": "fastapi migration / karafka-web",
     "initial_sent_at": "2026-07-11T14:21:44.332441+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-07-14T14:50:18.841511+00:00",
     "replied": false
   },
   {
@@ -364,6 +364,46 @@
     "name": "Masaki Komagata",
     "subject": "fastapi migration / bootcamp",
     "initial_sent_at": "2026-07-13T15:41:22.979589+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Y Combinator",
+    "email": "ryan@ycombinator.com",
+    "tier": "strong",
+    "source": "hn_whoishiring",
+    "subject": "yc rails \u2192 fastapi migration",
+    "initial_sent_at": "2026-07-14T14:50:18.841511+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Authorium",
+    "email": "jay@authorium.com",
+    "tier": "strong",
+    "source": "hn_whoishiring",
+    "subject": "authorium \u2014 rails to fastapi migration",
+    "initial_sent_at": "2026-07-14T14:50:18.841511+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Natural",
+    "email": "krish@natural.co",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "rails \u2192 fastapi migration @ natural",
+    "initial_sent_at": "2026-07-14T14:50:18.841511+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "TrakPro",
+    "email": "product-hiring@trak-pro.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "trakpro \u2014 rails-to-fastapi migration",
+    "initial_sent_at": "2026-07-14T14:50:18.841511+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
