@@ -296,7 +296,21 @@ def parse_company(text: str) -> str:
     for seg in segments[:3]:
         if not any(w in seg.lower() for w in JOB_TITLE_WORDS):
             return seg[:80]
-    return segments[0][:80] if segments else "there"
+    return ""  # every segment looked like a title — caller falls back to the domain
+
+
+def company_from_email(email: str) -> str:
+    """Last-resort company name: the email's domain.
+
+    Some posts lead with nothing but job titles ('Head of Engineering | ... '),
+    so there's no company to parse. The sending domain is a reliable stand-in —
+    jointheteam@fetlife.com -> "Fetlife".
+    """
+    try:
+        domain = email.split("@")[-1].split(".")[0]
+        return domain.replace("-", " ").title()[:80] or "there"
+    except Exception:
+        return "there"
 
 
 URL_RE = re.compile(r"https?://[^\s|)>\"]+")
@@ -332,7 +346,7 @@ def find_hn_leads() -> tuple:
                 seen.add(email)
                 leads.append({
                     "email": email,
-                    "company": company,
+                    "company": company or company_from_email(email),
                     "tier": tier,
                     "source": "hn_whoishiring",
                     "snippet": " ".join(post.split())[:700],
@@ -340,7 +354,7 @@ def find_hn_leads() -> tuple:
             else:
                 url = URL_RE.search(post)
                 manual.append({
-                    "company": company,
+                    "company": company or "(see note)",
                     "tier": tier,
                     "link": url.group(0) if url else "",
                     "note": " ".join(post.split())[:300],
