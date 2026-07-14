@@ -48,6 +48,12 @@ jobs:
           SENDER_ADDRESS: ${{ secrets.SENDER_ADDRESS }}
           BEDROCK_MODEL_ID: ${{ secrets.BEDROCK_MODEL_ID }}
           DRY_RUN: ${{ inputs.dry_run }}
+          # Repo Variables (Settings > Secrets and variables > Actions > Variables).
+          # Unset is fine — the script falls back to sensible defaults.
+          MAX_NEW_PER_RUN: ${{ vars.MAX_NEW_PER_RUN }}
+          MAX_FOLLOWUPS_PER_RUN: ${{ vars.MAX_FOLLOWUPS_PER_RUN }}
+          USE_GITHUB_FILLER: ${{ vars.USE_GITHUB_FILLER }}
+          HN_MONTHS: ${{ vars.HN_MONTHS }}
 
       - name: Auto-commit and Push Log Changes
         uses: stefanzweifel/git-auto-commit-action@v5.1.0  # Fixed: Bumped to support Node 24
