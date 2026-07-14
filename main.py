@@ -14,6 +14,7 @@ import smtplib
 import imaplib
 import time
 import random
+from collections import Counter
 from datetime import datetime, timezone
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -24,18 +25,17 @@ import requests
 # ── Config ────────────────────────────────────────────────────────────────
 LOG_FILE = Path(__file__).parent / "sent_log.json"
 SUPPRESS_FILE = Path(__file__).parent / "unsubscribe_list.json"
-
-# Kept low on purpose: a personal Gmail can't cold-send much before Google
-# throttles or locks it. The stop-on-limit safeguard halts the run the moment
-# Gmail refuses, so a bad day doesn't hammer the account into a longer lock.
-MAX_NEW_PER_RUN = 10
-MAX_FOLLOWUPS_PER_RUN = 5
+# Qualified companies with no email in their post — you hit these on LinkedIn.
+MANUAL_FILE = Path(__file__).parent / "manual_leads.json"
 
 FOLLOW_UP_DAYS = 3         # first follow-up: 3 days after the initial email
 SECOND_FOLLOW_UP_DAYS = 7  # second/final follow-up: 7 days after the initial email
 
 HN_API = "https://hn.algolia.com/api/v1"
 HN_MAX_PAGES = 5           # each page is up to 1000 comments
+GITHUB_API = "https://api.github.com"
+REPO_SCAN_LIMIT = 40
+COMMITS_PER_REPO = 30
 
 
 # GitHub Actions injects an *unset* secret as an empty string "" (not absent),
@@ -51,6 +51,18 @@ BEDROCK_REGION = env("BEDROCK_REGION", "us-east-1")
 
 # One month's thread yields only ~5 qualified leads, so scan a few months back.
 HN_MONTHS = int(env("HN_MONTHS", "3"))
+
+# Daily send caps. Set the MAX_NEW_PER_RUN repo variable to ramp Gmail up as it
+# warms (e.g. 5 -> 10 -> 15 -> 20) without touching code. ~20/day is the
+# realistic ceiling for cold email from a free Gmail; the stop-on-limit
+# safeguard halts the run if Google pushes back before then.
+MAX_NEW_PER_RUN = int(env("MAX_NEW_PER_RUN", "10"))
+MAX_FOLLOWUPS_PER_RUN = int(env("MAX_FOLLOWUPS_PER_RUN", "5"))
+
+# GitHub filler leads: Rails maintainers. Lower intent than the HN companies,
+# but they keep the daily quota full while HN only yields a handful a month.
+SEARCH_QUERY = env("SEARCH_QUERY", "rails language:Ruby stars:50..300")
+USE_GITHUB_FILLER = env("USE_GITHUB_FILLER", "true").lower() in ("1", "true", "yes")
 
 # Dry run: find leads and generate the real emails, but send nothing and never
 # open an SMTP connection. Lets us test the pipeline without touching Gmail
@@ -124,6 +136,10 @@ def load_json_list(path: Path) -> list:
 
 def save_sent_log(entries: list) -> None:
     LOG_FILE.write_text(json.dumps(entries, indent=2, default=str))
+
+
+def save_manual_leads(items: list) -> None:
+    MANUAL_FILE.write_text(json.dumps(items, indent=2, default=str))
 
 
 def load_suppression() -> set:
@@ -261,13 +277,22 @@ def parse_company(text: str) -> str:
     return company[:80] if company else "there"
 
 
-def find_leads() -> list:
+URL_RE = re.compile(r"https?://[^\s|)>\"]+")
+
+
+def find_hn_leads() -> tuple:
+    """Returns (emailable_leads, manual_leads).
+
+    Most qualifying HN posts link to a careers page instead of an email — we
+    can't cold-email those, but they're still strong prospects, so they go to
+    manual_leads.json for LinkedIn outreach instead of being thrown away.
+    """
     threads = fetch_recent_hiring_threads()
     if not threads:
         log("  ❌ Couldn't find any 'Who is hiring?' threads.")
-        return []
+        return [], []
 
-    leads, seen = [], set()
+    leads, manual, seen = [], [], set()
     total_posts = 0
     for thread in threads:
         posts = fetch_job_posts(thread["id"])
@@ -277,22 +302,102 @@ def find_leads() -> list:
             tier = qualify(post)
             if not tier:
                 continue
+            company = parse_company(post)
             email = extract_email(post)
-            if not email or email in seen:
-                continue
-            seen.add(email)
-            leads.append({
-                "email": email,
-                "company": parse_company(post),
-                "tier": tier,
-                "snippet": " ".join(post.split())[:700],
-            })
+            if email:
+                if email in seen:
+                    continue
+                seen.add(email)
+                leads.append({
+                    "email": email,
+                    "company": company,
+                    "tier": tier,
+                    "source": "hn_whoishiring",
+                    "snippet": " ".join(post.split())[:700],
+                })
+            else:
+                url = URL_RE.search(post)
+                manual.append({
+                    "company": company,
+                    "tier": tier,
+                    "link": url.group(0) if url else "",
+                    "note": " ".join(post.split())[:300],
+                })
     log(f"  📄 Scanned {total_posts} job posts across {len(threads)} months")
-    # Strongest signals first — explicit "migrating"/"fastapi" posts get emailed
-    # before generic polyglot shops.
     leads.sort(key=lambda l: 0 if l["tier"] == "strong" else 1)
     strong = sum(1 for l in leads if l["tier"] == "strong")
-    log(f"  🎯 {len(leads)} migration-intent leads with a contact email ({strong} strong)")
+    log(f"  🎯 HN: {len(leads)} emailable ({strong} strong) + {len(manual)} for manual LinkedIn")
+    return leads, manual
+
+
+def find_github_leads(github_token: str, needed: int) -> list:
+    """Filler: real maintainers of active Rails repos, via the commits API.
+
+    Lower intent than a company that's hiring, but there are plenty of them —
+    they keep the daily quota full so the machine isn't idle between HN threads.
+    """
+    if needed <= 0 or not github_token:
+        return []
+    headers = {"Authorization": f"token {github_token}",
+               "Accept": "application/vnd.github.v3+json"}
+    leads, seen = [], set()
+    try:
+        resp = requests.get(
+            f"{GITHUB_API}/search/repositories", headers=headers, timeout=20,
+            params={"q": SEARCH_QUERY, "sort": "updated",
+                    "order": "desc", "per_page": REPO_SCAN_LIMIT},
+        )
+        if resp.status_code != 200:
+            log(f"  ⚠️ GitHub search returned {resp.status_code}")
+            return []
+        repos = [i.get("full_name") for i in resp.json().get("items", []) if i.get("full_name")]
+    except Exception as e:
+        log(f"  ⚠️ GitHub search failed: {e}")
+        return []
+
+    for full_name in repos:
+        if len(leads) >= needed:
+            break
+        try:
+            r = requests.get(f"{GITHUB_API}/repos/{full_name}/commits", headers=headers,
+                             params={"per_page": COMMITS_PER_REPO}, timeout=20)
+            if r.status_code != 200:
+                continue
+            tally, names = Counter(), {}
+            for c in r.json():
+                author = (c.get("commit") or {}).get("author") or {}
+                email = (author.get("email") or "").strip().lower()
+                name = (author.get("name") or "").strip()
+                if not is_valid_lead_email(email) or "bot" in name.lower():
+                    continue
+                tally[email] += 2 if c.get("author") else 1
+                names.setdefault(email, name)
+            if not tally:
+                continue
+            best = tally.most_common(1)[0][0]
+            if best in seen:
+                continue
+            seen.add(best)
+            leads.append({
+                "email": best,
+                "company": names.get(best) or full_name.split("/")[0],
+                "tier": "github",
+                "source": "github_commits",
+                "snippet": f"maintainer of the {full_name} ruby/rails repo on github",
+            })
+        except Exception:
+            continue
+    log(f"  🐙 GitHub filler: {len(leads)} maintainer leads")
+    return leads
+
+
+def find_leads(github_token: str) -> list:
+    leads, manual = find_hn_leads()
+    if manual:
+        save_manual_leads(manual)
+        log(f"  📝 Wrote {len(manual)} manual LinkedIn leads -> manual_leads.json")
+    if USE_GITHUB_FILLER and len(leads) < MAX_NEW_PER_RUN:
+        leads += find_github_leads(github_token, MAX_NEW_PER_RUN - len(leads))
     return leads
 
 
@@ -453,10 +558,10 @@ def run_followups(sent_log, gmail_user, gmail_pass, current_time) -> None:
 
 # ── New outreach ──────────────────────────────────────────────────────────
 
-def run_new_outreach(sent_log, current_time) -> None:
+def run_new_outreach(sent_log, github_token, current_time) -> None:
     log("🔍 Phase 2: New outreach — companies hiring FastAPI/Python while on Rails...")
     suppressed = load_suppression()
-    leads = find_leads()
+    leads = find_leads(github_token)
     if not leads:
         log("  No qualifying leads found this run.")
         return
@@ -498,7 +603,7 @@ def run_new_outreach(sent_log, current_time) -> None:
                     "company": lead["company"],
                     "email": email,
                     "tier": lead["tier"],
-                    "source": "hn_whoishiring",
+                    "source": lead.get("source", "hn_whoishiring"),
                     "subject": content["subject"],
                     "initial_sent_at": current_time.isoformat(),
                     "follow_up_sent_at": None,
@@ -518,13 +623,17 @@ def main():
 
     gmail_user = os.environ.get("GMAIL_ADDRESS")
     gmail_pass = os.environ.get("GMAIL_APP_PASSWORD")
+    github_token = os.environ.get("GITHUB_TOKEN", "")
 
     sent_log = load_json_list(LOG_FILE)
     current_time = datetime.now(timezone.utc)
 
+    if DRY_RUN:
+        log("🧪 DRY RUN — no emails will be sent, no state will be written.")
+
     try:
         run_followups(sent_log, gmail_user, gmail_pass, current_time)
-        run_new_outreach(sent_log, current_time)
+        run_new_outreach(sent_log, github_token, current_time)
     except DailyLimitReached as e:
         log("🛑 Gmail daily sending limit hit — stopping this run to protect the "
             "account. It resets in ~24h; the next scheduled run will continue where "

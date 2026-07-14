@@ -52,5 +52,5 @@ jobs:
       - name: Auto-commit and Push Log Changes
         uses: stefanzweifel/git-auto-commit-action@v5.1.0  # Fixed: Bumped to support Node 24
         with:
-          commit_message: "update sent_log [skip ci]"
-          file_pattern: 'sent_log.json'
+          commit_message: "update sent_log + manual leads [skip ci]"
+          file_pattern: 'sent_log.json manual_leads.json'
