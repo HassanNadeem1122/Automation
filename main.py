@@ -52,6 +52,11 @@ BEDROCK_REGION = env("BEDROCK_REGION", "us-east-1")
 # One month's thread yields only ~5 qualified leads, so scan a few months back.
 HN_MONTHS = int(env("HN_MONTHS", "3"))
 
+# Dry run: find leads and generate the real emails, but send nothing and never
+# open an SMTP connection. Lets us test the pipeline without touching Gmail
+# (important while the account is throttled) and without writing to sent_log.
+DRY_RUN = env("DRY_RUN", "false").lower() in ("1", "true", "yes")
+
 # CAN-SPAM: a real physical mailing address is legally required in every
 # commercial email. Set SENDER_ADDRESS / SENDER_NAME as GitHub secrets.
 SENDER_NAME = env("SENDER_NAME", "hassan")
@@ -345,6 +350,13 @@ def send_email(to_email: str, subject: str, body: str, add_footer: bool = True) 
     if add_footer:
         body = body.rstrip() + build_footer()
 
+    if DRY_RUN:
+        log(f"  🧪 DRY RUN — would send to {to_email}")
+        log(f"       subject: {subject}")
+        for line in body.strip().split("\n"):
+            log(f"       | {line}")
+        return True
+
     msg = MIMEMultipart("alternative")
     msg["Subject"] = subject
     msg["From"] = gmail_address
@@ -418,10 +430,11 @@ def run_followups(sent_log, gmail_user, gmail_pass, current_time) -> None:
         target = entry.get("company") or entry.get("org") or entry["email"]
         log(f"  📤 Follow-up #{stage} (day {days}) to {target}...")
         if send_email(entry["email"], f"Re: {entry['subject']}", body):
-            entry[stamp] = current_time.isoformat()
-            save_sent_log(sent_log)
             sent += 1
-            time.sleep(random.randint(60, 120))
+            if not DRY_RUN:
+                entry[stamp] = current_time.isoformat()
+                save_sent_log(sent_log)
+                time.sleep(random.randint(60, 120))
     log(f"  Follow-ups sent this run: {sent}")
 
 
@@ -466,19 +479,20 @@ def run_new_outreach(sent_log, current_time) -> None:
         log(f'  📤 Sending: "{content["subject"]}"')
         if send_email(email, content["subject"], content["body"]):
             sent += 1
-            sent_log.append({
-                "company": lead["company"],
-                "email": email,
-                "tier": lead["tier"],
-                "source": "hn_whoishiring",
-                "subject": content["subject"],
-                "initial_sent_at": current_time.isoformat(),
-                "follow_up_sent_at": None,
-                "replied": False,
-            })
-            save_sent_log(sent_log)
             log(f"  ✅ Sent ({sent}/{MAX_NEW_PER_RUN})")
-            time.sleep(random.randint(120, 300))
+            if not DRY_RUN:
+                sent_log.append({
+                    "company": lead["company"],
+                    "email": email,
+                    "tier": lead["tier"],
+                    "source": "hn_whoishiring",
+                    "subject": content["subject"],
+                    "initial_sent_at": current_time.isoformat(),
+                    "follow_up_sent_at": None,
+                    "replied": False,
+                })
+                save_sent_log(sent_log)
+                time.sleep(random.randint(120, 300))
 
     log(f"  New emails sent this run: {sent}")
 

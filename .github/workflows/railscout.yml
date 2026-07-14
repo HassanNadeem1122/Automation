@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: '0 13 * * *'  # 13:00 UTC = 8am US Eastern / 6pm Pakistan
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run — find leads + draft emails, send nothing'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -42,7 +47,7 @@ jobs:
           SENDER_NAME: ${{ secrets.SENDER_NAME }}
           SENDER_ADDRESS: ${{ secrets.SENDER_ADDRESS }}
           BEDROCK_MODEL_ID: ${{ secrets.BEDROCK_MODEL_ID }}
-          SEARCH_QUERY: ${{ secrets.SEARCH_QUERY }}
+          DRY_RUN: ${{ inputs.dry_run }}
 
       - name: Auto-commit and Push Log Changes
         uses: stefanzweifel/git-auto-commit-action@v5.1.0  # Fixed: Bumped to support Node 24
