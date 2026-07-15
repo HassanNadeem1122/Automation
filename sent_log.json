@@ -5,7 +5,8 @@
     "subject": "fastapi migration / TheOdinProject",
     "initial_sent_at": "2026-07-08T12:03:17.788314+00:00",
     "follow_up_sent_at": "2026-07-11T14:21:44.332441+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-07-15T14:49:43.716501+00:00"
   },
   {
     "org": "getlago",
@@ -13,7 +14,8 @@
     "subject": "fastapi migration / getlago",
     "initial_sent_at": "2026-07-08T12:21:24.821601+00:00",
     "follow_up_sent_at": "2026-07-11T14:21:44.332441+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-07-15T14:49:43.716501+00:00"
   },
   {
     "org": "clacky-ai",
@@ -21,7 +23,8 @@
     "subject": "fastapi migration / clacky-ai",
     "initial_sent_at": "2026-07-08T12:21:24.821601+00:00",
     "follow_up_sent_at": "2026-07-11T14:21:44.332441+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-07-15T14:49:43.716501+00:00"
   },
   {
     "org": "yeti-switch",
@@ -29,7 +32,8 @@
     "subject": "fastapi migration / yeti-switch",
     "initial_sent_at": "2026-07-08T12:21:24.821601+00:00",
     "follow_up_sent_at": "2026-07-11T14:21:44.332441+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-07-15T14:49:43.716501+00:00"
   },
   {
     "org": "OpenVoxProject",
@@ -37,7 +41,8 @@
     "subject": "fastapi migration / OpenVoxProject",
     "initial_sent_at": "2026-07-08T12:21:24.821601+00:00",
     "follow_up_sent_at": "2026-07-11T14:21:44.332441+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-07-15T14:49:43.716501+00:00"
   },
   {
     "org": "Shopify",
@@ -404,6 +409,106 @@
     "source": "hn_whoishiring",
     "subject": "trakpro \u2014 rails-to-fastapi migration",
     "initial_sent_at": "2026-07-14T14:50:18.841511+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "MongoDB",
+    "email": "hani.benhabiles+hn@mongodb.com",
+    "tier": "strong",
+    "source": "hn_whoishiring",
+    "subject": "rails \u2192 fastapi migration @ mongodb",
+    "initial_sent_at": "2026-07-15T14:49:43.716501+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Rubypoint",
+    "email": "jobs@rubypoint.io",
+    "tier": "strong",
+    "source": "hn_whoishiring",
+    "subject": "rubypoint \u2014 rails to fastapi migration",
+    "initial_sent_at": "2026-07-15T14:49:43.716501+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Goody",
+    "email": "mark@ongoody.com",
+    "tier": "strong",
+    "source": "hn_whoishiring",
+    "subject": "goody \u2014 ruby to python migration",
+    "initial_sent_at": "2026-07-15T14:49:43.716501+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Doowii",
+    "email": "ben@doowii.io",
+    "tier": "strong",
+    "source": "hn_whoishiring",
+    "subject": "rails \u2192 fastapi migration \u2014 doowii",
+    "initial_sent_at": "2026-07-15T14:49:43.716501+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Clerq",
+    "email": "nick@clerq.io",
+    "tier": "strong",
+    "source": "hn_whoishiring",
+    "subject": "clerq \u2013 rails to fastapi migration",
+    "initial_sent_at": "2026-07-15T14:49:43.716501+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Fetlife",
+    "email": "jointheteam+hoei+hn@fetlife.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "ruby \u2192 fastapi migration @ fetlife",
+    "initial_sent_at": "2026-07-15T14:49:43.716501+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Digital Health Strategies",
+    "email": "arif@digitalhealthstrategies.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "ruby \u2192 fastapi migration @ digital health strategies",
+    "initial_sent_at": "2026-07-15T14:49:43.716501+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Signal 1 AI",
+    "email": "bo@signal1.ai",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "signal 1 \u2014 ruby \u2192 fastapi migration",
+    "initial_sent_at": "2026-07-15T14:49:43.716501+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Small & Stealthy",
+    "email": "flutterdev@pindush.net",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "fat free crm \u2192 fastapi migration \u2014 small & stealthy",
+    "initial_sent_at": "2026-07-15T14:49:43.716501+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Galileo",
+    "email": "samuel@galileo.ai",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "galileo \u2014 rails to fastapi migration",
+    "initial_sent_at": "2026-07-15T14:49:43.716501+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
