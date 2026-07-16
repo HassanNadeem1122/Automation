@@ -50,7 +50,8 @@
     "subject": "fastapi migration / Shopify",
     "initial_sent_at": "2026-07-08T12:21:24.821601+00:00",
     "follow_up_sent_at": "2026-07-11T14:21:44.332441+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-07-16T15:01:24.779080+00:00"
   },
   {
     "org": "ThePandemoniumInstitute",
@@ -58,7 +59,8 @@
     "subject": "fastapi migration / ThePandemoniumInstitute",
     "initial_sent_at": "2026-07-08T12:21:24.821601+00:00",
     "follow_up_sent_at": "2026-07-11T14:21:44.332441+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-07-16T15:01:24.779080+00:00"
   },
   {
     "org": "lineofflight",
@@ -66,7 +68,8 @@
     "subject": "fastapi migration / lineofflight",
     "initial_sent_at": "2026-07-08T12:21:24.821601+00:00",
     "follow_up_sent_at": "2026-07-11T14:21:44.332441+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-07-16T15:01:24.779080+00:00"
   },
   {
     "org": "openSUSE",
@@ -74,7 +77,8 @@
     "subject": "fastapi migration / openSUSE",
     "initial_sent_at": "2026-07-08T12:21:24.821601+00:00",
     "follow_up_sent_at": "2026-07-11T14:21:44.332441+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-07-16T15:01:24.779080+00:00"
   },
   {
     "org": "IBM",
@@ -82,7 +86,8 @@
     "subject": "fastapi migration / IBM",
     "initial_sent_at": "2026-07-08T13:27:35.657490+00:00",
     "follow_up_sent_at": "2026-07-11T14:21:44.332441+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-07-16T15:01:24.779080+00:00"
   },
   {
     "org": "citizensadvice",
@@ -509,6 +514,56 @@
     "source": "hn_whoishiring",
     "subject": "galileo \u2014 rails to fastapi migration",
     "initial_sent_at": "2026-07-15T14:49:43.716501+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "DoStuff",
+    "email": "scott+domore@dostuffmedia.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "doraise rails \u2192 fastapi migration \u2014 dostuff",
+    "initial_sent_at": "2026-07-16T15:01:24.779080+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "ToucanTix",
+    "email": "jobs@toucantix.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "toucantix \u2014 rails \u2192 fastapi migration",
+    "initial_sent_at": "2026-07-16T15:01:24.779080+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "TextQL",
+    "email": "gabriel@textql.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "textql \u2014 rails to fastapi migration",
+    "initial_sent_at": "2026-07-16T15:01:24.779080+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Legion Health",
+    "email": "yash@legion.health",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "legion health \u2014 rails \u2192 fastapi migration",
+    "initial_sent_at": "2026-07-16T15:01:24.779080+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Prove AI",
+    "email": "richard@proveai.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "rails \u2192 fastapi migration @ prove ai",
+    "initial_sent_at": "2026-07-16T15:01:24.779080+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
