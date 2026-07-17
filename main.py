@@ -808,10 +808,13 @@ def main():
         log("🧪 DRY RUN — no emails will be sent, no state will be written.")
 
     try:
-        run_followups(sent_log, gmail_user, gmail_pass, current_time)
         if prime:
+            # Warmup phase: ONLY send to seed inboxes. No follow-ups, no cold
+            # sends — the domain isn't trusted yet, so real recipients would
+            # just hurt reputation.
             run_warmup(current_time, cap)
         else:
+            run_followups(sent_log, gmail_user, gmail_pass, current_time)
             run_new_outreach(sent_log, github_token, current_time, cap)
     except DailyLimitReached as e:
         log("🛑 Sending limit hit — stopping this run to protect the domain's "
