@@ -50,6 +50,14 @@ jobs:
           DRY_RUN: ${{ inputs.dry_run }}
           # Repo Variables (Settings > Secrets and variables > Actions > Variables).
           # Unset is fine — the script falls back to sensible defaults.
+          EMAIL_PROVIDER: ${{ vars.EMAIL_PROVIDER }}
+          FROM_EMAIL: ${{ vars.FROM_EMAIL }}
+          FROM_NAME: ${{ vars.FROM_NAME }}
+          REPLY_TO: ${{ vars.REPLY_TO }}
+          SES_REGION: ${{ vars.SES_REGION }}
+          WARMUP_START_DATE: ${{ vars.WARMUP_START_DATE }}
+          PRIME_DAYS: ${{ vars.PRIME_DAYS }}
+          SEED_EMAILS: ${{ vars.SEED_EMAILS }}
           MAX_NEW_PER_RUN: ${{ vars.MAX_NEW_PER_RUN }}
           MAX_FOLLOWUPS_PER_RUN: ${{ vars.MAX_FOLLOWUPS_PER_RUN }}
           USE_GITHUB_FILLER: ${{ vars.USE_GITHUB_FILLER }}

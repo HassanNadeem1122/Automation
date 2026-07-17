@@ -55,29 +55,80 @@ BEDROCK_REGION = env("BEDROCK_REGION", "us-east-1")
 # GitHub hobbyist filler every time. Raise via the HN_MONTHS repo variable.
 HN_MONTHS = int(env("HN_MONTHS", "8"))
 
-# Daily send caps. Set the MAX_NEW_PER_RUN repo variable to ramp Gmail up as it
-# warms (e.g. 5 -> 10 -> 15 -> 20) without touching code. ~20/day is the
-# realistic ceiling for cold email from a free Gmail; the stop-on-limit
-# safeguard halts the run if Google pushes back before then.
-MAX_NEW_PER_RUN = int(env("MAX_NEW_PER_RUN", "10"))
+# ── Sending: Amazon SES ──────────────────────────────────────────────────
+# We send through Amazon SES from your DKIM/SPF/DMARC-authenticated domain, not
+# Gmail (Gmail throttles/blocks cold mail). boto3 reuses the AWS keys already in
+# the environment, so no SMTP credentials are needed. Replies go to REPLY_TO so
+# you actually see them.
+EMAIL_PROVIDER = env("EMAIL_PROVIDER", "ses").lower()   # "ses" or "gmail"
+SES_REGION = env("SES_REGION", "us-east-1")
+FROM_NAME = env("FROM_NAME", "Hassan Nadeem")
+FROM_EMAIL = env("FROM_EMAIL", "hello@hassandevs.online")  # must be on the verified domain
+# Replies land here. Defaults to your Gmail so the follow-up reply-detector
+# (which reads that Gmail over IMAP) keeps working — keep them the same inbox.
+REPLY_TO = env("REPLY_TO", "") or os.environ.get("GMAIL_ADDRESS", "")
+
+# ── Warmup + automatic ramp ──────────────────────────────────────────────
+# A brand-new sending domain must ramp slowly or it torches its own reputation.
+# The daily cap grows automatically by days since WARMUP_START_DATE, so you
+# never touch it. Days 0..PRIME_DAYS-1 = "prime": send only to seed inboxes YOU
+# control (open + reply + mark-not-spam) to earn early positive signals. After
+# that, real cold sends, ramping.
+WARMUP_START_DATE = env("WARMUP_START_DATE", "")   # "YYYY-MM-DD" — set when you go live
+PRIME_DAYS = int(env("PRIME_DAYS", "3"))
+# Inboxes you control, comma-separated. Defaults to your Gmail; add more (a
+# second Gmail, Outlook, a friend's) as a repo variable for a stronger warmup.
+_seed_raw = env("SEED_EMAILS", "") or os.environ.get("GMAIL_ADDRESS", "")
+SEED_EMAILS = [e.strip() for e in _seed_raw.split(",") if e.strip()]
+
+# (day_number, emails_per_day) — cap for a given day is the last row whose
+# day_number <= days elapsed. Gentle, deliverability-safe ramp.
+RAMP_SCHEDULE = [(0, 5), (3, 8), (7, 12), (11, 16), (15, 22), (21, 30), (28, 40)]
+
 MAX_FOLLOWUPS_PER_RUN = int(env("MAX_FOLLOWUPS_PER_RUN", "5"))
+
+
+def _days_since_start(now: datetime) -> int:
+    if not WARMUP_START_DATE:
+        return 0
+    try:
+        start = datetime.fromisoformat(WARMUP_START_DATE).date()
+        return max(0, (now.date() - start).days)
+    except Exception:
+        return 0
+
+
+def todays_cap(now: datetime) -> int:
+    override = env("MAX_NEW_PER_RUN", "")   # pin a fixed number if you ever want to
+    if override:
+        return int(override)
+    days = _days_since_start(now)
+    cap = RAMP_SCHEDULE[0][1]
+    for day, c in RAMP_SCHEDULE:
+        if days >= day:
+            cap = c
+    return cap
+
+
+def in_prime_phase(now: datetime) -> bool:
+    return _days_since_start(now) < PRIME_DAYS
+
 
 # GitHub filler leads: Rails maintainers. Lower intent than the HN companies,
 # but they keep the daily quota full while HN only yields a handful a month.
 SEARCH_QUERY = env("SEARCH_QUERY", "rails language:Ruby stars:50..300")
 USE_GITHUB_FILLER = env("USE_GITHUB_FILLER", "true").lower() in ("1", "true", "yes")
 
-# Dry run: find leads and generate the real emails, but send nothing and never
-# open an SMTP connection. Lets us test the pipeline without touching Gmail
-# (important while the account is throttled) and without writing to sent_log.
+# Dry run: find leads and generate the real emails, but send nothing. Lets us
+# test the whole pipeline without sending a single email.
 DRY_RUN = env("DRY_RUN", "false").lower() in ("1", "true", "yes")
 
 # CAN-SPAM: a real physical mailing address is legally required in every
-# commercial email. Set SENDER_ADDRESS / SENDER_NAME as GitHub secrets.
-SENDER_NAME = env("SENDER_NAME", "hassan")
+# commercial email. Set SENDER_ADDRESS as a repo variable/secret.
+SENDER_NAME = env("SENDER_NAME", "Hassan")
 SENDER_ADDRESS = env("SENDER_ADDRESS", "")
 
-# Your proof-of-work. This is the single most persuasive thing in the email.
+# Your proof-of-work. The single most persuasive thing in the email.
 PROOF_URL = env("PROOF_URL", "https://github.com/HassanNadeem1122/fat-free-crm-fastapi")
 
 # ── Lead qualification ────────────────────────────────────────────────────
@@ -427,16 +478,16 @@ def find_github_leads(github_token: str, needed: int) -> list:
     return leads
 
 
-def find_leads(github_token: str) -> list:
+def find_leads(github_token: str, cap: int) -> list:
     leads, manual = find_hn_leads()
     if manual:
         save_manual_leads(manual)
         log(f"  📝 Wrote {len(manual)} manual LinkedIn leads -> manual_leads.json")
-    if USE_GITHUB_FILLER and len(leads) < MAX_NEW_PER_RUN:
+    if USE_GITHUB_FILLER and len(leads) < cap:
         # Dedup across sources — the same person can surface in an HN post and
         # as a repo maintainer, and emailing them twice looks like spam.
         have = {l["email"] for l in leads}
-        for gl in find_github_leads(github_token, MAX_NEW_PER_RUN - len(leads)):
+        for gl in find_github_leads(github_token, cap - len(leads)):
             if gl["email"] not in have:
                 have.add(gl["email"])
                 leads.append(gl)
@@ -492,7 +543,7 @@ Output ONLY raw JSON starting with {{ and ending with }}: {{"subject": "...", "b
 # ── SMTP Sending ──────────────────────────────────────────────────────────
 
 class DailyLimitReached(Exception):
-    """Raised when Gmail refuses further sends for the day (550 5.4.5)."""
+    """Raised when the email provider refuses further sends for the day/period."""
 
 
 def build_footer() -> str:
@@ -503,10 +554,66 @@ def build_footer() -> str:
     return "\n".join(lines)
 
 
-def send_email(to_email: str, subject: str, body: str, add_footer: bool = True) -> bool:
+def _send_via_ses(to_email: str, subject: str, body: str) -> bool:
+    client = boto3.client(
+        "ses", region_name=SES_REGION,
+        aws_access_key_id=os.environ.get("AWS_ACCESS_KEY_ID"),
+        aws_secret_access_key=os.environ.get("AWS_SECRET_ACCESS_KEY"),
+    )
+    kwargs = {
+        "Source": f"{FROM_NAME} <{FROM_EMAIL}>",
+        "Destination": {"ToAddresses": [to_email]},
+        "Message": {
+            "Subject": {"Data": subject, "Charset": "UTF-8"},
+            "Body": {"Text": {"Data": body, "Charset": "UTF-8"}},
+        },
+    }
+    if REPLY_TO:
+        kwargs["ReplyToAddresses"] = [REPLY_TO]
+    try:
+        client.send_email(**kwargs)
+        return True
+    except Exception as e:
+        text = str(e).lower()
+        # Hit the SES sending quota/rate — stop the run cleanly, resume tomorrow.
+        if ("throttl" in text or "maximum sending rate" in text
+                or "daily message quota" in text or "sending quota" in text
+                or "limitexceeded" in text):
+            raise DailyLimitReached(str(e))
+        # Sandbox: SES rejects unverified recipients until production access is
+        # granted. Skip this one and keep going rather than aborting.
+        if "not verified" in text or "messagerejected" in text:
+            log(f"  ⏭️ SES rejected (sandbox / recipient not verified): {to_email}")
+            return False
+        log(f"  ❌ SES error: {e}")
+        return False
+
+
+def _send_via_gmail(to_email: str, subject: str, body: str) -> bool:
     gmail_address = os.environ.get("GMAIL_ADDRESS")
     gmail_password = os.environ.get("GMAIL_APP_PASSWORD")
+    msg = MIMEMultipart("alternative")
+    msg["Subject"] = subject
+    msg["From"] = gmail_address
+    msg["To"] = to_email
+    if REPLY_TO:
+        msg["Reply-To"] = REPLY_TO
+    msg.attach(MIMEText(body, "plain"))
+    try:
+        with smtplib.SMTP("smtp.gmail.com", 587, timeout=20) as server:
+            server.starttls()
+            server.login(gmail_address, gmail_password)
+            server.sendmail(gmail_address, to_email, msg.as_string())
+        return True
+    except Exception as e:
+        text = str(e).lower()
+        if "5.4.5" in text or "sending limit exceeded" in text or "5.7.1" in text:
+            raise DailyLimitReached(str(e))
+        log(f"  ❌ SMTP error: {e}")
+        return False
 
+
+def send_email(to_email: str, subject: str, body: str, add_footer: bool = True) -> bool:
     if add_footer:
         body = body.rstrip() + build_footer()
 
@@ -517,26 +624,9 @@ def send_email(to_email: str, subject: str, body: str, add_footer: bool = True) 
             log(f"       | {line}")
         return True
 
-    msg = MIMEMultipart("alternative")
-    msg["Subject"] = subject
-    msg["From"] = gmail_address
-    msg["To"] = to_email
-    msg.attach(MIMEText(body, "plain"))
-
-    try:
-        with smtplib.SMTP("smtp.gmail.com", 587, timeout=20) as server:
-            server.starttls()
-            server.login(gmail_address, gmail_password)
-            server.sendmail(gmail_address, to_email, msg.as_string())
-        return True
-    except Exception as e:
-        text = str(e).lower()
-        # Gmail's daily cap — stop the whole run so we don't keep hammering a
-        # throttled account (that only makes the lock last longer).
-        if "5.4.5" in text or "sending limit exceeded" in text or "5.7.1" in text:
-            raise DailyLimitReached(str(e))
-        log(f"  ❌ SMTP error: {e}")
-        return False
+    if EMAIL_PROVIDER == "ses":
+        return _send_via_ses(to_email, subject, body)
+    return _send_via_gmail(to_email, subject, body)
 
 
 # ── Follow-up sequence ────────────────────────────────────────────────────
@@ -600,10 +690,10 @@ def run_followups(sent_log, gmail_user, gmail_pass, current_time) -> None:
 
 # ── New outreach ──────────────────────────────────────────────────────────
 
-def run_new_outreach(sent_log, github_token, current_time) -> None:
-    log("🔍 Phase 2: New outreach — companies hiring FastAPI/Python while on Rails...")
+def run_new_outreach(sent_log, github_token, current_time, cap) -> None:
+    log(f"🔍 Phase 2: New outreach — companies hiring FastAPI/Python on Rails (cap {cap})...")
     suppressed = load_suppression()
-    leads = find_leads(github_token)
+    leads = find_leads(github_token, cap)
     if not leads:
         log("  No qualifying leads found this run.")
         return
@@ -612,7 +702,7 @@ def run_new_outreach(sent_log, github_token, current_time) -> None:
     gen_failures = 0  # consecutive Bedrock failures -> likely misconfig
 
     for lead in leads:
-        if sent >= MAX_NEW_PER_RUN:
+        if sent >= cap:
             break
         email = lead["email"]
         if email in suppressed or already_contacted(email, sent_log):
@@ -639,7 +729,7 @@ def run_new_outreach(sent_log, github_token, current_time) -> None:
         log(f'  📤 Sending: "{content["subject"]}"')
         if send_email(email, content["subject"], content["body"]):
             sent += 1
-            log(f"  ✅ Sent ({sent}/{MAX_NEW_PER_RUN})")
+            log(f"  ✅ Sent ({sent}/{cap})")
             if not DRY_RUN:
                 sent_log.append({
                     "company": lead["company"],
@@ -657,6 +747,42 @@ def run_new_outreach(sent_log, github_token, current_time) -> None:
     log(f"  New emails sent this run: {sent}")
 
 
+# ── Warmup (prime phase) ──────────────────────────────────────────────────
+
+WARMUP_TEMPLATES = [
+    ("setting up my inbox", "hey — getting my new work inbox warmed up. mind hitting reply with a quick 'got it'? appreciate it."),
+    ("quick deliverability test", "hi! just making sure mail from this address lands fine. a one-word reply helps a ton — thanks."),
+    ("hello from hassan", "hey, testing my domain's deliverability. could you reply 'yep' so i know it arrived? cheers."),
+    ("warmup ping", "hi — priming this inbox for outreach. a quick reply (anything works) helps build reputation. thanks!"),
+    ("mail check", "hey! confirming this inbox sends cleanly. drop me a one-liner back when you see this? much appreciated."),
+]
+
+
+def run_warmup(current_time, cap) -> None:
+    """Prime phase: send to seed inboxes YOU control. Open + reply + mark
+    not-spam on each one — that positive engagement is what actually warms the
+    domain. Works in the SES sandbox (seeds must be verified there)."""
+    log(f"🔥 Phase 2: WARMUP (prime) — seeding {len(SEED_EMAILS)} inbox(es), cap {cap}...")
+    if not SEED_EMAILS:
+        log("  ⚠️ No SEED_EMAILS set — skipping warmup. Add your own inbox(es) to "
+            "the SEED_EMAILS repo variable (comma-separated).")
+        return
+    sent = 0
+    i = 0
+    while sent < cap:
+        seed = SEED_EMAILS[i % len(SEED_EMAILS)]
+        subject, body = random.choice(WARMUP_TEMPLATES)
+        log(f"  📤 warmup -> {seed}")
+        if send_email(seed, subject, body, add_footer=False):
+            sent += 1
+            if not DRY_RUN:
+                time.sleep(random.randint(60, 180))
+        else:
+            break
+        i += 1
+    log(f"  Warmup emails sent: {sent}  (open + reply + 'not spam' on each!)")
+
+
 # ── Main ──────────────────────────────────────────────────────────────────
 
 def main():
@@ -670,16 +796,24 @@ def main():
     sent_log = load_json_list(LOG_FILE)
     current_time = datetime.now(timezone.utc)
 
+    cap = todays_cap(current_time)
+    day = _days_since_start(current_time)
+    prime = in_prime_phase(current_time)
+    log(f"📮 Provider: {EMAIL_PROVIDER} | from: {FROM_EMAIL} | reply-to: {REPLY_TO or '(none)'}")
+    log(f"📈 Warmup day {day} | phase: {'PRIME/warmup' if prime else 'cold outreach'} | today's cap: {cap}")
     if DRY_RUN:
         log("🧪 DRY RUN — no emails will be sent, no state will be written.")
 
     try:
         run_followups(sent_log, gmail_user, gmail_pass, current_time)
-        run_new_outreach(sent_log, github_token, current_time)
+        if prime:
+            run_warmup(current_time, cap)
+        else:
+            run_new_outreach(sent_log, github_token, current_time, cap)
     except DailyLimitReached as e:
-        log("🛑 Gmail daily sending limit hit — stopping this run to protect the "
-            "account. It resets in ~24h; the next scheduled run will continue where "
-            f"we left off. (Gmail said: {e})")
+        log("🛑 Sending limit hit — stopping this run to protect the domain's "
+            "reputation. It resets on its own; the next scheduled run continues "
+            f"where we left off. (provider said: {e})")
 
     log("─" * 50)
     log("🏁 Cycle complete.")
