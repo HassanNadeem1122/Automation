@@ -75,7 +75,10 @@ REPLY_TO = env("REPLY_TO", "") or os.environ.get("GMAIL_ADDRESS", "")
 # control (open + reply + mark-not-spam) to earn early positive signals. After
 # that, real cold sends, ramping.
 WARMUP_START_DATE = env("WARMUP_START_DATE", "")   # "YYYY-MM-DD" — set when you go live
-PRIME_DAYS = int(env("PRIME_DAYS", "3"))
+# 14 days of pure warmup (send only to seed inboxes you engage with) before any
+# real cold sends. A brand-new domain needs this — especially after we saw Gmail
+# silently drop the first email. Real outreach starts on day 14.
+PRIME_DAYS = int(env("PRIME_DAYS", "14"))
 # Inboxes you control, comma-separated. Defaults to your Gmail; add more (a
 # second Gmail, Outlook, a friend's) as a repo variable for a stronger warmup.
 _seed_raw = env("SEED_EMAILS", "") or os.environ.get("GMAIL_ADDRESS", "")
