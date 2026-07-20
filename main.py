@@ -563,18 +563,25 @@ def _send_via_ses(to_email: str, subject: str, body: str) -> bool:
         aws_access_key_id=os.environ.get("AWS_ACCESS_KEY_ID"),
         aws_secret_access_key=os.environ.get("AWS_SECRET_ACCESS_KEY"),
     )
-    kwargs = {
-        "Source": f"{FROM_NAME} <{FROM_EMAIL}>",
-        "Destination": {"ToAddresses": [to_email]},
-        "Message": {
-            "Subject": {"Data": subject, "Charset": "UTF-8"},
-            "Body": {"Text": {"Data": body, "Charset": "UTF-8"}},
-        },
-    }
+    # Build a full MIME message so we can include a plain+HTML alternative AND a
+    # List-Unsubscribe header — both improve deliverability and are increasingly
+    # required by Gmail/Outlook. (send_email can't set custom headers.)
+    msg = MIMEMultipart("alternative")
+    msg["Subject"] = subject
+    msg["From"] = f"{FROM_NAME} <{FROM_EMAIL}>"
+    msg["To"] = to_email
     if REPLY_TO:
-        kwargs["ReplyToAddresses"] = [REPLY_TO]
+        msg["Reply-To"] = REPLY_TO
+    msg["List-Unsubscribe"] = f"<mailto:{FROM_EMAIL}?subject=unsubscribe>"
+    msg["List-Unsubscribe-Post"] = "List-Unsubscribe=One-Click"
+    html_body = html.escape(body)
+    html_body = re.sub(r"(https?://[^\s<]+)", r'<a href="\1">\1</a>', html_body)
+    html_body = ('<html><body style="font-family:Arial,sans-serif;font-size:14px">'
+                 + html_body.replace("\n", "<br>") + "</body></html>")
+    msg.attach(MIMEText(body, "plain", "utf-8"))
+    msg.attach(MIMEText(html_body, "html", "utf-8"))
     try:
-        client.send_email(**kwargs)
+        client.send_raw_email(RawMessage={"Data": msg.as_string()})
         return True
     except Exception as e:
         text = str(e).lower()
@@ -583,10 +590,8 @@ def _send_via_ses(to_email: str, subject: str, body: str) -> bool:
                 or "daily message quota" in text or "sending quota" in text
                 or "limitexceeded" in text):
             raise DailyLimitReached(str(e))
-        # Sandbox: SES rejects unverified recipients until production access is
-        # granted. Skip this one and keep going rather than aborting.
         if "not verified" in text or "messagerejected" in text:
-            log(f"  ⏭️ SES rejected (sandbox / recipient not verified): {to_email}")
+            log(f"  ⏭️ SES rejected (recipient not verified): {to_email}")
             return False
         log(f"  ❌ SES error: {e}")
         return False
