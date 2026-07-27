@@ -57,6 +57,7 @@ jobs:
           SES_REGION: ${{ vars.SES_REGION }}
           WARMUP_START_DATE: ${{ vars.WARMUP_START_DATE }}
           PRIME_DAYS: ${{ vars.PRIME_DAYS }}
+          WARMUP_PER_DAY: ${{ vars.WARMUP_PER_DAY }}
           SEED_EMAILS: ${{ vars.SEED_EMAILS }}
           MAX_NEW_PER_RUN: ${{ vars.MAX_NEW_PER_RUN }}
           MAX_FOLLOWUPS_PER_RUN: ${{ vars.MAX_FOLLOWUPS_PER_RUN }}

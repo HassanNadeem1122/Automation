@@ -86,7 +86,13 @@ SEED_EMAILS = [e.strip() for e in _seed_raw.split(",") if e.strip()]
 
 # (day_number, emails_per_day) — cap for a given day is the last row whose
 # day_number <= days elapsed. Gentle, deliverability-safe ramp.
-RAMP_SCHEDULE = [(0, 5), (3, 8), (7, 12), (11, 16), (15, 22), (21, 30), (28, 40)]
+RAMP_SCHEDULE = [(0, 3), (3, 5), (7, 8), (11, 11), (15, 14), (21, 18), (28, 22)]
+
+# Warmup is only meant to prove the domain sends wanted mail — a couple of
+# messages a day is plenty. Anything more just floods the seed inboxes (and made
+# the earlier bounce storm much worse), so it's capped independently of the
+# cold-outreach ramp above.
+WARMUP_PER_DAY = int(env("WARMUP_PER_DAY", "2"))
 
 MAX_FOLLOWUPS_PER_RUN = int(env("MAX_FOLLOWUPS_PER_RUN", "5"))
 
@@ -769,8 +775,9 @@ WARMUP_TEMPLATES = [
 def run_warmup(current_time, cap) -> None:
     """Prime phase: send to seed inboxes YOU control. Open + reply + mark
     not-spam on each one — that positive engagement is what actually warms the
-    domain. Works in the SES sandbox (seeds must be verified there)."""
-    log(f"🔥 Phase 2: WARMUP (prime) — seeding {len(SEED_EMAILS)} inbox(es), cap {cap}...")
+    domain. Deliberately tiny volume (WARMUP_PER_DAY), not the cold-outreach ramp."""
+    cap = min(cap, WARMUP_PER_DAY)
+    log(f"🔥 Phase 2: WARMUP (prime) — seeding {len(SEED_EMAILS)} inbox(es), {cap}/day...")
     if not SEED_EMAILS:
         log("  ⚠️ No SEED_EMAILS set — skipping warmup. Add your own inbox(es) to "
             "the SEED_EMAILS repo variable (comma-separated).")
