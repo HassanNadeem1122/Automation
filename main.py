@@ -580,6 +580,10 @@ def _send_via_ses(to_email: str, subject: str, body: str) -> bool:
         msg["Reply-To"] = REPLY_TO
     msg["List-Unsubscribe"] = f"<mailto:{FROM_EMAIL}?subject=unsubscribe>"
     msg["List-Unsubscribe-Post"] = "List-Unsubscribe=One-Click"
+    # Ties this send to the config set that reports bounce/complaint/delivery
+    # events back via SNS -> the reply-dash Worker, so failures are visible
+    # (check /api/events) instead of us having to guess why something bounced.
+    msg["X-SES-CONFIGURATION-SET"] = "hassandevs-tracked"
     html_body = html.escape(body)
     html_body = re.sub(r"(https?://[^\s<]+)", r'<a href="\1">\1</a>', html_body)
     html_body = ('<html><body style="font-family:Arial,sans-serif;font-size:14px">'
