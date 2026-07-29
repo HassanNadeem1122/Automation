@@ -1,8 +1,10 @@
 name: railscout
 
 on:
-  schedule:
-    - cron: '0 13 * * *'  # 13:00 UTC = 8am US Eastern / 6pm Pakistan
+  # GitHub's own cron drifted by hours (documented platform limitation on
+  # shared runners) — the reply-dash Cloudflare Worker now dispatches this
+  # daily via its own cron trigger, which fires within seconds. See
+  # reply-dash/wrangler.toml [triggers] and src/index.js scheduled().
   workflow_dispatch:
     inputs:
       dry_run:
