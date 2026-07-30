@@ -449,7 +449,16 @@ def find_github_leads(github_token: str, needed: int, exclude: set | None = None
         if resp.status_code != 200:
             log(f"  ⚠️ GitHub search returned {resp.status_code}")
             return []
-        repos = [i.get("full_name") for i in resp.json().get("items", []) if i.get("full_name")]
+        items = [i for i in resp.json().get("items", []) if i.get("full_name")]
+        # Company-owned repos first. A maintainer at an Organization is far more
+        # likely to have a budget and an actual migration problem than a solo
+        # hobbyist, and hobbyists were most of what this filler was returning.
+        orgs = [i["full_name"] for i in items
+                if ((i.get("owner") or {}).get("type") == "Organization")]
+        users = [i["full_name"] for i in items
+                 if ((i.get("owner") or {}).get("type") != "Organization")]
+        repos = orgs + users
+        log(f"  🏢 GitHub repos: {len(orgs)} org-owned prioritised, {len(users)} personal")
     except Exception as e:
         log(f"  ⚠️ GitHub search failed: {e}")
         return []
