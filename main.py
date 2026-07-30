@@ -426,17 +426,20 @@ def find_hn_leads() -> tuple:
     return leads, manual
 
 
-def find_github_leads(github_token: str, needed: int) -> list:
+def find_github_leads(github_token: str, needed: int, exclude: set | None = None) -> list:
     """Filler: real maintainers of active Rails repos, via the commits API.
 
     Lower intent than a company that's hiring, but there are plenty of them —
     they keep the daily quota full so the machine isn't idle between HN threads.
     """
-    if needed <= 0 or not github_token:
+    if needed <= 0:
+        return []
+    if not github_token:
+        log("  ⚠️ GitHub filler skipped — GITHUB_TOKEN/GH_TOKEN is empty.")
         return []
     headers = {"Authorization": f"token {github_token}",
                "Accept": "application/vnd.github.v3+json"}
-    leads, seen = [], set()
+    leads, seen = [], set(exclude or ())
     try:
         resp = requests.get(
             f"{GITHUB_API}/search/repositories", headers=headers, timeout=20,
@@ -487,20 +490,78 @@ def find_github_leads(github_token: str, needed: int) -> list:
     return leads
 
 
-def find_leads(github_token: str, cap: int) -> list:
+def find_remoteok_leads(exclude: set) -> list:
+    """RemoteOK publishes its whole board as free JSON — no key, no scraping.
+
+    Companies hiring remote Python/backend roles that also mention Ruby/Rails
+    are the same migration-intent signal we look for on HN, and the board
+    refreshes constantly, so it doesn't dry up between monthly HN threads.
+    """
+    leads = []
+    try:
+        resp = requests.get(
+            "https://remoteok.com/api",
+            headers={"User-Agent": "Mozilla/5.0 (compatible; railscout/1.0)"},
+            timeout=25,
+        )
+        if resp.status_code != 200:
+            log(f"  ⚠️ RemoteOK returned {resp.status_code}")
+            return []
+        rows = resp.json()
+    except Exception as e:
+        log(f"  ⚠️ RemoteOK fetch failed: {e}")
+        return []
+
+    for row in rows:
+        if not isinstance(row, dict) or not row.get("company"):
+            continue
+        blob = " ".join(str(row.get(k, "")) for k in
+                        ("position", "description", "tags", "company")).lower()
+        if not qualify(blob):
+            continue
+        email = extract_email(blob) or extract_email(str(row.get("apply_url", "")))
+        if not email or email in exclude:
+            continue
+        exclude.add(email)
+        leads.append({
+            "email": email,
+            "company": str(row.get("company"))[:80],
+            "tier": "strong" if any(s in blob for s in STRONG_SIGNALS) else "ok",
+            "source": "remoteok",
+            "snippet": f"{row.get('position','')} — {str(row.get('description',''))[:500]}".strip(),
+        })
+    log(f"  🌐 RemoteOK: {len(leads)} leads")
+    return leads
+
+
+def find_leads(github_token: str, cap: int, already: set) -> list:
+    """`already` = emails in sent_log + suppression list.
+
+    Dedup has to happen *here*, before we decide whether to top up from other
+    sources. Counting raw HN hits meant 22 leads looked like plenty against a
+    cap of 14 — even when 19 were already-contacted duplicates and only 3 were
+    actually sendable, which silently starved the run.
+    """
     leads, manual = find_hn_leads()
     if manual:
         save_manual_leads(manual)
         log(f"  📝 Wrote {len(manual)} manual LinkedIn leads -> manual_leads.json")
-    if USE_GITHUB_FILLER and len(leads) < cap:
-        # Dedup across sources — the same person can surface in an HN post and
-        # as a repo maintainer, and emailing them twice looks like spam.
-        have = {l["email"] for l in leads}
-        for gl in find_github_leads(github_token, cap - len(leads)):
-            if gl["email"] not in have:
-                have.add(gl["email"])
-                leads.append(gl)
-    return leads
+
+    seen = set(already)
+    fresh = []
+    for l in leads:
+        if l["email"] not in seen:
+            seen.add(l["email"])
+            fresh.append(l)
+    log(f"  ♻️ HN fresh after dedup: {len(fresh)} (of {len(leads)} found)")
+
+    if len(fresh) < cap:
+        fresh += find_remoteok_leads(seen)
+
+    if USE_GITHUB_FILLER and len(fresh) < cap:
+        fresh += find_github_leads(github_token, cap - len(fresh), seen)
+
+    return fresh
 
 
 # ── AI Generation ─────────────────────────────────────────────────────────
@@ -711,7 +772,10 @@ def run_followups(sent_log, gmail_user, gmail_pass, current_time) -> None:
 def run_new_outreach(sent_log, github_token, current_time, cap) -> None:
     log(f"🔍 Phase 2: New outreach — companies hiring FastAPI/Python on Rails (cap {cap})...")
     suppressed = load_suppression()
-    leads = find_leads(github_token, cap)
+    already = set(suppressed) | {
+        (e.get("email") or "").lower() for e in sent_log if e.get("email")
+    }
+    leads = find_leads(github_token, cap, already)
     if not leads:
         log("  No qualifying leads found this run.")
         return
