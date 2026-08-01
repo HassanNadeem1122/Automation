@@ -95,7 +95,8 @@
     "subject": "fastapi migration / citizensadvice",
     "initial_sent_at": "2026-07-08T13:27:35.657490+00:00",
     "follow_up_sent_at": "2026-07-13T15:41:22.979589+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-01T13:01:11.857551+00:00"
   },
   {
     "org": "samvera",
@@ -103,7 +104,8 @@
     "subject": "fastapi migration / samvera",
     "initial_sent_at": "2026-07-09T04:52:37.343157+00:00",
     "follow_up_sent_at": "2026-07-13T15:41:22.979589+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-01T13:01:11.857551+00:00"
   },
   {
     "org": "cloudfoundry",
@@ -111,7 +113,8 @@
     "subject": "fastapi migration / cloudfoundry",
     "initial_sent_at": "2026-07-09T04:52:37.343157+00:00",
     "follow_up_sent_at": "2026-07-13T15:41:22.979589+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-01T13:01:11.857551+00:00"
   },
   {
     "org": "skyderby",
@@ -119,7 +122,8 @@
     "subject": "fastapi migration / skyderby",
     "initial_sent_at": "2026-07-09T04:52:37.343157+00:00",
     "follow_up_sent_at": "2026-07-13T15:41:22.979589+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-01T13:01:11.857551+00:00"
   },
   {
     "org": "voxpupuli",
@@ -127,7 +131,8 @@
     "subject": "fastapi migration / voxpupuli",
     "initial_sent_at": "2026-07-09T12:11:06.634623+00:00",
     "follow_up_sent_at": "2026-07-13T15:41:22.979589+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-01T13:01:11.857551+00:00"
   },
   {
     "org": "sul-dlss",
@@ -564,6 +569,146 @@
     "source": "hn_whoishiring",
     "subject": "rails \u2192 fastapi migration @ prove ai",
     "initial_sent_at": "2026-07-16T15:01:24.779080+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "FetLife",
+    "email": "jointheteam+do+hn@fetlife.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "fetlife rails migration \u2014 already done this one",
+    "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "PeakFlow",
+    "email": "careers@pfdigitalconsulting.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "peakflow \u2013 rails \u2192 fastapi migration",
+    "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Mulliganpost",
+    "email": "hiring@mulliganpost.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "mulligan post \u2013 rails to fastapi migration",
+    "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Kosuke Tanabe",
+    "email": "nabeta@fastmail.fm",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "enju_leaf migration \u2014 already did rails \u2192 fastapi once",
+    "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Inge J\u00f8rgensen",
+    "email": "inge@elektronaut.no",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "b3s rails \u2192 fastapi migration",
+    "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Jack Rothrock",
+    "email": "jrothrock14@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "scout_apm_ruby \u2192 fastapi migration \u2014 seen this before",
+    "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Mahad Kalam",
+    "email": "mahadkalam1234@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "hackatime rails \u2192 fastapi migration",
+    "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "acmetech",
+    "email": "info@acmetechnologygroup.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "socializer rails \u2192 fastapi migration \u2014 acmetech",
+    "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Erik Kessler",
+    "email": "ekessler@salsify.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "avro-schema-registry + rails \u2192 fastapi migration \u2014 hassan",
+    "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Kirk Wang",
+    "email": "k3wang@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "hyrax migration \u2192 fastapi, kirk wang",
+    "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "James Coleman",
+    "email": "jamecoleman@paypal.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "pg_ha_migrations + a rails\u2192fastapi migration you might care about",
+    "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Stephen Hulme",
+    "email": "sh51@sanger.ac.uk",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "sequencescape migration \u2014 ruby/rails to fastapi",
+    "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Pierre Rioux",
+    "email": "pierre.rioux@mcgill.ca",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "cbrain rails \u2192 fastapi migration \u2014 done this before",
+    "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Justin Coyne",
+    "email": "jcoyne@justincoyne.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "spotlight rails \u2192 fastapi migration \u2014 hassan",
+    "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
