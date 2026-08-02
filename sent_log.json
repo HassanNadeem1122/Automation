@@ -140,7 +140,8 @@
     "subject": "fastapi migration / sul-dlss",
     "initial_sent_at": "2026-07-09T12:11:06.634623+00:00",
     "follow_up_sent_at": "2026-07-14T14:50:18.841511+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-02T13:01:07.338423+00:00"
   },
   {
     "org": "lylo",
@@ -150,7 +151,8 @@
     "subject": "fastapi migration / pagecord",
     "initial_sent_at": "2026-07-11T14:21:44.332441+00:00",
     "follow_up_sent_at": "2026-07-14T14:50:18.841511+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-02T13:01:07.338423+00:00"
   },
   {
     "org": "rubycentral",
@@ -160,7 +162,8 @@
     "subject": "fastapi migration / cfp-app",
     "initial_sent_at": "2026-07-11T14:21:44.332441+00:00",
     "follow_up_sent_at": "2026-07-14T14:50:18.841511+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-02T13:01:07.338423+00:00"
   },
   {
     "org": "coderdojo-japan",
@@ -170,7 +173,8 @@
     "subject": "fastapi migration / coderdojo.jp",
     "initial_sent_at": "2026-07-11T14:21:44.332441+00:00",
     "follow_up_sent_at": "2026-07-14T14:50:18.841511+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-02T13:01:07.338423+00:00"
   },
   {
     "org": "karafka",
@@ -180,7 +184,8 @@
     "subject": "fastapi migration / karafka-web",
     "initial_sent_at": "2026-07-11T14:21:44.332441+00:00",
     "follow_up_sent_at": "2026-07-14T14:50:18.841511+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-02T13:01:07.338423+00:00"
   },
   {
     "org": "shakacode",
@@ -709,6 +714,126 @@
     "source": "github_commits",
     "subject": "spotlight rails \u2192 fastapi migration \u2014 hassan",
     "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "TheDumbTechGuy",
+    "email": "sfroelich01@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "rails \u2192 fastapi migration @ thedumbtechguy",
+    "initial_sent_at": "2026-08-02T13:01:07.338423+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Robert Starsi",
+    "email": "klevo@klevo.sk",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "ruby\u2192fastapi migration \u2014 envirobly/stepped",
+    "initial_sent_at": "2026-08-02T13:01:07.338423+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Hans Lemuet",
+    "email": "hans@etamin.studio",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "rails \u2192 fastapi migration // hans lemuet",
+    "initial_sent_at": "2026-08-02T13:01:07.338423+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Matt Antonelli",
+    "email": "contact@raelys.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "ffxiv-collect rails migration \u2014 matt antonelli",
+    "initial_sent_at": "2026-08-02T13:01:07.338423+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Lorent Lempereur",
+    "email": "lorent.lempereur@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "keycloak-api-rails \u2192 fastapi migration \u2014 lorent lempereur",
+    "initial_sent_at": "2026-08-02T13:01:07.338423+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Miha Rekar",
+    "email": "info@mr.si",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "rails \u2192 fastapi migration \u2014 miha rekar visualizer",
+    "initial_sent_at": "2026-08-02T13:01:07.338423+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Gregory N. Schmit",
+    "email": "schmitgreg@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "rails-rest-framework \u2192 fastapi migration \u2014 hassan",
+    "initial_sent_at": "2026-08-02T13:01:07.338423+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Mikkel Malmberg",
+    "email": "mikkel@brnbw.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "nitro_kit migration \u2014 rails to fastapi",
+    "initial_sent_at": "2026-08-02T13:01:07.338423+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "AkitaOnRails",
+    "email": "fabioakita@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "rails \u2192 fastapi migration @ akitaonrails",
+    "initial_sent_at": "2026-08-02T13:01:07.338423+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Toshimaru",
+    "email": "me@toshimaru.net",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "rails \u2192 fastapi migration \u2014 toshimaru",
+    "initial_sent_at": "2026-08-02T13:01:07.338423+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "bodrovis",
+    "email": "bodrovis@protonmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "angular_rails_csrf maintainer role + rails \u2192 fastapi migration",
+    "initial_sent_at": "2026-08-02T13:01:07.338423+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Alexey Poimtsev",
+    "email": "alexey.poimtsev@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "rails \u2192 fastapi migration \u2014 alexey poimtsev",
+    "initial_sent_at": "2026-08-02T13:01:07.338423+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
