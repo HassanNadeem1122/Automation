@@ -6,6 +6,12 @@
     "note": "Chronograph (chronograph.pe) | Platform Engineer | Full-Time | Remote (US) | $175,000 - $215,000 USD + equity Chronograph was founded to bring next-generation technology to private capital markets. Through our suite of cloud-based analytics and data management solutions, we help many of the world's "
   },
   {
+    "company": "US enterprise software company",
+    "tier": "ok",
+    "link": "https://app.onstrider.com/r/mernastalentnetwork?job=ZnVsbC1z...",
+    "note": "US enterprise software company | Full-stack Developer | Remote LATAM | $3.5k\u2013$4.9k/mo Hiring a long-term remote Full-stack Developer for a legacy enterprise web app. Remote from: Argentina, Brazil, Colombia, Mexico, Paraguay, Chile, Peru, or Costa Rica. Stack: C#, .NET Framework 4.8, ASP.NET WebForm"
+  },
+  {
     "company": "New York, NY",
     "tier": "ok",
     "link": "https://uctalent.io/referral/Huynh_Nhu_Bao_Nhan221138/Mg5J2X...",
@@ -16,6 +22,12 @@
     "tier": "strong",
     "link": "https://uctalent.io/referral/Huynh_Nhu_Bao_Nhan221138/O-al4W...",
     "note": "ResortPass | Senior Software Engineer, Frontend | New York, NY | Onsite | Full-time | $160k\u2013$180k ($210k for senior band) + Equity | Visa possible for exceptional candidates ResortPass is rebuilding the web experience behind one of the largest hospitality marketplaces. We're rewriting ~75% of resort"
+  },
+  {
+    "company": "FusionAuth",
+    "tier": "ok",
+    "link": "https://fusionauth.io/careers/",
+    "note": "FusionAuth | Principal Software Engineer, Senior Java Engineer - Cloud, Account Executive | Varies between REMOTE (in USA, also in Europe but only for the account exec position) and ONSITE in Denver, CO, USA, details in each job desc | Salary ranges for the Principal Software Engineer it is 225k-270"
   },
   {
     "company": "Confido",
@@ -52,6 +64,12 @@
     "tier": "ok",
     "link": "https://www.perrystreet.com",
     "note": "Perry Street Software | https://www.perrystreet.com | Remote | Full-Time | Global Perry Street Software, the largest independent publisher of LGBTQ+ apps globally and creator of SCRUFF (www.scruff.com) and Jack'd (www.jackd.com), is hiring for Senior Ruby Developer. In this role, you will help build"
+  },
+  {
+    "company": "(see note)",
+    "tier": "ok",
+    "link": "https://drive.google.com/file/d/1-lA94zLI6XEusexLPIQvRTq-dLL...",
+    "note": "I'm AI Engineer hands on 2 years of experience Location : India Remote : preferable ok Tech stack : Python | Java | JavaScript | C | Go | C# | Spring Boot | React.js | HTML | CSS | SQL | MongoDB | H2 Database | TensorFlow | PyTorch | Machine Learning | Deep Learning | LangChain | LangGraph | CrewAI "
   },
   {
     "company": "Rail Europe",
@@ -132,6 +150,12 @@
     "note": "Hellotext \u2014 Senior Full-Stack Ruby on Rails \u2014 Remote (LATAM/EU) - https://www.hellotext.com We're building a conversational revenue system for eCommerce \u2014 think AI + automation that actually drives sales over WhatsApp/SMS, not just dashboards. Small team, product-first, moving fast. Stack: Ruby on R"
   },
   {
+    "company": "FusionAuth",
+    "tier": "ok",
+    "link": "https://fusionauth.io/careers/",
+    "note": "FusionAuth | Principal Software Engineer, Senior Java Engineer - Cloud, Account Executive, Solutions Engineer | Varies between REMOTE (in USA, also in Europe but only for the account exec/solutions engineer positions) and ONSITE in Denver, CO, USA, details in each job desc | Salary ranges for the Pr"
+  },
+  {
     "company": "Relevant Healthcare",
     "tier": "ok",
     "link": "https://relevant.healthcare/jobs/",
@@ -178,6 +202,12 @@
     "tier": "strong",
     "link": "https://jobs.ashbyhq.com/stream/cbabbb5d-0e34-486b-acf7-ce40...",
     "note": "Stream | Amsterdam (NL), Skopje (North Macedonia)| Remote possible | Full Time | Visa Sponsorship We power real-time Chat, Video, Activity Feeds, and AI Moderation for apps like Strava, Bumble, eBay, and Patreon - billions of API requests per month, millions of concurrent users. We're looking for a "
+  },
+  {
+    "company": "FusionAuth",
+    "tier": "ok",
+    "link": "https://fusionauth.io/careers/",
+    "note": "FusionAuth | Senior Java Engineer, Account Executive, Solutions Engineer | Varies between REMOTE (in USA, also in Europe but only for the account exec/solutions engineer positions) and ONSITE in Denver, CO, USA, details in each job desc | Salary ranges for the Senior Java Engineer it is 140k-180k, b"
   },
   {
     "company": "Prophet Town LLC",
@@ -258,10 +288,22 @@
     "note": "Greenhouse Software | Engineering Manager (Analytics Product) | REMOTE (Ontario or BC, Canada) | Full-time | We're unable to support sponsorship at this time. Greenhouse is the company dedicated to making hiring work for everyone. We help over 7,000 companies meet their hiring goals, and over a mill"
   },
   {
+    "company": "InfoMarines Inc",
+    "tier": "ok",
+    "link": "https://devitjobs.com/jobs/InfoMarines-Inc-Senior-Java-Devel...",
+    "note": "InfoMarines Inc | Senior Java Developer | Denver, Colorado, USA | Onsite / Remote | $156,000 - 156,000 / year | Full-Time We are excited to announce an opening for a Senior Java / Mainframe Application Developer to support our client with enterprise-scale software systems. This role allows for 100% "
+  },
+  {
     "company": "Curie",
     "tier": "strong",
     "link": "https://jobs.ashbyhq.com/curie/cea56a9a-d238-4101-a56c-f94a4...",
     "note": "Curie | AI Engineer | Hybrid (Chicago), Remote (San Francisco) | Full-time Curie is a telehealth platform combining clinical expertise with AI to deliver personalized, accessible care \u2014 intelligent intake, treatment matching, and AI-powered tools for clinicians. Team includes ex-founders, clinicians"
+  },
+  {
+    "company": "Results Generation",
+    "tier": "ok",
+    "link": "https://www.indeed.com/job/cloud-devops-engineer-9234cb66e9a...",
+    "note": "Results Generation | Cloud & DevOps Engineer | Austin, TX (Hybrid) We're a digital marketing platform company running a fleet of PHP/Lumen microservices on GCP, and supporting/rebuilding a legacy monolith. Small team, no bureaucracy, real infrastructure problems \u2014 multi-cluster Kubernetes, async mes"
   },
   {
     "company": "AREO",
@@ -294,10 +336,28 @@
     "note": "Vantage | Senior/Staff Software Engineers | NYC and Remote | Full Time Vantage is an a16z-backed FinOps / Cloud Cost Management platform that helps 15,000+ organizations globally like Block, Vercel, Temporal, Rippling, FanDuel, CircleCI, etc manage their infrastructure costs. We are a ruby/rails sho"
   },
   {
+    "company": "(see note)",
+    "tier": "ok",
+    "link": "https://smrtr.io/y462n",
+    "note": "Ridgeline International | Software Engineer, Full Stack (Angular and Java) | REMOTE (US) | Full-Time Ridgeline International builds software that fights Ubiquitous Technical Surveillance (UTS), which is the growing threat of everyday commercial devices, apps, and networks being used to passively col"
+  },
+  {
     "company": "Apex Dental Partners",
     "tier": "strong",
     "link": "https://www.apexdp.com",
     "note": "Apex Dental Partners | Full-Stack Developer | Dallas, TX (Remote US or Hybrid) | https://www.apexdp.com We're a Dental Support Organization running 59 practices across TX/OK/CO/MO/IA/NE/TN/AZ. The unsexy industry description hides what's actually an interesting technical role: a small dev team with "
+  },
+  {
+    "company": "Company: Karma8",
+    "tier": "ok",
+    "link": "https://career.habr.com/vacancies/1000164014",
+    "note": "Company: Karma8 Location: Remote (Moscow timezone, UTC+3) Type: Full-time Compensation: from $2500/month Russian-speaking team Karma8 builds S3-compatible object storage for high-throughput workloads (AI, video, large-scale systems). Tech stack: Vanilla JavaScript, jQuery, Bootstrap, HTML/CSS, Git W"
+  },
+  {
+    "company": "FusionAuth",
+    "tier": "ok",
+    "link": "https://fusionauth.io/careers/",
+    "note": "FusionAuth | Senior Java Engineer, Account Executive , Solutions Engineer | Varies between REMOTE (in USA, also in Europe but only for the account exec/solutions engineer positions) and ONSITE in Denver, CO, USA, details in each job desc | Salary ranges listed on job req, but for the Senior Java Eng"
   },
   {
     "company": "Rootly",
@@ -360,6 +420,12 @@
     "note": "Cenovus Energy Inc. | Senior Software Engineer | Full\u2011Time | ONSITE | Calgary, Alberta, Canada | Relocation Support | https://cenovus.wd3.myworkdayjobs.com/careers/job/CA-AB-Calg... ? We are hiring experienced Software Engineers to help accelerate delivery of AI solutions at our Energy company. We'r"
   },
   {
+    "company": "FusionAuth",
+    "tier": "ok",
+    "link": "https://fusionauth.io/blog/fusionauth-acquires-permify",
+    "note": "FusionAuth | Senior Java Engineer, Technical Support Engineer, Account Executive , Solutions Engineer | Varies between REMOTE (in USA, also in Europe but only for the account exec/solutions engineer positions) and ONSITE in Denver, CO, USA, details in each job desc | Salary ranges listed on job req,"
+  },
+  {
     "company": "Empire Flippers",
     "tier": "strong",
     "link": "https://empireflippers.com",
@@ -406,6 +472,12 @@
     "tier": "ok",
     "link": "https://www.cliniko.com/",
     "note": "Cliniko | Full stack developer, React developer | https://www.cliniko.com/ | Remote | Full Time (30 hour week, full time pay) Cliniko is practice management software that makes life easy for allied health professionals by handling appointment scheduling, storing treatment notes, managing invoices an"
+  },
+  {
+    "company": "Shinzo",
+    "tier": "ok",
+    "link": "https://shinzo.network",
+    "note": "Shinzo ( https://shinzo.network )| USA/Canada + REMOTE | Multiple Full-Time Roles We're building the read layer for blockchains. The irony of \"trustless\" applications depending on centralized indexers like Alchemy or The Graph isn't lost on us\u2014we're fixing it. Shinzo embeds indexing directly into va"
   },
   {
     "company": "Teamtailor",
@@ -486,6 +558,12 @@
     "note": "Vantage | Senior/Staff Software Engineers | NYC and Remote | Full Time Vantage is an a16z-backed FinOps / Cloud Cost Management platform that helps 15,000+ organizations globally like Block, Vercel, Temporal, Rippling, FanDuel, CircleCI, etc manage their infrastructure costs. We are a ruby/rails sho"
   },
   {
+    "company": "FusionAuth",
+    "tier": "ok",
+    "link": "https://fusionauth.io/blog/fusionauth-acquires-permify",
+    "note": "FusionAuth | Senior Java Engineer, Technical Support Engineer, Senior UX Designer, Account Executive | Varies between REMOTE (in USA, also in Europe but only for the sales positions) and ONSITE in Denver, CO, USA, details in each job desc | Salary ranges listed on job req, but for the Senior Java En"
+  },
+  {
     "company": "Tangible Materials",
     "tier": "ok",
     "link": "https://careers.tangiblematerials.com/",
@@ -496,6 +574,18 @@
     "tier": "ok",
     "link": "",
     "note": "The Museum of Modern Art | New York City | partial onsite | $140k-$160k We\u2019re looking for a Senior Front-End Developer to own our technical design system and architecture. You\u2019ll work at the intersection of culture and technology, delivering high-performance, accessible experiences for our public-fa"
+  },
+  {
+    "company": "OptTek Systems",
+    "tier": "ok",
+    "link": "https://www.opttek.com/2026/01/senior-scientific-analyst-dev...",
+    "note": "OptTek Systems | Full-Time | Senior Scientific Analyst/Developer | ONSITE (Colorado Springs, CO) US citizenship is required along with the ability to obtain and maintain a US Department of Defense (DoD) security clearance. OptTek is seeking a senior scientific analyst/developer with great technical "
+  },
+  {
+    "company": "Securikett",
+    "tier": "ok",
+    "link": "https://www.securikett.com/",
+    "note": "Securikett | Senior Software Developer | Krems an der Donau (near Vienna), Austria (ONSITE) Senior Fullstack Developer (1 UI/UX-focused role, 1 general role) We are Securikett ( https://www.securikett.com/ ), a 100% family-owned company in product protection and anti-counterfeiting. Beyond security "
   },
   {
     "company": "(see note)",
@@ -646,6 +736,12 @@
     "tier": "ok",
     "link": "https://triumph.io",
     "note": "Triumph Financial | https://triumph.io | Engineer (Senior | Lead | Staff) | REMOTE (USA only) | Full Time | $150-$300k At Triumph Financial, we\u2019re building the modern freight payments network powering over $37B in annual volume. Our mission is to make freight transactions seamless, accurate, and sec"
+  },
+  {
+    "company": "FusionAuth",
+    "tier": "ok",
+    "link": "https://fusionauth.io/blog/fusionauth-acquires-permify",
+    "note": "FusionAuth | Senior Java Engineer, Senior Security Engineer, Account Executive | Varies between REMOTE and ONSITE in Denver, CO, USA, details in job desc | Salaries listed on job req, but for the Java Engineer it is 140k-180k Our mission is to make authentication and authorization simple and secure "
   },
   {
     "company": "Aha!",
