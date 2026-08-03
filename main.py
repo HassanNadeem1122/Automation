@@ -145,6 +145,10 @@ PROOF_URL = env("PROOF_URL", "https://github.com/HassanNadeem1122/fat-free-crm-f
 # combination is what says "polyglot shop mid-migration", not just "a job".
 PY_SIGNALS = ("fastapi", "python")
 RUBY_SIGNALS = ("rails", "ruby")
+# Non-Ruby legacy stacks. These alone are too noisy to qualify a lead ("java"
+# and "php" show up in unrelated contexts constantly), so they only count when
+# paired with a STRONG_SIGNALS word below.
+OTHER_LEGACY_SIGNALS = ("php", "java", ".net", "asp.net", "cobol", "delphi")
 # Presence of these upgrades a lead to "strong" (explicitly moving/rewriting).
 STRONG_SIGNALS = ("fastapi", "migrat", "rewrit", "porting", "moving off", "legacy")
 
@@ -347,7 +351,7 @@ def extract_email(text: str) -> str | None:
 
 
 def qualify(text: str) -> str | None:
-    """Grade a job post as a Rails-migration prospect.
+    """Grade a post as a legacy-migration prospect.
 
     Requiring Python AND Rails AND an email in the same post turned out to match
     ~1 post in 1,475 — far too strict to be useful. The workable signal is just
@@ -355,14 +359,24 @@ def qualify(text: str) -> str | None:
     engineering team and a budget, which is who buys a migration. Posts that also
     mention Python/FastAPI or an explicit rewrite are graded 'strong' and get
     emailed first.
+
+    Non-Ruby legacy stacks (PHP/Java/.NET/COBOL/Delphi) qualify too, but only
+    paired with an explicit STRONG_SIGNALS word (migrat/rewrit/legacy/etc) —
+    unlike "rails", those words show up in unrelated posts constantly, so the
+    bar has to be a real rewrite/migration signal, not just the language name.
+    Ruby leads still grade "strong" since the portfolio proof is Rails-specific;
+    other-legacy leads cap at "ok" even with a strong word, since the pitch
+    there is "the process transfers", not "I've done this exact stack".
     """
     low = text.lower()
-    if not any(s in low for s in RUBY_SIGNALS):
-        return None
-    has_py = any(s in low for s in PY_SIGNALS)
-    if has_py or any(s in low for s in STRONG_SIGNALS):
-        return "strong"
-    return "ok"
+    has_ruby = any(s in low for s in RUBY_SIGNALS)
+    has_strong = any(s in low for s in STRONG_SIGNALS)
+    if has_ruby:
+        has_py = any(s in low for s in PY_SIGNALS)
+        return "strong" if (has_py or has_strong) else "ok"
+    if any(s in low for s in OTHER_LEGACY_SIGNALS) and has_strong:
+        return "ok"
+    return None
 
 
 # A pipe-segment containing any of these is a job title / employment type /
@@ -605,6 +619,13 @@ def find_hn_search_leads(exclude: set, limit: int = 40) -> list:
         "legacy rails codebase",
         "rails technical debt rewrite",
         "porting rails to python",
+        # Other legacy stacks — same migration-pain signal, broader than Rails.
+        "legacy php codebase rewrite",
+        "migrating off php monolith",
+        "legacy java monolith migration",
+        "rewriting legacy .net application",
+        "porting legacy codebase to python",
+        "old php app technical debt",
     ]
     leads = []
     for q in queries:
@@ -627,7 +648,8 @@ def find_hn_search_leads(exclude: set, limit: int = 40) -> list:
             if len(leads) >= limit:
                 break
             text = strip_html(h.get("comment_text") or "")
-            if not qualify(text):
+            tier = qualify(text)
+            if not tier:
                 continue
             author = h.get("author") or ""
             # Prefer an address in the comment itself; otherwise fall back to the
@@ -639,7 +661,7 @@ def find_hn_search_leads(exclude: set, limit: int = 40) -> list:
             leads.append({
                 "email": email,
                 "company": author[:80] or "there",
-                "tier": "strong" if any(s in text.lower() for s in STRONG_SIGNALS) else "ok",
+                "tier": tier,
                 "source": "hn_search",
                 "hn_user": author,
                 "snippet": " ".join(text.split())[:700],
@@ -675,7 +697,8 @@ def find_remoteok_leads(exclude: set) -> list:
             continue
         blob = " ".join(str(row.get(k, "")) for k in
                         ("position", "description", "tags", "company")).lower()
-        if not qualify(blob):
+        tier = qualify(blob)
+        if not tier:
             continue
         email = extract_email(blob) or extract_email(str(row.get("apply_url", "")))
         if not email or email in exclude:
@@ -684,7 +707,7 @@ def find_remoteok_leads(exclude: set) -> list:
         leads.append({
             "email": email,
             "company": str(row.get("company"))[:80],
-            "tier": "strong" if any(s in blob for s in STRONG_SIGNALS) else "ok",
+            "tier": tier,
             "source": "remoteok",
             "snippet": f"{row.get('position','')} — {str(row.get('description',''))[:500]}".strip(),
         })
@@ -801,16 +824,18 @@ def generate_initial_email(lead: dict) -> dict | None:
 Company / project: {lead['company']}
 
 About me (the sender):
-- I recently ported ~6,000 lines of Ruby on Rails (Fat Free CRM) to FastAPI, end to end.
+- I migrate legacy backends to modern stacks, whatever language they're stuck in, not only Ruby.
+- My concrete, most recent proof: ported ~6,000 lines of Ruby on Rails (Fat Free CRM) to FastAPI end to end, auth, models, and the API layer rebuilt with tests.
 - Architecture and code: {PROOF_URL}
+- The same process applies to old PHP, Java, or .NET codebases too, not just Ruby, but the Rails project is the one I can actually point to.
 
 STRICT RULES:
 1. Tone: informal, technical, direct — like messaging another engineer. NO sales vocabulary, no "hope you're well", no "I came across your company and was impressed".
-2. Length: under 80 words.
+2. Length: 60 to 90 words. A little more detail than a one-liner, but no filler.
 {specific_rule}
-4. Make the connection to a possible Rails -> FastAPI/Python migration, and that I've already done exactly that one. Do not assert as fact that they are migrating, hiring, or have a problem — frame it as "if/when", since I don't actually know.
+4. Lead with the concrete Rails to FastAPI proof (real numbers or specifics if the lead snippet has them). Then, in one sentence, note the same approach works for other legacy stacks (PHP, Java, .NET), not just Ruby. Do not claim you have done those migrations, only that the process transfers. Do not assert as fact that they are migrating, hiring, or have a problem, frame it as "if/when" since I don't actually know.
 5. Include this link exactly once: {PROOF_URL}
-6. CTA: low-pressure. Offer to help de-risk the migration or take a piece of it off their plate. Ask a simple question, don't demand a call.
+6. CTA: end with ONE specific, open question about their stack (for example, what's the oldest or slowest part of it) rather than a generic "let me know" line. Low-pressure, no demand for a call.
 7. Formatting: entirely lowercase, simple line breaks.
 8. Subject: short, lowercase, plain words only. No arrows, no colons stacking, no clever punctuation.
 9. WRITE LIKE A TIRED HUMAN TYPING QUICKLY, NOT LIKE AN ASSISTANT. Specifically banned:
