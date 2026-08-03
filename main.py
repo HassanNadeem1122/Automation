@@ -290,13 +290,51 @@ def fetch_job_posts(story_id: str) -> list:
     return posts
 
 
+# Scraping free text throws up two kinds of false positive: fragments of URLs
+# that look like addresses ("architect@heroku.https"), and placeholders people
+# type as examples ("username@gmail.com"). Both waste sends and look careless.
+REAL_TLDS = {
+    "com", "net", "org", "io", "dev", "co", "me", "ai", "app", "xyz", "tech",
+    "edu", "gov", "info", "biz", "online", "site", "sh", "ly", "cc", "tv", "fm",
+    "gg", "pro", "cloud", "space", "email", "systems", "digital", "software",
+    "uk", "de", "fr", "ca", "au", "us", "in", "nl", "se", "no", "fi", "dk",
+    "es", "it", "ch", "at", "be", "pl", "cz", "ru", "br", "jp", "cn", "kr",
+    "sg", "hk", "nz", "za", "ie", "pt", "gr", "il", "mx", "ar", "cl", "eu",
+    "is", "lt", "lv", "ee", "ro", "hu", "bg", "hr", "si", "sk", "ua", "tr",
+}
+
+PLACEHOLDER_LOCALS = {
+    "username", "user", "name", "yourname", "your", "email", "youremail",
+    "someone", "somebody", "example", "test", "foo", "bar", "me@example",
+    "firstname", "lastname", "address", "more",
+}
+
+# Profile/social links, not mailboxes.
+NON_CONTACT_DOMAINS = {
+    "twitter.com", "x.com", "github.com", "linkedin.com", "facebook.com",
+    "instagram.com", "youtube.com", "reddit.com", "medium.com", "t.co",
+    "news.ycombinator.com", "ycombinator.com", "mastodon.social", "bsky.app",
+}
+
+
 def is_valid_lead_email(email: str) -> bool:
-    if not email or "@" not in email:
+    if not email or email.count("@") != 1:
         return False
-    low = email.lower()
+    low = email.lower().strip().strip(".,;:)")
     if low.startswith(SKIP_PREFIXES):
         return False
     if any(marker in low for marker in JUNK_EMAIL_MARKERS):
+        return False
+
+    local, _, domain = low.partition("@")
+    if not local or not domain or "." not in domain:
+        return False
+    if local in PLACEHOLDER_LOCALS:
+        return False
+    if domain in NON_CONTACT_DOMAINS:
+        return False
+    # A bare "heroku.https" or "enveritas.also" is a mangled URL, not a domain.
+    if domain.rsplit(".", 1)[-1] not in REAL_TLDS:
         return False
     return True
 
@@ -726,7 +764,10 @@ def generate_initial_email(lead: dict) -> dict | None:
             "3. Open by referring to the SPECIFIC point they made in their comment, "
             "in your own words, so it is obvious you read it. Quote at most a few "
             "words. Do not say 'I saw your post' generically, and do not claim they "
-            "are hiring or that you know their company."
+            "are hiring or that you know their company.\n"
+            "3b. The name given below is only their Hacker News username. Never "
+            "treat it as a company name and never write phrases like 'for <name>'. "
+            "Address them as a person or not at all."
         )
     elif lead.get("source") == "github_commits":
         context_line = (
