@@ -64,9 +64,18 @@ EMAIL_PROVIDER = env("EMAIL_PROVIDER", "ses").lower()   # "ses" or "gmail"
 SES_REGION = env("SES_REGION", "us-east-1")
 FROM_NAME = env("FROM_NAME", "Hassan Nadeem")
 FROM_EMAIL = env("FROM_EMAIL", "hello@hassandevs.online")  # must be on the verified domain
-# Replies land here. Defaults to your Gmail so the follow-up reply-detector
-# (which reads that Gmail over IMAP) keeps working — keep them the same inbox.
+# Replies land here. This is the DOMAIN address, not Gmail: pointing Reply-To at
+# a freemail box while sending from the domain cost ~3 spam points
+# (FREEMAIL_FORGED_REPLYTO). Mail sent here goes SES -> S3 -> SNS -> the
+# reply-dash Worker's KV, which is why the reply detector below reads that
+# Worker's API and not Gmail IMAP.
 REPLY_TO = env("REPLY_TO", "") or os.environ.get("GMAIL_ADDRESS", "")
+
+# Where inbound replies actually live now. Token is a secret because this repo
+# is public — without it the detector degrades to "never replied", which would
+# silently resume the old bug, so a missing token is logged loudly at startup.
+REPLY_DASH_URL = env("REPLY_DASH_URL", "https://reply-dash.meshareapp.workers.dev").rstrip("/")
+REPLY_DASH_TOKEN = env("REPLY_DASH_TOKEN", "")
 
 # ── Warmup + automatic ramp ──────────────────────────────────────────────
 # A brand-new sending domain must ramp slowly or it torches its own reputation.
@@ -221,7 +230,66 @@ def already_contacted(email: str, sent_log: list) -> bool:
 
 # ── Inbox Sync ────────────────────────────────────────────────────────────
 
+_replied_senders: set | None = None
+
+
+def fetch_replied_senders() -> set:
+    """Every address that has written to the domain inbox.
+
+    Reply-To moved to hello@hassandevs.online to kill the FREEMAIL_FORGED_REPLYTO
+    spam penalty, which meant replies stopped arriving in Gmail entirely — the
+    old per-address IMAP check was querying a mailbox that no longer receives
+    prospect mail, so it answered "no reply" every time and happily chased people
+    who had already answered. The domain's mail lives in the reply-dash Worker's
+    KV, so we read that instead: one fetch per run rather than an IMAP round trip
+    per contact.
+
+    Only the inbox folder counts. The Worker already sorts bounces, DMARC reports
+    and out-of-office autoreplies into junk, and an out-of-office is precisely
+    the case where we DO still want the follow-up to go out later.
+    """
+    global _replied_senders
+    if _replied_senders is not None:
+        return _replied_senders
+
+    senders: set = set()
+    if not REPLY_DASH_TOKEN:
+        log("  ⚠️ REPLY_DASH_TOKEN unset — cannot see replies, follow-ups may "
+            "chase people who already answered. Set the secret.")
+        _replied_senders = senders
+        return senders
+
+    try:
+        resp = requests.get(
+            f"{REPLY_DASH_URL}/api/messages",
+            params={"folder": "inbox", "key": REPLY_DASH_TOKEN},
+            timeout=25,
+        )
+        if resp.status_code != 200:
+            log(f"  ⚠️ reply-dash returned {resp.status_code} — treating as no replies.")
+        else:
+            data = resp.json()
+            msgs = data if isinstance(data, list) else data.get("messages", [])
+            for m in msgs:
+                addr = ((m.get("from") or {}).get("email") or "").lower().strip()
+                if addr:
+                    senders.add(addr)
+            log(f"  📥 reply-dash inbox: {len(senders)} distinct senders")
+    except Exception as e:
+        log(f"  ⚠️ reply-dash fetch failed: {e} — treating as no replies.")
+
+    _replied_senders = senders
+    return senders
+
+
 def check_if_replied(to_email: str, gmail_user: str, gmail_pass: str) -> bool:
+    if (to_email or "").lower().strip() in fetch_replied_senders():
+        return True
+
+    # Legacy path: the earliest leads were emailed while Reply-To was still the
+    # Gmail address, so their replies genuinely would be sitting in Gmail.
+    if not gmail_user or not gmail_pass:
+        return False
     try:
         mail = imaplib.IMAP4_SSL("imap.gmail.com")
         mail.login(gmail_user, gmail_pass)

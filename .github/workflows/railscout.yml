@@ -56,6 +56,10 @@ jobs:
           FROM_EMAIL: ${{ vars.FROM_EMAIL }}
           FROM_NAME: ${{ vars.FROM_NAME }}
           REPLY_TO: ${{ vars.REPLY_TO }}
+          # Reply detection reads the domain mailbox (reply-dash KV), not Gmail —
+          # Reply-To is the domain now, so Gmail never sees prospect replies.
+          REPLY_DASH_URL: ${{ vars.REPLY_DASH_URL }}
+          REPLY_DASH_TOKEN: ${{ secrets.REPLY_DASH_TOKEN }}
           SES_REGION: ${{ vars.SES_REGION }}
           WARMUP_START_DATE: ${{ vars.WARMUP_START_DATE }}
           PRIME_DAYS: ${{ vars.PRIME_DAYS }}
