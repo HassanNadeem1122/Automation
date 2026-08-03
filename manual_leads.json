@@ -78,6 +78,12 @@
     "note": "AREO | Remote (EU) | Full-Time | Equity | Roles: [Engineering Manager (Ruby on Rails), Lead Product Engineer (Ruby on Rails)] My name is Marius and I am the CTO at AREO ( https://goareo.com/ ). AREO, founded in January 2023 by a team with 20+ years of combined experience in retail and startups, is a"
   },
   {
+    "company": "Y Combinator",
+    "tier": "strong",
+    "link": "https://www.ycombinator.com/software",
+    "note": "*Y Combinator | Product Engineers | San Francisco (Onsite) | Full-time | https://www.ycombinator.com/software YC is hiring Product Engineers to build the future of YC -- and increasingly, software for startups everywhere. We're a team of ~20 engineers building everything from Work at a Startup and D"
+  },
+  {
     "company": "Company: Jukebox Health",
     "tier": "ok",
     "link": "https://grnh.se/44buw0q19us",
@@ -226,6 +232,12 @@
     "tier": "ok",
     "link": "https://jobs.ashbyhq.com/Scholarly/d4c84468-fd4b-4dd7-9b22-2...",
     "note": "Scholarly | Senior Software Engineer | Seattle, On-Site | Full-Time | $160k - $200k + equity + health benefits + equipment budget Scholarly is building the HR operating system for higher education. We've built a software platform that enables our customers to make data-driven decisions and to automa"
+  },
+  {
+    "company": "Y Combinator",
+    "tier": "ok",
+    "link": "https://www.ycombinator.com/careers",
+    "note": "Y Combinator | Product Engineers on YC's own team | San Francisco | Full Time | $185K-$485K I'm Ryan, an EM and engineer here at YC. We have a small, 18-person software team with no PMs -- engineers own everything end-to-end. We build the software behind YC's $6B in investments: tools that help part"
   },
   {
     "company": "Fastly",
@@ -490,6 +502,12 @@
     "tier": "ok",
     "link": "https://x.com/isaacfranklyn10",
     "note": "Hey alex, I'm looking for a job right now and I think I would be a good fit for your organization. I love Go, that's what made me reignite my love towards programming, I have built scalable systems like Distributed Databases using Raft to building low - level backend HTTP/1.1 protocols purely withou"
+  },
+  {
+    "company": "Legion Health",
+    "tier": "ok",
+    "link": "https://jobs.ashbyhq.com/legionhealth/ffdd2b52-eb21-489e-b12...",
+    "note": "Legion Health (YC S21) | Founding Engineer (AI-Native Ops Infra) | San Francisco | ONSITE | VISA SPONSORSHIP | $130k\u2013$190k + Equity Legion Health is building the AI-native operations layer for mental health care. We run our own psychiatric practice and use AI agents to handle the complex \"backend\" o"
   },
   {
     "company": "Farmgirl Flowers",
