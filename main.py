@@ -747,7 +747,7 @@ def build_footer() -> str:
     # Plain "thanks," sign-off. The old em-dash separator was one of the louder
     # tells that a message was machine-written.
     lines = ["\n\nthanks,", SENDER_NAME,
-             '', 'not relevant? just reply "unsubscribe" and i won\'t reach out again.']
+             '', 'not relevant? reply "unsubscribe" and i\'ll stop emailing.']
     if SENDER_ADDRESS:
         lines.append(SENDER_ADDRESS)
     return "\n".join(lines)
