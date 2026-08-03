@@ -499,6 +499,59 @@ def find_github_leads(github_token: str, needed: int, exclude: set | None = None
     return leads
 
 
+def find_hn_search_leads(exclude: set, limit: int = 40) -> list:
+    """Mine HN beyond the monthly hiring thread.
+
+    The "Who is hiring" thread only refreshes once a month and we exhaust it in
+    days. HN's Algolia index is free and covers every comment ever posted, so we
+    search for people actively describing Rails pain or a Python move. Someone
+    writing about their own migration is a warmer lead than a job ad.
+    """
+    queries = [
+        "rails to python migration",
+        "migrating off rails",
+        "rails to fastapi",
+        "replacing rails backend",
+        "rails performance problems scaling",
+    ]
+    leads = []
+    for q in queries:
+        if len(leads) >= limit:
+            break
+        try:
+            resp = requests.get(
+                f"{HN_API}/search",
+                params={"query": q, "tags": "comment", "hitsPerPage": 60},
+                timeout=25,
+            )
+            if resp.status_code != 200:
+                continue
+            hits = resp.json().get("hits", [])
+        except Exception as e:
+            log(f"  ⚠️ HN search '{q}' failed: {e}")
+            continue
+
+        for h in hits:
+            if len(leads) >= limit:
+                break
+            text = strip_html(h.get("comment_text") or "")
+            if not qualify(text):
+                continue
+            email = extract_email(text)
+            if not email or email in exclude:
+                continue
+            exclude.add(email)
+            leads.append({
+                "email": email,
+                "company": (h.get("author") or "there")[:80],
+                "tier": "strong" if any(s in text.lower() for s in STRONG_SIGNALS) else "ok",
+                "source": "hn_search",
+                "snippet": " ".join(text.split())[:700],
+            })
+    log(f"  🔎 HN search: {len(leads)} leads")
+    return leads
+
+
 def find_remoteok_leads(exclude: set) -> list:
     """RemoteOK publishes its whole board as free JSON — no key, no scraping.
 
@@ -564,6 +617,11 @@ def find_leads(github_token: str, cap: int, already: set) -> list:
             fresh.append(l)
     log(f"  ♻️ HN fresh after dedup: {len(fresh)} (of {len(leads)} found)")
 
+    # Order matters: people describing their own Rails pain convert far better
+    # than a repo maintainer who never asked for anything.
+    if len(fresh) < cap:
+        fresh += find_hn_search_leads(seen)
+
     if len(fresh) < cap:
         fresh += find_remoteok_leads(seen)
 
@@ -574,6 +632,24 @@ def find_leads(github_token: str, cap: int, already: set) -> list:
 
 
 # ── AI Generation ─────────────────────────────────────────────────────────
+
+def de_ai(text: str) -> str:
+    """Strip the punctuation and vocabulary that make text read as machine-written."""
+    out = text
+    # Em/en dash used as a clause break becomes a comma or a full stop.
+    out = re.sub(r"\s*[—–]\s*", ", ", out)
+    out = out.replace("->", "to").replace("=>", "to").replace("→", "to")
+    out = out.replace(";", ".")
+    for word, plain in (
+        ("leverage", "use"), ("streamline", "simplify"), ("robust", "solid"),
+        ("seamless", "clean"), ("utilize", "use"), ("reach out", "get in touch"),
+        ("circle back", "follow up"), ("cutting-edge", "modern"),
+    ):
+        out = re.sub(word, plain, out, flags=re.IGNORECASE)
+    out = re.sub(r",\s*,", ",", out)
+    out = re.sub(r"\s+([.,])", r"\1", out)
+    return out.strip()
+
 
 def generate_initial_email(lead: dict) -> dict | None:
     # The prompt has to describe where this lead ACTUALLY came from. It used to
@@ -622,8 +698,16 @@ STRICT RULES:
 4. Make the connection to a possible Rails -> FastAPI/Python migration, and that I've already done exactly that one. Do not assert as fact that they are migrating, hiring, or have a problem — frame it as "if/when", since I don't actually know.
 5. Include this link exactly once: {PROOF_URL}
 6. CTA: low-pressure. Offer to help de-risk the migration or take a piece of it off their plate. Ask a simple question, don't demand a call.
-7. Formatting: entirely lowercase, casual punctuation, simple line breaks.
-8. Subject: short, lowercase, mention the migration and their company.
+7. Formatting: entirely lowercase, simple line breaks.
+8. Subject: short, lowercase, plain words only. No arrows, no colons stacking, no clever punctuation.
+9. WRITE LIKE A TIRED HUMAN TYPING QUICKLY, NOT LIKE AN ASSISTANT. Specifically banned:
+   - em dashes and en dashes (do not use the characters "—" or "–"). Use a comma, a full stop, or start a new sentence.
+   - arrows of any kind ("->", "=>", the arrow character)
+   - semicolons, and any sentence with more than one comma
+   - the words: leverage, streamline, robust, seamless, dive in, reach out, circle back, elevate, unlock, empower, cutting-edge, game-changer, delighted, excited to, hope this finds you
+   - rhetorical setups like "the thing is," "here's the kicker," "let's be honest"
+   - three-part lists (a, b, and c). Say one thing.
+10. Short sentences. Plain words. It should read like a message from one dev to another, not marketing copy.
 
 Output ONLY raw JSON starting with {{ and ending with }}: {{"subject": "...", "body": "..."}}
 """
@@ -644,7 +728,13 @@ Output ONLY raw JSON starting with {{ and ending with }}: {{"subject": "...", "b
     if start == -1 or end == 0:
         log("  ❌ AI did not return valid JSON.")
         return None
-    return json.loads(text[start:end])
+    content = json.loads(text[start:end])
+    # Belt and braces: the model still slips an em dash or an arrow in now and
+    # then, and those are the tells that make a cold email look generated.
+    for field in ("subject", "body"):
+        if isinstance(content.get(field), str):
+            content[field] = de_ai(content[field])
+    return content
 
 
 # ── SMTP Sending ──────────────────────────────────────────────────────────
@@ -654,8 +744,10 @@ class DailyLimitReached(Exception):
 
 
 def build_footer() -> str:
-    lines = ["\n\n—", SENDER_NAME,
-             'not relevant? just reply "unsubscribe" and i won\'t reach out again.']
+    # Plain "thanks," sign-off. The old em-dash separator was one of the louder
+    # tells that a message was machine-written.
+    lines = ["\n\nthanks,", SENDER_NAME,
+             '', 'not relevant? just reply "unsubscribe" and i won\'t reach out again.']
     if SENDER_ADDRESS:
         lines.append(SENDER_ADDRESS)
     return "\n".join(lines)
@@ -748,17 +840,17 @@ def send_email(to_email: str, subject: str, body: str, add_footer: bool = True) 
 # ── Follow-up sequence ────────────────────────────────────────────────────
 
 FOLLOWUP_1_BODY = (
-    "hey,\n\njust floating this to the top of your inbox. if the migration is on "
-    "the roadmap i'd be happy to take a piece of it — otherwise i'll stop bugging "
-    "you.\n\nbest,\nhassan"
+    "hey,\n\njust bumping this in case it got buried. if moving any of it to "
+    "python is something you're thinking about, happy to help with a piece of "
+    "it. if not, no worries at all.\n\nbest,\nhassan"
 )
 
 # Final "breakup" email — this consistently pulls the most replies of the whole
 # sequence, because it's easy to say "actually, wait" when someone's walking away.
 FOLLOWUP_2_BODY = (
-    "hey,\n\nlast time i'll reach out — i'll assume the migration isn't a priority "
-    "right now and close this out. if that changes, my rails -> fastapi work is "
-    f"here: {PROOF_URL}\n\ncheers,\nhassan"
+    "hey,\n\nlast note from me on this. sounds like it's not a priority right "
+    "now, which is fair. if that changes, my rails to fastapi work is here: "
+    f"{PROOF_URL}\n\ngood luck with it,\nhassan"
 )
 
 
