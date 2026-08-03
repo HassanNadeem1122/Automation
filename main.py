@@ -576,12 +576,40 @@ def find_leads(github_token: str, cap: int, already: set) -> list:
 # ── AI Generation ─────────────────────────────────────────────────────────
 
 def generate_initial_email(lead: dict) -> dict | None:
-    prompt = f"""Write a short, developer-to-developer email to a company that just posted a job on Hacker News.
+    # The prompt has to describe where this lead ACTUALLY came from. It used to
+    # say "posted a job on Hacker News" for every lead, so GitHub-sourced leads
+    # got emails opening with "saw your post on hn" about a post that never
+    # existed — an instant credibility kill if the recipient notices.
+    if lead.get("source") == "github_commits":
+        context_line = (
+            "Write a short, developer-to-developer email to the maintainer of an "
+            "open-source Ruby/Rails project you found on GitHub."
+        )
+        context_label = "What I know about them (from GitHub)"
+        specific_rule = (
+            "3. Open by referencing their actual repository by name. They are an "
+            "open-source maintainer, NOT a company that posted a job. Never claim "
+            "you saw a job post, a Hacker News post, or that they are hiring — "
+            "none of that is true here and inventing it destroys credibility."
+        )
+    else:
+        context_line = (
+            "Write a short, developer-to-developer email to a company that just "
+            "posted a job on Hacker News."
+        )
+        context_label = "Their job post (excerpt)"
+        specific_rule = (
+            "3. Open by referencing something SPECIFIC and real from their job post "
+            "(the role, the stack, or what they're building). Do not invent facts "
+            "that aren't in the post."
+        )
 
-Their job post (excerpt):
+    prompt = f"""{context_line}
+
+{context_label}:
 \"\"\"{lead['snippet']}\"\"\"
 
-Company: {lead['company']}
+Company / project: {lead['company']}
 
 About me (the sender):
 - I recently ported ~6,000 lines of Ruby on Rails (Fat Free CRM) to FastAPI, end to end.
@@ -590,8 +618,8 @@ About me (the sender):
 STRICT RULES:
 1. Tone: informal, technical, direct — like messaging another engineer. NO sales vocabulary, no "hope you're well", no "I came across your company and was impressed".
 2. Length: under 80 words.
-3. Open by referencing something SPECIFIC and real from their job post (the role, the stack, or what they're building). Do not invent facts that aren't in the post.
-4. Make the connection: they're bringing on Python/FastAPI while running Ruby/Rails — that's a migration, and I've already done exactly that one.
+{specific_rule}
+4. Make the connection to a possible Rails -> FastAPI/Python migration, and that I've already done exactly that one. Do not assert as fact that they are migrating, hiring, or have a problem — frame it as "if/when", since I don't actually know.
 5. Include this link exactly once: {PROOF_URL}
 6. CTA: low-pressure. Offer to help de-risk the migration or take a piece of it off their plate. Ask a simple question, don't demand a call.
 7. Formatting: entirely lowercase, casual punctuation, simple line breaks.
