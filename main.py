@@ -499,6 +499,53 @@ def find_github_leads(github_token: str, needed: int, exclude: set | None = None
     return leads
 
 
+# HN users routinely obfuscate the address in their profile ("me at foo dot com")
+# to dodge scrapers, so undo the common spellings before matching.
+_OBFUSCATED = re.compile(
+    r"([a-zA-Z0-9._%+-]+)\s*(?:@|\[at\]|\(at\)|\s+at\s+)\s*"
+    r"([a-zA-Z0-9.-]+)\s*(?:\.|\[dot\]|\(dot\)|\s+dot\s+)\s*([a-zA-Z]{2,})",
+    re.IGNORECASE,
+)
+
+_hn_profile_cache: dict = {}
+
+
+def hn_profile_email(username: str) -> str | None:
+    """Pull a contact address off a Hacker News profile.
+
+    The Algolia search index gives us the commenter's username but no contact
+    details. HN's own public API exposes each user's "about" text, and a good
+    number of developers list an email there. This is what makes a comment about
+    Rails pain actually actionable instead of just interesting.
+    """
+    if not username:
+        return None
+    if username in _hn_profile_cache:
+        return _hn_profile_cache[username]
+
+    email = None
+    try:
+        r = requests.get(
+            f"https://hacker-news.firebaseio.com/v0/user/{username}.json", timeout=15
+        )
+        if r.status_code == 200 and r.json():
+            about = html.unescape(strip_html(r.json().get("about") or ""))
+            direct = extract_email(about)
+            if direct:
+                email = direct
+            else:
+                m = _OBFUSCATED.search(about)
+                if m:
+                    candidate = f"{m.group(1)}@{m.group(2)}.{m.group(3)}".lower()
+                    if is_valid_lead_email(candidate):
+                        email = candidate
+    except Exception:
+        email = None
+
+    _hn_profile_cache[username] = email
+    return email
+
+
 def find_hn_search_leads(exclude: set, limit: int = 40) -> list:
     """Mine HN beyond the monthly hiring thread.
 
@@ -513,6 +560,13 @@ def find_hn_search_leads(exclude: set, limit: int = 40) -> list:
         "rails to fastapi",
         "replacing rails backend",
         "rails performance problems scaling",
+        "rewriting our rails app",
+        "moving away from ruby on rails",
+        "rails monolith slow",
+        "rails hiring python engineers",
+        "legacy rails codebase",
+        "rails technical debt rewrite",
+        "porting rails to python",
     ]
     leads = []
     for q in queries:
@@ -537,15 +591,19 @@ def find_hn_search_leads(exclude: set, limit: int = 40) -> list:
             text = strip_html(h.get("comment_text") or "")
             if not qualify(text):
                 continue
-            email = extract_email(text)
+            author = h.get("author") or ""
+            # Prefer an address in the comment itself; otherwise fall back to the
+            # commenter's HN profile, which is where most people actually keep it.
+            email = extract_email(text) or hn_profile_email(author)
             if not email or email in exclude:
                 continue
             exclude.add(email)
             leads.append({
                 "email": email,
-                "company": (h.get("author") or "there")[:80],
+                "company": author[:80] or "there",
                 "tier": "strong" if any(s in text.lower() for s in STRONG_SIGNALS) else "ok",
                 "source": "hn_search",
+                "hn_user": author,
                 "snippet": " ".join(text.split())[:700],
             })
     log(f"  🔎 HN search: {len(leads)} leads")
@@ -656,7 +714,21 @@ def generate_initial_email(lead: dict) -> dict | None:
     # say "posted a job on Hacker News" for every lead, so GitHub-sourced leads
     # got emails opening with "saw your post on hn" about a post that never
     # existed — an instant credibility kill if the recipient notices.
-    if lead.get("source") == "github_commits":
+    if lead.get("source") == "hn_search":
+        # These are the best leads we get: the person literally wrote about the
+        # problem. The email should prove it was read, not pattern-matched.
+        context_line = (
+            "Write a short, developer-to-developer email to someone who posted a "
+            "comment on Hacker News about their own backend stack or migration."
+        )
+        context_label = "The comment they actually wrote"
+        specific_rule = (
+            "3. Open by referring to the SPECIFIC point they made in their comment, "
+            "in your own words, so it is obvious you read it. Quote at most a few "
+            "words. Do not say 'I saw your post' generically, and do not claim they "
+            "are hiring or that you know their company."
+        )
+    elif lead.get("source") == "github_commits":
         context_line = (
             "Write a short, developer-to-developer email to the maintainer of an "
             "open-source Ruby/Rails project you found on GitHub."
