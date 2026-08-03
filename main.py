@@ -766,7 +766,11 @@ def de_ai(text: str) -> str:
     ):
         out = re.sub(word, plain, out, flags=re.IGNORECASE)
     out = re.sub(r",\s*,", ",", out)
-    out = re.sub(r"\s+([.,])", r"\1", out)
+    # Only collapse "word ." into "word." when the punctuation actually ends a
+    # clause (followed by space/end) — otherwise this was mangling "or .net"
+    # into "or.net" since a bare `\s+([.,])` matches the space before ANY dot,
+    # including one that's part of the next token (".net", "e.g.", etc).
+    out = re.sub(r"\s+([.,])(?=\s|$)", r"\1", out)
     return out.strip()
 
 
