@@ -1,5 +1,47 @@
 [
   {
+    "company": "Tuza",
+    "tier": "strong",
+    "link": "https://calendly.com/d/dvrx-3s6-pw9/tuza-product-engineering...",
+    "note": "Tuza | Product Engineer & AI Engineer | Shoreditch, London | Onsite 3 days/week | Visa sponsorship available We build AI agents for banks, automating the manual work in sales, onboarding and activation. Raised $7m from Northzone, Connect Ventures and TriplePoint. Working with Worldpay, Barclaycard a"
+  },
+  {
+    "company": "Pomelo Care",
+    "tier": "strong",
+    "link": "https://grnh.se/ws5ijibc4us",
+    "note": "Pomelo Care| Remote (US) First with offices in NYC and SF We\u2019re building a healthier future for women and children. We combine clinical excellence, human connection, and proactive technology to ensure our patients get the care they deserve, from preconception through midlife. - Staff Software Engine"
+  },
+  {
+    "company": "Snowflake",
+    "tier": "ok",
+    "link": "https://careers.snowflake.com/us/en/job/SNCOUS40EA1BA0045841",
+    "note": "Snowflake | Forward Deployed Engineer | Menlo Park, CA | ONSITE I\u2019m part of Snowflake\u2019s Applied AI / Forward Deployed Engineering team, and we\u2019re hiring for two roles: Forward Deployed Engineer and Senior Forward Deployed Engineer. We work directly with strategic customers to design, build, deploy, "
+  },
+  {
+    "company": "Apex Dental Partners",
+    "tier": "strong",
+    "link": "",
+    "note": "Apex Dental Partners | Full-Stack Developer | Dallas, TX (Remote US or Hybrid) | apexdp.com We're a Dental Support Organization running 65 practices across TX/OK/CO/MO/IA/NE/TN/AZ. The unsexy industry description hides what's actually an interesting technical role: a small dev team with real ownersh"
+  },
+  {
+    "company": "AREO",
+    "tier": "ok",
+    "link": "https://goareo.com/",
+    "note": "AREO | Remote (EU) / on-site in Bremen, Germany | Full-Time | Equity | Roles: [Engineering Manager (Ruby on Rails), Lead Product Engineer (Ruby on Rails), Robotics Lead] My name is Marius and I am the CTO at AREO ( https://goareo.com/ ). AREO, founded in January 2023 by a team with 20+ years of comb"
+  },
+  {
+    "company": "Stripe",
+    "tier": "ok",
+    "link": "https://stripe.com/careers/listing/backend-engineer-develope...",
+    "note": "Stripe | Hybrid (50% of time in Toronto office) | Senior Go developer We're looking for a senior-level Go developer who can design and ship idiomatic code our users love to work with. We can all write Go that compiles, but don't always know what best practices for 3rd party code are (in the Go ecosy"
+  },
+  {
+    "company": "New York, NY",
+    "tier": "ok",
+    "link": "https://uctalent.io/referral/Huynh_Nhu_Bao_Nhan221138/qeqwB6...",
+    "note": "Software Engineer - Full Stack | New York, NY | Full-time, ONSITE | $160K-$210K + equity (senior band $170K-$210K, mid $160K-$180K). We're rebuilding our core customer journey \u2014 Search \u2192 Details \u2192 Booking \u2192 Post-booking \u2014 and consolidating fragmented pricing/inventory logic into a coherent backend d"
+  },
+  {
     "company": "Chronograph",
     "tier": "ok",
     "link": "https://grnh.se/1pm4u2ys7us",
