@@ -1,5 +1,17 @@
 [
   {
+    "company": "Confido",
+    "tier": "strong",
+    "link": "https://bit.ly/4wkuQGC",
+    "note": "Confido | ML Ops, AI, Platform/Core | NYC (Chelsea) | $200k\u2013$350k+ Base We're building the AI operating system for CPG brands like OLIPOP, Tropicana, Dr. Squatch, Chobani, and 200+ others. Our customers manage over $40B in revenue on Confido. We grew 5x last year and are on track to 4x again this ye"
+  },
+  {
+    "company": "Relevant Healthcare",
+    "tier": "ok",
+    "link": "https://relevant.healthcare/jobs/",
+    "note": "Relevant Healthcare | Lead Software Engineer | Remote (US) | Full-time Relevant builds a data platform that helps safety-net healthcare providers deliver better care using data from their electronic health records. Our customers are non-profit clinics called Community Health Centers. You can read mo"
+  },
+  {
     "company": "Tuza",
     "tier": "strong",
     "link": "https://calendly.com/d/dvrx-3s6-pw9/tuza-product-engineering...",
@@ -82,12 +94,6 @@
     "tier": "ok",
     "link": "https://taxrails.com",
     "note": "Tax Rails | Ruby on Rails Engineer | Full-Time | REMOTE (UTC\u22128 to UTC+2) | $85k \u2013 $125k + Equity + benefits | https://taxrails.com Tax Rails is building TurboTax for payroll taxes \u2014 we simplify the payroll tax processes like e-filing and election filings into clean APIs. We're hiring a senior Rails "
-  },
-  {
-    "company": "3Play Media",
-    "tier": "ok",
-    "link": "https://www.3playmedia.com/company/jobs-post/?gh_jid=7761973...",
-    "note": "3Play Media | Principal Front-End Engineer (Growth) | Boston, MA | 1-day-in-office hybrid or fully remote (USA only) | Full-time | 3playmedia.com | $200\u2013250k + bonus + equity 3Play makes content accessible across disability and language. Our human-QA'd captioning, audio description, subtitling, and "
   },
   {
     "company": "Relevant Healthcare",

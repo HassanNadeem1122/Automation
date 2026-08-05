@@ -249,7 +249,7 @@
     "name": "Rusty Geldmacher",
     "subject": "fastapi migration / jekyll-contentblocks",
     "initial_sent_at": "2026-07-11T14:21:44.332441+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-05T13:01:22.834296+00:00",
     "replied": false
   },
   {
@@ -259,7 +259,7 @@
     "name": "Patricio Mac Adden",
     "subject": "fastapi migration / ruby_llm-monitoring",
     "initial_sent_at": "2026-07-11T14:21:44.332441+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-05T13:01:22.834296+00:00",
     "replied": false
   },
   {
@@ -269,7 +269,7 @@
     "name": "andrew nimmo",
     "subject": "fastapi migration / mushroom-observer",
     "initial_sent_at": "2026-07-11T14:21:44.332441+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-05T13:01:22.834296+00:00",
     "replied": false
   },
   {
@@ -279,7 +279,7 @@
     "name": "Henrique Medeiros",
     "subject": "fastapi migration / rails_stats",
     "initial_sent_at": "2026-07-11T14:21:44.332441+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-05T13:01:22.834296+00:00",
     "replied": false
   },
   {
@@ -289,7 +289,7 @@
     "name": "Arnaud",
     "subject": "fastapi migration / cloudtasker",
     "initial_sent_at": "2026-07-11T14:21:44.332441+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-05T13:01:22.834296+00:00",
     "replied": false
   },
   {
@@ -1119,6 +1119,186 @@
     "source": "hn_search",
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-04T13:01:10.445079+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Location: Blacksburg, Virginia, USA",
+    "email": "anshul03@vt.edu",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "legacy backend migrations, fastapi specifically",
+    "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "esho",
+    "email": "shola.esho@gmail.com",
+    "tier": "strong",
+    "source": "hn_search",
+    "subject": "rails to fastapi migration",
+    "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "rscnt",
+    "email": "rascencio@protonmail.com",
+    "tier": "strong",
+    "source": "hn_search",
+    "subject": "rails to fastapi migration",
+    "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "ziyih",
+    "email": "ziyih97@protonmail.com",
+    "tier": "strong",
+    "source": "hn_search",
+    "subject": "rails to fastapi migration",
+    "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "adamjleonard",
+    "email": "adamjamesleonard@gmail.com",
+    "tier": "strong",
+    "source": "hn_search",
+    "subject": "rails to fastapi migration work",
+    "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "pablojacobi",
+    "email": "pablo.jacobi@pyro.cl",
+    "tier": "strong",
+    "source": "hn_search",
+    "subject": "rails to fastapi migration work",
+    "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "munimdev",
+    "email": "munimzafar100@gmail.com",
+    "tier": "strong",
+    "source": "hn_search",
+    "subject": "fastapi migration work",
+    "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "neya",
+    "email": "westwind.innovations@gmail.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "rails to fastapi migration",
+    "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "davidkellis",
+    "email": "david@conquerthelawn.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "rails to go migration work",
+    "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "tptacek",
+    "email": "thomas@sockpuppet.org",
+    "tier": "strong",
+    "source": "hn_search",
+    "subject": "rails to fastapi migration",
+    "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "aaronblohowiak",
+    "email": "aaron.blohowiak@gmail.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "rails to soa transitions",
+    "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "akanet",
+    "email": "me@vincentwoo.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "rails to fastapi migration",
+    "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "ishwarn",
+    "email": "ishwar.nagar@gmail.com",
+    "tier": "strong",
+    "source": "hn_search",
+    "subject": "legacy backend migrations",
+    "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "stevepike",
+    "email": "steve@sevenfifty.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "legacy backend migrations",
+    "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "jerf",
+    "email": "jerf@jerf.org",
+    "tier": "strong",
+    "source": "hn_search",
+    "subject": "rails to fastapi migration",
+    "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "cgarvis",
+    "email": "chris@fixt.co",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "rails to fastapi migration work",
+    "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "awongh",
+    "email": "akira1@awongh.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "rails migration work",
+    "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "johnisom2001",
+    "email": "john@johnisom.dev",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "rails to fastapi migration",
+    "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
