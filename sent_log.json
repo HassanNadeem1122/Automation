@@ -360,7 +360,8 @@
     "subject": "fastapi migration / rspec-tracer",
     "initial_sent_at": "2026-07-13T15:41:22.979589+00:00",
     "follow_up_sent_at": "2026-08-09T13:00:28.956385+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-10T13:00:36.183690+00:00"
   },
   {
     "org": "vishaltps",
@@ -370,7 +371,8 @@
     "subject": "fastapi migration / solid_queue_monitor",
     "initial_sent_at": "2026-07-13T15:41:22.979589+00:00",
     "follow_up_sent_at": "2026-08-09T13:00:28.956385+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-10T13:00:36.183690+00:00"
   },
   {
     "org": "jcraigk",
@@ -380,7 +382,8 @@
     "subject": "fastapi migration / phishin",
     "initial_sent_at": "2026-07-13T15:41:22.979589+00:00",
     "follow_up_sent_at": "2026-08-09T13:00:28.956385+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-10T13:00:36.183690+00:00"
   },
   {
     "org": "MushroomObserver",
@@ -390,7 +393,8 @@
     "subject": "fastapi migration / mushroom-observer",
     "initial_sent_at": "2026-07-13T15:41:22.979589+00:00",
     "follow_up_sent_at": "2026-08-09T13:00:28.956385+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-10T13:00:36.183690+00:00"
   },
   {
     "org": "fjordllc",
@@ -400,7 +404,8 @@
     "subject": "fastapi migration / bootcamp",
     "initial_sent_at": "2026-07-13T15:41:22.979589+00:00",
     "follow_up_sent_at": "2026-08-09T13:00:28.956385+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-10T13:00:36.183690+00:00"
   },
   {
     "company": "Y Combinator",
@@ -2029,6 +2034,186 @@
     "source": "hn_search",
     "subject": "legacy backend migrations",
     "initial_sent_at": "2026-08-09T13:00:28.956385+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "pavlov",
+    "email": "stuff@daily.co",
+    "tier": "strong",
+    "source": "hn_search",
+    "subject": "rails to fastapi migration",
+    "initial_sent_at": "2026-08-10T13:00:36.183690+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "johnrball",
+    "email": "john.ball@spreemo.com",
+    "tier": "strong",
+    "source": "hn_search",
+    "subject": "rails to fastapi migration",
+    "initial_sent_at": "2026-08-10T13:00:36.183690+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "zampano",
+    "email": "recruiting@anyperk.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "rails to fastapi migration",
+    "initial_sent_at": "2026-08-10T13:00:36.183690+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "joekrill",
+    "email": "joe@thrivetrm.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "rails to fastapi migration",
+    "initial_sent_at": "2026-08-10T13:00:36.183690+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "mk2021",
+    "email": "recruiting@reforge.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "legacy backend migrations",
+    "initial_sent_at": "2026-08-10T13:00:36.183690+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "dhyasama",
+    "email": "jason@ffvc.com",
+    "tier": "strong",
+    "source": "hn_search",
+    "subject": "legacy backend migrations",
+    "initial_sent_at": "2026-08-10T13:00:36.183690+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "TeslaSW",
+    "email": "jowu@teslamotors.com",
+    "tier": "strong",
+    "source": "hn_search",
+    "subject": "legacy backend migrations",
+    "initial_sent_at": "2026-08-10T13:00:36.183690+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "ejdyksen",
+    "email": "ej@mutuallyhuman.com",
+    "tier": "strong",
+    "source": "hn_search",
+    "subject": "rails to fastapi migration",
+    "initial_sent_at": "2026-08-10T13:00:36.183690+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "laughfactory",
+    "email": "abe.burnett@gmail.com",
+    "tier": "strong",
+    "source": "hn_search",
+    "subject": "legacy backend migrations",
+    "initial_sent_at": "2026-08-10T13:00:36.183690+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "ccallebs",
+    "email": "dev@tugginc.com",
+    "tier": "strong",
+    "source": "hn_search",
+    "subject": "rails to fastapi migration",
+    "initial_sent_at": "2026-08-10T13:00:36.183690+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Sakes",
+    "email": "hnsakes@gmail.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "incremental rewrites and legacy stacks",
+    "initial_sent_at": "2026-08-10T13:00:36.183690+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "smt88",
+    "email": "smt88hn@gmail.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "legacy php to something better",
+    "initial_sent_at": "2026-08-10T13:00:36.183690+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "moltar",
+    "email": "moltar@moltar.net",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "legacy rewrite work",
+    "initial_sent_at": "2026-08-10T13:00:36.183690+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "buraktas",
+    "email": "buraktas@gmail.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "monolith to microservices work",
+    "initial_sent_at": "2026-08-10T13:00:36.183690+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "staunch",
+    "email": "jgold@truecar.com",
+    "tier": "strong",
+    "source": "hn_search",
+    "subject": "legacy stack migrations",
+    "initial_sent_at": "2026-08-10T13:00:36.183690+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "cbozeman",
+    "email": "chris.bozeman@gmail.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "legacy backend migrations",
+    "initial_sent_at": "2026-08-10T13:00:36.183690+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "crowdworx",
+    "email": "recruiting@crowdworx.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "net mvc to core migration",
+    "initial_sent_at": "2026-08-10T13:00:36.183690+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "kqr",
+    "email": "hn@xkqr.org",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "progressive migration and legacy stacks",
+    "initial_sent_at": "2026-08-10T13:00:36.183690+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
