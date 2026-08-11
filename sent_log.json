@@ -414,7 +414,7 @@
     "source": "hn_whoishiring",
     "subject": "yc rails \u2192 fastapi migration",
     "initial_sent_at": "2026-07-14T14:50:18.841511+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-11T13:00:31.106257+00:00",
     "replied": false
   },
   {
@@ -424,7 +424,7 @@
     "source": "hn_whoishiring",
     "subject": "authorium \u2014 rails to fastapi migration",
     "initial_sent_at": "2026-07-14T14:50:18.841511+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-11T13:00:31.106257+00:00",
     "replied": false
   },
   {
@@ -434,7 +434,7 @@
     "source": "hn_whoishiring",
     "subject": "rails \u2192 fastapi migration @ natural",
     "initial_sent_at": "2026-07-14T14:50:18.841511+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-11T13:00:31.106257+00:00",
     "replied": false
   },
   {
@@ -444,7 +444,7 @@
     "source": "hn_whoishiring",
     "subject": "trakpro \u2014 rails-to-fastapi migration",
     "initial_sent_at": "2026-07-14T14:50:18.841511+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-11T13:00:31.106257+00:00",
     "replied": false
   },
   {
@@ -454,7 +454,7 @@
     "source": "hn_whoishiring",
     "subject": "rails \u2192 fastapi migration @ mongodb",
     "initial_sent_at": "2026-07-15T14:49:43.716501+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-11T13:00:31.106257+00:00",
     "replied": false
   },
   {
@@ -2214,6 +2214,186 @@
     "source": "hn_search",
     "subject": "progressive migration and legacy stacks",
     "initial_sent_at": "2026-08-10T13:00:36.183690+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Arcforma AI",
+    "email": "jobs@arcforma.ai",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "legacy backend migrations, rails to fastapi",
+    "initial_sent_at": "2026-08-11T13:00:31.106257+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "faangguyindia",
+    "email": "coredrop@proton.me",
+    "tier": "strong",
+    "source": "hn_search",
+    "subject": "rails to fastapi migration",
+    "initial_sent_at": "2026-08-11T13:00:31.106257+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "benweatherman",
+    "email": "ben@ordoro.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "flask api and legacy migration work",
+    "initial_sent_at": "2026-08-11T13:00:31.106257+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "DonHopkins",
+    "email": "don@donhopkins.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "wasm bridge reactivity and legacy migration",
+    "initial_sent_at": "2026-08-11T13:00:31.106257+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "tikhonj",
+    "email": "tikhon@jelv.is",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "nix complexity and legacy migration",
+    "initial_sent_at": "2026-08-11T13:00:31.106257+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "ff_",
+    "email": "hn@ferrai.io",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "legacy backend migrations",
+    "initial_sent_at": "2026-08-11T13:00:31.106257+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Niko M",
+    "email": "nikolay.moskvin@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm port to fastapi",
+    "initial_sent_at": "2026-08-11T13:00:31.106257+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Fanis Tharropoulos",
+    "email": "ftharropoulos@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "typesense-rails and legacy migration work",
+    "initial_sent_at": "2026-08-11T13:00:31.106257+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Marten",
+    "email": "marten@klitzke.xyz",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm rails to fastapi port",
+    "initial_sent_at": "2026-08-11T13:00:31.106257+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Cory Lown",
+    "email": "corylown@stanford.edu",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm rails to fastapi port",
+    "initial_sent_at": "2026-08-11T13:00:31.106257+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Noemi Lapresta",
+    "email": "noemi@appsignal.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm rails to fastapi port",
+    "initial_sent_at": "2026-08-11T13:00:31.106257+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Vladimir Dementyev",
+    "email": "dementiev.vm@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "rails to fastapi migration work",
+    "initial_sent_at": "2026-08-11T13:00:31.106257+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Tilo Sloboda",
+    "email": "tilo.sloboda@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "validates overlap and legacy rails work",
+    "initial_sent_at": "2026-08-11T13:00:31.106257+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Abdelkader Boudih",
+    "email": "terminale@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "rails to fastapi migration work",
+    "initial_sent_at": "2026-08-11T13:00:31.106257+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Carmine Paolino",
+    "email": "carmine@paolino.me",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm to fastapi port",
+    "initial_sent_at": "2026-08-11T13:00:31.106257+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Sem Goedknegt",
+    "email": "sem@knegt.io",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "dobase and migrating off rails",
+    "initial_sent_at": "2026-08-11T13:00:31.106257+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Bartosz Pie\u0144kowski",
+    "email": "pienkowb@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "active record events and legacy migration work",
+    "initial_sent_at": "2026-08-11T13:00:31.106257+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Ilya N. Zykin",
+    "email": "zykin-ilya@ya.ru",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "active harness and legacy migration work",
+    "initial_sent_at": "2026-08-11T13:00:31.106257+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
