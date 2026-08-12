@@ -415,7 +415,8 @@
     "subject": "yc rails \u2192 fastapi migration",
     "initial_sent_at": "2026-07-14T14:50:18.841511+00:00",
     "follow_up_sent_at": "2026-08-11T13:00:31.106257+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-12T13:00:28.521000+00:00"
   },
   {
     "company": "Authorium",
@@ -425,7 +426,8 @@
     "subject": "authorium \u2014 rails to fastapi migration",
     "initial_sent_at": "2026-07-14T14:50:18.841511+00:00",
     "follow_up_sent_at": "2026-08-11T13:00:31.106257+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-12T13:00:28.521000+00:00"
   },
   {
     "company": "Natural",
@@ -435,7 +437,8 @@
     "subject": "rails \u2192 fastapi migration @ natural",
     "initial_sent_at": "2026-07-14T14:50:18.841511+00:00",
     "follow_up_sent_at": "2026-08-11T13:00:31.106257+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-12T13:00:28.521000+00:00"
   },
   {
     "company": "TrakPro",
@@ -445,7 +448,8 @@
     "subject": "trakpro \u2014 rails-to-fastapi migration",
     "initial_sent_at": "2026-07-14T14:50:18.841511+00:00",
     "follow_up_sent_at": "2026-08-11T13:00:31.106257+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-12T13:00:28.521000+00:00"
   },
   {
     "company": "MongoDB",
@@ -455,7 +459,8 @@
     "subject": "rails \u2192 fastapi migration @ mongodb",
     "initial_sent_at": "2026-07-15T14:49:43.716501+00:00",
     "follow_up_sent_at": "2026-08-11T13:00:31.106257+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-12T13:00:28.521000+00:00"
   },
   {
     "company": "Rubypoint",
@@ -2394,6 +2399,56 @@
     "source": "github_commits",
     "subject": "active harness and legacy migration work",
     "initial_sent_at": "2026-08-11T13:00:31.106257+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "cookiecaper",
+    "email": "hn@jeffcook.io",
+    "tier": "strong",
+    "source": "hn_search",
+    "subject": "pyramid vs django templating and backend migrations",
+    "initial_sent_at": "2026-08-12T13:00:28.521000+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "arpit-jain_atko",
+    "email": "arpit.jain@okta.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "omniauth-auth0 and legacy stack migrations",
+    "initial_sent_at": "2026-08-12T13:00:28.521000+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Sam Moore",
+    "email": "sam@betterment.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm to fastapi port",
+    "initial_sent_at": "2026-08-12T13:00:28.521000+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Ben Rexin",
+    "email": "ben@rexin.at",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "on_ruby and legacy stack migrations",
+    "initial_sent_at": "2026-08-12T13:00:28.521000+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Bruno Perles",
+    "email": "bruno@atnos.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "pia-back and modernizing the rails layer",
+    "initial_sent_at": "2026-08-12T13:00:28.521000+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
