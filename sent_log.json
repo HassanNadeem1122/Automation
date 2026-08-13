@@ -469,7 +469,7 @@
     "source": "hn_whoishiring",
     "subject": "rubypoint \u2014 rails to fastapi migration",
     "initial_sent_at": "2026-07-15T14:49:43.716501+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-13T13:00:32.166268+00:00",
     "replied": false
   },
   {
@@ -479,7 +479,7 @@
     "source": "hn_whoishiring",
     "subject": "goody \u2014 ruby to python migration",
     "initial_sent_at": "2026-07-15T14:49:43.716501+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-13T13:00:32.166268+00:00",
     "replied": false
   },
   {
@@ -489,7 +489,7 @@
     "source": "hn_whoishiring",
     "subject": "rails \u2192 fastapi migration \u2014 doowii",
     "initial_sent_at": "2026-07-15T14:49:43.716501+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-13T13:00:32.166268+00:00",
     "replied": false
   },
   {
@@ -499,7 +499,7 @@
     "source": "hn_whoishiring",
     "subject": "clerq \u2013 rails to fastapi migration",
     "initial_sent_at": "2026-07-15T14:49:43.716501+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-13T13:00:32.166268+00:00",
     "replied": false
   },
   {
@@ -509,7 +509,7 @@
     "source": "hn_whoishiring",
     "subject": "ruby \u2192 fastapi migration @ fetlife",
     "initial_sent_at": "2026-07-15T14:49:43.716501+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-13T13:00:32.166268+00:00",
     "replied": false
   },
   {
@@ -2449,6 +2449,46 @@
     "source": "github_commits",
     "subject": "pia-back and modernizing the rails layer",
     "initial_sent_at": "2026-08-12T13:00:28.521000+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Gary Passero",
+    "email": "gpassero@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "automatic_namespaces and legacy migration work",
+    "initial_sent_at": "2026-08-13T13:00:32.166268+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "machida",
+    "email": "machida@fjord.jp",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm fastapi port",
+    "initial_sent_at": "2026-08-13T13:00:32.166268+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Astro",
+    "email": "astrocket.dev@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "rails to fastapi migration, fat free crm",
+    "initial_sent_at": "2026-08-13T13:00:32.166268+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Anjan Jagirdar",
+    "email": "anjan.jagirdar@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "rails error dashboard and backend migrations",
+    "initial_sent_at": "2026-08-13T13:00:32.166268+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
