@@ -470,7 +470,8 @@
     "subject": "rubypoint \u2014 rails to fastapi migration",
     "initial_sent_at": "2026-07-15T14:49:43.716501+00:00",
     "follow_up_sent_at": "2026-08-13T13:00:32.166268+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-14T13:01:08.027070+00:00"
   },
   {
     "company": "Goody",
@@ -480,7 +481,8 @@
     "subject": "goody \u2014 ruby to python migration",
     "initial_sent_at": "2026-07-15T14:49:43.716501+00:00",
     "follow_up_sent_at": "2026-08-13T13:00:32.166268+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-14T13:01:08.027070+00:00"
   },
   {
     "company": "Doowii",
@@ -490,7 +492,8 @@
     "subject": "rails \u2192 fastapi migration \u2014 doowii",
     "initial_sent_at": "2026-07-15T14:49:43.716501+00:00",
     "follow_up_sent_at": "2026-08-13T13:00:32.166268+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-14T13:01:08.027070+00:00"
   },
   {
     "company": "Clerq",
@@ -500,7 +503,8 @@
     "subject": "clerq \u2013 rails to fastapi migration",
     "initial_sent_at": "2026-07-15T14:49:43.716501+00:00",
     "follow_up_sent_at": "2026-08-13T13:00:32.166268+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-14T13:01:08.027070+00:00"
   },
   {
     "company": "Fetlife",
@@ -510,7 +514,8 @@
     "subject": "ruby \u2192 fastapi migration @ fetlife",
     "initial_sent_at": "2026-07-15T14:49:43.716501+00:00",
     "follow_up_sent_at": "2026-08-13T13:00:32.166268+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-14T13:01:08.027070+00:00"
   },
   {
     "company": "Digital Health Strategies",
@@ -2489,6 +2494,56 @@
     "source": "github_commits",
     "subject": "rails error dashboard and backend migrations",
     "initial_sent_at": "2026-08-13T13:00:32.166268+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Tyler Ewing",
+    "email": "tewing10@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm port to fastapi",
+    "initial_sent_at": "2026-08-14T13:01:08.027070+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Peter Schr\u00f6der",
+    "email": "phoet@posteo.de",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm to fastapi port",
+    "initial_sent_at": "2026-08-14T13:01:08.027070+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "thanhluanuit",
+    "email": "thanhluan.uit@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm port to fastapi",
+    "initial_sent_at": "2026-08-14T13:01:08.027070+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Carlos Silva",
+    "email": "me@carlosfsilva.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm fastapi port",
+    "initial_sent_at": "2026-08-14T13:01:08.027070+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Andrew Atkinson",
+    "email": "andyatkinson@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "activerecord-clean-db-structure and legacy migration work",
+    "initial_sent_at": "2026-08-14T13:01:08.027070+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
