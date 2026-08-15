@@ -524,7 +524,7 @@
     "source": "hn_whoishiring",
     "subject": "ruby \u2192 fastapi migration @ digital health strategies",
     "initial_sent_at": "2026-07-15T14:49:43.716501+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-15T13:01:09.683041+00:00",
     "replied": false
   },
   {
@@ -534,7 +534,7 @@
     "source": "hn_whoishiring",
     "subject": "signal 1 \u2014 ruby \u2192 fastapi migration",
     "initial_sent_at": "2026-07-15T14:49:43.716501+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-15T13:01:09.683041+00:00",
     "replied": false
   },
   {
@@ -544,7 +544,7 @@
     "source": "hn_whoishiring",
     "subject": "fat free crm \u2192 fastapi migration \u2014 small & stealthy",
     "initial_sent_at": "2026-07-15T14:49:43.716501+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-15T13:01:09.683041+00:00",
     "replied": false
   },
   {
@@ -554,7 +554,7 @@
     "source": "hn_whoishiring",
     "subject": "galileo \u2014 rails to fastapi migration",
     "initial_sent_at": "2026-07-15T14:49:43.716501+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-15T13:01:09.683041+00:00",
     "replied": false
   },
   {
@@ -564,7 +564,7 @@
     "source": "hn_whoishiring",
     "subject": "doraise rails \u2192 fastapi migration \u2014 dostuff",
     "initial_sent_at": "2026-07-16T15:01:24.779080+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-15T13:01:09.683041+00:00",
     "replied": false
   },
   {
@@ -2544,6 +2544,46 @@
     "source": "github_commits",
     "subject": "activerecord-clean-db-structure and legacy migration work",
     "initial_sent_at": "2026-08-14T13:01:08.027070+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "connor",
+    "email": "jobs@townsqd.com",
+    "tier": "strong",
+    "source": "hn_search",
+    "subject": "rails to fastapi migration",
+    "initial_sent_at": "2026-08-15T13:01:09.683041+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Ryan Foster",
+    "email": "ryan@mojotech.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "sprig repo and a rails migration you might find useful",
+    "initial_sent_at": "2026-08-15T13:01:09.683041+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Jason Bailey",
+    "email": "jbailey@launchdarkly.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm to fastapi port",
+    "initial_sent_at": "2026-08-15T13:01:09.683041+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Javier Cervantes",
+    "email": "mail@jvrc.ca",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "filterameter and legacy migration work",
+    "initial_sent_at": "2026-08-15T13:01:09.683041+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
