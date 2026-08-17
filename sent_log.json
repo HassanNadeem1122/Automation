@@ -579,7 +579,7 @@
     "source": "hn_whoishiring",
     "subject": "toucantix \u2014 rails \u2192 fastapi migration",
     "initial_sent_at": "2026-07-16T15:01:24.779080+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-17T13:00:24.439132+00:00",
     "replied": false
   },
   {
@@ -589,7 +589,7 @@
     "source": "hn_whoishiring",
     "subject": "textql \u2014 rails to fastapi migration",
     "initial_sent_at": "2026-07-16T15:01:24.779080+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-17T13:00:24.439132+00:00",
     "replied": false
   },
   {
@@ -599,7 +599,7 @@
     "source": "hn_whoishiring",
     "subject": "legion health \u2014 rails \u2192 fastapi migration",
     "initial_sent_at": "2026-07-16T15:01:24.779080+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-17T13:00:24.439132+00:00",
     "replied": false
   },
   {
@@ -609,7 +609,7 @@
     "source": "hn_whoishiring",
     "subject": "rails \u2192 fastapi migration @ prove ai",
     "initial_sent_at": "2026-07-16T15:01:24.779080+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-17T13:00:24.439132+00:00",
     "replied": false
   },
   {
@@ -619,7 +619,7 @@
     "source": "hn_whoishiring",
     "subject": "fetlife rails migration \u2014 already done this one",
     "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-17T13:00:24.439132+00:00",
     "replied": false
   },
   {
@@ -2629,6 +2629,46 @@
     "source": "github_commits",
     "subject": "fat free crm fastapi port",
     "initial_sent_at": "2026-08-16T13:00:26.328872+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "eelco",
+    "email": "gitt@eelcoj.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm to fastapi port",
+    "initial_sent_at": "2026-08-17T13:00:24.439132+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Mikael Henriksson",
+    "email": "mikael@mhenrixon.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "phlex-reactive and legacy migration work",
+    "initial_sent_at": "2026-08-17T13:00:24.439132+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Ivan Kuchin",
+    "email": "tadump+git@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm port to fastapi",
+    "initial_sent_at": "2026-08-17T13:00:24.439132+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Cursor Agent",
+    "email": "cursoragent@cursor.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm to fastapi port",
+    "initial_sent_at": "2026-08-17T13:00:24.439132+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
