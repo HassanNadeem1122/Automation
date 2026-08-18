@@ -580,7 +580,8 @@
     "subject": "toucantix \u2014 rails \u2192 fastapi migration",
     "initial_sent_at": "2026-07-16T15:01:24.779080+00:00",
     "follow_up_sent_at": "2026-08-17T13:00:24.439132+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-18T13:00:24.179674+00:00"
   },
   {
     "company": "TextQL",
@@ -590,7 +591,8 @@
     "subject": "textql \u2014 rails to fastapi migration",
     "initial_sent_at": "2026-07-16T15:01:24.779080+00:00",
     "follow_up_sent_at": "2026-08-17T13:00:24.439132+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-18T13:00:24.179674+00:00"
   },
   {
     "company": "Legion Health",
@@ -600,7 +602,8 @@
     "subject": "legion health \u2014 rails \u2192 fastapi migration",
     "initial_sent_at": "2026-07-16T15:01:24.779080+00:00",
     "follow_up_sent_at": "2026-08-17T13:00:24.439132+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-18T13:00:24.179674+00:00"
   },
   {
     "company": "Prove AI",
@@ -610,7 +613,8 @@
     "subject": "rails \u2192 fastapi migration @ prove ai",
     "initial_sent_at": "2026-07-16T15:01:24.779080+00:00",
     "follow_up_sent_at": "2026-08-17T13:00:24.439132+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-18T13:00:24.179674+00:00"
   },
   {
     "company": "FetLife",
@@ -620,7 +624,8 @@
     "subject": "fetlife rails migration \u2014 already done this one",
     "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
     "follow_up_sent_at": "2026-08-17T13:00:24.439132+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-18T13:00:24.179674+00:00"
   },
   {
     "company": "PeakFlow",
@@ -2669,6 +2674,66 @@
     "source": "github_commits",
     "subject": "fat free crm to fastapi port",
     "initial_sent_at": "2026-08-17T13:00:24.439132+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "reducesuffering",
+    "email": "eshkidd@gmail.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "rails to fastapi migration",
+    "initial_sent_at": "2026-08-18T13:00:24.179674+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Igor Aleksandrov",
+    "email": "igor.alexandrov@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "metka repo and a rails migration question",
+    "initial_sent_at": "2026-08-18T13:00:24.179674+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Paul Hinze",
+    "email": "phinze@phinze.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm to fastapi port",
+    "initial_sent_at": "2026-08-18T13:00:24.179674+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Amp",
+    "email": "amp@ampcode.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm to fastapi port",
+    "initial_sent_at": "2026-08-18T13:00:24.179674+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Maximilian Herold",
+    "email": "herold@emjot.de",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "permanent records and legacy migration work",
+    "initial_sent_at": "2026-08-18T13:00:24.179674+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Kevin Newton",
+    "email": "kddnewton@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "rails pattern matching repo",
+    "initial_sent_at": "2026-08-18T13:00:24.179674+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
