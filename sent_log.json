@@ -634,7 +634,7 @@
     "source": "hn_whoishiring",
     "subject": "peakflow \u2013 rails \u2192 fastapi migration",
     "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-19T13:00:55.105832+00:00",
     "replied": false
   },
   {
@@ -644,7 +644,7 @@
     "source": "hn_whoishiring",
     "subject": "mulligan post \u2013 rails to fastapi migration",
     "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-19T13:00:55.105832+00:00",
     "replied": false
   },
   {
@@ -654,7 +654,7 @@
     "source": "github_commits",
     "subject": "enju_leaf migration \u2014 already did rails \u2192 fastapi once",
     "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-19T13:00:55.105832+00:00",
     "replied": false
   },
   {
@@ -664,7 +664,7 @@
     "source": "github_commits",
     "subject": "b3s rails \u2192 fastapi migration",
     "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-19T13:00:55.105832+00:00",
     "replied": false
   },
   {
@@ -674,7 +674,7 @@
     "source": "github_commits",
     "subject": "scout_apm_ruby \u2192 fastapi migration \u2014 seen this before",
     "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-19T13:00:55.105832+00:00",
     "replied": false
   },
   {
@@ -2734,6 +2734,46 @@
     "source": "github_commits",
     "subject": "rails pattern matching repo",
     "initial_sent_at": "2026-08-18T13:00:24.179674+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Joseph Lacey",
+    "email": "joseph@offkeydigital.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "littlesis-rails backend work",
+    "initial_sent_at": "2026-08-19T13:00:55.105832+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Nathan G",
+    "email": "nathan@ngriffith.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm rails to fastapi port",
+    "initial_sent_at": "2026-08-19T13:00:55.105832+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "wendyyang",
+    "email": "wy1@sanger.ac.uk",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "sequencescape and legacy stack migrations",
+    "initial_sent_at": "2026-08-19T13:00:55.105832+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Avi Flombaum",
+    "email": "avi@flombaum.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "railspress-engine and legacy stack migrations",
+    "initial_sent_at": "2026-08-19T13:00:55.105832+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
