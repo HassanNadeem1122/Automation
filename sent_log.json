@@ -635,7 +635,8 @@
     "subject": "peakflow \u2013 rails \u2192 fastapi migration",
     "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
     "follow_up_sent_at": "2026-08-19T13:00:55.105832+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-20T13:00:57.254676+00:00"
   },
   {
     "company": "Mulliganpost",
@@ -645,7 +646,8 @@
     "subject": "mulligan post \u2013 rails to fastapi migration",
     "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
     "follow_up_sent_at": "2026-08-19T13:00:55.105832+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-20T13:00:57.254676+00:00"
   },
   {
     "company": "Kosuke Tanabe",
@@ -655,7 +657,8 @@
     "subject": "enju_leaf migration \u2014 already did rails \u2192 fastapi once",
     "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
     "follow_up_sent_at": "2026-08-19T13:00:55.105832+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-20T13:00:57.254676+00:00"
   },
   {
     "company": "Inge J\u00f8rgensen",
@@ -665,7 +668,8 @@
     "subject": "b3s rails \u2192 fastapi migration",
     "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
     "follow_up_sent_at": "2026-08-19T13:00:55.105832+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-20T13:00:57.254676+00:00"
   },
   {
     "company": "Jack Rothrock",
@@ -675,7 +679,8 @@
     "subject": "scout_apm_ruby \u2192 fastapi migration \u2014 seen this before",
     "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
     "follow_up_sent_at": "2026-08-19T13:00:55.105832+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-20T13:00:57.254676+00:00"
   },
   {
     "company": "Mahad Kalam",
@@ -2774,6 +2779,76 @@
     "source": "github_commits",
     "subject": "railspress-engine and legacy stack migrations",
     "initial_sent_at": "2026-08-19T13:00:55.105832+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "frb",
+    "email": "info@cringle.net",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "legacy backend migrations",
+    "initial_sent_at": "2026-08-20T13:00:57.254676+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "moeamaya",
+    "email": "trained@mit.co",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "legacy backend migrations",
+    "initial_sent_at": "2026-08-20T13:00:57.254676+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Antti Hukkanen",
+    "email": "antti.hukkanen@mainiotech.fi",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "ratonvirus and legacy stack work",
+    "initial_sent_at": "2026-08-20T13:00:57.254676+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Jeff Carbonella",
+    "email": "jeff.carbonella@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fixture_kit and legacy migration work",
+    "initial_sent_at": "2026-08-20T13:00:57.254676+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Alan Guo Xiang Tan",
+    "email": "gxtan1990@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "rails multisite and legacy migration work",
+    "initial_sent_at": "2026-08-20T13:00:57.254676+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "sigurdarson",
+    "email": "gunnar@sigurdarson.is",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "nitro_kit and legacy stack migrations",
+    "initial_sent_at": "2026-08-20T13:00:57.254676+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Julik Tarkhanov",
+    "email": "me@julik.nl",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "geneva drive and legacy stack work",
+    "initial_sent_at": "2026-08-20T13:00:57.254676+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
