@@ -689,7 +689,7 @@
     "source": "github_commits",
     "subject": "hackatime rails \u2192 fastapi migration",
     "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-21T13:00:56.685197+00:00",
     "replied": false
   },
   {
@@ -699,7 +699,7 @@
     "source": "github_commits",
     "subject": "socializer rails \u2192 fastapi migration \u2014 acmetech",
     "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-21T13:00:56.685197+00:00",
     "replied": false
   },
   {
@@ -709,7 +709,7 @@
     "source": "github_commits",
     "subject": "avro-schema-registry + rails \u2192 fastapi migration \u2014 hassan",
     "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-21T13:00:56.685197+00:00",
     "replied": false
   },
   {
@@ -719,7 +719,7 @@
     "source": "github_commits",
     "subject": "hyrax migration \u2192 fastapi, kirk wang",
     "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-21T13:00:56.685197+00:00",
     "replied": false
   },
   {
@@ -729,7 +729,7 @@
     "source": "github_commits",
     "subject": "pg_ha_migrations + a rails\u2192fastapi migration you might care about",
     "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-21T13:00:56.685197+00:00",
     "replied": false
   },
   {
@@ -2849,6 +2849,36 @@
     "source": "github_commits",
     "subject": "geneva drive and legacy stack work",
     "initial_sent_at": "2026-08-20T13:00:57.254676+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Patrick Lewis",
+    "email": "patrick@instrumentl.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "rails-cloudflare-turnstile and legacy migration work",
+    "initial_sent_at": "2026-08-21T13:00:56.685197+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Robin Brouwer",
+    "email": "contact@robinbrouwer.nl",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "bootstrap flash messages and legacy migration work",
+    "initial_sent_at": "2026-08-21T13:00:56.685197+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Alexandre Barret",
+    "email": "barret.alx@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm to fastapi port",
+    "initial_sent_at": "2026-08-21T13:00:56.685197+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
