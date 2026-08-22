@@ -690,7 +690,8 @@
     "subject": "hackatime rails \u2192 fastapi migration",
     "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
     "follow_up_sent_at": "2026-08-21T13:00:56.685197+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-22T13:00:36.400518+00:00"
   },
   {
     "company": "acmetech",
@@ -700,7 +701,8 @@
     "subject": "socializer rails \u2192 fastapi migration \u2014 acmetech",
     "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
     "follow_up_sent_at": "2026-08-21T13:00:56.685197+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-22T13:00:36.400518+00:00"
   },
   {
     "company": "Erik Kessler",
@@ -710,7 +712,8 @@
     "subject": "avro-schema-registry + rails \u2192 fastapi migration \u2014 hassan",
     "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
     "follow_up_sent_at": "2026-08-21T13:00:56.685197+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-22T13:00:36.400518+00:00"
   },
   {
     "company": "Kirk Wang",
@@ -720,7 +723,8 @@
     "subject": "hyrax migration \u2192 fastapi, kirk wang",
     "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
     "follow_up_sent_at": "2026-08-21T13:00:56.685197+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-22T13:00:36.400518+00:00"
   },
   {
     "company": "James Coleman",
@@ -730,7 +734,8 @@
     "subject": "pg_ha_migrations + a rails\u2192fastapi migration you might care about",
     "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
     "follow_up_sent_at": "2026-08-21T13:00:56.685197+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-22T13:00:36.400518+00:00"
   },
   {
     "company": "Stephen Hulme",
@@ -2879,6 +2884,16 @@
     "source": "github_commits",
     "subject": "fat free crm to fastapi port",
     "initial_sent_at": "2026-08-21T13:00:56.685197+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Clarissa Borges",
+    "email": "cborges@thoughtbot.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm fastapi port",
+    "initial_sent_at": "2026-08-22T13:00:36.400518+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
