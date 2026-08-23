@@ -744,7 +744,7 @@
     "source": "github_commits",
     "subject": "sequencescape migration \u2014 ruby/rails to fastapi",
     "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-23T13:00:36.818252+00:00",
     "replied": false
   },
   {
@@ -754,7 +754,7 @@
     "source": "github_commits",
     "subject": "cbrain rails \u2192 fastapi migration \u2014 done this before",
     "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-23T13:00:36.818252+00:00",
     "replied": false
   },
   {
@@ -764,7 +764,7 @@
     "source": "github_commits",
     "subject": "spotlight rails \u2192 fastapi migration \u2014 hassan",
     "initial_sent_at": "2026-08-01T13:01:11.857551+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-23T13:00:36.818252+00:00",
     "replied": false
   },
   {
@@ -774,7 +774,7 @@
     "source": "github_commits",
     "subject": "rails \u2192 fastapi migration @ thedumbtechguy",
     "initial_sent_at": "2026-08-02T13:01:07.338423+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-23T13:00:36.818252+00:00",
     "replied": false
   },
   {
@@ -784,7 +784,7 @@
     "source": "github_commits",
     "subject": "ruby\u2192fastapi migration \u2014 envirobly/stepped",
     "initial_sent_at": "2026-08-02T13:01:07.338423+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-23T13:00:36.818252+00:00",
     "replied": false
   },
   {
@@ -2894,6 +2894,16 @@
     "source": "github_commits",
     "subject": "fat free crm fastapi port",
     "initial_sent_at": "2026-08-22T13:00:36.400518+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Ken Collins",
+    "email": "ken@metaskills.net",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm port to fastapi",
+    "initial_sent_at": "2026-08-23T13:00:36.818252+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
