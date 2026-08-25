@@ -799,7 +799,7 @@
     "source": "github_commits",
     "subject": "rails \u2192 fastapi migration // hans lemuet",
     "initial_sent_at": "2026-08-02T13:01:07.338423+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-25T13:00:37.938079+00:00",
     "replied": false
   },
   {
@@ -809,7 +809,7 @@
     "source": "github_commits",
     "subject": "ffxiv-collect rails migration \u2014 matt antonelli",
     "initial_sent_at": "2026-08-02T13:01:07.338423+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-25T13:00:37.938079+00:00",
     "replied": false
   },
   {
@@ -819,7 +819,7 @@
     "source": "github_commits",
     "subject": "keycloak-api-rails \u2192 fastapi migration \u2014 lorent lempereur",
     "initial_sent_at": "2026-08-02T13:01:07.338423+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-25T13:00:37.938079+00:00",
     "replied": false
   },
   {
@@ -829,7 +829,7 @@
     "source": "github_commits",
     "subject": "rails \u2192 fastapi migration \u2014 miha rekar visualizer",
     "initial_sent_at": "2026-08-02T13:01:07.338423+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-25T13:00:37.938079+00:00",
     "replied": false
   },
   {
@@ -839,7 +839,7 @@
     "source": "github_commits",
     "subject": "rails-rest-framework \u2192 fastapi migration \u2014 hassan",
     "initial_sent_at": "2026-08-02T13:01:07.338423+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-25T13:00:37.938079+00:00",
     "replied": false
   },
   {
@@ -2939,6 +2939,36 @@
     "source": "github_commits",
     "subject": "pp_sql and legacy migration work",
     "initial_sent_at": "2026-08-24T13:00:36.491510+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Bryce McLean",
+    "email": "bryce.mclean@bitstrata.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "activemodel-datastore and legacy backend migrations",
+    "initial_sent_at": "2026-08-25T13:00:37.938079+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Michel Aquino",
+    "email": "maquino@doximity.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "rake-ui and legacy migration work",
+    "initial_sent_at": "2026-08-25T13:00:37.938079+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "ignaciosy",
+    "email": "ignacio.sfeir@renuo.ch",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm fastapi port",
+    "initial_sent_at": "2026-08-25T13:00:37.938079+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
