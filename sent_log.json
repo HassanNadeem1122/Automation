@@ -800,7 +800,8 @@
     "subject": "rails \u2192 fastapi migration // hans lemuet",
     "initial_sent_at": "2026-08-02T13:01:07.338423+00:00",
     "follow_up_sent_at": "2026-08-25T13:00:37.938079+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-26T13:00:36.558349+00:00"
   },
   {
     "company": "Matt Antonelli",
@@ -810,7 +811,8 @@
     "subject": "ffxiv-collect rails migration \u2014 matt antonelli",
     "initial_sent_at": "2026-08-02T13:01:07.338423+00:00",
     "follow_up_sent_at": "2026-08-25T13:00:37.938079+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-26T13:00:36.558349+00:00"
   },
   {
     "company": "Lorent Lempereur",
@@ -820,7 +822,8 @@
     "subject": "keycloak-api-rails \u2192 fastapi migration \u2014 lorent lempereur",
     "initial_sent_at": "2026-08-02T13:01:07.338423+00:00",
     "follow_up_sent_at": "2026-08-25T13:00:37.938079+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-26T13:00:36.558349+00:00"
   },
   {
     "company": "Miha Rekar",
@@ -830,7 +833,8 @@
     "subject": "rails \u2192 fastapi migration \u2014 miha rekar visualizer",
     "initial_sent_at": "2026-08-02T13:01:07.338423+00:00",
     "follow_up_sent_at": "2026-08-25T13:00:37.938079+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-26T13:00:36.558349+00:00"
   },
   {
     "company": "Gregory N. Schmit",
@@ -840,7 +844,8 @@
     "subject": "rails-rest-framework \u2192 fastapi migration \u2014 hassan",
     "initial_sent_at": "2026-08-02T13:01:07.338423+00:00",
     "follow_up_sent_at": "2026-08-25T13:00:37.938079+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-26T13:00:36.558349+00:00"
   },
   {
     "company": "Mikkel Malmberg",
@@ -2969,6 +2974,26 @@
     "source": "github_commits",
     "subject": "fat free crm fastapi port",
     "initial_sent_at": "2026-08-25T13:00:37.938079+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Adrien Siami",
+    "email": "adrien@siami.fr",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "hyperactiveform and legacy migrations",
+    "initial_sent_at": "2026-08-26T13:00:36.558349+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "nejdetkadir",
+    "email": "nejdetkadir.550@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm to fastapi migration",
+    "initial_sent_at": "2026-08-26T13:00:36.558349+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
