@@ -854,7 +854,7 @@
     "source": "github_commits",
     "subject": "nitro_kit migration \u2014 rails to fastapi",
     "initial_sent_at": "2026-08-02T13:01:07.338423+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-27T13:00:50.963472+00:00",
     "replied": false
   },
   {
@@ -864,7 +864,7 @@
     "source": "github_commits",
     "subject": "rails \u2192 fastapi migration @ akitaonrails",
     "initial_sent_at": "2026-08-02T13:01:07.338423+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-27T13:00:50.963472+00:00",
     "replied": false
   },
   {
@@ -874,7 +874,7 @@
     "source": "github_commits",
     "subject": "rails \u2192 fastapi migration \u2014 toshimaru",
     "initial_sent_at": "2026-08-02T13:01:07.338423+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-27T13:00:50.963472+00:00",
     "replied": false
   },
   {
@@ -884,7 +884,7 @@
     "source": "github_commits",
     "subject": "angular_rails_csrf maintainer role + rails \u2192 fastapi migration",
     "initial_sent_at": "2026-08-02T13:01:07.338423+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-27T13:00:50.963472+00:00",
     "replied": false
   },
   {
@@ -895,7 +895,7 @@
     "subject": "rails \u2192 fastapi migration \u2014 alexey poimtsev",
     "initial_sent_at": "2026-08-02T13:01:07.338423+00:00",
     "follow_up_sent_at": null,
-    "replied": false
+    "replied": true
   },
   {
     "company": "TylerE",
@@ -904,7 +904,7 @@
     "source": "hn_search",
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-03T13:01:07.251213+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-08-27T13:00:50.963472+00:00",
     "replied": false
   },
   {
@@ -2994,6 +2994,16 @@
     "source": "github_commits",
     "subject": "fat free crm to fastapi migration",
     "initial_sent_at": "2026-08-26T13:00:36.558349+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Jon Bistline",
+    "email": "bistline@broadinstitute.org",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "single cell portal core and backend migrations",
+    "initial_sent_at": "2026-08-27T13:00:50.963472+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
