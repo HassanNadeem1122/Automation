@@ -855,7 +855,8 @@
     "subject": "nitro_kit migration \u2014 rails to fastapi",
     "initial_sent_at": "2026-08-02T13:01:07.338423+00:00",
     "follow_up_sent_at": "2026-08-27T13:00:50.963472+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-28T13:00:39.915040+00:00"
   },
   {
     "company": "AkitaOnRails",
@@ -865,7 +866,8 @@
     "subject": "rails \u2192 fastapi migration @ akitaonrails",
     "initial_sent_at": "2026-08-02T13:01:07.338423+00:00",
     "follow_up_sent_at": "2026-08-27T13:00:50.963472+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-28T13:00:39.915040+00:00"
   },
   {
     "company": "Toshimaru",
@@ -875,7 +877,8 @@
     "subject": "rails \u2192 fastapi migration \u2014 toshimaru",
     "initial_sent_at": "2026-08-02T13:01:07.338423+00:00",
     "follow_up_sent_at": "2026-08-27T13:00:50.963472+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-28T13:00:39.915040+00:00"
   },
   {
     "company": "bodrovis",
@@ -885,7 +888,8 @@
     "subject": "angular_rails_csrf maintainer role + rails \u2192 fastapi migration",
     "initial_sent_at": "2026-08-02T13:01:07.338423+00:00",
     "follow_up_sent_at": "2026-08-27T13:00:50.963472+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-28T13:00:39.915040+00:00"
   },
   {
     "company": "Alexey Poimtsev",
@@ -905,7 +909,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-03T13:01:07.251213+00:00",
     "follow_up_sent_at": "2026-08-27T13:00:50.963472+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-28T13:00:39.915040+00:00"
   },
   {
     "company": "oblique63",
@@ -3004,6 +3009,36 @@
     "source": "github_commits",
     "subject": "single cell portal core and backend migrations",
     "initial_sent_at": "2026-08-27T13:00:50.963472+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Matthew M. Keeler",
+    "email": "mkeeler@launchdarkly.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "ruby-server-sdk and legacy migration work",
+    "initial_sent_at": "2026-08-28T13:00:39.915040+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Alexis Bernard",
+    "email": "alexis@basesecrete.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "active hashcash and legacy migration work",
+    "initial_sent_at": "2026-08-28T13:00:39.915040+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Maximo Mussini",
+    "email": "maximomussini@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "oj_serializers and legacy stack migrations",
+    "initial_sent_at": "2026-08-28T13:00:39.915040+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
