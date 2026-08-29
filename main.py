@@ -721,7 +721,7 @@ def hn_profile_email(username: str) -> str | None:
     return email
 
 
-def find_hn_search_leads(exclude: set, limit: int = 40) -> list:
+def find_hn_search_leads(exclude: set, limit: int = 40, lookback_days: int | None = None) -> list:
     """Mine recent HN comments from people describing migration pain right now.
 
     The "Who is hiring" thread only refreshes once a month and we exhaust it in
@@ -742,7 +742,8 @@ def find_hn_search_leads(exclude: set, limit: int = 40) -> list:
     Leads carry posted_at/days_ago so the email can reference when they said it
     and stay honest about it.
     """
-    cutoff = int(time.time()) - (HN_LOOKBACK_DAYS * 86400)
+    window = lookback_days or HN_LOOKBACK_DAYS
+    cutoff = int(time.time()) - (window * 86400)
     # Every phrase here was volume-checked against a 120-day window before being
     # added. The old list was long specific sentences ("rewriting our rails app",
     # "rails performance problems scaling") which read well but matched almost
@@ -843,7 +844,7 @@ def find_hn_search_leads(exclude: set, limit: int = 40) -> list:
             f"(newest {leads[0].get('days_ago')}d, oldest {leads[-1].get('days_ago')}d) "
             f"| {buyers} company+context, {mid} partial, {len(leads)-buyers-mid} hobbyist")
     else:
-        log(f"  🔎 HN search: 0 leads in the last {HN_LOOKBACK_DAYS} days")
+        log(f"  🔎 HN search: 0 leads in the last {window} days")
     return leads
 
 
@@ -915,8 +916,18 @@ def find_leads(github_token: str, cap: int, already: set) -> list:
 
     # Order matters: people describing their own Rails pain convert far better
     # than a repo maintainer who never asked for anything.
-    if len(fresh) < cap:
-        fresh += find_hn_search_leads(seen)
+    #
+    # The window widens by itself when the well runs dry. Every past supply
+    # collapse (18/day down to 1/day) needed a human to notice and hand-edit a
+    # constant, which meant days of near-empty runs in between. Start tight
+    # because recent pain converts best, and only reach further back when the
+    # tight window genuinely cannot fill the cap.
+    for window in (HN_LOOKBACK_DAYS, HN_LOOKBACK_DAYS * 2, HN_LOOKBACK_DAYS * 4):
+        if len(fresh) >= cap:
+            break
+        if window > HN_LOOKBACK_DAYS:
+            log(f"  📈 Only {len(fresh)}/{cap} so far — widening HN window to {window}d")
+        fresh += find_hn_search_leads(seen, lookback_days=window)
 
     if len(fresh) < cap:
         fresh += find_remoteok_leads(seen)
