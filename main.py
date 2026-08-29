@@ -50,10 +50,12 @@ BEDROCK_MODEL_ID = env("BEDROCK_MODEL_ID", "us.anthropic.claude-sonnet-4-6")
 BEDROCK_REGION = env("BEDROCK_REGION", "us-east-1")
 
 # One month's thread yields only a handful of emailable leads, so scan further
-# back. A company that posted 6 months ago is usually still mid-migration —
-# these leads age far better than a normal job ad, and real companies beat the
-# GitHub hobbyist filler every time. Raise via the HN_MONTHS repo variable.
-HN_MONTHS = int(env("HN_MONTHS", "8"))
+# back. Unlike a comment about a passing frustration, a legacy codebase does not
+# fix itself: a company that was hiring Rails or PHP engineers 18 months ago
+# almost certainly still runs that stack, so these leads age far better than a
+# normal job ad and real companies beat the GitHub hobbyist filler every time.
+# Raise via the HN_MONTHS repo variable.
+HN_MONTHS = int(env("HN_MONTHS", "18"))
 # How far back an HN comment can be and still count as a live lead. Someone who
 # complained about their Rails monolith four months ago may well have fixed it;
 # someone who said it last week almost certainly hasn't. Also the supply valve:
@@ -360,7 +362,7 @@ def fetch_recent_hiring_threads(months: int = HN_MONTHS) -> list:
     try:
         resp = requests.get(
             f"{HN_API}/search_by_date",
-            params={"tags": "story,author_whoishiring", "hitsPerPage": 30},
+            params={"tags": "story,author_whoishiring", "hitsPerPage": 60},
             timeout=20,
         )
         for hit in resp.json().get("hits", []):
@@ -463,7 +465,7 @@ def extract_email(text: str) -> str | None:
     return None
 
 
-def qualify(text: str) -> str | None:
+def qualify(text: str, is_job_post: bool = False) -> str | None:
     """Grade a post as a legacy-migration prospect.
 
     Requiring Python AND Rails AND an email in the same post turned out to match
@@ -487,8 +489,16 @@ def qualify(text: str) -> str | None:
     if has_ruby:
         has_py = any(s in low for s in PY_SIGNALS)
         return "strong" if (has_py or has_strong) else "ok"
-    if any(s in low for s in OTHER_LEGACY_SIGNALS) and has_strong:
-        return "ok"
+    if any(s in low for s in OTHER_LEGACY_SIGNALS):
+        # In a job ad, hiring IS the intent signal. A company staffing up on a
+        # legacy PHP/Java/.NET stack has both the codebase and the budget, and
+        # job ads almost never contain the word "migration" — so demanding one
+        # threw these away. Measured on the Aug 2026 thread: 8 contactable
+        # companies/month this way versus 2 from Ruby alone.
+        # Free-text comments still need an explicit migration word, because
+        # "we use java" on its own says nothing about wanting to move off it.
+        if is_job_post or has_strong:
+            return "ok"
     return None
 
 
@@ -560,7 +570,7 @@ def find_hn_leads() -> tuple:
         total_posts += len(posts)
         log(f"  📋 {thread['title']} — {len(posts)} job posts")
         for post in posts:
-            tier = qualify(post)
+            tier = qualify(post, is_job_post=True)
             if not tier:
                 continue
             company = parse_company(post)
