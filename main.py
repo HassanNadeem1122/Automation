@@ -167,6 +167,45 @@ OTHER_LEGACY_SIGNALS = ("php", "java", ".net", "asp.net", "cobol", "delphi")
 # Presence of these upgrades a lead to "strong" (explicitly moving/rewriting).
 STRONG_SIGNALS = ("fastapi", "migrat", "rewrit", "porting", "moving off", "legacy")
 
+# ── Who can actually pay ─────────────────────────────────────────────────
+# A solo dev porting a hobby app has exactly the same migration pain as a CTO
+# with a legacy monolith, and none of the budget. 16 of 22 leads in the last run
+# were personal freemail addresses, which is why volume kept rising while
+# revenue stayed at zero. These two lists separate "has a company behind them"
+# from "is a person with an opinion".
+COMPANY_CONTEXT = (
+    "our team", "our company", "our startup", "our engineers", "our backend",
+    "our codebase", "our monolith", "our api", "our stack", "our product",
+    "our platform", "our customers", "our clients", "our users", "our app",
+    "we're hiring", "we are hiring", "we migrated", "we're migrating",
+    "we are migrating", "we rewrote", "we're rewriting", "we are rewriting",
+    "we run", "we use", "we built", "at my company", "my team", "in production",
+    "our infrastructure", "our services", "our database",
+)
+FREEMAIL_DOMAINS = {
+    "gmail.com", "yahoo.com", "hotmail.com", "outlook.com", "icloud.com",
+    "proton.me", "protonmail.com", "pm.me", "posteo.net", "disroot.org",
+    "fastmail.com", "gmx.com", "mail.com", "yandex.com", "aol.com",
+    "tutanota.com", "tuta.io", "zoho.com", "hey.com", "me.com", "live.com",
+    "msn.com", "mailbox.org", "riseup.net", "web.de", "qq.com", "163.com",
+}
+
+
+def buyer_score(text: str, email: str) -> int:
+    """Rough "can this person sign a cheque" score, 0-4.
+
+    Not a judgement of the person, just of the lead: we sort by this so the
+    daily cap spends itself on people with a company and a budget instead of
+    hobbyists who happen to use the same words.
+    """
+    score = 0
+    if any(p in (text or "").lower() for p in COMPANY_CONTEXT):
+        score += 2
+    domain = (email or "").rsplit("@", 1)[-1].lower()
+    if domain and domain not in FREEMAIL_DOMAINS:
+        score += 2      # own/company domain beats a personal inbox
+    return score
+
 EMAIL_RE = re.compile(r"[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}")
 
 # Emails we never contact (generic/no-reply inboxes + bots).
@@ -775,15 +814,24 @@ def find_hn_search_leads(exclude: set, limit: int = 40) -> list:
                 "source": "hn_search",
                 "hn_user": author,
                 "days_ago": days_ago,
+                "buyer_score": buyer_score(text, email),
                 "story": (h.get("story_title") or "")[:120],
                 "snippet": " ".join(text.split())[:700],
             })
-    # Freshest pain first — if the daily cap trims the list, drop the stalest.
-    leads.sort(key=lambda l: (l.get("days_ago") if l.get("days_ago") is not None else 9999))
+    # Buyers first, then freshest. The daily cap is the scarce resource: spending
+    # it on 16 hobbyists and 6 companies is how you get volume without revenue,
+    # so people with a company and a budget go to the front of the queue and the
+    # cap trims hobbyists off the tail rather than trimming at random.
+    leads.sort(key=lambda l: (
+        -l.get("buyer_score", 0),
+        l.get("days_ago") if l.get("days_ago") is not None else 9999,
+    ))
     if leads:
-        newest = leads[0].get("days_ago")
-        oldest = leads[-1].get("days_ago")
-        log(f"  🔎 HN search: {len(leads)} leads (newest {newest}d ago, oldest {oldest}d ago)")
+        buyers = sum(1 for l in leads if l.get("buyer_score", 0) >= 4)
+        mid = sum(1 for l in leads if l.get("buyer_score", 0) == 2)
+        log(f"  🔎 HN search: {len(leads)} leads "
+            f"(newest {leads[0].get('days_ago')}d, oldest {leads[-1].get('days_ago')}d) "
+            f"| {buyers} company+context, {mid} partial, {len(leads)-buyers-mid} hobbyist")
     else:
         log(f"  🔎 HN search: 0 leads in the last {HN_LOOKBACK_DAYS} days")
     return leads
