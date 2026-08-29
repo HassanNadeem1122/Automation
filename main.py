@@ -54,6 +54,12 @@ BEDROCK_REGION = env("BEDROCK_REGION", "us-east-1")
 # these leads age far better than a normal job ad, and real companies beat the
 # GitHub hobbyist filler every time. Raise via the HN_MONTHS repo variable.
 HN_MONTHS = int(env("HN_MONTHS", "8"))
+# How far back an HN comment can be and still count as a live lead. Someone who
+# complained about their Rails monolith four months ago may well have fixed it;
+# someone who said it last week almost certainly hasn't. Also the supply valve:
+# a rolling window refills daily as HN gets new comments, which is what stops
+# dedup from starving the run.
+HN_LOOKBACK_DAYS = int(env("HN_LOOKBACK_DAYS", "120"))
 
 # ── Sending: Amazon SES ──────────────────────────────────────────────────
 # We send through Amazon SES from your DKIM/SPF/DMARC-authenticated domain, not
@@ -667,33 +673,51 @@ def hn_profile_email(username: str) -> str | None:
 
 
 def find_hn_search_leads(exclude: set, limit: int = 40) -> list:
-    """Mine HN beyond the monthly hiring thread.
+    """Mine recent HN comments from people describing migration pain right now.
 
     The "Who is hiring" thread only refreshes once a month and we exhaust it in
-    days. HN's Algolia index is free and covers every comment ever posted, so we
-    search for people actively describing Rails pain or a Python move. Someone
-    writing about their own migration is a warmer lead than a job ad.
+    days, so we also search HN's free Algolia index. Two things matter here and
+    both were wrong before:
+
+    1. RECENCY. This used to hit /search, which ranks by relevance across all of
+       HN history — so it kept surfacing the same famous Rails threads from years
+       ago. Emailing someone about a migration they complained about in 2017 is
+       why the outreach felt invented: that pain is long resolved and they don't
+       remember writing it. We now hit /search_by_date with a created_at_i floor,
+       so every lead is someone who said it within HN_LOOKBACK_DAYS.
+    2. SUPPLY. Relevance ranking is deterministic, so the same query returned the
+       same hits every single day and dedup ate all of them — output collapsed to
+       1-3 leads/day. A rolling date window refills on its own as HN gets new
+       comments, so the well refills instead of draining.
+
+    Leads carry posted_at/days_ago so the email can reference when they said it
+    and stay honest about it.
     """
+    cutoff = int(time.time()) - (HN_LOOKBACK_DAYS * 86400)
+    # Every phrase here was volume-checked against a 120-day window before being
+    # added. The old list was long specific sentences ("rewriting our rails app",
+    # "rails performance problems scaling") which read well but matched almost
+    # nothing once a date floor was applied — "migrating off rails" returned a
+    # single hit in four months. Short phrases carry the intent and still have a
+    # real corpus behind them; the STRONG_SIGNALS gate below does the precision
+    # work, so these can afford to be broad.
     queries = [
-        "rails to python migration",
-        "migrating off rails",
-        "rails to fastapi",
-        "replacing rails backend",
-        "rails performance problems scaling",
-        "rewriting our rails app",
-        "moving away from ruby on rails",
-        "rails monolith slow",
-        "rails hiring python engineers",
-        "legacy rails codebase",
-        "rails technical debt rewrite",
-        "porting rails to python",
-        # Other legacy stacks — same migration-pain signal, broader than Rails.
-        "legacy php codebase rewrite",
-        "migrating off php monolith",
-        "legacy java monolith migration",
-        "rewriting legacy .net application",
-        "porting legacy codebase to python",
-        "old php app technical debt",
+        "technical debt",        # ~1350 hits/120d
+        "rails app",             # ~480
+        "port to python",        # ~478
+        "legacy system",         # ~438
+        "migrating off",         # ~311
+        "legacy codebase",       # ~184
+        "rewrite from scratch",  # ~139
+        "rewriting our",         # ~129
+        "rewrite backend",       # ~99
+        "legacy rails",          # ~69
+        "migrate to python",     # ~48
+        "php legacy",            # ~45
+        "rails migration",       # ~38
+        "replace legacy",        # ~38
+        "modernize legacy",      # ~25
+        "monolith rewrite",      # ~12
     ]
     leads = []
     for q in queries:
@@ -701,8 +725,13 @@ def find_hn_search_leads(exclude: set, limit: int = 40) -> list:
             break
         try:
             resp = requests.get(
-                f"{HN_API}/search",
-                params={"query": q, "tags": "comment", "hitsPerPage": 60},
+                f"{HN_API}/search_by_date",
+                params={
+                    "query": q,
+                    "tags": "comment",
+                    "hitsPerPage": 60,
+                    "numericFilters": f"created_at_i>{cutoff}",
+                },
                 timeout=25,
             )
             if resp.status_code != 200:
@@ -719,6 +748,13 @@ def find_hn_search_leads(exclude: set, limit: int = 40) -> list:
             tier = qualify(text)
             if not tier:
                 continue
+            # Search-sourced leads must show explicit migration intent, not just
+            # a passing mention of their stack. Broad queries pull in plenty of
+            # "we run rails" chatter, and "we run rails" is not a buying signal
+            # — "we're rewriting our rails app" is. The hiring-thread path skips
+            # this gate on purpose: there, hiring IS the intent signal.
+            if not any(s in text.lower() for s in STRONG_SIGNALS):
+                continue
             author = h.get("author") or ""
             # Prefer an address in the comment itself; otherwise fall back to the
             # commenter's HN profile, which is where most people actually keep it.
@@ -726,15 +762,30 @@ def find_hn_search_leads(exclude: set, limit: int = 40) -> list:
             if not email or email in exclude:
                 continue
             exclude.add(email)
+            created = h.get("created_at_i") or 0
+            days_ago = int((time.time() - created) // 86400) if created else None
             leads.append({
                 "email": email,
                 "company": author[:80] or "there",
-                "tier": tier,
+                # Someone still mid-problem this month is worth emailing before
+                # someone who mentioned it four months ago, so recency outranks
+                # keyword strength when we sort.
+                "tier": "strong" if (days_ago is not None and days_ago <= 30
+                                     and tier == "strong") else tier,
                 "source": "hn_search",
                 "hn_user": author,
+                "days_ago": days_ago,
+                "story": (h.get("story_title") or "")[:120],
                 "snippet": " ".join(text.split())[:700],
             })
-    log(f"  🔎 HN search: {len(leads)} leads")
+    # Freshest pain first — if the daily cap trims the list, drop the stalest.
+    leads.sort(key=lambda l: (l.get("days_ago") if l.get("days_ago") is not None else 9999))
+    if leads:
+        newest = leads[0].get("days_ago")
+        oldest = leads[-1].get("days_ago")
+        log(f"  🔎 HN search: {len(leads)} leads (newest {newest}d ago, oldest {oldest}d ago)")
+    else:
+        log(f"  🔎 HN search: 0 leads in the last {HN_LOOKBACK_DAYS} days")
     return leads
 
 
