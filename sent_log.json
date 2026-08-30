@@ -920,7 +920,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-03T13:01:07.251213+00:00",
     "follow_up_sent_at": "2026-08-29T13:01:00.613698+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-30T13:01:00.505919+00:00"
   },
   {
     "company": "gremlinsinc",
@@ -930,7 +931,8 @@
     "subject": "fastapi migration from rails",
     "initial_sent_at": "2026-08-03T13:01:07.251213+00:00",
     "follow_up_sent_at": "2026-08-29T13:01:00.613698+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-30T13:01:00.505919+00:00"
   },
   {
     "company": "RussianCow",
@@ -940,7 +942,8 @@
     "subject": "django orm and postgres features",
     "initial_sent_at": "2026-08-03T13:01:07.251213+00:00",
     "follow_up_sent_at": "2026-08-29T13:01:00.613698+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-30T13:01:00.505919+00:00"
   },
   {
     "company": "dmpayton",
@@ -950,7 +953,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-03T13:01:07.251213+00:00",
     "follow_up_sent_at": "2026-08-29T13:01:00.613698+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-30T13:01:00.505919+00:00"
   },
   {
     "company": "mgkimsal",
@@ -960,7 +964,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-03T13:01:07.251213+00:00",
     "follow_up_sent_at": "2026-08-29T13:01:00.613698+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-08-30T13:01:00.505919+00:00"
   },
   {
     "company": "yieldcrv",
@@ -3259,6 +3264,226 @@
     "source": "hn_whoishiring",
     "subject": "full stack role and your python stack",
     "initial_sent_at": "2026-08-29T13:01:00.613698+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Starbridge",
+    "email": "recruiting@starbridge.ai",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "backend migrations and your platform",
+    "initial_sent_at": "2026-08-30T13:01:00.505919+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Oaktree Capital",
+    "email": "jubrown@oaktreecapital.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "legacy migration work, rails to fastapi",
+    "initial_sent_at": "2026-08-30T13:01:00.505919+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Adobe",
+    "email": "skatkar@adobe.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "legacy backend migrations and your forward deployment role",
+    "initial_sent_at": "2026-08-30T13:01:00.505919+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Pango",
+    "email": "lukasz@pango.ai",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "legacy backend migrations, re your hq post",
+    "initial_sent_at": "2026-08-30T13:01:00.505919+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Addepar",
+    "email": "douglas.clifford@addepar.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "legacy backend migrations and your workflow platform role",
+    "initial_sent_at": "2026-08-30T13:01:00.505919+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Bay Area, CA",
+    "email": "saikumar@engineeringsquare.us",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "legacy backend migrations to fastapi",
+    "initial_sent_at": "2026-08-30T13:01:00.505919+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "NetBird",
+    "email": "veronica.external@netbird.io",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "backend migration work, relevant to your go stack maybe",
+    "initial_sent_at": "2026-08-30T13:01:00.505919+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Pathos AI",
+    "email": "chris.poshka+hn@pathos.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "legacy backend migrations",
+    "initial_sent_at": "2026-08-30T13:01:00.505919+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Saving Bitcoin",
+    "email": "savingbitcoin@pindush.net",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "legacy migration work, possible fit",
+    "initial_sent_at": "2026-08-30T13:01:00.505919+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Infystrat",
+    "email": "talent_hiring@infystrat.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "backend migration work, java spring boot",
+    "initial_sent_at": "2026-08-30T13:01:00.505919+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "HUNT Cloud, NTNU",
+    "email": "cloud@hunt.ntnu.no",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "flask api work and legacy migrations",
+    "initial_sent_at": "2026-08-30T13:01:00.505919+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Bubblehouse",
+    "email": "andrey+hiring@bubblehouse.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "backend migrations, principal eng role",
+    "initial_sent_at": "2026-08-30T13:01:00.505919+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Stackable",
+    "email": "recruiting@stackable.tech",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "product engineer application",
+    "initial_sent_at": "2026-08-30T13:01:00.505919+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Charted Sea",
+    "email": "marc.plouhinec@chartedsea.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "backend migration work",
+    "initial_sent_at": "2026-08-30T13:01:00.505919+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Gmail",
+    "email": "ayeeye.careers@gmail.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "frontend contract april 2026",
+    "initial_sent_at": "2026-08-30T13:01:00.505919+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "TrueSpace",
+    "email": "careers@truespace.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "full stack role and your laravel backend",
+    "initial_sent_at": "2026-08-30T13:01:00.505919+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Mezzanine",
+    "email": "consistent.emu.ajdw@hidingmail.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "legacy migration work, re your java role",
+    "initial_sent_at": "2026-08-30T13:01:00.505919+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Curiosity",
+    "email": "jobs@curiosity.ai",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "full-stack role and legacy stack work",
+    "initial_sent_at": "2026-08-30T13:01:00.505919+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Rolling Insights",
+    "email": "info@rolling-insights.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "node.js backend work and legacy migrations",
+    "initial_sent_at": "2026-08-30T13:01:00.505919+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Sentinel Defense Technologies",
+    "email": "peterjfrancoiii@gmail.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "python fastapi backend work",
+    "initial_sent_at": "2026-08-30T13:01:00.505919+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "VDX.tv",
+    "email": "hn.remote.jobs@vdx.tv",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "legacy migration work, generalist background",
+    "initial_sent_at": "2026-08-30T13:01:00.505919+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Cybersecurity/AI seed startup",
+    "email": "jobs@polarsky.ai",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "founding ai engineer application",
+    "initial_sent_at": "2026-08-30T13:01:00.505919+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
