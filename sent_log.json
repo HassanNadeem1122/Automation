@@ -975,7 +975,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-03T13:01:07.251213+00:00",
     "follow_up_sent_at": "2026-08-31T13:01:04.397778+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-01T13:01:00.472002+00:00"
   },
   {
     "company": "vinceguidry",
@@ -985,7 +986,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-03T13:01:07.251213+00:00",
     "follow_up_sent_at": "2026-08-31T13:01:04.397778+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-01T13:01:00.472002+00:00"
   },
   {
     "company": "cosmie",
@@ -995,7 +997,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-03T13:01:07.251213+00:00",
     "follow_up_sent_at": "2026-08-31T13:01:04.397778+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-01T13:01:00.472002+00:00"
   },
   {
     "company": "jacques_chester",
@@ -1005,7 +1008,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-03T13:01:07.251213+00:00",
     "follow_up_sent_at": "2026-08-31T13:01:04.397778+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-01T13:01:00.472002+00:00"
   },
   {
     "company": "nop_slide",
@@ -1025,7 +1029,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-03T13:01:07.251213+00:00",
     "follow_up_sent_at": "2026-08-31T13:01:04.397778+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-01T13:01:00.472002+00:00"
   },
   {
     "company": "martinald",
@@ -3704,6 +3709,226 @@
     "source": "hn_whoishiring",
     "subject": "legacy backend migrations",
     "initial_sent_at": "2026-08-31T13:01:04.397778+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Brynson",
+    "email": "careers@brynson.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "full stack role at brynson",
+    "initial_sent_at": "2026-09-01T13:01:00.472002+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Routefusion",
+    "email": "brad@routefusion.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "staff swe application via hn",
+    "initial_sent_at": "2026-09-01T13:01:00.472002+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Chase",
+    "email": "john.m.nelson@chase.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "backend migration experience, applying for software engineer role",
+    "initial_sent_at": "2026-09-01T13:01:00.472002+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Pocketflows",
+    "email": "team@pocketflows.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "rails background, founding engineer role",
+    "initial_sent_at": "2026-09-01T13:01:00.472002+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Great Question",
+    "email": "ned@greatquestion.co",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "rails to fastapi migration, relevant to your stack",
+    "initial_sent_at": "2026-09-01T13:01:00.472002+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Undetect.io",
+    "email": "careers@undetect.io",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "backend migration work",
+    "initial_sent_at": "2026-09-01T13:01:00.472002+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "fleming.de",
+    "email": "jobs@fleming.de",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "rails migration work, re your full stack role",
+    "initial_sent_at": "2026-09-01T13:01:00.472002+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "ELI Beamlines",
+    "email": "jana.zeniskova@eli-beams.eu",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "legacy backend migrations",
+    "initial_sent_at": "2026-09-01T13:01:00.472002+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "CreativeMode",
+    "email": "wilson@creativemode.net",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "founding engineer application",
+    "initial_sent_at": "2026-09-01T13:01:00.472002+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Roundtable",
+    "email": "matt@roundtable.ai",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "legacy migration work, rails to fastapi",
+    "initial_sent_at": "2026-09-01T13:01:00.472002+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Braden Health",
+    "email": "chris.brandsma@bradenhealth.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "full stack role on hacker news",
+    "initial_sent_at": "2026-09-01T13:01:00.472002+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Class Central",
+    "email": "careers@classcentral.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "senior engineer application",
+    "initial_sent_at": "2026-09-01T13:01:00.472002+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Digolution",
+    "email": "daniel@digolution.net",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "legacy backend migrations, saw your dev post",
+    "initial_sent_at": "2026-09-01T13:01:00.472002+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "NexBio Research Labs",
+    "email": "hr@nexbiolabs.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "abis internship application, hassan nadeem",
+    "initial_sent_at": "2026-09-01T13:01:00.472002+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Swayable",
+    "email": "eng-jobs@swayable.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "legacy backend migrations, rails to fastapi",
+    "initial_sent_at": "2026-09-01T13:01:00.472002+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Sonix",
+    "email": "stephen@sonix.ai",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "rails background, saw your senior fullstack post",
+    "initial_sent_at": "2026-09-01T13:01:00.472002+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "CoVar",
+    "email": "careers@covar.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "backend migration work, saw your hn post",
+    "initial_sent_at": "2026-09-01T13:01:00.472002+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "This role at Mobian sounds exciting, especially the intersection of AI, multi-mo",
+    "email": "careers@themobian.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "legacy backend migrations, fastapi specifically",
+    "initial_sent_at": "2026-09-01T13:01:00.472002+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "CIONIC",
+    "email": "hiring@cionic.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "infra role and legacy migration work",
+    "initial_sent_at": "2026-09-01T13:01:00.472002+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Hi, applied with ruchithagk99@gmail.com",
+    "email": "ruchithagk99@gmail.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "legacy backend migrations, rails to fastapi example",
+    "initial_sent_at": "2026-09-01T13:01:00.472002+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "MENTZ",
+    "email": "jobs@recruiting.mentz.net",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "legacy backend migrations, saw your c++ router post",
+    "initial_sent_at": "2026-09-01T13:01:00.472002+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Comity Inc.",
+    "email": "andres@comity.ai",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "legacy backend migrations, platform eng role",
+    "initial_sent_at": "2026-09-01T13:01:00.472002+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
