@@ -1,5 +1,113 @@
 [
   {
+    "company": "SerpApi",
+    "tier": "strong",
+    "link": "https://serpapi.com",
+    "note": "SerpApi | https://serpapi.com | Junior to Senior Fullstack Engineer multiple positions | Customer Success Engineer | Hiring Coordinator | Python/Ruby/PHP/Js/Rust/Cotlin/C#/Crystal/Nim/Elixir Developer Advocate positions | Based in Austin, TX but remote-first structure | Full-time | ONSITE or FULLY R"
+  },
+  {
+    "company": "Source",
+    "tier": "ok",
+    "link": "https://source.inc",
+    "note": "Source ( https://source.inc )| USA/Canada: REMOTE | Full-Time Our mission: make handling memory, state, and context for AI agents outside the cloud as simple as it is in the cloud. Today it isn't close. An agent without data is inert, and outside the cloud, data is duct tape. An agent in the field n"
+  },
+  {
+    "company": "Chronograph",
+    "tier": "ok",
+    "link": "https://grnh.se/1pm4u2ys7us",
+    "note": "Chronograph (chronograph.pe) | Platform Engineer | Full-Time | Remote (US) | $175,000 - $215,000 USD + equity Chronograph was founded to bring next-generation technology to private capital markets. Through our suite of cloud-based analytics and data management solutions, we help many of the world's "
+  },
+  {
+    "company": "Snowflake",
+    "tier": "ok",
+    "link": "https://careers.snowflake.com/us/en/job/SNCOUSA253CD7A2E6945...",
+    "note": "Snowflake | Forward Deployed Engineer, Product Manager | Menlo Park, CA | Warsaw, Poland | London, UK | ONSITE I\u2019m part of Snowflake\u2019s Applied AI / Forward Deployed Engineering team, and we\u2019re hiring for multiple roles on the team. We work directly with strategic customers to design, build, deploy, "
+  },
+  {
+    "company": "AREO",
+    "tier": "ok",
+    "link": "https://goareo.com/",
+    "note": "AREO | Remote (EU) / on-site in Bremen, Germany | Full-Time | Equity | Roles: [Engineering Manager (Ruby on Rails), Lead Product Engineer (Ruby on Rails), Robotics Lead] My name is Marius and I am the CTO at AREO ( https://goareo.com/ ). AREO, founded in January 2023 by a team with 20+ years of comb"
+  },
+  {
+    "company": "Loft Orbital",
+    "tier": "ok",
+    "link": "https://loftorbital.com",
+    "note": "Loft Orbital | Senior Cloud Infrastructure Engineer (SRE) | Golden, CO or San Francisco, CA | $180k\u2013$240k + equity | https://loftorbital.com Loft builds and operates shareable satellites so customers can fly a payload without building a spacecraft. We integrate, launch, and operate the mission end t"
+  },
+  {
+    "company": "Discord",
+    "tier": "ok",
+    "link": "https://job-boards.greenhouse.io/discord/jobs/8656854002",
+    "note": "Discord | Senior Software Engineer, Application Security | San Francisco, CA | ONSITE | $280K\u2013$330K TC Discord is where communities and friend groups spend time together, on desktop, mobile, and now more and more inside games and third-party apps built on our platform. That surface area, plus a huge"
+  },
+  {
+    "company": "Relevant Healthcare",
+    "tier": "ok",
+    "link": "https://relevant.healthcare/jobs/",
+    "note": "Relevant Healthcare | Lead Engineer | Remote (US/Canada only) | Full-time Relevant builds a data platform that helps safety-net healthcare providers deliver better care using data from their electronic health records. Our customers are non-profit clinics called Community Health Centers. You can read"
+  },
+  {
+    "company": "Solution Street",
+    "tier": "ok",
+    "link": "https://www.solutionstreet.com/",
+    "note": "Solution Street | Northern Virginia / Washington DC Metro Area - REMOTE (US), HYBRID & ONSITE roles available - USA only. We are a software consulting company based in Northern Virginia. Our Website: https://www.solutionstreet.com/ Interested? Apply on our Careers Page (Make sure to mention you foun"
+  },
+  {
+    "company": "Relevant Healthcare",
+    "tier": "ok",
+    "link": "https://relevant.healthcare/jobs/",
+    "note": "Relevant Healthcare | Lead Software Engineer | Remote (US) | Full-time Relevant builds a data platform that helps safety-net healthcare providers deliver better care using data from their electronic health records. Our customers are non-profit clinics called Community Health Centers. You can read mo"
+  },
+  {
+    "company": "Pomelo Care",
+    "tier": "strong",
+    "link": "https://grnh.se/k4xos2c24us",
+    "note": "Pomelo Care| Remote (US) First with offices in NYC and SF. We\u2019re building a healthier future for women and children. We combine clinical excellence, human connection, and proactive technology to ensure our patients get the care they deserve, from preconception through midlife. - Staff Software Engin"
+  },
+  {
+    "company": "Vistulo",
+    "tier": "ok",
+    "link": "https://ats.vistulo.com/roles/253cbd69-1019-4547-93b6-6ef8db...",
+    "note": "Vistulo | Fully REMOTE (Poland or Romanian residents only) | B2B contract | US Eastern timezone overlap required Vistulo is a boutique outsourcing company based in Poland. We specialize in expert-level talent for financial institutions. All roles are for work with a top North American banking client"
+  },
+  {
+    "company": "Fastly",
+    "tier": "strong",
+    "link": "https://www.fastly.com/about/careers",
+    "note": "*Fastly | Software Engineers (Senior, Staff, Principal) | US, UK, EU, APAC ONSITE PREFERRED | Full-time* When you look at the headers of major websites, you\u2019ll see us. If it has to be performant, secure, scaled worldwide, and always-on, it uses Fastly. We're a global edge cloud platform for performa"
+  },
+  {
+    "company": "Justworks",
+    "tier": "strong",
+    "link": "https://grnh.se/wlv9zr391us",
+    "note": "Justworks | Associate Software Engineer, Expenses | Toronto, Canada | HYBRID | Full-time | $109K\u2013$136K CAD Justworks helps small businesses manage payroll, benefits, HR, and compliance so they can focus on running their business. We\u2019re hiring an Associate Software Engineer for our Toronto Expenses p"
+  },
+  {
+    "company": "Monumint",
+    "tier": "ok",
+    "link": "https://monumint.com",
+    "note": "Monumint (YC W24) | https://monumint.com | Full Stack Engineers | SF In-Person | Full Time | $125k\u2013$225k \u2022 0.50%\u20131.50% Tech stack: TypeScript | Node | React/Next.js | Postgres | Docker | K8s | LLMs We\u2019re building the Voice AI infrastructure layer for financial services. Banks and fintechs use Monumi"
+  },
+  {
+    "company": "VersaFeed.com",
+    "tier": "ok",
+    "link": "",
+    "note": "VersaFeed.com | SENIOR SOFTWARE ENGINEER (Python/Django + JavaScript - VueJS/React) | REMOTE (USA ONLY) | Full-time About us : Fancy ETL pipeline which processes products from huge ecommerce companies. Data extraction and massage, delivery to destinations like Google/Meta/TikTok/etc. Profitable, 18+"
+  },
+  {
+    "company": "motan",
+    "tier": "ok",
+    "link": "https://www.motan-group.com/en/news/career/jobs/detail/softw...",
+    "note": "motan | Software Developer C#/.NET (4 openings) | Isny im Allg\u00e4u, Germany | ONSITE (partial home office) | Full-time | NO VISA (EU work authorisation required) motan builds the equipment that feeds plastics processing - drying, mixing and conveying material into injection molding and extrusion machi"
+  },
+  {
+    "company": "Snout  https://snout.com/",
+    "tier": "ok",
+    "link": "https://snout.com/",
+    "note": "Snout https://snout.com/ | Multiple Engineering + Product Roles | Remote US or Ontario, Canada | Full Time Join us at Snout on our mission to ensure no one ever has to make a health decision for their pet based on the cash in their bank account. Snout plans pay for 100% of routine veterinary care, u"
+  },
+  {
     "company": "New York, NY",
     "tier": "strong",
     "link": "https://uctalent.io/referral/Huynh_Nhu_Bao_Nhan221138/nedZed...",
@@ -3604,251 +3712,5 @@
     "tier": "ok",
     "link": "https://www.aha.io",
     "note": "Aha! ( https://www.aha.io ) | Rails / React | REMOTE Aha! is the #1 tool for product managers to plan strategy and roadmaps. We serve more than a million users worldwide. We are looking for: * Experienced full-stack Rails and security engineers to work on the Aha! product. Our application is built i"
-  },
-  {
-    "company": "Hi there. I have about a year's worth of experience working with Java, Spring Bo",
-    "tier": "ok",
-    "link": "https://www.linkedin.com/in/sherwyn-a-fernandes-/",
-    "note": "Hi there. I have about a year's worth of experience working with Java, Spring Boot, Python and Node.js. Would love to have a chat regarding this job role. Here's my linkedin: https://www.linkedin.com/in/sherwyn-a-fernandes-/"
-  },
-  {
-    "company": "Location: Ukraine",
-    "tier": "ok",
-    "link": "https://tinyurl.com/42mnvxmx",
-    "note": "Location: Ukraine Remote: Yes Willing to relocate: No Technologies: Android, Android SDK, APIs, Dart, Firebase, Flutter, iOS, Java, Kotlin, Objective-c, Push Notifications, Restful, Restful APIs, Swift, Supabase, Firebase, UX & UI, Git R\u00e9sum\u00e9/CV: https://tinyurl.com/42mnvxmx Email: kovalchukiaroslav"
-  },
-  {
-    "company": "GlassDollar",
-    "tier": "ok",
-    "link": "https://www.linkedin.com/jobs/view/4181051543/?refId=jxS%2Fh...",
-    "note": "GlassDollar | Startup Data & Insights Engineer | Berlin | Onsite (Remote Possible in Future) | Full-time Help us build the future of startup intelligence. Corporates need startups, but finding the right ones at scale? That\u2019s tough. That\u2019s where you come in. Develop data-driven solutions for startup "
-  },
-  {
-    "company": "Char Network",
-    "tier": "ok",
-    "link": "https://bitcoinerjobs.com/job/1686628-senior-engineer-char-n...",
-    "note": "Char Network | Senior Engineer + Engineering Manager | Miami ONSITE | C## and/or Rust Project: Char Network is an open-source Bitcoin staking platform enabling a whole new generation of Bitcoin Layer 2 solutions. Company: MZERO is a Miami-based software development team pioneering cutting-edge Bitco"
-  },
-  {
-    "company": "Stack Influence",
-    "tier": "ok",
-    "link": "https://stack-influence.breezy.hr/",
-    "note": "Stack Influence | Multiple Openings: QA, Technical Operations, Full Stack Developer | Full-time | Remote (Worldwide) We\u2019re a VC-backed, fully-remote, fast-growing creator marketplace linking eCommerce brands with everyday social media users. \u2022 Senior Full Stack JavaScript Developer ($120-160k USD): "
-  },
-  {
-    "company": "G2i/ICA",
-    "tier": "ok",
-    "link": "https://jobs.ashbyhq.com/g2i/5a3d410c-2ce8-4332-a2cb-8bb4c60...",
-    "note": "G2i/ICA | Sr. Data Scientist - LLM | Remote (US) | Full-Time | https://jobs.ashbyhq.com/g2i/5a3d410c-2ce8-4332-a2cb-8bb4c60... (keep UTM please; tells us how wonderful HN is) Agency hiring for a client through a fast-lane process. Permanent full-time position. US work authorization is needed due to "
-  },
-  {
-    "company": "DataAnnotation",
-    "tier": "ok",
-    "link": "https://devitjobs.uk/jobs/DataAnnotation-Back-End-Developer-...",
-    "note": "DataAnnotation | Back End Developer- AI Trainer | Remote, UK | Onsite / Remote | 66,296 - 66,296 GBP / year | Full-Time Tech used: Python, C#, JavaScript, SQL, Swift We are looking for proficient programmers to join our team to train our AI chatbots to code. You will work with the chatbots we are bu"
-  },
-  {
-    "company": "Fathom - AI Notetaker",
-    "tier": "ok",
-    "link": "https://fathom.video",
-    "note": "Fathom - AI Notetaker | REMOTE (must work US hours) | Full time | https://fathom.video We make the number one AI Notetaker and are hiring across the stack (rails/typescript/go/k8s/gcp). About Fathom: \u2022 YC W'21, raised Series A this summer, ~50 employees \u2022 Growing 10-20% every month (ARR + Usage) \u2022 8"
-  },
-  {
-    "company": "MacStadium is hiring for some super important roles.",
-    "tier": "ok",
-    "link": "https://www.macstadium.com/company/careers",
-    "note": "MacStadium is hiring for some super important roles. Specifically, we're looking to make our first SRE hire at the intersection of Kubernetes and MacOS virtualization. We're also looking to hire a team of developers (including a lead) for migrating our back-office admin and GraphQL API from a mix of"
-  },
-  {
-    "company": "Absinthe Labs",
-    "tier": "ok",
-    "link": "https://absinthe.network/careers#open-positions",
-    "note": "Absinthe Labs | Senior Full-Stack Engineer | Remote or NYC Hybrid Absinthe Labs is making loyalty markets more efficient. With over 20M visits and 2M+ users since our founding in 2022, we built the first Web3-native customer data platform that powers points programs across the digital landscape, and"
-  },
-  {
-    "company": "Pulumi",
-    "tier": "ok",
-    "link": "https://www.pulumi.com/careers/",
-    "note": "Pulumi | REMOTE (USA and Europe) | Engineering, Product, and Customer Engineering Roles | Full-time Pulumi simplifies managing cloud infrastructure. Pulumi's Infrastructure as Code (IaC) platform enables developers and infrastructure teams to define, deploy, and manage cloud resources using familiar"
-  },
-  {
-    "company": "Maritime shipping software",
-    "tier": "ok",
-    "link": "",
-    "note": "Maritime shipping software | Multiple roles | Global REMOTE | UCT-8 to UCT+4 Would you like to help tackle one of the most important sectors for the global economy - maritime shipping? We're hiring for multiple roles: software engineers, data analysts, UI/UX designers, implementation managers. Nearl"
-  },
-  {
-    "company": "curl -X POST \"https://apply-to-avantos.dev-sandbox.workload.avantos-ai.net\" \\",
-    "tier": "ok",
-    "link": "https://apply-to-avantos.dev-sandbox.workload.avantos-ai.net",
-    "note": "curl -X POST \"https://apply-to-avantos.dev-sandbox.workload.avantos-ai.net\" \\ -H \"User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36\" \\ -H \"Content-Type: application/json\" \\ -d '{\"email\": \"<your-email>\"}'"
-  },
-  {
-    "company": "Mabl",
-    "tier": "ok",
-    "link": "https://www.mabl.com/join-the-team",
-    "note": "Mabl | US/India | Software Engineer | ONSITE / REMOTE We need your help to scale up our cloud based, AI testing software startup and put our 40M Series C raise to work. We\u2019re a 100% serverless operation built on Google Cloud Platform that rapidly develops and deploys features on a CI/CD model. Seven"
-  },
-  {
-    "company": "Cogram",
-    "tier": "ok",
-    "link": "https://cogram.com",
-    "note": "Cogram | Full-time | Remote (CET \u00b1 3 hours) | https://cogram.com | B2B SaaS / AI Cogram is an LLM-based productivity platform for architecture, engineering, and construction (AEC). Our product automates a growing number of AEC workflows such as meeting notes, site visits, project administration, and"
-  },
-  {
-    "company": "ROCKSTAR GAMES",
-    "tier": "ok",
-    "link": "https://grnh.se/01daf4583us",
-    "note": "ROCKSTAR GAMES | NYC-San Diego-New England| FULL-TIME | .NET SOFTWARE ENGINEERS | Existing Visa Transfers Welcome A career at Rockstar Games is about being part of a team working on some of the most creatively rewarding and ambitious projects to be found in any entertainment medium. You would be wel"
-  },
-  {
-    "company": "Floryn",
-    "tier": "ok",
-    "link": "https://floryn.com",
-    "note": "Floryn | Software Engineer | Ruby on Rails, React, React Native | On site or partly remote in 's-Hertogenbosch, The Netherlands | \u20ac45.000 - \u20ac90.000 | https://floryn.com As a full-stack software engineer at Floryn, you\u2019re joining us in building a fintech company which provides fast and easy access to"
-  },
-  {
-    "company": "Bloomberg",
-    "tier": "ok",
-    "link": "https://bloomberg.avature.net/careers/JobDetail/Senior-Softw...",
-    "note": "Bloomberg | Software Engineer - Infrastructure | ONSITE in New York, Princeton, London | Full-time Bloomberg is hiring experienced software engineers to build high-performance infrastructure that powers real-time financial data for global markets. We process massive datasets from regulatory agencies"
-  },
-  {
-    "company": "Sideline",
-    "tier": "ok",
-    "link": "",
-    "note": "Sideline | www.trysideline.co | Software Engineer | Hybrid (Melbourne, Australia) | Considering Full-time/Part-time/Contract | $AUD100-150k (pro rata) EDIT: I am only considering applicants based in Melbourne at this stage. Sideline is a rapidly growing SaaS product for law firms that enables a trac"
-  },
-  {
-    "company": "Grebban",
-    "tier": "ok",
-    "link": "https://career.grebban.com/jobs/5555838-software-developer-t...",
-    "note": "Grebban | Backend/Fullstack/Frontend Developer | Full-time | Onsite/hybrid Sthlm/Gbg in Sweden or Remote EU Grebban is one of the most sought after agencies in Europe and works mainly with ambitious brands seeking long-term partnerships. We have a very high success rate in creating fantastic busines"
-  },
-  {
-    "company": "ChartMogul",
-    "tier": "ok",
-    "link": "https://chartmogul.com",
-    "note": "ChartMogul ( https://chartmogul.com )| Remote | Full-time Since 2014, we have been building the leading Subscription Analytics Platform for growing SaaS businesses and CRM purpose-built for B2B SaaS teams. We're a remote-first company with 64 team members across 23 different countries. Profitable an"
-  },
-  {
-    "company": "Spectrum Effect",
-    "tier": "ok",
-    "link": "https://spectrumeffect.com/careers/",
-    "note": "Spectrum Effect | Jr/Mid/Senior/Principal Software Engineers | Hybrid in Monterrey, Mexico | https://spectrumeffect.com/careers/ Spectrum Effect\u2019s mission is to tackle the most challenging and costly problems in the wireless industry through innovation and automation. Our team is passionate about bu"
-  },
-  {
-    "company": "VerOps",
-    "tier": "ok",
-    "link": "https://verops.com",
-    "note": "VerOps | Austin/TX | Full-time | Remote | https://verops.com VerOps is building Simscope, the best hardware simulation monitoring and triage tool. This tracks millions of simulations daily, and is used by hundreds of verification engineers, across a variety of companies, to be more productive and ma"
-  },
-  {
-    "company": "Stellar Science",
-    "tier": "ok",
-    "link": "https://www.stellarscience.com",
-    "note": "Stellar Science | Hybrid (USA) Albuquerque NM, Washington DC (Tysons VA), Dayton OH | Full time, interns/co-ops | U.S. citizenship required | https://www.stellarscience.com Company: We're a small scientific software development company that develops custom scientific and engineering analysis applica"
-  },
-  {
-    "company": "Opendate",
-    "tier": "ok",
-    "link": "https://www.opendate.io/careers/senior-full-stack-software-e...",
-    "note": "Opendate | Senior Full Stack Software Engineer | REMOTE (US) | Full-time We're building the operating system for independent music venues. Local music venues across the country (US) are struggling to survive. Our mission is to help them make more money so they can stay open (and thrive) in an enviro"
-  },
-  {
-    "company": "TipLink is an NYC based, Sequoia backed Series A company merging the world of cr",
-    "tier": "ok",
-    "link": "https://jobs.ashbyhq.com/tiplink?utm_source=R8QW45lNlz",
-    "note": "TipLink is an NYC based, Sequoia backed Series A company merging the world of crypto and payments. Crypto rails can be cheaper, faster, and more global than traditional finance, enabling new products that couldn\u2019t otherwise exist. TipLink is leading the charge with innovation at this intersection. W"
-  },
-  {
-    "company": "Avantos.ai",
-    "tier": "ok",
-    "link": "https://apply-to-avantos.dev-sandbox.workload.avantos-ai.net",
-    "note": "Avantos.ai | Frontend Eng | Full-time | Remote (USA) Series A AI Fintech Startup headquartered in NYC. If you\u2019re outside of NYC, we'd like you to make quarterly visits and are happy to support higher-frequency visits. You'll get a sense of what we're building during the coding challenge, which you c"
-  },
-  {
-    "company": "QUOBYTE",
-    "tier": "ok",
-    "link": "https://www.quobyte.com/",
-    "note": "QUOBYTE | Santa Clara, CA and Berlin, Germany | Full-time | ONSITE | https://www.quobyte.com/ At Quobyte , we are working on the Data Center File System (DCFS), a highly scalable and fault-tolerant software storage system built around a parallel file system core. Customers use Quobyte DCFS for ML an"
-  },
-  {
-    "company": "Sensay",
-    "tier": "ok",
-    "link": "",
-    "note": "Sensay | senior full-stack engineer | REMOTE UTC \u00b14 | Full-time | Contractor \u20ac60K - \u20ac85K EUR | Equity possible At Sensay, we're on a mission to shape the future of AI personal replicas. As we expand our development team, we are looking for a talented senior full-stack engineer to help build outstand"
-  },
-  {
-    "company": "Eedi",
-    "tier": "ok",
-    "link": "https://eedi.com/",
-    "note": "Eedi | Senior Developer (.NET) | London or Remote (UK) | Full-time | https://eedi.com/ Eedi is an edtech startup. We make software that helps children learn maths. We've secured a $12M grant from a prestigious US foundation and partnered with major education providers and other big (household name) "
-  },
-  {
-    "company": "Fullstory",
-    "tier": "strong",
-    "link": "https://www.fullstory.com/",
-    "note": "Fullstory | Atlanta or Remote (US) | https://www.fullstory.com/ Fullstory provides session replay and analytics for websites and mobile apps. Our session replays are nothing short of magical, and the combination with analytics creates eye-opening insights. We have several engineering & product roles"
-  },
-  {
-    "company": "Archie",
-    "tier": "ok",
-    "link": "https://www.archiehub.com",
-    "note": "Archie ( https://www.archiehub.com ) | Remote (US East Coast + EU) | Full-Time | Equity | Roles: [Lead Product Engineer (Ruby on Rails), Senior Full-Stack Developer (Ruby on Rails), Technical Product Manager] Hi, my name is Marius and I am the CTO at Archie ( https://www.archiehub.com/ ). Archie is "
-  },
-  {
-    "company": "automotiveMastermind",
-    "tier": "ok",
-    "link": "https://www.automotivemastermind.com/",
-    "note": "automotiveMastermind | Full Stack Senior Software Engineer | NY | 2X per week in office/HYBRID https://www.automotivemastermind.com/ automotiveMastermind (an S&P Global Company) is hiring a hybrid/onsite Senior Software Engineer in New York. We are looking for strong expertise with React on the Fron"
-  },
-  {
-    "company": "Kixie",
-    "tier": "ok",
-    "link": "https://www.kixie.com/",
-    "note": "Kixie | Santa Monica, CA | Hybrid (On-Site 3x/Week) | Full-Time | Competitive Salary + Equity: $125K-$250K Currently Hiring: Staff Front-end SWE + Staff Backend SWE + Sr. MySQL/Aurora DBA We\u2019re hiring @ Kixie! -Kixie is a fast-growing, profitable B2B startup revolutionizing sales: https://www.kixie."
-  },
-  {
-    "company": "Recital",
-    "tier": "ok",
-    "link": "https://recitalapp.com",
-    "note": "Recital | Remote (Canada) | Full-time | https://recitalapp.com In-house lawyers waste 25% of their time looking for stuff. Recital uses non-obvious ML approaches, uniquely enabled by LLMs, to help them find it. We're diving into the relatively-unexplored data buried in contracts, building layers of "
-  },
-  {
-    "company": "OneSignal",
-    "tier": "ok",
-    "link": "https://onesignal.com/careers",
-    "note": "OneSignal | California, New York, Pennsylvania, Texas, Utah, Washington | Onsite or Remote (Within Supported States) | Full Time | https://onesignal.com/careers Tech stack includes Go, Rust, Ruby on Rails, Kafka, Postgres, Redis, InfluxDB, Typescript, React OneSignal is building the best platform fo"
-  },
-  {
-    "company": "Seeq",
-    "tier": "ok",
-    "link": "https://seeq.com",
-    "note": "Seeq | https://seeq.com | Staff Software Engineer (Frontend, Backend) | REMOTE (Some crossover w/ PST required) | Full-time | $140k - $180k + equity. Salary range for US-based; local adjustments for other countries. Seeq creates cutting-edge data analytics software for industrial process data, servi"
-  },
-  {
-    "company": "Rally UXR",
-    "tier": "ok",
-    "link": "https://www.ycombinator.com/companies/rally-uxr/jobs/3f6JRnn...",
-    "note": "Rally UXR | Remote | Full-time | Senior/Staff Software Engineer | $175k-$200k | 0.10% - 0.40% Equity We're building the leading User Research CRM for Product teams (rallyuxr.com) Apply here: https://www.ycombinator.com/companies/rally-uxr/jobs/3f6JRnn... -------- At Rally, we believe talking to your"
-  },
-  {
-    "company": "bloop",
-    "tier": "ok",
-    "link": "https://www.ycombinator.com/companies/bloop/jobs",
-    "note": "bloop (YC S21) | Software Engineer (Rust, AI); Compiler Engineer (Rust, Static Analysis) | Onsite London, UK (Visa Sponsor) We're combining LLMs and transpilers to translate COBOL into Java. If you\u2019re a Rust developer with experience working with AI and/or compilers, this role could be a great fit. "
-  },
-  {
-    "company": "SerpApi",
-    "tier": "ok",
-    "link": "https://serpapi.com",
-    "note": "SerpApi | https://serpapi.com | Junior to Senior Fullstack Engineer positions | Customer Success Engineer | Talent Acquisition Specialist | Based in Austin, TX but remote-first structure | Full-time | ONSITE or FULLY REMOTE | $150K - 180K a year 1099 for US or local avg + 20% for outside the US Serp"
-  },
-  {
-    "company": "broadn",
-    "tier": "ok",
-    "link": "https://broadn.notion.site/1a9d7894dd55809eb4a2f6cd6bea10cc",
-    "note": "broadn | Full-Stack Engineer | Typescript+Javascript + Nodejs | ONSITE in NYC,US | Fulltime broadn (broadn.io) is an AI-native CPQ (Configure, Price, Quote) platform that helps manufacturers, suppliers, and distributors create quotes and RFQs as fast as possible. Our platform handles large product c"
   }
 ]

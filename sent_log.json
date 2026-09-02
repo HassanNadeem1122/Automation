@@ -1039,7 +1039,7 @@
     "source": "hn_search",
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-03T13:01:07.251213+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-02T13:01:04.031135+00:00",
     "replied": false
   },
   {
@@ -1049,7 +1049,7 @@
     "source": "hn_search",
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-03T13:01:07.251213+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-02T13:01:04.031135+00:00",
     "replied": false
   },
   {
@@ -1060,7 +1060,7 @@
     "subject": "fastapi migration work, saw your ai engineer post",
     "initial_sent_at": "2026-08-04T13:01:10.445079+00:00",
     "follow_up_sent_at": null,
-    "replied": false
+    "replied": true
   },
   {
     "company": "Scite",
@@ -1069,7 +1069,7 @@
     "source": "hn_whoishiring",
     "subject": "fastapi background re your senior dev role",
     "initial_sent_at": "2026-08-04T13:01:10.445079+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-02T13:01:04.031135+00:00",
     "replied": false
   },
   {
@@ -1079,7 +1079,7 @@
     "source": "hn_whoishiring",
     "subject": "legacy migration background, curious about your stack",
     "initial_sent_at": "2026-08-04T13:01:10.445079+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-02T13:01:04.031135+00:00",
     "replied": false
   },
   {
@@ -1089,7 +1089,7 @@
     "source": "hn_whoishiring",
     "subject": "legacy .net migration work",
     "initial_sent_at": "2026-08-04T13:01:10.445079+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-02T13:01:04.031135+00:00",
     "replied": false
   },
   {
@@ -3929,6 +3929,226 @@
     "source": "hn_whoishiring",
     "subject": "legacy backend migrations, platform eng role",
     "initial_sent_at": "2026-09-01T13:01:00.472002+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Biobase",
+    "email": "jobs@biobase.ai",
+    "tier": "strong",
+    "source": "hn_whoishiring",
+    "subject": "legacy backend migrations, rails to fastapi",
+    "initial_sent_at": "2026-09-02T13:01:04.031135+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "GovStar",
+    "email": "nicholas.hanson@govstar.us",
+    "tier": "strong",
+    "source": "hn_whoishiring",
+    "subject": "legacy backend migrations, fastapi experience",
+    "initial_sent_at": "2026-09-02T13:01:04.031135+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "This Dot Labs",
+    "email": "jobs@thisdot.co",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "legacy backend migrations, saw your software architect post",
+    "initial_sent_at": "2026-09-02T13:01:04.031135+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Attentive",
+    "email": "bcraig@attentive.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "backend migration work, re your list growth roles",
+    "initial_sent_at": "2026-09-02T13:01:04.031135+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Getcaselight",
+    "email": "info@getcaselight.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "caselight backend",
+    "initial_sent_at": "2026-09-02T13:01:04.031135+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Noricum",
+    "email": "michael@noricum.io",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "backend engineer application",
+    "initial_sent_at": "2026-09-02T13:01:04.031135+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "More Optimal",
+    "email": "timo@moreoptimal.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "backend migration work, relevant to your r&d role",
+    "initial_sent_at": "2026-09-02T13:01:04.031135+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Fairwater Labs",
+    "email": "jeff@fairwaterlabs.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "backend migration work, re your founding engineer post",
+    "initial_sent_at": "2026-09-02T13:01:04.031135+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "CoVar",
+    "email": "gruvo@covar.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "legacy backend migrations, fastapi, your open role",
+    "initial_sent_at": "2026-09-02T13:01:04.031135+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Touchpoint",
+    "email": "jobs@touchpoint.io",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "php backend and legacy migration work",
+    "initial_sent_at": "2026-09-02T13:01:04.031135+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Steelhead Software",
+    "email": "hello@steelheadsoftware.io",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "legacy backend migrations, full stack contractor",
+    "initial_sent_at": "2026-09-02T13:01:04.031135+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "NavExl",
+    "email": "hiring@navexl.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "legacy stack work, re your hacker news post",
+    "initial_sent_at": "2026-09-02T13:01:04.031135+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Frontend",
+    "email": "hn@frontend.co",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "rails migration work, seen your stack",
+    "initial_sent_at": "2026-09-02T13:01:04.031135+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Bun",
+    "email": "conner@bun.sh",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "legacy migration work, rails to fastapi",
+    "initial_sent_at": "2026-09-02T13:01:04.031135+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Avy",
+    "email": "jobs@avy.ai",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "legacy backend migrations, staff eng role",
+    "initial_sent_at": "2026-09-02T13:01:04.031135+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Yaoun.de SARL",
+    "email": "jobs@yaoun.de",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "senior java role at yaoun.de",
+    "initial_sent_at": "2026-09-02T13:01:04.031135+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Airbnb",
+    "email": "ulprc@airbnb.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "legacy backend migrations, rails to fastapi",
+    "initial_sent_at": "2026-09-02T13:01:04.031135+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Appliansys",
+    "email": "charlotte.hoptroff@appliansys.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "legacy migration work, python background",
+    "initial_sent_at": "2026-09-02T13:01:04.031135+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Location: India",
+    "email": "rizvan.g.h@gmail.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "legacy backend migrations",
+    "initial_sent_at": "2026-09-02T13:01:04.031135+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "SOPHIE DATAGEN",
+    "email": "jobs@sophiedoc.ai",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "backend role at sophie",
+    "initial_sent_at": "2026-09-02T13:01:04.031135+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Puraido",
+    "email": "shai.d@puraido.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "backend migration work",
+    "initial_sent_at": "2026-09-02T13:01:04.031135+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Cactus",
+    "email": "careers@cactus.is",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "backend role, python migration work",
+    "initial_sent_at": "2026-09-02T13:01:04.031135+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
