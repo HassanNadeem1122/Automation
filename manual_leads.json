@@ -1,5 +1,23 @@
 [
   {
+    "company": "Prophet Town LLC",
+    "tier": "strong",
+    "link": "https://forms.gle/tZwq7j2Ldwcas1wb7",
+    "note": "Prophet Town LLC | Various Software Engineering Roles | US \u2013 Remote and Hybrid | English fluency required | Full-time | $140K-$264K annual total comp (multiple) We are a people-first, boutique tech agency creating on-demand teams and software solutions for long-standing clients. These clients trust "
+  },
+  {
+    "company": "Oscilar.com",
+    "tier": "ok",
+    "link": "https://jobs.ashbyhq.com/oscilar?utm_source=HackerNews",
+    "note": "Oscilar.com | Sr/Staff Software Engineers, Security Engineer, Data Scientist | REMOTE (US/Canada/Brazil/Poland/UK/India) Full-time AI Risk Decisioning\u2122 platform that helps organizations manage onboarding, fraud, credit, and compliance risks Open roles: - Sr./Staff Security Engineer (Brazil) - Sr./St"
+  },
+  {
+    "company": "MWI Animal Health",
+    "tier": "ok",
+    "link": "",
+    "note": "MWI Animal Health | Remote (US only) | Senior SWE, Senior DevOps US animal-health distributor. We build .NET/Angular apps and hardware UIs that talk to our APIs. 1. Senior Software Engineer Full-stack C#/ASP.NET Core, Node/Angular; backend services and device integrations. 7+ years, strong .NET. Nic"
+  },
+  {
     "company": "SerpApi",
     "tier": "strong",
     "link": "https://serpapi.com",

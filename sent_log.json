@@ -1040,7 +1040,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-03T13:01:07.251213+00:00",
     "follow_up_sent_at": "2026-09-02T13:01:04.031135+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-03T13:01:10.092784+00:00"
   },
   {
     "company": "Nextgrid",
@@ -1050,7 +1051,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-03T13:01:07.251213+00:00",
     "follow_up_sent_at": "2026-09-02T13:01:04.031135+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-03T13:01:10.092784+00:00"
   },
   {
     "company": "Gmail",
@@ -1070,7 +1072,8 @@
     "subject": "fastapi background re your senior dev role",
     "initial_sent_at": "2026-08-04T13:01:10.445079+00:00",
     "follow_up_sent_at": "2026-09-02T13:01:04.031135+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-03T13:01:10.092784+00:00"
   },
   {
     "company": "Viewpost",
@@ -1080,7 +1083,8 @@
     "subject": "legacy migration background, curious about your stack",
     "initial_sent_at": "2026-08-04T13:01:10.445079+00:00",
     "follow_up_sent_at": "2026-09-02T13:01:04.031135+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-03T13:01:10.092784+00:00"
   },
   {
     "company": "RepSpark",
@@ -1090,7 +1094,8 @@
     "subject": "legacy .net migration work",
     "initial_sent_at": "2026-08-04T13:01:10.445079+00:00",
     "follow_up_sent_at": "2026-09-02T13:01:04.031135+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-03T13:01:10.092784+00:00"
   },
   {
     "company": "katatsu12",
@@ -4149,6 +4154,226 @@
     "source": "hn_whoishiring",
     "subject": "backend role, python migration work",
     "initial_sent_at": "2026-09-02T13:01:04.031135+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Tecuity",
+    "email": "hr@tecuity.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "senior engineer role at tecuity",
+    "initial_sent_at": "2026-09-03T13:01:10.092784+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Republic Services",
+    "email": "jgardner@republicservices.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "staff engineer role and legacy migration",
+    "initial_sent_at": "2026-09-03T13:01:10.092784+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Skyverge",
+    "email": "denysinoue@outlook.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "legacy migration work, part-time availability",
+    "initial_sent_at": "2026-09-03T13:01:10.092784+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Audiencekey.com - Reflexive Media",
+    "email": "singrassia@reflexive.io",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "legacy migration work, thought it might be relevant",
+    "initial_sent_at": "2026-09-03T13:01:10.092784+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Fairwater Labs",
+    "email": "kyle@fairwaterlabs.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "legacy backend migrations, fastapi port",
+    "initial_sent_at": "2026-09-03T13:01:10.092784+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Getpliant",
+    "email": "alex.korotkikh@getpliant.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "backend migrations, java/kotlin stack",
+    "initial_sent_at": "2026-09-03T13:01:10.092784+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "ARound",
+    "email": "raven@aroundar.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "front end dev application",
+    "initial_sent_at": "2026-09-03T13:01:10.092784+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Hello",
+    "email": "job@zfort.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "php dev role and legacy migration work",
+    "initial_sent_at": "2026-09-03T13:01:10.092784+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "luce.sg",
+    "email": "makar.stetsenko@luce.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "rails tech lead role",
+    "initial_sent_at": "2026-09-03T13:01:10.092784+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Mark43",
+    "email": "recruiting@mark43.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "legacy backend migrations",
+    "initial_sent_at": "2026-09-03T13:01:10.092784+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Puraido",
+    "email": "roan@puraido.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "backend migration work, relevant to your stack",
+    "initial_sent_at": "2026-09-03T13:01:10.092784+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Tram Case",
+    "email": "tania@tramcase.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "backend migration work",
+    "initial_sent_at": "2026-09-03T13:01:10.092784+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "craig0990",
+    "email": "cv@craig0990.co.uk",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "legacy backend migrations",
+    "initial_sent_at": "2026-09-03T13:01:10.092784+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "kumi_da",
+    "email": "kayrahul@gmail.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "fastapi migration work",
+    "initial_sent_at": "2026-09-03T13:01:10.092784+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "chrysoprace",
+    "email": "hn@kirkeby.io",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "legacy backend migrations",
+    "initial_sent_at": "2026-09-03T13:01:10.092784+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "juansm",
+    "email": "juanschezmor@gmail.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "legacy migration work",
+    "initial_sent_at": "2026-09-03T13:01:10.092784+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "nso",
+    "email": "me@paaltuv.no",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "legacy backend migrations",
+    "initial_sent_at": "2026-09-03T13:01:10.092784+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "frankus",
+    "email": "frank+hn@frankschmitt.org",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "legacy backend migrations",
+    "initial_sent_at": "2026-09-03T13:01:10.092784+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "chalito1222",
+    "email": "stephen@trijazel.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "legacy backend migrations",
+    "initial_sent_at": "2026-09-03T13:01:10.092784+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "vmarcetic",
+    "email": "vmarcetic@bytecode.hr",
+    "tier": "strong",
+    "source": "hn_search",
+    "subject": "rails to fastapi migration",
+    "initial_sent_at": "2026-09-03T13:01:10.092784+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "aljgz",
+    "email": "devalivan23@gmail.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "ef view generation and rewrites",
+    "initial_sent_at": "2026-09-03T13:01:10.092784+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "vincent_s",
+    "email": "hn@ahoymail.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "legacy php modernization",
+    "initial_sent_at": "2026-09-03T13:01:10.092784+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
