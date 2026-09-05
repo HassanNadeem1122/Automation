@@ -193,6 +193,16 @@ FREEMAIL_DOMAINS = {
 }
 
 
+# Mailbox names that belong to a hiring pipeline rather than a person. Mail to
+# these is read by software, or by a recruiter whose job is filling a role, not
+# buying contract work.
+ATS_LOCALPARTS = (
+    "apply", "jobs", "job", "careers", "career", "hiring", "recruit",
+    "recruiting", "recruitment", "hr@", "hr-", "talent", "resume", "cv",
+    "workwithus", "joinus", "join",
+)
+
+
 def buyer_score(text: str, email: str) -> int:
     """Rough "can this person sign a cheque" score, 0-4.
 
@@ -203,9 +213,16 @@ def buyer_score(text: str, email: str) -> int:
     score = 0
     if any(p in (text or "").lower() for p in COMPANY_CONTEXT):
         score += 2
-    domain = (email or "").rsplit("@", 1)[-1].lower()
+    local, _, domain = (email or "").lower().rpartition("@")
     if domain and domain not in FREEMAIL_DOMAINS:
         score += 2      # own/company domain beats a personal inbox
+    # An applicant-tracking inbox is a dead end no matter how good the company
+    # is. stackable.tech proved it: we pitched migration work and got back
+    # "Your application as Product Engineer" — the ATS filed Hassan as a job
+    # candidate, which is the only thing that address can do. 23% of a week's
+    # sends went to these, so they sink below every address with a human on it.
+    if local.startswith(ATS_LOCALPARTS):
+        score -= 3
     return score
 
 EMAIL_RE = re.compile(r"[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}")
@@ -584,6 +601,7 @@ def find_hn_leads() -> tuple:
                     "company": company or company_from_email(email),
                     "tier": tier,
                     "source": "hn_whoishiring",
+                    "buyer_score": buyer_score(post, email),
                     "snippet": " ".join(post.split())[:700],
                 })
             else:
@@ -935,6 +953,14 @@ def find_leads(github_token: str, cap: int, already: set) -> list:
     if USE_GITHUB_FILLER and len(fresh) < cap:
         fresh += find_github_leads(github_token, cap - len(fresh), seen)
 
+    # Final ordering across every source. The cap is the scarce resource, so an
+    # address with a human behind it always outranks a hiring pipeline, however
+    # good the company looks. Stable sort, so each source keeps its own internal
+    # ordering (recency for search leads) inside a score band.
+    fresh.sort(key=lambda l: -l.get("buyer_score", 0))
+    ats = sum(1 for l in fresh[:cap] if l.get("buyer_score", 0) < 0)
+    log(f"  🎯 Queue ordered by buyer score — {ats}/{min(cap, len(fresh))} "
+        f"in today's cap are hiring-pipeline addresses")
     return fresh
 
 
