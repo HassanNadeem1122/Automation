@@ -193,6 +193,25 @@ FREEMAIL_DOMAINS = {
 }
 
 
+# Language that means "we will pay an outside person", as opposed to "we want to
+# hire an employee". This is the distinction 453 emails and zero buying replies
+# turned on: a job ad wants a full-time hire and treats an outsider as a
+# candidate, while these words mean the door is already open to a contractor.
+CONTRACT_SIGNALS = (
+    "contract", "contractor", "freelance", "freelancer", "consultant",
+    "consulting", "part-time", "part time", "short-term", "short term",
+    "fractional", "1099", "statement of work", "seeking freelancer",
+)
+
+# The other half of the same problem: plenty of posts contain those words while
+# pointing the wrong way. "SEEKING WORK" and resume boilerplate are freelancers
+# advertising themselves — Hassan's competitors, not his customers — and an
+# Algolia phrase match cannot tell the two apart on its own.
+SEEKING_WORK_MARKERS = (
+    "seeking work", "willing to relocate", "resume:", "résumé:", "cv:",
+    "looking for work", "available for hire", "open to work",
+)
+
 # Mailbox names that belong to a hiring pipeline rather than a person. Mail to
 # these is read by software, or by a recruiter whose job is filling a role, not
 # buying contract work.
@@ -223,6 +242,17 @@ def buyer_score(text: str, email: str) -> int:
     # sends went to these, so they sink below every address with a human on it.
     if local.startswith(ATS_LOCALPARTS):
         score -= 3
+
+    low = (text or "").lower()
+    # Someone who already said they'd pay a contractor outranks everything else,
+    # even a great company that only wants employees. This is the whole strategy
+    # correction: 453 emails to companies hiring staff produced no buyer, so
+    # openness to contract work now dominates the ordering.
+    if any(s in low for s in CONTRACT_SIGNALS):
+        if any(s in low for s in SEEKING_WORK_MARKERS):
+            score -= 5      # a freelancer advertising themselves: a competitor
+        else:
+            score += 5
     return score
 
 EMAIL_RE = re.compile(r"[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}")
@@ -739,6 +769,71 @@ def hn_profile_email(username: str) -> str | None:
     return email
 
 
+def find_hn_freelancer_leads(exclude: set, months: int = 18) -> list:
+    """Mine "Ask HN: Freelancer? Seeking freelancer?" for people buying.
+
+    This thread is the only place on HN where someone states outright that they
+    will pay an outside contractor. Every other source infers intent: a job ad
+    means they want an employee, and a comment about Rails pain means only that
+    they were annoyed once. That inference is what produced 453 emails and no
+    buyer, so however thin this is (a month yields a handful of SEEKING
+    FREELANCER posts against ~30 SEEKING WORK ones), each lead is worth more
+    than a day of job ads.
+
+    Half the thread is freelancers advertising themselves, so direction has to
+    be checked explicitly rather than trusting a keyword.
+    """
+    leads = []
+    try:
+        resp = requests.get(
+            f"{HN_API}/search_by_date",
+            params={"query": "Freelancer? Seeking freelancer?",
+                    "tags": "story", "hitsPerPage": months + 8},
+            timeout=25,
+        )
+        stories = [h for h in resp.json().get("hits", [])
+                   if "seeking freelancer" in (h.get("title") or "").lower()][:months]
+    except Exception as e:
+        log(f"  ⚠️ HN freelancer thread lookup failed: {e}")
+        return []
+
+    for story in stories:
+        try:
+            item = requests.get(f"{HN_API}/items/{story['objectID']}", timeout=25).json()
+        except Exception:
+            continue
+        for c in (item.get("children") or []):
+            raw = c.get("text") or ""
+            if not raw:
+                continue
+            text = strip_html(raw)
+            low = text.lower()
+            # "SEEKING FREELANCER" is the thread's own convention for the
+            # hiring side. Anything else in here is someone selling, not buying.
+            if "seeking freelancer" not in low:
+                continue
+            if any(s in low for s in SEEKING_WORK_MARKERS):
+                continue
+            author = c.get("author") or ""
+            email = extract_email(text) or hn_profile_email(author)
+            if not email or email in exclude:
+                continue
+            exclude.add(email)
+            created = c.get("created_at_i") or 0
+            leads.append({
+                "email": email,
+                "company": author[:80] or "there",
+                "tier": "strong",
+                "source": "hn_freelancer",
+                "hn_user": author,
+                "days_ago": int((time.time() - created) // 86400) if created else None,
+                "buyer_score": buyer_score(text, email),
+                "snippet": " ".join(text.split())[:700],
+            })
+    log(f"  💼 HN freelancer thread: {len(leads)} leads who want to pay a contractor")
+    return leads
+
+
 def find_hn_search_leads(exclude: set, limit: int = 40, lookback_days: int | None = None) -> list:
     """Mine recent HN comments from people describing migration pain right now.
 
@@ -932,6 +1027,11 @@ def find_leads(github_token: str, cap: int, already: set) -> list:
             fresh.append(l)
     log(f"  ♻️ HN fresh after dedup: {len(fresh)} (of {len(leads)} found)")
 
+    # Always mine this, never just as a shortfall filler: it is the only source
+    # where the person has already said they will pay a contractor, so its few
+    # leads should be in every run rather than waiting for a thin day.
+    fresh += find_hn_freelancer_leads(seen)
+
     # Order matters: people describing their own Rails pain convert far better
     # than a repo maintainer who never asked for anything.
     #
@@ -993,7 +1093,27 @@ def generate_initial_email(lead: dict) -> dict | None:
     # say "posted a job on Hacker News" for every lead, so GitHub-sourced leads
     # got emails opening with "saw your post on hn" about a post that never
     # existed — an instant credibility kill if the recipient notices.
-    if lead.get("source") == "hn_search":
+    if lead.get("source") == "hn_freelancer":
+        # These people posted an ad asking for a contractor, so this is a reply
+        # to their ad, not a cold pitch. Every other branch has to argue that a
+        # problem is worth solving; here that is settled and the only question
+        # is whether Hassan is the right person, so the email answers their ad
+        # directly instead of explaining migrations to them.
+        context_line = (
+            "Write a short, direct reply to someone who posted a SEEKING FREELANCER "
+            "ad on Hacker News looking to pay a contractor. They are actively "
+            "hiring for contract work right now."
+        )
+        specific_rule = (
+            "3. This is a REPLY TO THEIR AD. Open by referencing the specific work "
+            "they described, in their words. Do NOT tell them they have a problem "
+            "and do NOT pitch a migration they did not ask for. If what they need "
+            "is not migration work, say plainly that you do backend and migration "
+            "work and ask if it overlaps, rather than pretending it is a fit.\n"
+            "3b. Say you are available and interested. State it once, plainly, no "
+            "hard sell and no pressure."
+        )
+    elif lead.get("source") == "hn_search":
         # These are the best leads we get: the person literally wrote about the
         # problem. The email should prove it was read, not pattern-matched.
         context_line = (
