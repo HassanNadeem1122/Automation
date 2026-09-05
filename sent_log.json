@@ -1115,7 +1115,8 @@
     "subject": "legacy backend migrations",
     "initial_sent_at": "2026-08-04T13:01:10.445079+00:00",
     "follow_up_sent_at": "2026-09-04T13:00:58.597933+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-05T13:00:59.200804+00:00"
   },
   {
     "company": "leni1",
@@ -1125,7 +1126,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-04T13:01:10.445079+00:00",
     "follow_up_sent_at": "2026-09-04T13:00:58.597933+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-05T13:00:59.200804+00:00"
   },
   {
     "company": "erichi",
@@ -1135,7 +1137,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-04T13:01:10.445079+00:00",
     "follow_up_sent_at": "2026-09-04T13:00:58.597933+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-05T13:00:59.200804+00:00"
   },
   {
     "company": "anyfactor",
@@ -1145,7 +1148,8 @@
     "subject": "flask firebase and the python web framework problem",
     "initial_sent_at": "2026-08-04T13:01:10.445079+00:00",
     "follow_up_sent_at": "2026-09-04T13:00:58.597933+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-05T13:00:59.200804+00:00"
   },
   {
     "company": "ThorAndZeus",
@@ -1155,7 +1159,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-04T13:01:10.445079+00:00",
     "follow_up_sent_at": "2026-09-04T13:00:58.597933+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-05T13:00:59.200804+00:00"
   },
   {
     "company": "perklone",
@@ -4594,6 +4599,226 @@
     "source": "hn_search",
     "subject": "legacy backend migrations",
     "initial_sent_at": "2026-09-04T13:00:58.597933+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "ivyirwin",
+    "email": "hello+hn@shadyhillstudios.com",
+    "tier": "strong",
+    "source": "hn_freelancer",
+    "subject": "hn drupal contractor",
+    "initial_sent_at": "2026-09-05T13:00:59.200804+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "subleq",
+    "email": "info@fusionbox.com",
+    "tier": "strong",
+    "source": "hn_freelancer",
+    "subject": "python backend contractor available",
+    "initial_sent_at": "2026-09-05T13:00:59.200804+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "LeonSetero",
+    "email": "leon@setero.io",
+    "tier": "strong",
+    "source": "hn_freelancer",
+    "subject": "backend contract work",
+    "initial_sent_at": "2026-09-05T13:00:59.200804+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "kmatthews812",
+    "email": "kevin@xolvio.com",
+    "tier": "strong",
+    "source": "hn_freelancer",
+    "subject": "flutter rebuild, backend overlap question",
+    "initial_sent_at": "2026-09-05T13:00:59.200804+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "duttish",
+    "email": "mikael@tricktrapper.com",
+    "tier": "strong",
+    "source": "hn_freelancer",
+    "subject": "ios dev ad on hn",
+    "initial_sent_at": "2026-09-05T13:00:59.200804+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "ageospatial",
+    "email": "contact@ageospatial.com",
+    "tier": "strong",
+    "source": "hn_freelancer",
+    "subject": "backend and migration work, available now",
+    "initial_sent_at": "2026-09-05T13:00:59.200804+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "waldrews",
+    "email": "sep2025-contractor@waldrews.anonaddy.com",
+    "tier": "strong",
+    "source": "hn_freelancer",
+    "subject": "backend and migration work, not sure if it overlaps",
+    "initial_sent_at": "2026-09-05T13:00:59.200804+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "lyziinc",
+    "email": "elixir@supabase.io",
+    "tier": "strong",
+    "source": "hn_freelancer",
+    "subject": "elixir contractor available",
+    "initial_sent_at": "2026-09-05T13:00:59.200804+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "getregistered",
+    "email": "hn@getregistered.com",
+    "tier": "strong",
+    "source": "hn_freelancer",
+    "subject": "rails freelancer availability",
+    "initial_sent_at": "2026-09-05T13:00:59.200804+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "lippihom",
+    "email": "philip@tipsiti.com",
+    "tier": "strong",
+    "source": "hn_freelancer",
+    "subject": "fullstack contractor, available now",
+    "initial_sent_at": "2026-09-05T13:00:59.200804+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "entrepy123",
+    "email": "starshipfuture@posteo.net",
+    "tier": "strong",
+    "source": "hn_search",
+    "subject": "rails 4 to fastapi migration",
+    "initial_sent_at": "2026-09-05T13:00:59.200804+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "wehexa",
+    "email": "hiring@wehexa.com",
+    "tier": "strong",
+    "source": "hn_freelancer",
+    "subject": "backend and migration work, available now",
+    "initial_sent_at": "2026-09-05T13:00:59.200804+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "draworak",
+    "email": "hiring@rabia.at",
+    "tier": "strong",
+    "source": "hn_freelancer",
+    "subject": "dissertation algorithm implementation in python",
+    "initial_sent_at": "2026-09-05T13:00:59.200804+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "timr",
+    "email": "engineer@justin.tv",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "rails to fastapi migration",
+    "initial_sent_at": "2026-09-05T13:00:59.200804+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "praveen_kumar",
+    "email": "praveenprabhakarkumar@gmail.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "legacy backend migrations",
+    "initial_sent_at": "2026-09-05T13:00:59.200804+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "e12e",
+    "email": "sikkerhetsansvarlig@gmail.com",
+    "tier": "strong",
+    "source": "hn_search",
+    "subject": "rails to fastapi migration",
+    "initial_sent_at": "2026-09-05T13:00:59.200804+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "codingdave",
+    "email": "hikingdave@gmail.com",
+    "tier": "strong",
+    "source": "hn_search",
+    "subject": "rails to fastapi migration",
+    "initial_sent_at": "2026-09-05T13:00:59.200804+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "ahmadhamza19",
+    "email": "ahmadhamza19@gmail.com",
+    "tier": "strong",
+    "source": "hn_search",
+    "subject": "rails to fastapi migration work",
+    "initial_sent_at": "2026-09-05T13:00:59.200804+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "jdw64",
+    "email": "doogwoo@gmail.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "legacy backend migrations",
+    "initial_sent_at": "2026-09-05T13:00:59.200804+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "diegofreitas",
+    "email": "diego.lins.freitas@gmail.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "rails to fastapi migration",
+    "initial_sent_at": "2026-09-05T13:00:59.200804+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "mauisoxfan",
+    "email": "mauisoxfan@gmail.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "legacy backend migrations",
+    "initial_sent_at": "2026-09-05T13:00:59.200804+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "andrey_shulk",
+    "email": "obito85@gmail.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "legacy backend migrations",
+    "initial_sent_at": "2026-09-05T13:00:59.200804+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
