@@ -1113,6 +1113,7 @@ def generate_initial_email(lead: dict) -> dict | None:
             "3b. Say you are available and interested. State it once, plainly, no "
             "hard sell and no pressure."
         )
+        context_label = "Their SEEKING FREELANCER ad"
     elif lead.get("source") == "hn_search":
         # These are the best leads we get: the person literally wrote about the
         # problem. The email should prove it was read, not pattern-matched.
