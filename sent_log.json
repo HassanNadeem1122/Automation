@@ -1169,7 +1169,7 @@
     "source": "hn_search",
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-04T13:01:10.445079+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-06T13:01:02.845492+00:00",
     "replied": false
   },
   {
@@ -1179,7 +1179,7 @@
     "source": "hn_search",
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-04T13:01:10.445079+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-06T13:01:02.845492+00:00",
     "replied": false
   },
   {
@@ -1189,7 +1189,7 @@
     "source": "hn_search",
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-04T13:01:10.445079+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-06T13:01:02.845492+00:00",
     "replied": false
   },
   {
@@ -1199,7 +1199,7 @@
     "source": "hn_search",
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-04T13:01:10.445079+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-06T13:01:02.845492+00:00",
     "replied": false
   },
   {
@@ -1209,7 +1209,7 @@
     "source": "hn_whoishiring",
     "subject": "legacy backend migrations, fastapi specifically",
     "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-06T13:01:02.845492+00:00",
     "replied": false
   },
   {
@@ -4819,6 +4819,176 @@
     "source": "hn_search",
     "subject": "legacy backend migrations",
     "initial_sent_at": "2026-09-05T13:00:59.200804+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "raulcejas",
+    "email": "rhcejas@yahoo.com.ar",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "legacy migration work",
+    "initial_sent_at": "2026-09-06T13:01:02.845492+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "theunixbeard",
+    "email": "ben@bengelsey.com",
+    "tier": "strong",
+    "source": "hn_search",
+    "subject": "rails to fastapi migration",
+    "initial_sent_at": "2026-09-06T13:01:02.845492+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "handpickednames",
+    "email": "hn@handpickednames.com",
+    "tier": "strong",
+    "source": "hn_search",
+    "subject": "legacy backend migrations",
+    "initial_sent_at": "2026-09-06T13:01:02.845492+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "ktross",
+    "email": "hn@ktross.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "legacy backend migrations",
+    "initial_sent_at": "2026-09-06T13:01:02.845492+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Fintegrationfs",
+    "email": "jeegar.patil@mobilefirst.in",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "legacy backend migrations",
+    "initial_sent_at": "2026-09-06T13:01:02.845492+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "mcv",
+    "email": "info+hn@vosdev.com",
+    "tier": "strong",
+    "source": "hn_search",
+    "subject": "rails to fastapi migration",
+    "initial_sent_at": "2026-09-06T13:01:02.845492+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "apaprocki",
+    "email": "andrew@ishiboo.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "legacy migration work",
+    "initial_sent_at": "2026-09-06T13:01:02.845492+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "tetridev",
+    "email": "tetri.mesquita@gmail.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "legacy backend migrations",
+    "initial_sent_at": "2026-09-06T13:01:02.845492+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Javier Julio",
+    "email": "jjfutbol@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm to fastapi port",
+    "initial_sent_at": "2026-09-06T13:01:02.845492+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "David Ger\u0151",
+    "email": "davidpgero@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "stocks in the future and legacy migration work",
+    "initial_sent_at": "2026-09-06T13:01:02.845492+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Kenta Ishizaki",
+    "email": "kentaishizaki@55728.jp",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm rails to fastapi migration",
+    "initial_sent_at": "2026-09-06T13:01:02.845492+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Daniel (dB.) Doubrovkine",
+    "email": "dblock@dblock.org",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm rails to fastapi migration",
+    "initial_sent_at": "2026-09-06T13:01:02.845492+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Jes\u00fas Berm\u00fadez Vel\u00e1zquez",
+    "email": "jesus.bv@suse.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "rmt repo and rails migration work",
+    "initial_sent_at": "2026-09-06T13:01:02.845492+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Carl Mercier",
+    "email": "carl@carlmercier.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "solid queue flightdeck and legacy migration work",
+    "initial_sent_at": "2026-09-06T13:01:02.845492+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Oliver Klee",
+    "email": "typo3-coding@oliverklee.de",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm rails to fastapi port",
+    "initial_sent_at": "2026-09-06T13:01:02.845492+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Yaro Shm",
+    "email": "yshmarov@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm migration to fastapi",
+    "initial_sent_at": "2026-09-06T13:01:02.845492+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "cyanic",
+    "email": "gradual-shock-hn@cyanic.gr",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "rails to fastapi migration",
+    "initial_sent_at": "2026-09-06T13:01:02.845492+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
