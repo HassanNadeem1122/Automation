@@ -1170,7 +1170,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-04T13:01:10.445079+00:00",
     "follow_up_sent_at": "2026-09-06T13:01:02.845492+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-07T13:01:07.502845+00:00"
   },
   {
     "company": "gduquesnay1",
@@ -1180,7 +1181,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-04T13:01:10.445079+00:00",
     "follow_up_sent_at": "2026-09-06T13:01:02.845492+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-07T13:01:07.502845+00:00"
   },
   {
     "company": "samtechie",
@@ -1190,7 +1192,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-04T13:01:10.445079+00:00",
     "follow_up_sent_at": "2026-09-06T13:01:02.845492+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-07T13:01:07.502845+00:00"
   },
   {
     "company": "doanthevinh1991",
@@ -1200,7 +1203,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-04T13:01:10.445079+00:00",
     "follow_up_sent_at": "2026-09-06T13:01:02.845492+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-07T13:01:07.502845+00:00"
   },
   {
     "company": "Location: Blacksburg, Virginia, USA",
@@ -1210,7 +1214,8 @@
     "subject": "legacy backend migrations, fastapi specifically",
     "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
     "follow_up_sent_at": "2026-09-06T13:01:02.845492+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-07T13:01:07.502845+00:00"
   },
   {
     "company": "esho",
@@ -4989,6 +4994,76 @@
     "source": "hn_search",
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-09-06T13:01:02.845492+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "mschuster91",
+    "email": "m.schuster91@googlemail.com",
+    "tier": "strong",
+    "source": "hn_search",
+    "subject": "rails to fastapi migration",
+    "initial_sent_at": "2026-09-07T13:01:07.502845+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "anitil",
+    "email": "blog@jestoph.com",
+    "tier": "strong",
+    "source": "hn_search",
+    "subject": "rails to fastapi migration",
+    "initial_sent_at": "2026-09-07T13:01:07.502845+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "donatj",
+    "email": "donatj@gmail.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "php monolith comment on hn",
+    "initial_sent_at": "2026-09-07T13:01:07.502845+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Joel Moss",
+    "email": "joel@developwithstyle.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm fastapi port",
+    "initial_sent_at": "2026-09-07T13:01:07.502845+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Kirill Platonov",
+    "email": "kirill@platonov.net",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "shopify_graphql and legacy migration work",
+    "initial_sent_at": "2026-09-07T13:01:07.502845+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Alessandro Rodi",
+    "email": "coorasse@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm to fastapi port",
+    "initial_sent_at": "2026-09-07T13:01:07.502845+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Joe Masilotti",
+    "email": "joe@masilotti.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm fastapi port",
+    "initial_sent_at": "2026-09-07T13:01:07.502845+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
