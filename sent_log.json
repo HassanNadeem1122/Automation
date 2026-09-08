@@ -1224,7 +1224,7 @@
     "source": "hn_search",
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-08T13:01:23.786451+00:00",
     "replied": false
   },
   {
@@ -1234,7 +1234,7 @@
     "source": "hn_search",
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-08T13:01:23.786451+00:00",
     "replied": false
   },
   {
@@ -1244,7 +1244,7 @@
     "source": "hn_search",
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-08T13:01:23.786451+00:00",
     "replied": false
   },
   {
@@ -1254,7 +1254,7 @@
     "source": "hn_search",
     "subject": "rails to fastapi migration work",
     "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-08T13:01:23.786451+00:00",
     "replied": false
   },
   {
@@ -1264,7 +1264,7 @@
     "source": "hn_search",
     "subject": "rails to fastapi migration work",
     "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-08T13:01:23.786451+00:00",
     "replied": false
   },
   {
@@ -5064,6 +5064,56 @@
     "source": "github_commits",
     "subject": "fat free crm fastapi port",
     "initial_sent_at": "2026-09-07T13:01:07.502845+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "vrn21",
+    "email": "hello@vrn21.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "rails to fastapi migration",
+    "initial_sent_at": "2026-09-08T13:01:23.786451+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "asimovDev",
+    "email": "hn@social.azimov.fi",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "legacy php migrations and the fat free crm port",
+    "initial_sent_at": "2026-09-08T13:01:23.786451+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Cory Musick",
+    "email": "cory.musick37@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm rails to fastapi port",
+    "initial_sent_at": "2026-09-08T13:01:23.786451+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Lo\u00efc Guitaut",
+    "email": "loic@discourse.org",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "rails failover and legacy migration work",
+    "initial_sent_at": "2026-09-08T13:01:23.786451+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Nicolas Rodriguez",
+    "email": "nico@nicoladmin.fr",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "redis-actionpack and legacy migration work",
+    "initial_sent_at": "2026-09-08T13:01:23.786451+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
