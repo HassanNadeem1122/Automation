@@ -1225,7 +1225,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
     "follow_up_sent_at": "2026-09-08T13:01:23.786451+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-09T13:01:08.534011+00:00"
   },
   {
     "company": "rscnt",
@@ -1235,7 +1236,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
     "follow_up_sent_at": "2026-09-08T13:01:23.786451+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-09T13:01:08.534011+00:00"
   },
   {
     "company": "ziyih",
@@ -1245,7 +1247,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
     "follow_up_sent_at": "2026-09-08T13:01:23.786451+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-09T13:01:08.534011+00:00"
   },
   {
     "company": "adamjleonard",
@@ -1255,7 +1258,8 @@
     "subject": "rails to fastapi migration work",
     "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
     "follow_up_sent_at": "2026-09-08T13:01:23.786451+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-09T13:01:08.534011+00:00"
   },
   {
     "company": "pablojacobi",
@@ -1265,7 +1269,8 @@
     "subject": "rails to fastapi migration work",
     "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
     "follow_up_sent_at": "2026-09-08T13:01:23.786451+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-09T13:01:08.534011+00:00"
   },
   {
     "company": "munimdev",
@@ -5114,6 +5119,66 @@
     "source": "github_commits",
     "subject": "redis-actionpack and legacy migration work",
     "initial_sent_at": "2026-09-08T13:01:23.786451+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Location: Lahore, Pakistan",
+    "email": "afzalali2728@gmail.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "rails to fastapi migration, your stack",
+    "initial_sent_at": "2026-09-09T13:01:08.534011+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "ritvijsrivastav",
+    "email": "ritvijsrivastava99@gmail.com",
+    "tier": "strong",
+    "source": "hn_search",
+    "subject": "rails to rust migration",
+    "initial_sent_at": "2026-09-09T13:01:08.534011+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Steve Taylor",
+    "email": "sctaylor@stanford.edu",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "searchworks and legacy stack migrations",
+    "initial_sent_at": "2026-09-09T13:01:08.534011+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Julian Rubisch",
+    "email": "julian@julianrubisch.at",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm rails to fastapi port",
+    "initial_sent_at": "2026-09-09T13:01:08.534011+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Anderson Macedo",
+    "email": "anderson.krs95@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "malheatmap and legacy migration work",
+    "initial_sent_at": "2026-09-09T13:01:08.534011+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "renanfr1047",
+    "email": "renanfr1047@gmail.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "legacy backend migrations",
+    "initial_sent_at": "2026-09-09T13:01:08.534011+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
