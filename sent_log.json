@@ -1279,7 +1279,7 @@
     "source": "hn_search",
     "subject": "fastapi migration work",
     "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-10T13:00:59.241954+00:00",
     "replied": false
   },
   {
@@ -1289,7 +1289,7 @@
     "source": "hn_search",
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-10T13:00:59.241954+00:00",
     "replied": false
   },
   {
@@ -1299,7 +1299,7 @@
     "source": "hn_search",
     "subject": "rails to go migration work",
     "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-10T13:00:59.241954+00:00",
     "replied": false
   },
   {
@@ -1309,7 +1309,7 @@
     "source": "hn_search",
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-10T13:00:59.241954+00:00",
     "replied": false
   },
   {
@@ -1319,7 +1319,7 @@
     "source": "hn_search",
     "subject": "rails to soa transitions",
     "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-10T13:00:59.241954+00:00",
     "replied": false
   },
   {
@@ -5179,6 +5179,66 @@
     "source": "hn_search",
     "subject": "legacy backend migrations",
     "initial_sent_at": "2026-09-09T13:01:08.534011+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "NickLangat",
+    "email": "nicksonlangat95@gmail.com",
+    "tier": "strong",
+    "source": "hn_search",
+    "subject": "legacy backend migrations, fastapi port",
+    "initial_sent_at": "2026-09-10T13:00:59.241954+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Jared Norman",
+    "email": "hey@jardo.dev",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm rails to fastapi port",
+    "initial_sent_at": "2026-09-10T13:00:59.241954+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Andreas Finger",
+    "email": "andy@mediafinger.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm rails to fastapi port",
+    "initial_sent_at": "2026-09-10T13:00:59.241954+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Nacho Lopez",
+    "email": "nacho@nlopez.io",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm fastapi port",
+    "initial_sent_at": "2026-09-10T13:00:59.241954+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Ben Sheldon",
+    "email": "bensheldon@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm fastapi port",
+    "initial_sent_at": "2026-09-10T13:00:59.241954+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Andrew Kane",
+    "email": "andrew@ankane.org",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm to fastapi port",
+    "initial_sent_at": "2026-09-10T13:00:59.241954+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
