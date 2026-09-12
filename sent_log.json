@@ -1334,7 +1334,7 @@
     "source": "hn_search",
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-12T13:00:29.487440+00:00",
     "replied": false
   },
   {
@@ -1344,7 +1344,7 @@
     "source": "hn_search",
     "subject": "legacy backend migrations",
     "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-12T13:00:29.487440+00:00",
     "replied": false
   },
   {
@@ -1354,7 +1354,7 @@
     "source": "hn_search",
     "subject": "legacy backend migrations",
     "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-12T13:00:29.487440+00:00",
     "replied": false
   },
   {
@@ -1364,7 +1364,7 @@
     "source": "hn_search",
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-12T13:00:29.487440+00:00",
     "replied": false
   },
   {
@@ -1374,7 +1374,7 @@
     "source": "hn_search",
     "subject": "rails to fastapi migration work",
     "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-12T13:00:29.487440+00:00",
     "replied": false
   },
   {
@@ -5284,6 +5284,76 @@
     "source": "github_commits",
     "subject": "fat free crm to fastapi migration",
     "initial_sent_at": "2026-09-11T13:01:19.967294+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "spijdar",
+    "email": "joseph.allen.ilive@gmail.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "legacy migration work",
+    "initial_sent_at": "2026-09-12T13:00:29.487440+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Nolan J Tait",
+    "email": "nolanjtait@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm rails to fastapi port",
+    "initial_sent_at": "2026-09-12T13:00:29.487440+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "RPA",
+    "email": "ingrepa0214@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm migration project",
+    "initial_sent_at": "2026-09-12T13:00:29.487440+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Kate Donaldson",
+    "email": "kate@katelovescode.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm port to fastapi",
+    "initial_sent_at": "2026-09-12T13:00:29.487440+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Artem Egorov",
+    "email": "toysruss89@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "chatops-controller and legacy migration work",
+    "initial_sent_at": "2026-09-12T13:00:29.487440+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Tarun Vellishetty",
+    "email": "tarunvelli@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm to fastapi port",
+    "initial_sent_at": "2026-09-12T13:00:29.487440+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Weston Ganger",
+    "email": "weston@westonganger.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm to fastapi port",
+    "initial_sent_at": "2026-09-12T13:00:29.487440+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
