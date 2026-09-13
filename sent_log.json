@@ -1335,7 +1335,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
     "follow_up_sent_at": "2026-09-12T13:00:29.487440+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-13T13:00:37.322875+00:00"
   },
   {
     "company": "ishwarn",
@@ -1345,7 +1346,8 @@
     "subject": "legacy backend migrations",
     "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
     "follow_up_sent_at": "2026-09-12T13:00:29.487440+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-13T13:00:37.322875+00:00"
   },
   {
     "company": "stevepike",
@@ -1355,7 +1357,8 @@
     "subject": "legacy backend migrations",
     "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
     "follow_up_sent_at": "2026-09-12T13:00:29.487440+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-13T13:00:37.322875+00:00"
   },
   {
     "company": "jerf",
@@ -1365,7 +1368,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
     "follow_up_sent_at": "2026-09-12T13:00:29.487440+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-13T13:00:37.322875+00:00"
   },
   {
     "company": "cgarvis",
@@ -1375,7 +1379,8 @@
     "subject": "rails to fastapi migration work",
     "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
     "follow_up_sent_at": "2026-09-12T13:00:29.487440+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-13T13:00:37.322875+00:00"
   },
   {
     "company": "awongh",
@@ -5354,6 +5359,16 @@
     "source": "github_commits",
     "subject": "fat free crm to fastapi port",
     "initial_sent_at": "2026-09-12T13:00:29.487440+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "stufro",
+    "email": "stuart.frosty@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm to fastapi port",
+    "initial_sent_at": "2026-09-13T13:00:37.322875+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
