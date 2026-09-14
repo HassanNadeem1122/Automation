@@ -1389,7 +1389,7 @@
     "source": "hn_search",
     "subject": "rails migration work",
     "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-14T13:00:42.596726+00:00",
     "replied": false
   },
   {
@@ -1399,7 +1399,7 @@
     "source": "hn_search",
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-05T13:01:22.834296+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-14T13:00:42.596726+00:00",
     "replied": false
   },
   {
@@ -1409,7 +1409,7 @@
     "source": "hn_whoishiring",
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-06T13:01:18.313628+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-14T13:00:42.596726+00:00",
     "replied": false
   },
   {
@@ -1419,7 +1419,7 @@
     "source": "hn_search",
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-06T13:01:18.313628+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-14T13:00:42.596726+00:00",
     "replied": false
   },
   {
@@ -1429,7 +1429,7 @@
     "source": "hn_search",
     "subject": "legacy backend migrations",
     "initial_sent_at": "2026-08-06T13:01:18.313628+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-14T13:00:42.596726+00:00",
     "replied": false
   },
   {
@@ -5369,6 +5369,56 @@
     "source": "github_commits",
     "subject": "fat free crm to fastapi port",
     "initial_sent_at": "2026-09-13T13:00:37.322875+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "davidmryland",
+    "email": "davidmryland@outlook.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "legacy backend migrations to fastapi",
+    "initial_sent_at": "2026-09-14T13:00:42.596726+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "vmsp",
+    "email": "vmsousapereira@gmail.com",
+    "tier": "strong",
+    "source": "hn_search",
+    "subject": "backend migrations and your flypath stack",
+    "initial_sent_at": "2026-09-14T13:00:42.596726+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Michael Kohl",
+    "email": "me@citizen428.net",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm rails to fastapi port",
+    "initial_sent_at": "2026-09-14T13:00:42.596726+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "LaRita Robinson",
+    "email": "larita@notch8.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm rails to fastapi port",
+    "initial_sent_at": "2026-09-14T13:00:42.596726+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Kat",
+    "email": "kathryn.tipton@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm rails to fastapi migration",
+    "initial_sent_at": "2026-09-14T13:00:42.596726+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
