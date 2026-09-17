@@ -156,6 +156,9 @@ SENDER_ADDRESS = env("SENDER_ADDRESS", "")
 
 # Your proof-of-work. The single most persuasive thing in the email.
 PROOF_URL = env("PROOF_URL", "https://github.com/HassanNadeem1122/fat-free-crm-fastapi")
+# The landing page. Left empty until hassandevs.online actually serves it (see
+# build_footer for why a link to the parked page would hurt).
+SITE_URL = env("SITE_URL", "")
 
 # ── Lead qualification ────────────────────────────────────────────────────
 # A post must show BOTH a Python-side signal and a Ruby-side signal — that
@@ -1174,9 +1177,9 @@ STRICT RULES:
 {specific_rule}
 4. Lead with the concrete Rails to FastAPI proof (real numbers or specifics if the lead snippet has them). Then, in one sentence, note the same approach works for other legacy stacks (PHP, Java, .NET), not just Ruby. Do not claim you have done those migrations, only that the process transfers. Do not assert as fact that they are migrating, hiring, or have a problem, frame it as "if/when" since I don't actually know.
 5. Include this link exactly once: {PROOF_URL}
-6. CTA: end with ONE specific, open question about their stack (for example, what's the oldest or slowest part of it) rather than a generic "let me know" line. Low-pressure, no demand for a call.
-7. Formatting: entirely lowercase, simple line breaks.
-8. Subject: short, lowercase, plain words only. No arrows, no colons stacking, no clever punctuation.
+6. CTA: make ONE concrete, free, low-effort offer: if they tell me which part of their backend is the most painful, I will send back a short written migration plan for that one piece, free, no call needed. Say it in one plain sentence. Do NOT end on an open question that asks them to do work for nothing, and do NOT ask for a call or a meeting.
+7. Formatting: entirely lowercase, simple line breaks. Do not add any sign-off or name at the end, it is appended automatically.
+8. Subject: short, lowercase, plain words, and specific to THEM (their product, their stack, or the thing they posted). Never a generic subject like "rails to fastapi migration" or "legacy migration work", which reads as a mass email. No arrows, no colons stacking, no clever punctuation.
 9. WRITE LIKE A TIRED HUMAN TYPING QUICKLY, NOT LIKE AN ASSISTANT. Specifically banned:
    - em dashes and en dashes (do not use the characters "—" or "–"). Use a comma, a full stop, or start a new sentence.
    - arrows of any kind ("->", "=>", the arrow character)
@@ -1223,8 +1226,14 @@ class DailyLimitReached(Exception):
 def build_footer() -> str:
     # Plain "thanks," sign-off. The old em-dash separator was one of the louder
     # tells that a message was machine-written.
-    lines = ["\n\nthanks,", SENDER_NAME,
-             '', 'not relevant? reply "unsubscribe" and i\'ll stop emailing.']
+    # A full name and a real site are what a cautious buyer checks before
+    # replying. The site line is only added once SITE_URL is set, because until
+    # the domain's DNS points at the landing page it still shows a Hostinger
+    # "parked domain" page, and linking to that is worse than no link at all.
+    lines = ["\n\nthanks,", FROM_NAME or SENDER_NAME]
+    if SITE_URL:
+        lines.append(f"backend migrations, {SITE_URL}")
+    lines += ['', 'not relevant? reply "unsubscribe" and i\'ll stop emailing.']
     if SENDER_ADDRESS:
         lines.append(SENDER_ADDRESS)
     return "\n".join(lines)
@@ -1316,10 +1325,12 @@ def send_email(to_email: str, subject: str, body: str, add_footer: bool = True) 
 
 # ── Follow-up sequence ────────────────────────────────────────────────────
 
+# Follow-ups carry no sign-off of their own: build_footer() appends one, and
+# having both produced a doubled "best, hassan / thanks, Hassan" ending.
 FOLLOWUP_1_BODY = (
-    "hey,\n\njust bumping this in case it got buried. if moving any of it to "
-    "python is something you're thinking about, happy to help with a piece of "
-    "it. if not, no worries at all.\n\nbest,\nhassan"
+    "hey,\n\njust bumping this in case it got buried. the offer stands: tell me "
+    "which part of the backend is the most painful and i'll send a short written "
+    "plan for moving it, free, no call. if it's not relevant, no worries at all."
 )
 
 # Final "breakup" email — this consistently pulls the most replies of the whole
@@ -1327,7 +1338,7 @@ FOLLOWUP_1_BODY = (
 FOLLOWUP_2_BODY = (
     "hey,\n\nlast note from me on this. sounds like it's not a priority right "
     "now, which is fair. if that changes, my rails to fastapi work is here: "
-    f"{PROOF_URL}\n\ngood luck with it,\nhassan"
+    f"{PROOF_URL}\n\ngood luck with it."
 )
 
 
