@@ -1445,7 +1445,8 @@
     "subject": "legacy backend migrations",
     "initial_sent_at": "2026-08-06T13:01:18.313628+00:00",
     "follow_up_sent_at": "2026-09-16T13:00:41.613260+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-17T13:00:50.337485+00:00"
   },
   {
     "company": "matthewmacleod",
@@ -1455,7 +1456,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-06T13:01:18.313628+00:00",
     "follow_up_sent_at": "2026-09-16T13:00:41.613260+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-17T13:00:50.337485+00:00"
   },
   {
     "company": "3pt14159",
@@ -1475,7 +1477,8 @@
     "subject": "legacy backend migrations",
     "initial_sent_at": "2026-08-06T13:01:18.313628+00:00",
     "follow_up_sent_at": "2026-09-16T13:00:41.613260+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-17T13:00:50.337485+00:00"
   },
   {
     "company": "ksec",
@@ -1485,7 +1488,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-06T13:01:18.313628+00:00",
     "follow_up_sent_at": "2026-09-16T13:00:41.613260+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-17T13:00:50.337485+00:00"
   },
   {
     "company": "steve_gh",
@@ -1495,7 +1499,8 @@
     "subject": "rails conventions and llm codegen",
     "initial_sent_at": "2026-08-06T13:01:18.313628+00:00",
     "follow_up_sent_at": "2026-09-16T13:00:41.613260+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-17T13:00:50.337485+00:00"
   },
   {
     "company": "mseebach",
@@ -5524,6 +5529,66 @@
     "source": "github_commits",
     "subject": "fat free crm port to fastapi",
     "initial_sent_at": "2026-09-15T13:00:33.867618+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Kasper H\u00f8glund",
+    "email": "kasper@rubynor.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "stemplin and legacy migration work",
+    "initial_sent_at": "2026-09-17T13:00:50.337485+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Samuel Williams",
+    "email": "samuel.williams@oriontransfer.co.nz",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm to fastapi port",
+    "initial_sent_at": "2026-09-17T13:00:50.337485+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Max Kadel",
+    "email": "max@curationexperts.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm rails to fastapi port",
+    "initial_sent_at": "2026-09-17T13:00:50.337485+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Kirill Platonov",
+    "email": "mail@kirillplatonov.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm to fastapi migration",
+    "initial_sent_at": "2026-09-17T13:00:50.337485+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Mateusz Baginski",
+    "email": "cziken58@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "ckeditor5-rails and backend migrations",
+    "initial_sent_at": "2026-09-17T13:00:50.337485+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Oleg Antonyan",
+    "email": "oleg.b.antonyan@gmail.com",
+    "tier": "github",
+    "source": "github_commits",
+    "subject": "fat free crm port to fastapi",
+    "initial_sent_at": "2026-09-17T13:00:50.337485+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
