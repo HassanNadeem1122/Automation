@@ -60,6 +60,7 @@ jobs:
           # Reply-To is the domain now, so Gmail never sees prospect replies.
           REPLY_DASH_URL: ${{ vars.REPLY_DASH_URL }}
           SITE_URL: ${{ vars.SITE_URL }}
+          HIRE_THREAD_WINDOW_HOURS: ${{ vars.HIRE_THREAD_WINDOW_HOURS }}
           REPLY_DASH_TOKEN: ${{ secrets.REPLY_DASH_TOKEN }}
           SES_REGION: ${{ vars.SES_REGION }}
           WARMUP_START_DATE: ${{ vars.WARMUP_START_DATE }}

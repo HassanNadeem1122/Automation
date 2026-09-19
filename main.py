@@ -1485,6 +1485,88 @@ def run_warmup(current_time, cap) -> None:
 
 # ── Main ──────────────────────────────────────────────────────────────────
 
+# ── Inbound: post where buyers are already looking ────────────────────────
+# Outbound has hit a wall that tuning can't fix. By Sep 2026 every emailable
+# HN lead had been contacted (549 sends, no buyer), and the free job boards
+# that were checked as replacements (Remotive, Jobicy, Arbeitnow) list contract
+# work with zero contact emails between them. The one untapped channel is the
+# reverse direction: HN's monthly "Who wants to be hired?" and "Freelancer?
+# Seeking freelancer?" threads, which companies read in order to hire. Posting
+# needs Hassan's own HN login, which this bot must never hold, so instead it
+# spots each new thread the day it appears and emails him the link plus a post
+# ready to paste. That reduces his part to about two minutes a month.
+ALERT_EMAIL = env("ALERT_EMAIL", "just1hassanhere@gmail.com")
+
+SEEKING_WORK_POST = f"""SEEKING WORK | Remote | Pakistan (UTC+5)
+
+Location: Burewala, Pakistan
+Remote: Yes
+Willing to relocate: No
+Technologies: Python, FastAPI, SQLAlchemy, Pydantic, PostgreSQL, Ruby on Rails, JavaScript/Node, Cloudflare Workers
+Résumé/CV: {SITE_URL or PROOF_URL}
+Email: {FROM_EMAIL}
+
+I move legacy backends (Rails, PHP, Java, .NET) onto modern stacks one module at a time, with tests at every step, so the old system keeps running until the new one has proven itself.
+
+Most recent: ported the core of Fat Free CRM (a Rails CRM with 3,600+ stars) to async FastAPI. 5,913 lines, 35 endpoints, full test suite, every validation and relationship preserved. Code: {PROOF_URL}
+
+If there's a part of your backend nobody wants to touch, email me which one and I'll send a short written plan for moving it, free.
+"""
+
+
+def notify_seeking_work_threads() -> None:
+    """Email Hassan a ready-to-paste post when a new hire-me thread opens.
+
+    Stateless on purpose: the run is daily and a thread only counts while it is
+    under 26 hours old, so exactly one run sees each thread. A state file would
+    have to be committed back by the workflow and kept in sync for no gain.
+    Early posts get read; a comment added days later sits under hundreds of
+    others, so speed matters more than anything else here.
+    """
+    # Searched by name: HN gets hundreds of stories a day, so "the latest N
+    # stories" would routinely miss the thread entirely.
+    wanted = {"Who wants to be hired": "who wants to be hired",
+              "Freelancer? Seeking freelancer?": "freelancer? seeking freelancer"}
+    window_hours = int(env("HIRE_THREAD_WINDOW_HOURS", "26"))
+    since = int(time.time()) - window_hours * 3600
+    fresh = []
+    for query, marker in wanted.items():
+        try:
+            resp = requests.get(
+                f"{HN_API}/search_by_date",
+                params={"query": query, "tags": "story", "hitsPerPage": 10,
+                        "numericFilters": f"created_at_i>{since}"},
+                timeout=25,
+            )
+            hits = resp.json().get("hits", [])
+        except Exception as e:
+            log(f"  ⚠️ Hire-me thread check failed for '{query}': {e}")
+            continue
+        fresh += [h for h in hits
+                  if (h.get("title") or "").lower().startswith("ask hn")
+                  and marker in (h.get("title") or "").lower()][:1]
+    if not fresh:
+        log("  📣 No new hire-me threads today")
+        return
+
+    links = "\n".join(f"- {h['title']}\n  https://news.ycombinator.com/item?id={h['objectID']}"
+                      for h in fresh)
+    body = (
+        "New HN threads where companies look for people to hire just opened. "
+        "Posting in the first few hours matters: early comments get read, late "
+        "ones get buried.\n\n"
+        f"{links}\n\n"
+        "Open each link, click 'add comment', paste the text below as-is, and "
+        "submit. Same text works for both threads.\n\n"
+        "----- copy from here -----\n\n"
+        f"{SEEKING_WORK_POST}\n"
+        "----- to here -----\n"
+    )
+    subject = "Post now: new HN hiring threads are open"
+    if send_email(ALERT_EMAIL, subject, body, add_footer=False):
+        log(f"  📣 Sent hire-me thread alert for {len(fresh)} thread(s) to {ALERT_EMAIL}")
+
+
 def main():
     if not pre_flight_check():
         return
@@ -1513,6 +1595,7 @@ def main():
         else:
             run_followups(sent_log, gmail_user, gmail_pass, current_time)
             run_new_outreach(sent_log, github_token, current_time, cap)
+        notify_seeking_work_threads()
     except DailyLimitReached as e:
         log("🛑 Sending limit hit — stopping this run to protect the domain's "
             "reputation. It resets on its own; the next scheduled run continues "
