@@ -61,6 +61,8 @@ jobs:
           REPLY_DASH_URL: ${{ vars.REPLY_DASH_URL }}
           SITE_URL: ${{ vars.SITE_URL }}
           HIRE_THREAD_WINDOW_HOURS: ${{ vars.HIRE_THREAD_WINDOW_HOURS }}
+          HN_USERNAME: ${{ secrets.HN_USERNAME }}
+          HN_PASSWORD: ${{ secrets.HN_PASSWORD }}
           REPLY_DASH_TOKEN: ${{ secrets.REPLY_DASH_TOKEN }}
           SES_REGION: ${{ vars.SES_REGION }}
           WARMUP_START_DATE: ${{ vars.WARMUP_START_DATE }}

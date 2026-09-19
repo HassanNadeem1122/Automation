@@ -1514,6 +1514,93 @@ If there's a part of your backend nobody wants to touch, email me which one and 
 """
 
 
+# Hassan's own HN account, stored by him as repo secrets and never seen by
+# anyone else. With both set, the bot posts the SEEKING WORK comment itself;
+# without them it falls back to emailing him the text to paste.
+HN_USERNAME = env("HN_USERNAME", "")
+HN_PASSWORD = env("HN_PASSWORD", "")
+HN_WEB = "https://news.ycombinator.com"
+
+
+def _hn_post_text() -> str:
+    # HN only starts a new paragraph on a blank line, so the one-field-per-line
+    # header would render as a single run-on paragraph without doubling them.
+    return "\n\n".join(l for l in SEEKING_WORK_POST.strip().split("\n") if l.strip())
+
+
+def _already_posted(story_id: str) -> bool:
+    """True if HN_USERNAME has already commented in this thread.
+
+    This is what makes posting safe to retry daily without state: the check
+    runs before every attempt, so a thread gets at most one comment however
+    many runs see it.
+    """
+    try:
+        r = requests.get(
+            f"{HN_API}/search",
+            params={"tags": f"comment,author_{HN_USERNAME},story_{story_id}",
+                    "hitsPerPage": 1},
+            timeout=25,
+        )
+        if r.json().get("nbHits", 0) > 0:
+            return True
+    except Exception:
+        pass
+    # Algolia can lag a few minutes behind HN, so double-check the live page.
+    try:
+        page = requests.get(f"{HN_WEB}/item?id={story_id}", timeout=25).text
+        return f'user?id={HN_USERNAME}"' in page
+    except Exception:
+        return True     # can't verify: skipping beats posting twice
+
+
+def post_to_hn_thread(story_id: str) -> str:
+    """Log in as Hassan and post the SEEKING WORK comment. Returns a status.
+
+    Stops rather than retries on anything unexpected, a CAPTCHA included.
+    A monthly hiring-thread comment isn't worth risking the account over, and
+    the caller falls back to emailing Hassan the text instead.
+    """
+    s = requests.Session()
+    s.headers["User-Agent"] = "Mozilla/5.0 (compatible; railscout/1.0)"
+    try:
+        r = s.post(f"{HN_WEB}/login",
+                   data={"acct": HN_USERNAME, "pw": HN_PASSWORD, "goto": "news"},
+                   timeout=30)
+    except Exception as e:
+        return f"login request failed: {e}"
+    if "user" not in s.cookies:
+        low = r.text.lower()
+        if "captcha" in low or "validation required" in low:
+            return "HN asked for a CAPTCHA at login"
+        return "HN rejected the login (check HN_USERNAME / HN_PASSWORD)"
+
+    try:
+        page = s.get(f"{HN_WEB}/item?id={story_id}", timeout=30).text
+    except Exception as e:
+        return f"could not open thread: {e}"
+    m = re.search(r'name="hmac" value="([^"]+)"', page)
+    if not m:
+        return "no comment form on the thread (closed, or account can't comment yet)"
+
+    try:
+        r = s.post(f"{HN_WEB}/comment",
+                   data={"parent": story_id, "goto": f"item?id={story_id}",
+                         "hmac": m.group(1), "text": _hn_post_text()},
+                   timeout=30)
+    except Exception as e:
+        return f"comment request failed: {e}"
+    if "you're posting too fast" in r.text.lower():
+        return "HN rate-limited the account, will retry next run"
+
+    time.sleep(5)
+    try:
+        live = s.get(f"{HN_WEB}/item?id={story_id}", timeout=30).text
+    except Exception:
+        live = ""
+    return "posted" if f'user?id={HN_USERNAME}"' in live else "submitted but not visible yet"
+
+
 def notify_seeking_work_threads() -> None:
     """Email Hassan a ready-to-paste post when a new hire-me thread opens.
 
@@ -1527,7 +1614,11 @@ def notify_seeking_work_threads() -> None:
     # stories" would routinely miss the thread entirely.
     wanted = {"Who wants to be hired": "who wants to be hired",
               "Freelancer? Seeking freelancer?": "freelancer? seeking freelancer"}
-    window_hours = int(env("HIRE_THREAD_WINDOW_HOURS", "26"))
+    auto = bool(HN_USERNAME and HN_PASSWORD)
+    # Auto-posting checks every thread still open this month, because the
+    # already-posted check makes a retry harmless. The email-only fallback keeps
+    # the 26h window so Hassan gets exactly one reminder per thread.
+    window_hours = int(env("HIRE_THREAD_WINDOW_HOURS", "0")) or (26 * 24 if auto else 26)
     since = int(time.time()) - window_hours * 3600
     fresh = []
     for query, marker in wanted.items():
@@ -1548,6 +1639,35 @@ def notify_seeking_work_threads() -> None:
     if not fresh:
         log("  📣 No new hire-me threads today")
         return
+
+    if auto:
+        posted, failed = [], []
+        for h in fresh:
+            sid, title = h["objectID"], h["title"]
+            if _already_posted(sid):
+                log(f"  📣 Already posted in '{title}', skipping")
+                continue
+            if DRY_RUN:
+                log(f"  🧪 DRY RUN — would auto-post SEEKING WORK in '{title}' as {HN_USERNAME}")
+                continue
+            status = post_to_hn_thread(sid)
+            log(f"  📣 HN post in '{title}': {status}")
+            (posted if status == "posted" else failed).append((h, status))
+        if posted:
+            done = "\n".join(f"- {h['title']}\n  {HN_WEB}/item?id={h['objectID']}"
+                             for h, _ in posted)
+            send_email(ALERT_EMAIL, "Posted your SEEKING WORK comment on HN",
+                       "The bot posted your SEEKING WORK comment here:\n\n"
+                       f"{done}\n\nCompanies hiring read these threads. Anyone who "
+                       "emails you from it lands in the mailbox and you get the "
+                       "usual reply alert.\n", add_footer=False)
+        if not failed:
+            return
+        # Anything auto-posting couldn't do falls through to the manual email,
+        # so a CAPTCHA or a login problem still ends in a post, not silence.
+        fresh = [h for h, _ in failed]
+        log("  📣 Auto-post failed for some threads, emailing the text instead: "
+            + "; ".join(s for _, s in failed))
 
     links = "\n".join(f"- {h['title']}\n  https://news.ycombinator.com/item?id={h['objectID']}"
                       for h in fresh)
