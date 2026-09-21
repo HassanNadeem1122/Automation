@@ -1565,7 +1565,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-06T13:01:18.313628+00:00",
     "follow_up_sent_at": "2026-09-20T13:02:48.882323+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-21T13:03:06.436090+00:00"
   },
   {
     "company": "donw",
@@ -1575,7 +1576,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-06T13:01:18.313628+00:00",
     "follow_up_sent_at": "2026-09-20T13:02:48.882323+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-21T13:03:06.436090+00:00"
   },
   {
     "company": "vidarh",
@@ -1585,7 +1587,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-06T13:01:18.313628+00:00",
     "follow_up_sent_at": "2026-09-20T13:02:48.882323+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-21T13:03:06.436090+00:00"
   },
   {
     "company": "dannyrb",
@@ -1595,7 +1598,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-06T13:01:18.313628+00:00",
     "follow_up_sent_at": "2026-09-20T13:02:48.882323+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-21T13:03:06.436090+00:00"
   },
   {
     "company": "kmrd",
@@ -1605,7 +1609,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-07T13:01:25.998836+00:00",
     "follow_up_sent_at": "2026-09-20T13:02:48.882323+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-21T13:03:06.436090+00:00"
   },
   {
     "company": "krisneuharth",
