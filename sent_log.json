@@ -1620,7 +1620,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-07T13:01:25.998836+00:00",
     "follow_up_sent_at": "2026-09-22T13:02:46.329919+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-23T13:02:57.619779+00:00"
   },
   {
     "company": "bwb",
@@ -1630,7 +1631,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-07T13:01:25.998836+00:00",
     "follow_up_sent_at": "2026-09-22T13:02:46.329919+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-23T13:02:57.619779+00:00"
   },
   {
     "company": "leadpages",
@@ -1640,7 +1642,8 @@
     "subject": "rails to fastapi migration, fwiw",
     "initial_sent_at": "2026-08-07T13:01:25.998836+00:00",
     "follow_up_sent_at": "2026-09-22T13:02:46.329919+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-23T13:02:57.619779+00:00"
   },
   {
     "company": "jbaviat",
@@ -1650,7 +1653,8 @@
     "subject": "legacy backend migrations",
     "initial_sent_at": "2026-08-07T13:01:25.998836+00:00",
     "follow_up_sent_at": "2026-09-22T13:02:46.329919+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-23T13:02:57.619779+00:00"
   },
   {
     "company": "ninetax",
@@ -1660,7 +1664,8 @@
     "subject": "legacy backend migrations",
     "initial_sent_at": "2026-08-07T13:01:25.998836+00:00",
     "follow_up_sent_at": "2026-09-22T13:02:46.329919+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-23T13:02:57.619779+00:00"
   },
   {
     "company": "adrianmacneil",
@@ -5599,6 +5604,16 @@
     "source": "github_commits",
     "subject": "fat free crm port to fastapi",
     "initial_sent_at": "2026-09-17T13:00:50.337485+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "TZubiri",
+    "email": "hackernews@tomaszubiri.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "your package manager policy and what lives under your stack",
+    "initial_sent_at": "2026-09-23T13:02:57.619779+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
