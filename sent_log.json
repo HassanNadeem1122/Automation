@@ -1674,7 +1674,7 @@
     "source": "hn_search",
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-07T13:01:25.998836+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-24T13:02:43.192218+00:00",
     "replied": false
   },
   {
@@ -1684,7 +1684,7 @@
     "source": "hn_search",
     "subject": "legacy backend migrations",
     "initial_sent_at": "2026-08-07T13:01:25.998836+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-24T13:02:43.192218+00:00",
     "replied": false
   },
   {
@@ -1694,7 +1694,7 @@
     "source": "hn_search",
     "subject": "rails to fastapi migration work",
     "initial_sent_at": "2026-08-07T13:01:25.998836+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-24T13:02:43.192218+00:00",
     "replied": false
   },
   {
@@ -1704,7 +1704,7 @@
     "source": "hn_search",
     "subject": "rails to fastapi migration work",
     "initial_sent_at": "2026-08-07T13:01:25.998836+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-24T13:02:43.192218+00:00",
     "replied": false
   },
   {
@@ -1714,7 +1714,7 @@
     "source": "hn_search",
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-07T13:01:25.998836+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-24T13:02:43.192218+00:00",
     "replied": false
   },
   {
@@ -5614,6 +5614,16 @@
     "source": "hn_search",
     "subject": "your package manager policy and what lives under your stack",
     "initial_sent_at": "2026-09-23T13:02:57.619779+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "tonymet",
+    "email": "hn@tonym.us",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "cloning legacy systems before someone else does",
+    "initial_sent_at": "2026-09-24T13:02:43.192218+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
