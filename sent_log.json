@@ -1675,7 +1675,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-07T13:01:25.998836+00:00",
     "follow_up_sent_at": "2026-09-24T13:02:43.192218+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-25T13:02:38.205703+00:00"
   },
   {
     "company": "estsauver",
@@ -1685,7 +1686,8 @@
     "subject": "legacy backend migrations",
     "initial_sent_at": "2026-08-07T13:01:25.998836+00:00",
     "follow_up_sent_at": "2026-09-24T13:02:43.192218+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-25T13:02:38.205703+00:00"
   },
   {
     "company": "jkleman",
@@ -1695,7 +1697,8 @@
     "subject": "rails to fastapi migration work",
     "initial_sent_at": "2026-08-07T13:01:25.998836+00:00",
     "follow_up_sent_at": "2026-09-24T13:02:43.192218+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-25T13:02:38.205703+00:00"
   },
   {
     "company": "fancyremarker",
@@ -1705,7 +1708,8 @@
     "subject": "rails to fastapi migration work",
     "initial_sent_at": "2026-08-07T13:01:25.998836+00:00",
     "follow_up_sent_at": "2026-09-24T13:02:43.192218+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-25T13:02:38.205703+00:00"
   },
   {
     "company": "CharlesW",
@@ -1715,7 +1719,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-07T13:01:25.998836+00:00",
     "follow_up_sent_at": "2026-09-24T13:02:43.192218+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-09-25T13:02:38.205703+00:00"
   },
   {
     "company": "mhartl",
@@ -5624,6 +5629,16 @@
     "source": "hn_search",
     "subject": "cloning legacy systems before someone else does",
     "initial_sent_at": "2026-09-24T13:02:43.192218+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "xerox13ster",
+    "email": "heather@fucci.dev",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "the 500mb ram sink thing you posted",
+    "initial_sent_at": "2026-09-25T13:02:38.205703+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
