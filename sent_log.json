@@ -1784,7 +1784,7 @@
     "source": "hn_search",
     "subject": "node.js migration post",
     "initial_sent_at": "2026-08-07T13:01:25.998836+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-28T13:00:37.130847+00:00",
     "replied": false
   },
   {
@@ -1794,7 +1794,7 @@
     "source": "hn_search",
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-07T13:01:25.998836+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-28T13:00:37.130847+00:00",
     "replied": false
   },
   {
@@ -1804,7 +1804,7 @@
     "source": "hn_search",
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-08T13:00:25.576861+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-28T13:00:37.130847+00:00",
     "replied": false
   },
   {
@@ -1814,7 +1814,7 @@
     "source": "hn_search",
     "subject": "legacy stack migrations",
     "initial_sent_at": "2026-08-08T13:00:25.576861+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-28T13:00:37.130847+00:00",
     "replied": false
   },
   {
@@ -1824,7 +1824,7 @@
     "source": "hn_search",
     "subject": "django monoliths and what comes after",
     "initial_sent_at": "2026-08-08T13:00:25.576861+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-09-28T13:00:37.130847+00:00",
     "replied": false
   },
   {
