@@ -1840,7 +1840,8 @@
     "subject": "django latency and pod count",
     "initial_sent_at": "2026-08-08T13:00:25.576861+00:00",
     "follow_up_sent_at": "2026-09-30T13:01:49.163387+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-10-01T13:00:57.347669+00:00"
   },
   {
     "company": "ClifReeder",
@@ -1850,7 +1851,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-08T13:00:25.576861+00:00",
     "follow_up_sent_at": "2026-09-30T13:01:49.163387+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-10-01T13:00:57.347669+00:00"
   },
   {
     "company": "supac",
@@ -1860,7 +1862,8 @@
     "subject": "legacy backend migrations",
     "initial_sent_at": "2026-08-08T13:00:25.576861+00:00",
     "follow_up_sent_at": "2026-09-30T13:01:49.163387+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-10-01T13:00:57.347669+00:00"
   },
   {
     "company": "leadpages",
@@ -1870,7 +1873,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-08T13:00:25.576861+00:00",
     "follow_up_sent_at": "2026-09-30T13:01:49.163387+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-10-01T13:00:57.347669+00:00"
   },
   {
     "company": "falpal85",
@@ -1880,7 +1884,8 @@
     "subject": "legacy backend migrations to fastapi",
     "initial_sent_at": "2026-08-08T13:00:25.576861+00:00",
     "follow_up_sent_at": "2026-09-30T13:01:49.163387+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-10-01T13:00:57.347669+00:00"
   },
   {
     "company": "jlees",
