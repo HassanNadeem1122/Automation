@@ -1894,7 +1894,7 @@
     "source": "hn_search",
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-08T13:00:25.576861+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-10-02T13:01:36.031264+00:00",
     "replied": false
   },
   {
@@ -1904,7 +1904,7 @@
     "source": "hn_search",
     "subject": "rails to fastapi migration, fwiw",
     "initial_sent_at": "2026-08-08T13:00:25.576861+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-10-02T13:01:36.031264+00:00",
     "replied": false
   },
   {
@@ -1914,7 +1914,7 @@
     "source": "hn_search",
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-08T13:00:25.576861+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-10-02T13:01:36.031264+00:00",
     "replied": false
   },
   {
@@ -1924,7 +1924,7 @@
     "source": "hn_search",
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-08T13:00:25.576861+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-10-02T13:01:36.031264+00:00",
     "replied": false
   },
   {
@@ -1934,7 +1934,7 @@
     "source": "hn_search",
     "subject": "legacy backend migrations",
     "initial_sent_at": "2026-08-08T13:00:25.576861+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-10-02T13:01:36.031264+00:00",
     "replied": false
   },
   {
@@ -5664,6 +5664,166 @@
     "source": "hn_search",
     "subject": "ddl migrations and the rails context you described",
     "initial_sent_at": "2026-09-27T13:00:36.122087+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "RMG",
+    "email": "contact@rehabmedia.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "your 100+ wp properties and the php underneath them",
+    "initial_sent_at": "2026-10-02T13:01:36.031264+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Vistulo",
+    "email": "contact@vistulo.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "backend migrations for your trading stack",
+    "initial_sent_at": "2026-10-02T13:01:36.031264+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Strategy & Transformation Consulting",
+    "email": "recruiting@strategy-transformation.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "ai agent platform on semantic kernel / the .net backend side",
+    "initial_sent_at": "2026-10-02T13:01:36.031264+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Descartes - Finale Inventory",
+    "email": "jforbes@descartes.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "senior engineer role at finale inventory",
+    "initial_sent_at": "2026-10-02T13:01:36.031264+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Trackerbot",
+    "email": "dobrev.d10@gmail.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "node.js role on trackerbot",
+    "initial_sent_at": "2026-10-02T13:01:36.031264+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "lawn",
+    "email": "contact@arcticbytes.dev",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "php and postgres migrations, constraint solvers",
+    "initial_sent_at": "2026-10-02T13:01:36.031264+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "ethanforrest",
+    "email": "ethan.m.forrest@gmail.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "com automation and undocumented printer protocols",
+    "initial_sent_at": "2026-10-02T13:01:36.031264+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "ahmad_not",
+    "email": "ahmad2shafiq@icloud.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "1b messages/month and the .net side of your stack",
+    "initial_sent_at": "2026-10-02T13:01:36.031264+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "Francisco-C",
+    "email": "carvalhofrancisco@proton.me",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "fastapi on your stack, whisper pipeline context",
+    "initial_sent_at": "2026-10-02T13:01:36.031264+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "CoreBackend",
+    "email": "contact@corebackend.dev",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "backend and legacy work, corebackend.dev",
+    "initial_sent_at": "2026-10-02T13:01:36.031264+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "b44ris",
+    "email": "hello@archstone.dev",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "php/symfony backends and migration",
+    "initial_sent_at": "2026-10-02T13:01:36.031264+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "plainjar",
+    "email": "globalmatchhub@gmail.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "fastapi and cloudflare workers stack",
+    "initial_sent_at": "2026-10-02T13:01:36.031264+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "jvelo",
+    "email": "jerome@velociter.fr",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "offline-first and edge work on your hacker news comment",
+    "initial_sent_at": "2026-10-02T13:01:36.031264+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "AlexITC",
+    "email": "alexis+hn@alexitc.com",
+    "tier": "strong",
+    "source": "hn_search",
+    "subject": "scala/go generalist and rescuing legacy systems",
+    "initial_sent_at": "2026-10-02T13:01:36.031264+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "tieoneease",
+    "email": "chungsam95@gmail.com",
+    "tier": "ok",
+    "source": "hn_search",
+    "subject": "kafka migrations and the painful parts in between",
+    "initial_sent_at": "2026-10-02T13:01:36.031264+00:00",
+    "follow_up_sent_at": null,
+    "replied": false
+  },
+  {
+    "company": "hopefreymosingi",
+    "email": "hopefreymosingi1@gmail.com",
+    "tier": "ok",
+    "source": "hn_whoishiring",
+    "subject": "python/fastapi work on your stack",
+    "initial_sent_at": "2026-10-02T13:01:36.031264+00:00",
     "follow_up_sent_at": null,
     "replied": false
   }
