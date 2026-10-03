@@ -1895,7 +1895,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-08T13:00:25.576861+00:00",
     "follow_up_sent_at": "2026-10-02T13:01:36.031264+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-10-03T13:00:59.015861+00:00"
   },
   {
     "company": "DevsData",
@@ -1905,7 +1906,8 @@
     "subject": "rails to fastapi migration, fwiw",
     "initial_sent_at": "2026-08-08T13:00:25.576861+00:00",
     "follow_up_sent_at": "2026-10-02T13:01:36.031264+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-10-03T13:00:59.015861+00:00"
   },
   {
     "company": "danquill",
@@ -1915,7 +1917,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-08T13:00:25.576861+00:00",
     "follow_up_sent_at": "2026-10-02T13:01:36.031264+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-10-03T13:00:59.015861+00:00"
   },
   {
     "company": "noelianunez",
@@ -1925,7 +1928,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-08T13:00:25.576861+00:00",
     "follow_up_sent_at": "2026-10-02T13:01:36.031264+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-10-03T13:00:59.015861+00:00"
   },
   {
     "company": "shedd",
@@ -1935,7 +1939,8 @@
     "subject": "legacy backend migrations",
     "initial_sent_at": "2026-08-08T13:00:25.576861+00:00",
     "follow_up_sent_at": "2026-10-02T13:01:36.031264+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-10-03T13:00:59.015861+00:00"
   },
   {
     "company": "julietmatsai",

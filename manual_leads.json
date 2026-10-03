@@ -1,5 +1,29 @@
 [
   {
+    "company": "Prophet Town LLC",
+    "tier": "strong",
+    "link": "https://forms.gle/tZwq7j2Ldwcas1wb7",
+    "note": "Prophet Town LLC | Various Software Engineering Roles | US \u2013 Remote and Hybrid | English fluency required | Full-time | $140K-$264K annual total comp (multiple) We are a people-first, boutique tech agency creating on-demand teams and software solutions for long-standing clients. These clients trust "
+  },
+  {
+    "company": "Perry Street Software",
+    "tier": "ok",
+    "link": "https://www.perrystreet.com/careers",
+    "note": "Perry Street Software | Senior Mobile Developer (iOS) | https://www.perrystreet.com/careers | Remote (North America / LatAm) | Full-Time Perry Street Software publishes Jack'd and SCRUFF, two of the world's largest LGBTQ+ dating apps on iOS and Android. Our brands reach more than 30 million members "
+  },
+  {
+    "company": "Tivly",
+    "tier": "ok",
+    "link": "",
+    "note": "Tivly | Principal Software Engineer (Java) | | [REMOTE (US) only currently residing in: Alabama, Florida, Georgia, Michigan, Mississippi, Missouri, North Carolina, Oklahoma, Tennessee, Texas, or Virginia.] | Full-time | [$170k\u2013$190k + bonus] Tivly helps small business owners find the right insurance"
+  },
+  {
+    "company": "Vola Dynamics",
+    "tier": "ok",
+    "link": "https://voladynamics.com",
+    "note": "Vola Dynamics | Software Engineers (C++, Python) | NYC / CT | HYBRID | Full-time Vola Dynamics ( https://voladynamics.com ) builds the core C++/Java/C#/Python quant library that powers options trading and analytics at many of the world\u2019s most sophisticated prop shops, market makers, hedge funds, and"
+  },
+  {
     "company": "Avision GmbH",
     "tier": "ok",
     "link": "",
@@ -10,6 +34,12 @@
     "tier": "ok",
     "link": "https://hospitable.com/careers",
     "note": "Hospitable | Senior Product Engineer (Laravel); Technical Support Engineer | REMOTE (EU / US up to East Coast) | Full-time | https://hospitable.com/careers tldr; Software for Airbnbs to rent themselves. Remote-only (~122 people, 31 countries), bootstrapped & profitable, community-funded by hosts. Ra"
+  },
+  {
+    "company": "Seeq",
+    "tier": "ok",
+    "link": "https://seeq.com",
+    "note": "Seeq | https://seeq.com | Staff/Principal Software Engineer (Full-Stack, AI, Backend, Platform) | REMOTE (Some crossover w/ PST required) | Full-time | $170k-$205k + annual cash bonus + equity. Salary range for US-based; local adjustments for other countries. Seeq creates cutting-edge data analytics"
   },
   {
     "company": "Stellar Science",
