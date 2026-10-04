@@ -1949,7 +1949,7 @@
     "source": "hn_search",
     "subject": "legacy backend migrations",
     "initial_sent_at": "2026-08-08T13:00:25.576861+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-10-04T13:00:27.973503+00:00",
     "replied": false
   },
   {
@@ -1959,7 +1959,7 @@
     "source": "hn_search",
     "subject": "legacy backend migrations",
     "initial_sent_at": "2026-08-08T13:00:25.576861+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-10-04T13:00:27.973503+00:00",
     "replied": false
   },
   {
@@ -1969,7 +1969,7 @@
     "source": "hn_search",
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-08T13:00:25.576861+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-10-04T13:00:27.973503+00:00",
     "replied": false
   },
   {
@@ -1979,7 +1979,7 @@
     "source": "hn_search",
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-08T13:00:25.576861+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-10-04T13:00:27.973503+00:00",
     "replied": false
   },
   {
@@ -1989,7 +1989,7 @@
     "source": "hn_search",
     "subject": "rails to fastapi migration work",
     "initial_sent_at": "2026-08-08T13:00:25.576861+00:00",
-    "follow_up_sent_at": null,
+    "follow_up_sent_at": "2026-10-04T13:00:27.973503+00:00",
     "replied": false
   },
   {
