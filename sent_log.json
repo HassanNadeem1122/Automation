@@ -1950,7 +1950,8 @@
     "subject": "legacy backend migrations",
     "initial_sent_at": "2026-08-08T13:00:25.576861+00:00",
     "follow_up_sent_at": "2026-10-04T13:00:27.973503+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-10-05T13:00:51.630442+00:00"
   },
   {
     "company": "evanhammer",
@@ -1960,7 +1961,8 @@
     "subject": "legacy backend migrations",
     "initial_sent_at": "2026-08-08T13:00:25.576861+00:00",
     "follow_up_sent_at": "2026-10-04T13:00:27.973503+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-10-05T13:00:51.630442+00:00"
   },
   {
     "company": "greyhat",
@@ -1970,7 +1972,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-08T13:00:25.576861+00:00",
     "follow_up_sent_at": "2026-10-04T13:00:27.973503+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-10-05T13:00:51.630442+00:00"
   },
   {
     "company": "augustflanagan",
@@ -1980,7 +1983,8 @@
     "subject": "rails to fastapi migration",
     "initial_sent_at": "2026-08-08T13:00:25.576861+00:00",
     "follow_up_sent_at": "2026-10-04T13:00:27.973503+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-10-05T13:00:51.630442+00:00"
   },
   {
     "company": "itake",
@@ -1990,7 +1994,8 @@
     "subject": "rails to fastapi migration work",
     "initial_sent_at": "2026-08-08T13:00:25.576861+00:00",
     "follow_up_sent_at": "2026-10-04T13:00:27.973503+00:00",
-    "replied": false
+    "replied": false,
+    "second_follow_up_sent_at": "2026-10-05T13:00:51.630442+00:00"
   },
   {
     "company": "paneerpaneer",
