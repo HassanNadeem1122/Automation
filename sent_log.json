@@ -2750,7 +2750,7 @@
     "subject": "fat free crm to fastapi migration",
     "initial_sent_at": "2026-08-16T13:00:26.328872+00:00",
     "follow_up_sent_at": null,
-    "replied": false
+    "replied": true
   },
   {
     "company": "Paul",
@@ -3490,7 +3490,7 @@
     "subject": "product engineer application",
     "initial_sent_at": "2026-08-30T13:01:00.505919+00:00",
     "follow_up_sent_at": null,
-    "replied": false
+    "replied": true
   },
   {
     "company": "Charted Sea",
@@ -4600,7 +4600,7 @@
     "subject": "legacy backend migrations",
     "initial_sent_at": "2026-09-04T13:00:58.597933+00:00",
     "follow_up_sent_at": null,
-    "replied": false
+    "replied": true
   },
   {
     "company": "boltzmann-brain",
@@ -5460,7 +5460,7 @@
     "subject": "fat free crm rails to fastapi port",
     "initial_sent_at": "2026-09-14T13:00:42.596726+00:00",
     "follow_up_sent_at": null,
-    "replied": false
+    "replied": true
   },
   {
     "company": "LaRita Robinson",
