@@ -2,6 +2,12 @@
   {
     "company": "(see note)",
     "tier": "ok",
+    "link": "",
+    "note": "Interested in the new grad / early career role. Built and run peatlearn.com end to end (FastAPI, React, Docker, CI/CD). Python-first, ramping on Java/Spring. github.com/spacesheepinternet. What's the best email to send a r\u00e9sum\u00e9 to?"
+  },
+  {
+    "company": "(see note)",
+    "tier": "ok",
     "link": "https://lnkd.in/g926gzEx",
     "note": "Empower Pharmacy is hiring engineers to work on event-driven, distributed systems that actually run a real-world business (regulated pharma), not ad tech or yet another CRUD SaaS. We just filled one Staff Engineer role directly from my last LinkedIn post (thanks to everyone who shared/applied). Now "
   },
