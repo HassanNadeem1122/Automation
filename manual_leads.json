@@ -1,5 +1,83 @@
 [
   {
+    "company": "AREO",
+    "tier": "ok",
+    "link": "https://goareo.com/",
+    "note": "AREO | Remote (EU) and On-Site in Bremen, Germany | Full-Time | Equity | Roles: Engineering Manager (Ruby on Rails), Robotics Engineer My name is Marius, and I am the CTO at AREO ( https://goareo.com/ ) AREO, founded in January 2023 by a team with 20+ years of combined experience in retail and start"
+  },
+  {
+    "company": "VALIS",
+    "tier": "ok",
+    "link": "https://apply.workable.com/valis-insights-1/j/9D0C64C055",
+    "note": "VALIS (Valis Insights) | Software Engineer, new product line | REMOTE (US, East Coast hours) | Full-time | $125k-$155k + equity I'm Caleb, co-founder/CTO. VALIS builds data products for scrap metal recyclers. Our product images, weighs, and classifies scrap metal, and our platform turns that into ac"
+  },
+  {
+    "company": "Hatch",
+    "tier": "ok",
+    "link": "https://hatch.co",
+    "note": "Hatch | Staff Backend Engineer | REMOTE (US/Canada, Pacific Time hours) | Full-time | https://hatch.co Hatch makes smart sleep devices and science-backed content to help people build healthy sleep habits, from newborns to adults. Our lineup includes the Hatch Sleep Clock, a contactless sleep tracker"
+  },
+  {
+    "company": "Meta",
+    "tier": "ok",
+    "link": "https://www.metacareers.com/profile/job_details/140745796424...",
+    "note": "Meta | Security Engineer (Senior / Staff) | ONSITE Bellevue, Menlo Park, New York, Washington DC \u2014 Staff role also REMOTE (US) | Full-time Meta's Central Security team is hiring Security Engineers at two levels (same team, same work): - Senior (IC5): https://www.metacareers.com/profile/job_details/1"
+  },
+  {
+    "company": "FusionAuth",
+    "tier": "ok",
+    "link": "https://fusionauth.io/careers/",
+    "note": "FusionAuth | Senior/Staff Java Engineers, Account Executive | Varies between REMOTE (in Europe but only for the account exec position) and ONSITE in Denver, CO, USA, details in each job desc | Salary ranges for the Java Engineers range from 140k-230k, but the Euro positions don't have them :( At Fus"
+  },
+  {
+    "company": "Credit Genie",
+    "tier": "ok",
+    "link": "https://www.creditgenie.com",
+    "note": "Credit Genie | Philadelphia / NYC / Toronto | Full-time | In Office | https://www.creditgenie.com * Hyper-growth Series B startup with a proven market fit (since Series A). * CEO has 2 previous exits, his most recent to PayPal in 2017. * Backed by PayPal & Legendary Silicon Valley Investor, Khosla. "
+  },
+  {
+    "company": "Eleshop",
+    "tier": "ok",
+    "link": "https://www.eleshop.nl/vacatures.html",
+    "note": "Eleshop | Senior PHP Full-stack engineer | REMOTE (Europe, Africa, W Asia) Eleshop is a supplier of test, measurement and soldering equipment run by engineers. Interesting projects with a code base which is easy to understand, well-maintained and uses state-of-art technologies. For more information,"
+  },
+  {
+    "company": "Relevant Healthcare",
+    "tier": "ok",
+    "link": "https://relevant.healthcare/jobs/",
+    "note": "Relevant Healthcare | Lead Engineer | Remote (US/Canada only) | Full-time Relevant builds a data platform that helps safety-net healthcare providers deliver better care using data from their electronic health records. Our customers are non-profit clinics called Community Health Centers. You can read"
+  },
+  {
+    "company": "Datadog",
+    "tier": "ok",
+    "link": "https://dtdg.co/hnwhoshiring",
+    "note": "Datadog | Software Engineers | ONSITE (Boston, Lisbon, Madrid, NYC, Paris, Tel Aviv) | Full-time Datadog is a monitoring, tracing, logs system, and more, for your infrastructure and services. We build our own tsdb, event store [1][2], distributed tracing tools, cutting edge visualizations, and more."
+  },
+  {
+    "company": "SerpApi",
+    "tier": "strong",
+    "link": "https://serpapi.com",
+    "note": "SerpApi | https://serpapi.com | Junior to Senior Fullstack Engineer multiple positions | Customer Success Engineer | Hiring Coordinator | Python/Ruby/PHP/Js/Rust/Kotlin/C#/Crystal/Nim/Elixir Developer Advocate positions | Based in Austin, TX but remote-first structure | Full-time | ONSITE or FULLY R"
+  },
+  {
+    "company": "Odoo",
+    "tier": "ok",
+    "link": "https://www.odoo.com/r/zbNF",
+    "note": "Odoo | Software Developer (Python / JavaScript) | Grand-Rosi\u00e8re (near Brussels), Belgium | Hybrid, 3 days/week in office | Full-time | \u20ac10k signing bonus Odoo is an open-source suite of business apps (CRM, accounting, inventory, payroll...) used by millions. I'm on the Belgian payroll team: Python, "
+  },
+  {
+    "company": "JPMorganChase",
+    "tier": "ok",
+    "link": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en...",
+    "note": "JPMorganChase | Lead Software Engineer | ONSITE (Jersey City, NJ) | $156,750 - $215,000. At JPMorganChase, your work helps shape the future of global finance. Join a team that serves millions of customers, businesses and communities. My group is hiring two software engineers: (1) Full stack or front"
+  },
+  {
+    "company": "MixRank",
+    "tier": "ok",
+    "link": "https://www.ycombinator.com/companies/mixrank/jobs/Fnwsojk-j",
+    "note": "MixRank (YC S11) | Software Engineers | 100% Remote (Global) | Full-Time MixRank processes petabytes of data every month through web crawling. Hundreds of customers use our data products, including Google, Amazon, Facebook, Intel, and Adobe, across industries such as finance, recruiting, sales, mark"
+  },
+  {
     "company": "StartupHakk",
     "tier": "ok",
     "link": "https://startuphakk.com/jobs",
@@ -3436,227 +3514,5 @@
     "tier": "ok",
     "link": "https://www.snoutplans.com/",
     "note": "Snout https://www.snoutplans.com/ | Principal Software Engineer | Remote US | Full Time Join us at Snout on our mission to ensure no one ever has to make a health decision for their pet based on the cash in their bank account. Snout plans pay for 100% of routine veterinary care, unlimited visits, an"
-  },
-  {
-    "company": "eQualitie",
-    "tier": "ok",
-    "link": "https://equalit.ie",
-    "note": "eQualitie ( https://equalit.ie ) | Software developer | Full-time | REMOTE | 7000 - 7,500 USD/Month We are working on an open source, peer-to-peer based Web browser which enables people to retrieve websites from each other whenever a direct connection to the destination server is not possible. The n"
-  },
-  {
-    "company": "Conservation Metrics",
-    "tier": "ok",
-    "link": "https://conservationmetrics.com/hiring-fullstack-js-engineer...",
-    "note": "Conservation Metrics | Fullstack Javascript Engineer | REMOTE | ~Full Time Contract Indigenous People around the world are working tirelessly to secure and manage their territories under mounting external threats. Conservation Metrics is co-creating a data platform with our Indigenous partners to pr"
-  },
-  {
-    "company": "Kixie",
-    "tier": "ok",
-    "link": "https://www.kixie.com/",
-    "note": "Kixie | Santa Monica, CA or Remote | Full-Time | Benefits | Bonus | Equity We\u2019re hiring @ Kixie! -Kixie is a fast-growing, profitable B2B startup revolutionizing sales: https://www.kixie.com/ -Work with cutting-edge tech and solve complex challenges -Build tools that accelerate sales team success -A"
-  },
-  {
-    "company": "ChartMogul",
-    "tier": "ok",
-    "link": "https://chartmogul.com",
-    "note": "ChartMogul ( https://chartmogul.com )| Remote | Full-time Since 2014, we have been building the leading Subscription Analytics Platform for growing SaaS businesses and CRM purpose-built for B2B SaaS teams. We're a remote-first company with 65 team members across 23 different countries. Profitable an"
-  },
-  {
-    "company": "Incredibly cool to see Apple doing this. I had a great time doing pair programmi",
-    "tier": "ok",
-    "link": "",
-    "note": "Incredibly cool to see Apple doing this. I had a great time doing pair programming with pivotal Labs on a rails app back in 2010 to 2011. Completely changed my worldview. And Rust is a super exciting language."
-  },
-  {
-    "company": "Moderne",
-    "tier": "ok",
-    "link": "https://www.moderne.ai/",
-    "note": "Moderne | Senior/Staff Software Engineer | Developer Tooling | Remote (North America and Europe) | Full-Time The company: we're[1] eliminating technical debt by scaling OpenRewrite[2] to tens of thousands of repos at a time. We have incredible momentum on the JVM platform and are currently expanding"
-  },
-  {
-    "company": "(see note)",
-    "tier": "ok",
-    "link": "",
-    "note": "Are those the only two categories of engineers you are currently looking for? I consider myself a generalist (10+ years), but I don't want to embarrass myself if you're truly looking for a strong backend Java engineer."
-  },
-  {
-    "company": "Railtown AI",
-    "tier": "ok",
-    "link": "https://railtown.ai",
-    "note": "Railtown AI | ONSITE (Vancouver, BC) | Full-Time | .NET + Python ML Engineers Railtown AI ( https://railtown.ai ) is building AI-powered tools that help developers identify, understand, and resolve production issues faster. We focus on root cause analysis that helps engineering teams ship with confi"
-  },
-  {
-    "company": "Credit Acceptance",
-    "tier": "ok",
-    "link": "https://devitjobs.com/jobs/Credit-Acceptance-Senior-Software...",
-    "note": "Credit Acceptance | Senior Software Engineer, Deal Central | Remote, Michigan, USA | Onsite / Remote | 130,047 - 190,736 USD / year | Full-Time Tech used: Support, Java, LESS, AWS, CI/CD, Docker, Golang, Kotlin We are looking for a highly driven and innovative Senior Software Engineer to take owners"
-  },
-  {
-    "company": "IVPN",
-    "tier": "ok",
-    "link": "https://www.ivpn.net",
-    "note": "IVPN | System and Network Administrator | Remote (UTC-1 to UTC+3) | Full-time | https://www.ivpn.net IVPN is a privacy-focused consumer VPN service in operation since 2010. We have high ethical standards, regular security audits and a stellar reputation among security and privacy analysts. This year"
-  },
-  {
-    "company": "https://job-boards.greenhouse.io/soundcloud71/jobs/793367300...",
-    "tier": "ok",
-    "link": "https://job-boards.greenhouse.io/soundcloud71/jobs/793367300...",
-    "note": "https://job-boards.greenhouse.io/soundcloud71/jobs/793367300... > Strong proficiency in Go or Scala. Familiarity with Ruby and JavaScript is a plus"
-  },
-  {
-    "company": "(see note)",
-    "tier": "ok",
-    "link": "https://wellfound.com/l/2Bi5gu",
-    "note": "FastDemocracy - Full-Stack Software Engineering Tech Lead (Python, PHP, JavaScript, AWS) - $120k/year - fully remote (must be US-based and have US work permission) https://wellfound.com/l/2Bi5gu"
-  },
-  {
-    "company": "Cogram",
-    "tier": "ok",
-    "link": "https://cogram.com",
-    "note": "Cogram | Full-time | Remote (CET \u00b1 3 hours) | https://cogram.com | B2B SaaS / AI Cogram is an LLM-based productivity platform for architecture, engineering, and construction (AEC). Our product automates a growing number of AEC workflows such as meeting notes, site visits, project administration, mai"
-  },
-  {
-    "company": "Avantos.ai",
-    "tier": "ok",
-    "link": "https://apply-to-avantos.dev-sandbox.workload.avantos-ai.net",
-    "note": "Avantos.ai | Jr Software Eng | Remote (UTC-6 - UTC+2) | 60-80k Avantos is an AI platform that streamlines client onboarding and servicing for financial institutions. Its a Series A startup headquartered in NYC. Tech Stack Languages: Typescript, Golang Frameworks/Libs: React, Next.js, Vitest, Playwri"
-  },
-  {
-    "company": "Tram Case",
-    "tier": "ok",
-    "link": "https://tramcase.na.teamtailor.com/",
-    "note": "Tram Case | Hiring Tech Lead, Backend, Full Stack & AI Engineers | Remote (LATAM Latin America Only) (Spanish & English required) We\u2019re building AI-powered tools to help law firms work faster, smarter, and with less busywork. Our first module is an AI call center that transcribes and classifies call"
-  },
-  {
-    "company": "bloop",
-    "tier": "ok",
-    "link": "https://www.ycombinator.com/companies/bloop/jobs",
-    "note": "bloop (YC S21) | Software Engineer (Rust, Compiler) | Onsite London, UK (Visa Sponsor) We're combining LLMs and transpilers to translate COBOL into Java. If you\u2019re a Rust developer with experience working with compilers or transpilers, this role could be a great fit. Come and build a system that hel"
-  },
-  {
-    "company": "Edgeless Systems",
-    "tier": "ok",
-    "link": "https://www.privatemode.ai/",
-    "note": "Edgeless Systems | (Senior) Software Engineer - Confidential AI | REMOTE (EU) - Offices in Berlin & Bochum | Full-time We are a team of ~20 people, building cutting-edge open-source tools for confidential computing and a \"confidential GenAI\" service on top of those. You can find the GenAI service he"
-  },
-  {
-    "company": "Maritime shipping software",
-    "tier": "ok",
-    "link": "",
-    "note": "Maritime shipping software | Full-stack software engineers | UX Designers | Implementation Managers & Customer Success execs | Data analysts | Global REMOTE | UCT-8 to UCT+4 Would you like to help tackle one of the most important sectors for the global economy - maritime shipping? We're hiring for m"
-  },
-  {
-    "company": "Fulltime",
-    "tier": "ok",
-    "link": "https://www.cornerstonenw.com/careers/software-developer/",
-    "note": "Cornerstone Systems Northwest - Software Developer | Fulltime | REMOTE (but do need to be located in WA, OR, CO, ID, UT) | $100k-150k/yr | www.cornerstonenw.com We\u2019re a small <25 employee firm that builds primarily custom web application software for a wide range of clients\u2014public and private, large"
-  },
-  {
-    "company": "Datadog",
-    "tier": "ok",
-    "link": "https://dtdg.co/hnwhoshiring",
-    "note": "Datadog | Software Engineers | ONSITE (Boston, Lisbon, Madrid, NYC, Paris, Tel Aviv) | Full-time Datadog is a monitoring, tracing, logs system, and more, for your infrastructure and services. We build our own tsdb, event store [1][2], distributed tracing tools, cutting edge visualizations, and more."
-  },
-  {
-    "company": "Opendate",
-    "tier": "ok",
-    "link": "https://www.opendate.io/careers/senior-devops-engineer",
-    "note": "Opendate | Remote (U.S. only) | Full-time | Senior DevOps Engineer | $125k\u2013$150k + equity Opendate is building modern ticketing software for independent music venues. Think Shopify for venues \u2014 tools that help operators sell more tickets, streamline workflows, and provide a better experience for fan"
-  },
-  {
-    "company": "Scribd",
-    "tier": "ok",
-    "link": "https://tech.scribd.com",
-    "note": "Scribd | Engineering Leaders | US, Canada | ONSITE or REMOTE Scribd serves millions of readers worldwide through three distinct product: * Scribd: A user-powered library containing over 200M documents on every topic imaginable, added by its community. * Everand: Home to millions of ebooks & audioboo"
-  },
-  {
-    "company": "https://matcha.fm",
-    "tier": "ok",
-    "link": "https://matcha.fm",
-    "note": "https://matcha.fm | Frontend or Full-stack Engineer | Remote (US CA EU) | Full-time We're looking for amazing frontend or full-stack software engineers that want to automate their job hunt through AI agents Tech stack React.js Node.js Next.js Supabase Javascript Top compensation & equity"
-  },
-  {
-    "company": "MailerLite",
-    "tier": "ok",
-    "link": "https://www.mailerlite.com",
-    "note": "MailerLite ( https://www.mailerlite.com ) | Senior PHP Engineer (Backend-heavy, Laravel, Vue) | Fully REMOTE (EMEA) | Full-time MailerLite is on the lookout for a Senior PHP Engineer to work on MailerSend ( https://www.mailersend.com ) \u2014 a fast-growing transactional email product, built for develope"
-  },
-  {
-    "company": "Source",
-    "tier": "ok",
-    "link": "https://source.network",
-    "note": "Source ( https://source.network )| USA/Canada: REMOTE | Full-Time | https://careers.source.network At Source, we aim to revolutionize developer data management for the open web. Our mission is to simplify data handling for edge devices, local-first software, and distributed infrastructures, allowing"
-  },
-  {
-    "company": "Zepto",
-    "tier": "ok",
-    "link": "https://zepto.com.au/",
-    "note": "Zepto | Senior Software Engineer (Ruby) | REMOTE (Australia) | Full-Time | Real-time Payments | https://zepto.com.au/ Zepto is a rapidly-scaling provider of real-time, account-to-account payments solutions for merchants in Australia. Our developer-friendly APIs power billions of dollars worth of acc"
-  },
-  {
-    "company": "Ichi",
-    "tier": "strong",
-    "link": "https://www.ichiplan.com/senior-software-engineer",
-    "note": "Ichi | Remote (US) | Full-Time | Senior Software Engineer, Full Stack | LLM-powered construction code compliance Ichi is building an AI-powered professional toolset to transform construction permitting and code compliance. We're helping municipalities, plan examiners, architects, and construction pr"
-  },
-  {
-    "company": "Ephemera",
-    "tier": "ok",
-    "link": "https://xmtp.org",
-    "note": "Ephemera (xmtp) | Senior or Staff Software Engineer | Full-time | Remote, USA timezones preferred | https://xmtp.org We're looking for cryptographically-minded, privacy-conscious engineers to join us. Staff Software Engineer, React Native \u2014 This is a killer mobile app dev that has deep understanding"
-  },
-  {
-    "company": "Boost My School",
-    "tier": "ok",
-    "link": "https://boostmyschool.com/careers#senior-software-engineer",
-    "note": "Boost My School | Senior or Staff Software Engineer | Full-time | Remote, USA only | $147-$185K salary | $16-26K bonus Love building a product that improves a user\u2019s life so much that they can\u2019t help but share it with their peers? Boost My School is on a mission to help schools build a better future"
-  },
-  {
-    "company": "AllSpice",
-    "tier": "ok",
-    "link": "https://allspice.io/",
-    "note": "AllSpice | https://allspice.io/ | Boston, MA / SF or Remote/Hybrid | Full time (US timezones) | Sr./Principal/Staff | Golang, Vuejs, Rust At AllSpice, we're building the future of hardware development and collaboration, applying modern software design principles to the hardware industry with revisio"
-  },
-  {
-    "company": "SerpApi",
-    "tier": "ok",
-    "link": "https://serpapi.com",
-    "note": "SerpApi | https://serpapi.com | Junior to Senior Fullstack Engineer positions | Customer Success Engineer | and more... | Based in Austin, TX but remote-first structure | Full-time | FULLY REMOTE or ONSITE | $150K - 180K a year 1099 for US or local avg + 20% for outside the US SerpApi is the leading"
-  },
-  {
-    "company": "MixRank",
-    "tier": "ok",
-    "link": "https://www.ycombinator.com/companies/mixrank/jobs/Fnwsojk-j...",
-    "note": "MixRank (YC S11) | Software Engineers | 100% REMOTE (Global) | Full-Time MixRank processes petabytes of data every month from web crawling. We have hundreds of customers using our data products including Google, Amazon, Facebook, Intel, and Adobe, across industries including Finance, Recruiting, Sal"
-  },
-  {
-    "company": "FusionAuth",
-    "tier": "ok",
-    "link": "https://fusionauth.io/blog/fusionauth-funding",
-    "note": "FusionAuth | Senior Security Engineer, others | Denver, CO, USA ONSITE (other positions are remote as) | Salaries listed on job req, but for the Security Engineer it is 140k-120k Our mission is to make authentication and authorization simple and secure for every developer building web and mobile app"
-  },
-  {
-    "company": "Fathom - AI Notetaker",
-    "tier": "ok",
-    "link": "https://fathom.video",
-    "note": "Fathom - AI Notetaker | REMOTE (must work US hours) | Full time | https://fathom.video We make the number one AI Notetaker and are hiring across the stack (rails/typescript/go/k8s/gcp). About Fathom: \u2022 YC W'21, raised Series A this summer, ~50 employees \u2022 Growing 10-20% every month (ARR + Usage) \u2022 8"
-  },
-  {
-    "company": "Archie",
-    "tier": "ok",
-    "link": "https://www.archiehub.com",
-    "note": "Archie ( https://www.archiehub.com ) | Remote (US East Coast + EU) | Full-Time | Equity | Roles: [Lead Product Engineer (Ruby on Rails), Senior Full-Stack Developer (Ruby on Rails)] Hi, my name is Marius and I am the CTO at Archie ( https://www.archiehub.com/ ). Archie is here to make buying a home "
-  },
-  {
-    "company": "Coveo",
-    "tier": "ok",
-    "link": "https://grnh.se/476db1032us",
-    "note": "Coveo | Senior Fullstack Developer | Canada/Europe | Full-time | Hybrid/Remote At Coveo, we build AI-powered systems that bring hyper-personalization to every enterprise experience \u2014 whether it's e-commerce, customer service, or internal workplace tools. Our platform unifies relevance across the sta"
-  },
-  {
-    "company": "Raileasy",
-    "tier": "ok",
-    "link": "https://raileasy.co.uk/careers",
-    "note": "Raileasy | Junior Backend Software Engineer | Remote (company based in London) | Permanent/PAYE | Must be UK Based Ever wanted to work in the UK rail-ticketing retail space? Raileasy, who own and operate the TrainSplit brand, are hiring for a junior backend software engineer. Our API powers some of "
   }
 ]
