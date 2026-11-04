@@ -1,5 +1,35 @@
 [
   {
+    "company": "Bubblehouse",
+    "tier": "ok",
+    "link": "https://jobs.bubblehouse.com/principal-engineer/",
+    "note": "Bubblehouse | Fully REMOTE | Full-Time | $200\u2013250k | Principal Engineer We\u2019re a small team across the US and Europe. We build the platform that household-name brands use to run their own loyalty programs. We write Go and run our own database engine on top of local key-value stores. We keep storage a"
+  },
+  {
+    "company": "Solution Street",
+    "tier": "ok",
+    "link": "https://www.solutionstreet.com/",
+    "note": "Solution Street | Northern Virginia / Washington DC Metro Area - HYBRID & ONSITE roles available - USA only. Candidates MUST be based in the United States with US work authorization. We are a software consulting company based in Northern Virginia. Our Website: https://www.solutionstreet.com/ Interes"
+  },
+  {
+    "company": "Tether",
+    "tier": "ok",
+    "link": "https://tether.recruitee.com/o/product-engineering-lead-keet...",
+    "note": "Tether | Product Engineering Lead, Keet | REMOTE (Worldwide) We're looking for a Product Engineering Lead to help build and scale Keet, a fully peer-to-peer messaging and video calling app. You'll lead API and frontend engineering teams, working closely with Product to turn the roadmap into high-qua"
+  },
+  {
+    "company": "Location: Andaluc\u00eda, Spain",
+    "tier": "ok",
+    "link": "https://saturnodev.netlify.app/",
+    "note": "Location: Andaluc\u00eda, Spain (CET) Remote: Yes \u2013 remote only Willing to relocate: No (EU citizen \u2013 no visa or work permit needed for EU employers) Technologies: TypeScript, React, Next.js, Node.js, Fastify, React Native, PostgreSQL, Prisma, Supabase, Anthropic SDK (Claude), LLM pipelines, Vitest/Jest,"
+  },
+  {
+    "company": "RedSeal",
+    "tier": "ok",
+    "link": "https://www.redseal.net",
+    "note": "RedSeal | Sales Engineer | REMOTE | Full-time | https://www.redseal.net RedSeal is an exposure management platform. We integrate agentlessly with 2,000+ security and infrastructure systems and devices to model the full hybrid environment (on-prem, cloud, OT, IoT) and show which attack paths and vuln"
+  },
+  {
     "company": "AREO",
     "tier": "ok",
     "link": "https://goareo.com/",
@@ -10,6 +40,12 @@
     "tier": "ok",
     "link": "https://apply.workable.com/valis-insights-1/j/9D0C64C055",
     "note": "VALIS (Valis Insights) | Software Engineer, new product line | REMOTE (US, East Coast hours) | Full-time | $125k-$155k + equity I'm Caleb, co-founder/CTO. VALIS builds data products for scrap metal recyclers. Our product images, weighs, and classifies scrap metal, and our platform turns that into ac"
+  },
+  {
+    "company": "Splash Tech",
+    "tier": "ok",
+    "link": "https://splash.tech/",
+    "note": "Splash Tech | DevOps Mid/Senior / Frontend | Remote (LATAM and EU) | Full Time | https://splash.tech/ We're a small UK-based free-to-play gaming company with a distributed team, growing fast after recent success and scaling our backend platform. We\u2019re looking for a DevOps engineer with 5+ years of e"
   },
   {
     "company": "Hatch",
