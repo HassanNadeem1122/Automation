@@ -1,5 +1,11 @@
 [
   {
+    "company": "Oscilar.com",
+    "tier": "ok",
+    "link": "https://jobs.ashbyhq.com/oscilar?utm_source=HackerNews",
+    "note": "Oscilar.com | Sr/Staff Software Engineers, Data Scientist, FDE, PM| REMOTE (US/Canada/Brazil/Poland/UK/India) Full-time AI Risk Decisioning\u2122 platform that helps organizations manage onboarding, fraud, credit, and compliance risks Open roles: - Sr./Staff Analytics & Data Architecture Engineer (US/Can"
+  },
+  {
     "company": "Bubblehouse",
     "tier": "ok",
     "link": "https://jobs.bubblehouse.com/principal-engineer/",
@@ -22,12 +28,6 @@
     "tier": "ok",
     "link": "https://saturnodev.netlify.app/",
     "note": "Location: Andaluc\u00eda, Spain (CET) Remote: Yes \u2013 remote only Willing to relocate: No (EU citizen \u2013 no visa or work permit needed for EU employers) Technologies: TypeScript, React, Next.js, Node.js, Fastify, React Native, PostgreSQL, Prisma, Supabase, Anthropic SDK (Claude), LLM pipelines, Vitest/Jest,"
-  },
-  {
-    "company": "RedSeal",
-    "tier": "ok",
-    "link": "https://www.redseal.net",
-    "note": "RedSeal | Sales Engineer | REMOTE | Full-time | https://www.redseal.net RedSeal is an exposure management platform. We integrate agentlessly with 2,000+ security and infrastructure systems and devices to model the full hybrid environment (on-prem, cloud, OT, IoT) and show which attack paths and vuln"
   },
   {
     "company": "AREO",
