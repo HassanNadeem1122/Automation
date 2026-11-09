@@ -1,5 +1,11 @@
 [
   {
+    "company": "OpenTrain AI",
+    "tier": "ok",
+    "link": "https://app.opentrain.ai/api/out/cmu9linxg000o0bgm9xiw33b9?c...",
+    "note": "OpenTrain AI | REMOTE (US) | Part-time | Backend Engineer, AI Coding Task Design OpenTrain AI connects experienced professionals with paid, part-time AI training work. We are the hiring company and are actively filling this role. - $30\u2013$100 per hour equivalent, paid per accepted task - 100% remote, "
+  },
+  {
     "company": "(see note)",
     "tier": "ok",
     "link": "https://tubiob.netlify.app",
@@ -148,6 +154,12 @@
     "tier": "ok",
     "link": "https://jobs.ashbyhq.com/oscilar?utm_source=HackerNews",
     "note": "Oscilar.com | Sr/Staff Software Engineers, Data Scientist, FDE, PM| REMOTE (US/Canada/Brazil/Poland/UK/India) Full-time AI Risk Decisioning\u2122 platform that helps organizations manage onboarding, fraud, credit, and compliance risks Open roles: - Sr./Staff Analytics & Data Architecture Engineer (US/Can"
+  },
+  {
+    "company": "Pairio ( https://pairio.app ) \u201cPosition filled\u201d",
+    "tier": "ok",
+    "link": "https://pairio.app",
+    "note": "Pairio ( https://pairio.app ) \u201cPosition filled\u201d| Senior Swift Engineer | REMOTE (Europe) | 32-40h/week | Employee or freelance | $65k-$85k + equity Pairio is a native macOS app for real-time screen sharing, built for people who work together. You share your screen, your teammate draws on it and take"
   },
   {
     "company": "Close",
