@@ -1,5 +1,11 @@
 [
   {
+    "company": "Hemant Singh",
+    "tier": "ok",
+    "link": "https://simply-cinema-frontend.vercel.app/",
+    "note": "Hemant Singh | Software Engineer / Backend Engineer | India (REMOTE / ONSITE) I'm a software engineer focused on backend development, primarily working with Java, Spring Boot, and Python. I enjoy building backend systems, REST APIs, and distributed applications, with an interest in system design and"
+  },
+  {
     "company": "OpenTrain AI",
     "tier": "ok",
     "link": "https://app.opentrain.ai/api/out/cmu9linxg000o0bgm9xiw33b9?c...",
@@ -306,12 +312,6 @@
     "note": "Crossref | Head of Infrastructure Services | REMOTE | Full-time | 120k USD or local equivalent I'm the Director of Technology at Crossref and I'm looking for a Head of Infrastructure Services to join my team. This role will lead the strategy and evolution of Crossref's infrastructure ecosystem, own "
   },
   {
-    "company": "Apex Dental Partners",
-    "tier": "ok",
-    "link": "",
-    "note": "Apex Dental Partners | Full-Stack Developer | Dallas, TX | REMOTE (US) or HYBRID | Full-time | apexdp.com We're a Dental Support Organization running 65 practices across eight states. Dentistry doesn't sound like a technical job, but the platform behind it is: we've built our own operations system ("
-  },
-  {
     "company": "Trax",
     "tier": "ok",
     "link": "https://www.traxtech.com/",
@@ -568,12 +568,6 @@
     "tier": "ok",
     "link": "https://www.stellarscience.com",
     "note": "Stellar Science | Hybrid (USA) Albuquerque NM, Washington DC (Tysons VA), Dayton OH | Full time, interns/co-ops | U.S. citizenship required | https://www.stellarscience.com Company : We're a small scientific software development company that develops custom scientific and engineering analysis applic"
-  },
-  {
-    "company": "Apex Dental Partners",
-    "tier": "strong",
-    "link": "",
-    "note": "Apex Dental Partners | Full-Stack Developer | Dallas, TX (Remote US or Hybrid) | apexdp.com We're a Dental Support Organization running 65 practices across TX/OK/CO/MO/IA/NE/TN/AZ. The unsexy industry description hides what's actually an interesting technical role: a small dev team with real ownersh"
   },
   {
     "company": "AREO",
@@ -1314,12 +1308,6 @@
     "note": "Bloomberg | Senior Software Engineer | Hybrid (NYC) | Full-time | $160k - $240k USD + bonus Every day, Bloomberg\u2019s clients rely on secure and seamless access to our products. Our team makes that possible by building infrastructure that verifies identities for both clients and employees. We design sy"
   },
   {
-    "company": "Apex Dental Partners",
-    "tier": "strong",
-    "link": "https://www.apexdp.com",
-    "note": "Apex Dental Partners | Full-Stack Developer | Dallas, TX (Remote US or Hybrid) | https://www.apexdp.com We're a Dental Support Organization running 59 practices across TX/OK/CO/MO/IA/NE/TN/AZ. The unsexy industry description hides what's actually an interesting technical role: a small dev team with "
-  },
-  {
     "company": "Company: Karma8",
     "tier": "ok",
     "link": "https://career.habr.com/vacancies/1000164014",
@@ -1486,12 +1474,6 @@
     "tier": "ok",
     "link": "https://tether.io/",
     "note": "Tether - https://tether.io/ - we are hiring for multiple roles 100% remote. Fullstack Developers You'll work across the JavaScript and TypeScript layer of our local AI stack. Depending on the project, you might build user-facing applications (mobile or desktop) or contribute to the platform layer th"
-  },
-  {
-    "company": "Apex Dental Partners",
-    "tier": "strong",
-    "link": "",
-    "note": "Apex Dental Partners | Full-Stack Developer | Dallas, TX (Remote US or Hybrid) | apexdp.com We're a Dental Support Organization running 59 practices across TX/OK/CO/MO/IA/NE/TN/AZ. The unsexy industry description hides what's actually an interesting technical role: a small dev team with real ownersh"
   },
   {
     "company": "CareMessage",
